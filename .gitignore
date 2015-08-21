@@ -13,5 +13,5 @@ vignettes/*.html
 vignettes/*.pdf
 
 # folders
-./pres/
-./documentation/
+./pres/**
+./documentation/**
