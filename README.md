@@ -15,6 +15,10 @@ où *path* est le chemin vers le document. De même pour obtenir le document en 
 > rmarkdown:: render("path/ex_Rmarkdown.rmd", "all")  
 
 
+# Remerciements.
+
+Merci à Nicolas Casajus pour avoir corrigé des coquilles dans le document!
+
 # License
 
 J'ai placé le document produit sous la license [*Creative Commons BY-NC-SA*](https://creativecommons.org/licenses/by-nc-sa/2.0/).

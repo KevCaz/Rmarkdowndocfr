@@ -3,7 +3,7 @@ title: "Utiliser R Markdown pour créer des documents dynamiques"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 author: par Kevin Cazelles
 lang: french
-abstract: Le package "rmarkdown" permet de créer des documents dynamiques qui intègrent des morceaux de code R et ce qu'ils génèrent (dont figures et tableaux). Ce document explique brièvement comment utiliser le package 'rmarkdown' et aussi la syntaxe "Pandoc Markdown". Le code source de ce document est en lui-même un exemple d'application du package.
+abstract: Le package "rmarkdown" permet de créer des documents dynamiques qui intègrent des morceaux de code R et ce qu'ils génèrent (dont figures et tableaux). Ce document explique comment utiliser le package 'rmarkdown' et aussi la syntaxe "Pandoc Markdown". Le code source de ce document est en lui-même un exemple d'application du package. Le lecteur trouvera également un ensemble de références disponibles sur Internet pour aller plus loin.
 fontfamily: fourier
 linestretch: 1
 fontsize: 10pt #11pt ou 12pt
@@ -54,13 +54,13 @@ header-includes:
 
 En milieu universitaire, des travaux préliminaires aux manuscrits, nous produisons très souvent des documents intégrant analyses et figures. Il est très pratique de pouvoir les intégrer directement dans un document complet qui peut également, au besoin, inclure le code source associé. Avec [R](http://www.r-project.org) c'est possible depuis plusieurs années. Dans le package de base "utils", il existe une fonction, *Sweave()*, qui permet de remplacer du code R par son rendu. Le package ["knitr"](http://cran.r-project.org/web/packages/knitr/index.html), qui utilise cette fonctionnalité, permet de produire des fichiers Latex intégrant du code R et des figures. Le dernier package disponible sur le [CRAN](http://cran.r-project.org) pour générer des documents dynamiques est le package ["rmarkdown"](http://cran.r-project.org/web/packages/rmarkdown) dont je vais vous parler.
 
-Dans "rmarkdown", il y a R et Markdown. Je pars du postulat que le lecteur est familier avec le langage [R](http://www.r-project.org). Il me reste alors à parler de Markdown. Le ["Mardown original"](http://daringfireball.net/projects/markdown/) date de 2004, l'idée de départ est simple et élégante&nbsp;: produire un langage léger qui simplifie les balises HTML et qui serait facilement transformé en HyperText Markup Language (HTML). L'idée n'est pas de tant de remplacer le HTML mais plutôt d'augmenter l'efficacité d'écriture. Chemin faisant, Markdown séduit, en parallèle de la version originale (qui n'a jamais été standardisée), plusieurs extensions voient le jour. Il s'agit surtout de lever certaines limitations tout en préservant l'esprit d'origine, parmi elles:  
+Dans "rmarkdown", il y a R et Markdown. Je pars du postulat que le lecteur est familier avec le langage [R](http://www.r-project.org). Il me reste alors à parler de Markdown. Le ["Mardown original"](http://daringfireball.net/projects/markdown/) date de 2004, l'idée de départ est simple et élégante&nbsp;: produire un langage léger qui simplifie les balises HTML et qui serait facilement transformé en HyperText Markup Language (HTML). L'idée n'est pas tant de remplacer le HTML mais plutôt d'en augmenter l'efficacité d'écriture. Chemin faisant, Markdown séduit, en parallèle de la version originale (qui n'a jamais été standardisée), plusieurs extensions voient le jour. Il s'agit surtout de lever certaines limitations tout en préservant l'esprit d'origine, parmi elles:  
 
  - [GitHub Flavored Markdown (GFM)](https://help.github.com/articles/github-flavored-markdown/)
  - [Kramdown](http://kramdown.gettalong.org/syntax.HTML#math-blocks)
- - [Markdown extra](https://michelf.ca/projects/php-markdown/extra/)
+ - [Markdown Extra](https://michelf.ca/projects/php-markdown/extra/)
  - [Multi Markdow](https://github.com/fletcher/MultiMarkdown/wiki/MultiMarkdown-Syntax-Guide#math-support)
- - [Pandoc markdown](http://pandoc.org/README.HTML#pandocs-markdown)
+ - [Pandoc Markdown](http://pandoc.org/README.HTML#pandocs-markdown)
 
 [R Markdown version 2](http://rmarkdown.rstudio.com)[^1] n'est pas une nouvelle variante Markdown. Il s'agit de l'utilisation de la variante [Pandoc Markdown](http://pandoc.org/README.HTML#pandocs-markdown)[^2] à laquelle viennent s'ajouter les fonctionnalités des packages ["knitr"](http://cran.r-project.org/web/packages/knitr/index.html) et ["yaml"](http://cran.r-project.org/web/packages/yaml/index.html), le tout lié par l'utilisation de [Pandoc](http://www.pandoc.org/installing.html). Une précision relative à [Pandoc](http://www.pandoc.org/installing.HTML) s'impose. Il s'agit, comme l'indique le site internet, d'un "convertisseur de document universel". Personnellement, Pandoc a changé mes pratiques&nbsp;: en une ligne de commande Pandoc convertit un document dans un format donné en de nombreux autres formats. Par exemple, on peut passer d'un fichier .tex (Latex) à un fichier .docx (Word)! L'intérêt du package "rmarkdown" est quadruple&nbsp;:
 
@@ -98,6 +98,7 @@ Un fichier Rmarkdown (".rmd") est divisé en trois&nbsp;:
 - Le reste du texte utilise la syntaxe Pandoc Markdown
 
 Au début, il est délicat de se retrouver dans ces fichiers car on y croise différents langages. Trois langage sont pleinement utilisés pour créer le document&nbsp;: Markdown, R et YAML. De plus, dans la syntaxe Pandoc Markdown utilisée, on trouve des syntaxes communes à deux autres langages:
+
 - un ensemble de balises HTML, p. ex. celle utilisée pour insérer des commentaires&nbsp;: \<\-\- le commentaire \-\-\>  ou encore celle dédiée aux espaces insécables&nbsp;: \&nbsp;,
 - la syntaxe [Latex](http://www.latex-project.org) pour les équations.
 
@@ -128,7 +129,7 @@ Les documents au format pdf requièrent [l'installation de Latex](https://www.tu
 
 ## Le fichier YAML
 
-Il s'agit d'un ensemble de spécifications placées en tête de votre document ".rmd" (veuillez à ne pas introduire de commentaires avant). C'est un ensemble [YAML (YAML Ain't Markup Language)](http://www.yaml.org/spec/1.2/spec.HTML) est un format de représentation de données intégré dans le fichier ".rmd" entre bloc de trois tirets. C'est un ensemble de métadonnées permettant de préciser nos souhaits relatifs aux formats de sortie.Ces données sont alors soit intégrées dans dans la ligne de commande Pandoc soit dans les *templates*. Pour comprendre l'essentiel du fonctionnement du YAML, je vous conseille de regarder la [page française wikipedia](https://fr.wikipedia.org/wiki/YAML). La page anglaise sur le même sujet vous permet d'en apprendre davantage. Pour un aperçu assez complet des options YAML utilisables dans le fichier .rmd par défaut, rendez-vous à la dernière page du [guide de référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf). J'ai volontairement utilisé un grand nombre de spécification pour générer ce document, en voici une reproduction quasi-identique (sans le résumé complet et sans la majorité des commentaires que vous pouvez trouver dans le fichier source de ce document)&nbsp;:
+Il s'agit d'un ensemble de spécifications placées en tête de votre document ".rmd" (veuillez à ne pas introduire de commentaires avant). le [YAML (YAML Ain't Markup Language)](http://www.yaml.org/spec/1.2/spec.HTML) est un format de représentation de données intégré dans le fichier ".rmd" entre bloc de trois tirets. C'est un ensemble de métadonnées permettant de préciser nos souhaits relatifs aux formats de sortie. Ces données sont alors soit intégrées dans la ligne de commande Pandoc soit dans les *templates*. Pour comprendre l'essentiel du fonctionnement du YAML, je vous conseille de regarder la [page française wikipedia](https://fr.wikipedia.org/wiki/YAML). La page anglaise sur le même sujet vous permet d'en apprendre davantage. Pour un aperçu assez complet des options YAML utilisables dans le fichier .rmd par défaut, rendez-vous à la dernière page du [guide de référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf). J'ai volontairement utilisé un grand nombre de spécification pour générer ce document, en voici une reproduction quasi-identique (sans le résumé complet et sans la majorité des commentaires que vous pouvez trouver dans le fichier source de ce document)&nbsp;:
 
     ---  
     title: "Utiliser Rmarkdown pour créer des documents dynamiques"  
@@ -140,14 +141,12 @@ Il s'agit d'un ensemble de spécifications placées en tête de votre document "
     linestretch: 1  
     fontsize: 10pt  
     lof: yes  
-    highlight: zenburn
-    # on peut également utiliser “default”, “tango”, “pygments”, “kate”,
-    # “monochrome”, “espresso”, “zenburn”, “haddock”, “textmate”
     output:
     html_document:
         # css: ./aux/designR.css
         highlight: zenburn
-        # “default”, “tango”, “pygments”, “kate”, “monochrome”, “espresso”, “zenburn”, “haddock”, “textmate”
+        # “default”, “tango”, “pygments”, “kate”, “monochrome”,
+        “espresso”, “zenburn”, “haddock”, “textmate”
         theme: flatly
         # ou “default”, “cerulean”, “journal”, “readable”, “spacelab”, “united”, “cosmo”
         toc: yes
@@ -235,7 +234,7 @@ Le plus simple est d’utiliser un nombre croissant de "\#"" pour descendre dans
     ## Un titre d'ordre 2
     ### Un titre d'ordre 3
 
- Il est aussi possible d'utiliser une série de "=" en dessous des titre de premier niveau et une ligne de "-" en dessous des titres de niveau 2. Cette option à la qualité de permettre de repérer facilement les titres dans le code source.
+ Il est aussi possible d'utiliser une série de "=" en dessous des titre de premier niveau et une ligne de "-" en dessous des titres de niveau 2. Cette option a la qualité de permettre de repérer facilement les titres dans le code source.
 
     Un titre d'ordre 1
     ==================
@@ -284,7 +283,7 @@ Dans tous les cas, j'obtiens&nbsp;:
 + truc 3.
 
 
-En utilisation une indentation de 4 espaces (ou une tabulation), j'obtiens facilement des listes hiérarchisées, ainsi quand j'utilise&nbsp;:
+En utilisant une indentation de 4 espaces (ou une tabulation), j'obtiens facilement des listes hiérarchisées, ainsi quand j'utilise&nbsp;:
 
     - truc 1,
         + machin 1
@@ -442,7 +441,9 @@ ces lignes sont rendues ainsi&nbsp;:
 (1) truc 1
 (2) truc 2
 (3) truc 2b
+
 <!-- end -->
+
 (1) truc 3
 (2) truc 4
 
@@ -450,13 +451,13 @@ ces lignes sont rendues ainsi&nbsp;:
 
 ## Blocs de citation
 
-Pour utiliser un bloc de citation (la balise "blockquote" en HTML), il suffit d'utiliser "\>" avant la citation. Ainsi,
+Pour utiliser un bloc de citation (la balise "blockquote" en HTML), il suffit d'utiliser "\>" avant la citation. Ainsi les lignes suivantes&nbsp;:
 
-    > La citation est ajoutée comme ceci, elle nous donne une indentation adéquate
+    > la citation est ajoutée comme ceci, elle nous donne une indentation adéquate
     pour une mise en page agréable dont le style peut être facilement travailler
     en html grâce au CSS.
 
-devient&nbsp;:
+deviennent&nbsp;:
 
 > La citation est ajoutée comme ceci, elle nous donne une indentation adéquate pour une mise en page agréable dont le style peut être facilement travailler en html grâce au CSS.
 
@@ -473,7 +474,7 @@ ce qui donne&nbsp;:
 >> une hiérarchie dans la citation
 
 
-## Blocs de code.
+## Blocs de code
 
 Pour l'ensemble des exemples que je présente sous forme de lignes de code, j'utilise un environnement simple qui utilise une police d'écriture à chasse fixe et affiche tous les caractères tel qu'il sont entrés (les balises ne sont pas interprétés).
 Pour cela, j'ajoute simplement 4 espaces (ou une tabulation) au début de chaque ligne pour que se soit considérer comme du code.
@@ -955,7 +956,7 @@ for (i in 1:6) kcircle(1,c(cos(i*pi/3),sin(i*pi/3)), col="#0000AA88")
 ```
 
 
-## Une petite application.
+## Une petite application
 
 Je souhaite faire un modèle linéaire avec la variable explicative *var1* et la variable à expliquer *var2* de notre *table1*. Nous créons alors un petit document sachant que les données évolueront. Je vais faire une inclusion donc utiliser du code R dans mon document.
 
