@@ -1,0 +1,334 @@
+/*
+    - designR.css - 
+    ---------------------
+    created 02/11/2014
+    by Kevin Cazelles
+    modified 22/01/2015
+*/
+
+/*design => R */
+
+/* blue :rgb(113,127,179) instead of #316075*/
+/* grey :rgb(127,132,123) instead of #55555*/
+
+
+body
+{
+    background : white ;
+}
+
+header
+{
+  background: white;
+  border: 6px solid rgb(113,127,179);
+  margin: auto ;
+  width: 80% ;
+  min-width: 800px ; 
+  border-radius: 15px ; 
+  margin-top: 1% ; 
+  margin-bottom: 1% ;
+  align: center ;
+  text-align: center ; 
+}
+
+footer
+{
+  display: block ;
+  background: white;
+  border: 6px solid rgb(113,127,179);
+  margin: auto ;
+  width: 80% ;
+  min-width: 800px ; 
+  border-radius: 15px ;  
+  margin-top: 1% ; 
+  margin-bottom: 1% ;
+  text-align: center ;
+}
+
+nav
+{
+    background: white ;
+    display: inline-block ;
+    width: 90% ;
+    min-width: 720px ;
+    padding: 1% ;
+    border-radius: 15px ; 
+    margin : 1% ;
+}
+
+nav a 
+{
+   text-decoration: none;
+   color: black;
+   font-size: 32px;
+   font-family: Baskerville;
+}
+
+section
+{
+    margin: auto ;
+    align: center ;
+    width: 80% ;
+    min-width: 800px ;
+    margin-top: 1% ; 
+    margin-bottom: 1% ;
+}
+
+article
+{
+    display: inline-block ;
+    background: white ;
+    border: 6px solid rgb(113,127,179) ;
+    margin: auto ;
+    width: 60% ;
+    min-width: 480px ;
+    height: 500px ;  
+    border-radius: 20px ; 
+    margin-top: 1% ; 
+    margin-bottom: 1% ;
+    border-radius: 15px ; 
+    overflow: auto ;
+}
+
+aside
+{
+  display: inline-block;
+  vertical-align: top;
+  margin: auto ;
+  width: 38% ; /*(90*40%)*/
+  min-width: 320px ; /*(800*40)*/
+  height: 500px ;  
+  border-radius: 20px ; 
+  margin-top: 1% ; 
+  margin-bottom: 1% ;
+  border-radius: 15px; 
+  overflow: auto;
+}
+
+
+divall{
+    display: block ;
+    background: white; 
+    margin: auto;
+    border: 6px solid rgb(113,127,179); 
+    width: 100% ;
+    min-width: 800px ; 
+    min-height: 500px;  
+    border-radius: 20px ; 
+    margin-top: 1% ; 
+    margin-bottom: 1% ;
+    overflow: auto;   
+    text-align: center ;
+}
+
+navblog
+{
+    display: inline-block ;
+    width: 100% ;
+    min-width: 760px ;
+    background: white;
+    border: 6px solid rgb(113,127,179);
+    border-radius: 20px ;  
+    margin: auto;
+}
+
+
+/*--------------------*/
+   /*Elements */
+/*--------------------*/
+
+img:hover {
+    filter: invert(0);
+    -webkit-filter: invert(0);
+    -moz-filter: invert(0);
+    -o-filter: invert(0);
+    -ms-filter: invert(0);
+}
+
+
+
+
+
+/*--------------------*/
+   /* Paragraphe */
+/*--------------------*/
+
+p
+{
+   color: rgb(127,132,123); 
+   font-size: 22px;
+   text-align: justify;
+   margin-right : 25px; 
+   margin-left : 25px; 
+   padding : 5px;
+   font-family: Baskerville;
+}
+
+ul, ol
+{
+   color: #888888;
+   font-size: 22px;
+   text-align: justify;
+   margin-right : 25px;
+   margin-left : 50px; 
+   font-family: Baskerville;
+}
+
+blockquote
+{
+  color: black;
+  background: rgb(113,127,179);
+  border-radius: 15px ; 
+}
+
+blockquote p
+{
+  color: white;
+  font-weight: 600;
+}
+
+
+/*--------------------*/
+   /* Titles */
+/*--------------------*/
+h1
+{
+  text-align : center ;
+  color: rgb(113,127,179);
+  font-family: Baskerville;
+  font-size: 50px;
+  margin: 20px ;
+  padding: 10px;
+  font-weight: 700 ;
+}
+
+
+h2
+{
+  display : block;
+  color: rgb(113,127,179);
+  font-family: Baskerville;
+  font-size: 40px;
+  margin: 10px ;
+  padding: 15px;
+  font-weight: 600 ;
+}
+
+h3
+{
+  color: rgb(127,132,123); 
+  font-size: 35px;
+  margin : 10px ;
+  padding : 4px;
+  text-decoration: underline;
+  font-family: Baskerville;
+  text-align : left ;
+  font-weight: 500 ;
+}
+
+
+h4
+{
+  display : block;
+  color: rgb(127,132,123); 
+  font-family: Baskerville;
+  font-size: 26px;
+  margin: 10px ;
+  padding: 4px;
+  text-align : right ;
+  font-weight: 500 ;
+}
+
+
+h5
+{
+    display : block;
+    color: rgb(127,132,123); 
+    font-family: Baskerville;
+    font-size: 28px;
+    margin: 4px ;
+    padding:; 10px;
+    text-align : left ;
+    font-weight: 400 ;
+}
+
+
+h6
+{
+    display : inline-block;
+    color: rgb(127,132,123);  
+    font-family: Baskerville;
+    font-size: 24px;
+    padding: 6px ;
+    margin: 10px;
+    font-weight: 400 ;
+}
+
+
+/*--------------------*/
+   /* My class*/
+/*--------------------*/
+
+#disqus_thread
+{
+  background: white ;
+  border: 6px solid rgb(113,127,179) ;
+  padding: 10px;
+  border-radius: 20px ;
+}
+
+.form_submit
+{
+    display : inline-block;
+    color: rgb(127,132,123);
+    font-size: 18px;
+}
+
+.numblog
+{
+  display: inline-block ;
+  width: 35px; 
+  height: 35px; 
+  font-size: 34px; 
+  font-family: Baskerville;
+  background: transparent;
+  border: transparent;
+  color: rgb(127,132,123);
+  font-weight: 600;
+}
+
+.numblog:hover
+{
+  color: rgb(113,127,179); 
+}
+
+
+/*--------------------*/
+   /* Hyperref */
+/*--------------------*/
+
+
+a /* Liens par défaut (non survolés) */
+{
+   text-decoration: none;
+   color: rgb(113,127,179);
+}
+
+a:hover /* Apparence au survol des liens */
+{
+   color: #5C0475;
+}
+
+
+
+/*--------------------*/
+   /* Tables */
+/*--------------------*/
+
+table, th, td {
+    width: 100% ;
+    text-align: center ;
+    border: 1px solid white;
+    border-collapse: collapse;
+    table-layout:fixed;
+}
