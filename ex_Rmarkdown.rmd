@@ -46,7 +46,7 @@ header-includes:
 - \fancyfoot[LE,RO]{\thepage}
 ---
 
-<!-- render("~/Documents/Codes/R_workspace/Rmarkdown/examples_RMD/ex_Rmarkdown.rmd", "all") -->
+<!-- render("path/ex_Rmarkdown.rmd", "all") -->
 
 
 

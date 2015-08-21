@@ -1,6 +1,6 @@
 # Document pour apprendre à utiliser le package "R markdown"
 
-Le document ".rmd" est un exemple assez complet pour être capable d'utiliser la syntaxe Pandoc Markdown et les fonctionnalités du packages "rmarkdown".
+Le document ".rmd" est un exemple assez complet pour utiliser 1) la syntaxe Pandoc Markdown et 2) les fonctionnalités du packages "rmarkdown".
 
 Pour installer le package&nbsp;:
 
