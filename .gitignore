@@ -1,6 +1,13 @@
+#
+*.pdf
+*.tex
+.DS_Store
+
+
 # History files
 .Rhistory
 .Rapp.history
+.DS_Store
 
 # Example code in package build process
 *-Ex.R

@@ -2,7 +2,7 @@
 title: "Utiliser R Markdown pour créer des documents dynamiques"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 author: par Kevin Cazelles
-lang: french
+lang: fr
 abstract: Le package "rmarkdown" permet de créer des documents dynamiques qui intègrent des morceaux de code R et ce qu'ils génèrent (dont figures et tableaux). Ce document explique comment utiliser le package 'rmarkdown' et aussi la syntaxe "Pandoc Markdown". Le code source de ce document est en lui-même un exemple d'application du package. Le lecteur trouvera également un ensemble de références disponibles sur Internet pour aller plus loin.
 fontfamily: fourier
 linestretch: 1
@@ -37,7 +37,7 @@ output:
 bibliography: ./aux/mybiblio.bib
 #csl: ./aux/nature.csl
 #csl: ./aux/pnas.csl
-csl: ./aux/journal-of-theoretical-biology.csl
+csl: aux/journal-of-theoretical-biology.csl
 header-includes:
 - \usepackage{fancyhdr}
 - \pagestyle{fancy}
@@ -52,9 +52,9 @@ header-includes:
 
 # Introduction
 
-En milieu universitaire, des travaux préliminaires aux manuscrits, nous produisons très souvent des documents intégrant analyses et figures. Il est très pratique de pouvoir les intégrer directement dans un document complet qui peut également, au besoin, inclure le code source associé. Avec [R](http://www.r-project.org) c'est possible depuis plusieurs années. Dans le package de base "utils", il existe une fonction, *Sweave()*, qui permet de remplacer du code R par son rendu. Le package ["knitr"](http://cran.r-project.org/web/packages/knitr/index.html), qui utilise cette fonctionnalité, permet de produire des fichiers Latex intégrant du code R et des figures. Le dernier package disponible sur le [CRAN](http://cran.r-project.org) pour générer des documents dynamiques est le package ["rmarkdown"](http://cran.r-project.org/web/packages/rmarkdown) dont je vais vous parler.
+En milieu universitaire, de nos travaux préliminaires à nos manuscript soumettables, nous produisons très souvent des documents intégrant analyses et figures. Il est aors convénient de pouvoir les intégrer directement dans un document complet qui peut également, au besoin, inclure le code source associé. Avec [R](http://www.r-project.org) c'est possible depuis plusieurs années. Dans le package de base `utils`, il existe une fonction, `Sweave()`, qui permet de remplacer du code R par son rendu. Le package ["knitr"](http://cran.r-project.org/web/packages/knitr/index.html), qui utilise cette fonctionnalité, permet de produire des fichiers Latex intégrant du code R et des figures. Le dernier package disponible sur le [CRAN](http://cran.r-project.org) pour générer des documents dynamiques est le package ["rmarkdown"](http://cran.r-project.org/web/packages/rmarkdown) dont je vais vous parler.
 
-Dans "rmarkdown", il y a R et Markdown. Je pars du postulat que le lecteur est familier avec le langage [R](http://www.r-project.org). Il me reste alors à parler de Markdown. Le ["Mardown original"](http://daringfireball.net/projects/markdown/) date de 2004, l'idée de départ est simple et élégante&nbsp;: produire un langage léger qui simplifie les balises HTML et qui serait facilement transformé en HyperText Markup Language (HTML). L'idée n'est pas tant de remplacer le HTML mais plutôt d'en augmenter l'efficacité d'écriture. Chemin faisant, Markdown séduit, en parallèle de la version originale (qui n'a jamais été standardisée), plusieurs extensions voient le jour. Il s'agit surtout de lever certaines limitations tout en préservant l'esprit d'origine, parmi elles:  
+Dans `rmarkdown`, il y a R et Markdown. Je pars du postulat que le lecteur est familier avec le langage [R](http://www.r-project.org). Il me reste alors à parler de Markdown. Le ["Mardown original"](http://daringfireball.net/projects/markdown/) date de 2004, l'idée de départ est simple et élégante&nbsp;: produire un langage léger qui simplifie les balises HTML et qui serait facilement transformé en HyperText Markup Language (HTML). L'idée n'est pas tant de remplacer le HTML mais plutôt d'en augmenter l'efficacité d'écriture. Chemin faisant, Markdown séduit, en parallèle de la version originale (qui n'a jamais été standardisée), plusieurs extensions voient le jour. Il s'agit surtout de lever certaines limitations tout en préservant l'esprit d'origine, parmi elles:  
 
  - [GitHub Flavored Markdown (GFM)](https://help.github.com/articles/github-flavored-markdown/)
  - [Kramdown](http://kramdown.gettalong.org/syntax.HTML#math-blocks)
