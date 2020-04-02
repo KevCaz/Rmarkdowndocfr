@@ -7,7 +7,7 @@ pdf:
 
 html:
 	Rscript -e 'rmarkdown::render("UtiliserRMarkdown.Rmd", "html_document")'
-	mkdir public
+	mkdir -p public
 	mv UtiliserRMarkdown.html public/index.html
 	cp -r images public/
 

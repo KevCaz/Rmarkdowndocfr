@@ -1,5 +1,6 @@
 *.pdf
 public/
+UtiliserRMarkdown_files
 UtiliserRMarkdown.html
 UtiliserRMarkdown.tex
 UtiliserRMarkdown.docx
