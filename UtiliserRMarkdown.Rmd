@@ -3,7 +3,7 @@ title: "Utiliser R Markdown pour créer des documents dynamiques"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 author: par Kevin Cazelles
 lang: fr
-abstract: Le package "rmarkdown" permet de créer des documents dynamiques qui intègrent des morceaux de code R et ce qu'ils génèrent (dont figures et tableaux). Ce document explique comment utiliser le package 'rmarkdown' et aussi la syntaxe "Pandoc Markdown". Le code source de ce document est en lui-même un exemple d'application du package. Le lecteur trouvera également un ensemble de références disponibles sur Internet pour aller plus loin.
+abstract: Le package `rmarkdown` permet de créer des documents dynamiques qui intègrent des morceaux de code R et ce qu'ils génèrent (dont figures et tableaux). Ce document explique comment utiliser le package 'rmarkdown' et aussi la syntaxe "Pandoc Markdown". Le code source de ce document est en lui-même un exemple d'application du package. Le lecteur trouvera également un ensemble de références disponibles en ligne pour aller plus loin.
 fontfamily: fourier
 linestretch: 1
 fontsize: 10pt #11pt ou 12pt
@@ -11,12 +11,15 @@ lof: yes
 # urlcolor: magenta
 output:
     html_document:
+        toc: yes
+        toc_float: yes
         # css: ./aux/designR.css
-        highlight: zenburn
-        # “default”, “tango”, “pygments”, “kate”, “monochrome”, “espresso”, “zenburn”, “haddock”
+        highlight: default
+        #“tango”, “pygments”, “kate”, “monochrome”, “espresso”, “zenburn”, “haddock”
         theme: flatly
         # ou “default”, “cerulean”, “journal”, “readable”, “spacelab”, “united”, “cosmo”
-        toc: yes
+        include:
+            after_body: aux/footer.html
     pdf_document:
         highlight: tango
         toc: yes
@@ -26,7 +29,7 @@ output:
         latex_engine: pdflatex #xelatex
         number_section: yes
         includes:
-            before_body: ./aux/license.tex
+            before_body: aux/license.tex
         # template: ./aux/kev_latex.tex
     word_document:
         #toc: yes
@@ -34,27 +37,37 @@ output:
         highlight: pygments
     md_document:
         variant: markdown_strict
-bibliography: ./aux/mybiblio.bib
+bibliography: aux/mybiblio.bib
 #csl: ./aux/nature.csl
 #csl: ./aux/pnas.csl
 csl: aux/journal-of-theoretical-biology.csl
 header-includes:
-- \usepackage{fancyhdr}
-- \pagestyle{fancy}
-- \fancyhead[CO,CE]{}
-- \fancyfoot[CO,CE]{Documents dynamiques avec R Markdown}
-- \fancyfoot[LE,RO]{\thepage}
+    - \usepackage{fancyhdr}
+    - \pagestyle{fancy}
+    - \fancyfoot[CO,CE]{Documents dynamiques avec R Markdown}
+    - \fancyfoot[R]{\thepage}
 ---
-
-<!-- render("path/ex_Rmarkdown.rmd", "all") -->
 
 
 
 # Introduction
 
-En milieu universitaire, de nos travaux préliminaires à nos manuscript soumettables, nous produisons très souvent des documents intégrant analyses et figures. Il est aors convénient de pouvoir les intégrer directement dans un document complet qui peut également, au besoin, inclure le code source associé. Avec [R](http://www.r-project.org) c'est possible depuis plusieurs années. Dans le package de base `utils`, il existe une fonction, `Sweave()`, qui permet de remplacer du code R par son rendu. Le package ["knitr"](http://cran.r-project.org/web/packages/knitr/index.html), qui utilise cette fonctionnalité, permet de produire des fichiers Latex intégrant du code R et des figures. Le dernier package disponible sur le [CRAN](http://cran.r-project.org) pour générer des documents dynamiques est le package ["rmarkdown"](http://cran.r-project.org/web/packages/rmarkdown) dont je vais vous parler.
+En milieu universitaire, de nos travaux préliminaires à nos manuscripts, nous
+produisons très souvent des documents intégrant analyses et figures. Il est
+alors convenient de pouvoir les intégrer directement dans un document complet
+qui peut également, au besoin, inclure le code source associé. Avec
+[R](http://www.r-project.org), c'est possible depuis de nombreuses années avec
+package de base `utils`, qui inclut la function `Sweave()` qui permet de
+remplacer du code R par son rendu. Le package
+["knitr"](http://cran.r-project.org/web/packages/knitr/index.html), qui utilise
+cette fonctionnalité, permet de produire des fichiers LaTeX intégrant du code R
+et des figures. Le package [`rmarkdown`](https://rmarkdown.rstudio.com/)
+développé par RStudio est un package R très populaire qui a rendu la création de
+documents dynamiques avec R très efficace. Notez qu'il y a un livre en anglais
+très complet sur le sujet [disponible en
+ligne](https://bookdown.org/yihui/rmarkdown/) et [un cook d'atuces](https://bookdown.org/yihui/rmarkdown-cookbook/) est en cours d'écriture.
 
-Dans `rmarkdown`, il y a R et Markdown. Je pars du postulat que le lecteur est familier avec le langage [R](http://www.r-project.org). Il me reste alors à parler de Markdown. Le ["Mardown original"](http://daringfireball.net/projects/markdown/) date de 2004, l'idée de départ est simple et élégante&nbsp;: produire un langage léger qui simplifie les balises HTML et qui serait facilement transformé en HyperText Markup Language (HTML). L'idée n'est pas tant de remplacer le HTML mais plutôt d'en augmenter l'efficacité d'écriture. Chemin faisant, Markdown séduit, en parallèle de la version originale (qui n'a jamais été standardisée), plusieurs extensions voient le jour. Il s'agit surtout de lever certaines limitations tout en préservant l'esprit d'origine, parmi elles:  
+Dans `R Markdown`, il y a R et Markdown. Pour la suite du document, le lecteur doit être est familier avec [R](http://www.r-project.org)[^niveau]. Il me reste alors à parler de Markdown. Le ["Mardown original"](http://daringfireball.net/projects/markdown/)[^niveau] date de 2004, l'idée de départ est simple et élégante&nbsp;: produire un langage léger qui simplifie les balises HTML et facilement transformé en HyperText Markup Language (HTML, utilisé par tout les sites Internet). L'idée n'est pas tant de remplacer le HTML mais plutôt d'en augmenter l'efficacité d'écriture. Chemin faisant, Markdown séduit, en parallèle de la version originale (qui n'a jamais été standardisée), plusieurs extensions voient le jour. Il s'agit surtout de lever certaines limitations tout en préservant l'esprit d'origine, parmi elles:
 
  - [GitHub Flavored Markdown (GFM)](https://help.github.com/articles/github-flavored-markdown/)
  - [Kramdown](http://kramdown.gettalong.org/syntax.HTML#math-blocks)
@@ -62,14 +75,14 @@ Dans `rmarkdown`, il y a R et Markdown. Je pars du postulat que le lecteur est f
  - [Multi Markdow](https://github.com/fletcher/MultiMarkdown/wiki/MultiMarkdown-Syntax-Guide#math-support)
  - [Pandoc Markdown](http://pandoc.org/README.HTML#pandocs-markdown)
 
-[R Markdown version 2](http://rmarkdown.rstudio.com)[^1] n'est pas une nouvelle variante Markdown. Il s'agit de l'utilisation de la variante [Pandoc Markdown](http://pandoc.org/README.HTML#pandocs-markdown)[^2] à laquelle viennent s'ajouter les fonctionnalités des packages ["knitr"](http://cran.r-project.org/web/packages/knitr/index.html) et ["yaml"](http://cran.r-project.org/web/packages/yaml/index.html), le tout lié par l'utilisation de [Pandoc](http://www.pandoc.org/installing.html). Une précision relative à [Pandoc](http://www.pandoc.org/installing.HTML) s'impose. Il s'agit, comme l'indique le site internet, d'un "convertisseur de document universel". Personnellement, Pandoc a changé mes pratiques&nbsp;: en une ligne de commande Pandoc convertit un document dans un format donné en de nombreux autres formats. Par exemple, on peut passer d'un fichier .tex (Latex) à un fichier .docx (Word)! L'intérêt du package "rmarkdown" est quadruple&nbsp;:
+À noter aussi l'initiative [CommonMark](https://commonmark.org/) qui est une spécification (norme technique) pour Markdown de plus en plus utilisées. R Markdown(http://rmarkdown.rstudio.com)[^1] n'est pas une nouvelle variante Markdown. Il s'agit de d'utiliser de la variante [Pandoc Markdown](https://rmarkdown.rstudio.com/lesson-8.html)[^2] et d'y ajouter les fonctionnalités d'autres packages, notamment [`knitr`](http://cran.r-project.org/web/packages/knitr/index.html) pour intégrer du code R et ce qu'il produit dans le document.  et [`yaml`](http://cran.r-project.org/web/packages/yaml/index.html) e tout lié par l'utilisation de [Pandoc](http://www.pandoc.org/installing.html). Une précision relative à [Pandoc](http://www.pandoc.org/installing.HTML) s'impose. Il s'agit, comme l'indique le site internet, d'un "convertisseur de document universel", en une ligne de commande Pandoc convertit un document dans un format donné en de nombreux autres formats. Par exemple, on peut passer d'un fichier `.tex` (LaTeX) à un fichier `.docx` (Word)! Cela étant dit, revenons-en à ``rmarkdown`. Les intérêts du package `rmarkdown` sont nombreux :
 
-1. utiliser une syntaxe très épurée pour distinguer la mise en page, texte, le formatage du texte et le code R,
+1. utiliser une syntaxe épurée pour distinguer la mise en page, le texte, le formatage du texte et le code R,
 2. utiliser les fonctionnalités du package "knitr" pour créer morceaux de codes et figures dynamiquement,
 3. utiliser le format de sérialisation YAML pour personnaliser la mise en page des documents produits grâce à la fonction *render* elle-même appelée en quelques clics avec [Rstudio](http://www.rstudio.com),
-4. obtenir ainsi un document avec un contenu R dynamique en différents formats dont "html", "pdf" et "docx".
+4. obtenir ainsi un document avec un contenu R dynamique en différents formats dont `html`, `pdf` et `docx`.
 
-Concernant la documentation relative aux fonctionnalités du package "rmarkdown", je recommande [le site officiel de R Markdown](http://rmarkdown.rstudio.com) sur lequel vous trouverez deux documents précieux&nbsp;: un condensé d'utilisation sous forme de [*Cheat Sheet*](http://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) ainsi qu'un [guide de référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf). Le [site dédié à knitr](http://yihui.name/knitr/) permet de bien comprendre l'intégration des morceaux de codes et des figures de [R](http://www.r-project.org). Je tiens également à signaler la [présentation de Mansun Kuo sur Rpubs](http://rpubs.com/mansun_kuo/24330). Pour apprendre la syntaxe Pandoc Markdown, vous pouvez vous reportez à la [documentation disponible sur le site de Pandoc](http://pandoc.org/demo/example9/pandocs-markdown.html) ou à la [page internet de Jean-Daniel Bonjour](http://enacit1.epfl.ch/markdown-pandoc/#notes_bas_page) pour une documentation en français.
+Concernant la documentation relative aux fonctionnalités du package `rmarkdown`, je recommande [le site officiel de R Markdown](http://rmarkdown.rstudio.com) sur lequel vous trouverez deux documents précieux&nbsp;: un condensé d'utilisation sous forme de [*Cheat Sheet*](http://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) ainsi qu'un [guide de référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf). Le [site dédié à knitr](http://yihui.name/knitr/) permet de bien comprendre l'intégration des morceaux de codes et des figures de [R](http://www.r-project.org). Je tiens également à signaler la [présentation de Mansun Kuo sur Rpubs](http://rpubs.com/mansun_kuo/24330). Pour apprendre la syntaxe Pandoc Markdown, vous pouvez vous reportez à la [documentation disponible sur le site de Pandoc](http://pandoc.org/demo/example9/pandocs-markdown.html) ou à la [page internet de Jean-Daniel Bonjour](http://enacit1.epfl.ch/markdown-pandoc/#notes_bas_page) pour une documentation en français.
 
 Pour conclure cette introduction, je signale que la syntaxe [Pandoc Markdown](http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html) est, à mon sens, très complète, mais elle ne permet pas une personnalisation totale de la mise en page de votre document. Néanmoins, avant d'envisager l'un des recours proposés ci-dessous, il est très important de vous demander si cette personnalisation est nécessaire (surtout si le document est réservé à un comité restreint de lecteurs). Si toutefois vous souhaitez aller plus loin dans la mise en forme de votre document, plusieurs options vous sont offertes&nbsp;:
 
@@ -80,18 +93,18 @@ Pour conclure cette introduction, je signale que la syntaxe [Pandoc Markdown](ht
 
 [^1]: La version 1 n'utilise pas Pandoc.
 [^2]: Pandoc est d'ailleurs capable de gérer différentes variantes de Markdown.
-[^3]: Vous les trouverez dans le dossier du package "rmarkdown". Pour savoir où est ce dossier, enter "R.home()" dans votre console R, rendez-vous à l'adresse donnée puis, dans le sous-répertoire "library/rmarkdown".
+[^3]: Vous les trouverez dans le dossier du package `rmarkdown`. Pour savoir où est ce dossier, enter "R.home()" dans votre console R, rendez-vous à l'adresse donnée puis, dans le sous-répertoire "library/rmarkdown".
+
+[^niveau]: Le lecteur doit être capable à minima d'utiliser des fonctions et de charger des packages.
 
 
 
+# Comment utiliser un fichier R Markdown
 
 
-# Comment utiliser un fichier .rmd
+## Quelques repères
 
-
-## Quelques repères  
-
-Un fichier Rmarkdown (".rmd") est divisé en trois&nbsp;:
+Un fichier Rmarkdown (`.rmd` ou `.Rmd`) est divisé en trois&nbsp;:
 
 - Le YAML entre bloc de trois tirets&nbsp;: \-\-\-
 - Les morceaux de code R entre bloc de trois accents graves&nbsp;: \`\`\`
@@ -102,9 +115,11 @@ Au début, il est délicat de se retrouver dans ces fichiers car on y croise dif
 - un ensemble de balises HTML, p. ex. celle utilisée pour insérer des commentaires&nbsp;: \<\-\- le commentaire \-\-\>  ou encore celle dédiée aux espaces insécables&nbsp;: \&nbsp;,
 - la syntaxe [Latex](http://www.latex-project.org) pour les équations.
 
-Quand le fichier est complet, et que le package "rmarkdown" est installé[^4], il suffit d'utiliser la fonction *render()* du package en lui indiquant le chemin de votre fichier ou de cliquer sur "Knit HTML" dans [Rstudio](http://www.rstudio.com). Je ne suis personnellement pas utilisateur de ce dernier, j'utilise donc simplement la fonction *render()*. Je vous invite dans tous les cas à regarder la documentation associée[^5]. Pour convertir mon fichier ".rmd", j'entre la commande suivante dans la console R&nbsp;:
+Quand le fichier est complet, et que le package `rmarkdown` est installé[^4], il suffit d'utiliser la fonction *render()* du package en lui indiquant le chemin de votre fichier ou de cliquer sur "Knit HTML" dans [Rstudio](http://www.rstudio.com). Je ne suis personnellement pas utilisateur de ce dernier, j'utilise donc simplement la fonction *render()*. Je vous invite dans tous les cas à regarder la documentation associée[^5]. Pour convertir mon fichier ".rmd", j'entre la commande suivante dans la console R&nbsp;:
 
-> render("./ex_Rmardown.rmd", "all")
+```R
+render("./ex_Rmardown.rmd", "all")
+```
 
 L'argument "all" permet d’obtenir l'ensemble des fichiers pour lequel il existe une spécification dans le fichier YAML. Les formats actuellement disponibles sont&nbsp;:
 
@@ -131,42 +146,54 @@ Les documents au format pdf requièrent [l'installation de Latex](https://www.tu
 
 Il s'agit d'un ensemble de spécifications placées en tête de votre document ".rmd" (veuillez à ne pas introduire de commentaires avant). le [YAML (YAML Ain't Markup Language)](http://www.yaml.org/spec/1.2/spec.HTML) est un format de représentation de données intégré dans le fichier ".rmd" entre bloc de trois tirets. C'est un ensemble de métadonnées permettant de préciser nos souhaits relatifs aux formats de sortie. Ces données sont alors soit intégrées dans la ligne de commande Pandoc soit dans les *templates*. Pour comprendre l'essentiel du fonctionnement du YAML, je vous conseille de regarder la [page française wikipedia](https://fr.wikipedia.org/wiki/YAML). La page anglaise sur le même sujet vous permet d'en apprendre davantage. Pour un aperçu assez complet des options YAML utilisables dans le fichier .rmd par défaut, rendez-vous à la dernière page du [guide de référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf). J'ai volontairement utilisé un grand nombre de spécification pour générer ce document, en voici une reproduction quasi-identique (sans le résumé complet et sans la majorité des commentaires que vous pouvez trouver dans le fichier source de ce document)&nbsp;:
 
-    ---  
-    title: "Utiliser Rmarkdown pour créer des documents dynamiques"  
-    date: "`r format(Sys.time(), '%d %B %Y')`"  
-    author: par Kevin Cazelles  
-    lang: french  
-    abstract: "R Markdown [...]."  
-    fontfamily: fourier  
-    linestretch: 1  
-    fontsize: 10pt  
-    lof: yes  
+    ---
+    title: "Utiliser R Markdown pour créer des documents dynamiques"
+    date: "`r format(Sys.time(), '%d %B %Y')`"
+    author: par Kevin Cazelles
+    lang: fr
+    abstract: Le package `rmarkdown` permet de créer des documents dynamiques qui intègrent des morceaux de code R et ce qu'ils génèrent (dont figures et tableaux). Ce document explique comment utiliser le package 'rmarkdown' et aussi la syntaxe "Pandoc Markdown". Le code source de ce document est en lui-même un exemple d'application du package. Le lecteur trouvera également un ensemble de références disponibles en ligne pour aller plus loin.
+    fontfamily: fourier
+    linestretch: 1
+    fontsize: 10pt #11pt ou 12pt
+    lof: yes
+    # urlcolor: magenta
     output:
-    html_document:
-        # css: ./aux/designR.css
-        highlight: zenburn
-        # “default”, “tango”, “pygments”, “kate”, “monochrome”,
-        “espresso”, “zenburn”, “haddock”, “textmate”
-        theme: flatly
-        # ou “default”, “cerulean”, “journal”, “readable”, “spacelab”, “united”, “cosmo”
-        toc: yes
-    pdf_document:
-        highlight: kate
-        toc: yes
-        toc_depth: 3
-        fig_caption: yes
-        keep_tex: yes
-        latex_engine: pdflatex #xelatex
-        number_section: yes
-        includes:
-            before_body: ./aux/license.tex  
-      word_document:  
-        fig_caption: yes
-        highlight: pygments  
-      md_document:
-        variant: markdown_strict  
-    bibliography: ./aux/mybiblio.bib  
-    csl: ./aux/journal-of-theoretical-biology.csl
+        html_document:
+            toc: yes
+            toc_float: yes
+            # css: ./aux/designR.css
+            highlight: default
+            #“tango”, “pygments”, “kate”, “monochrome”, “espresso”, “zenburn”, “haddock”
+            theme: flatly
+            # ou “default”, “cerulean”, “journal”, “readable”, “spacelab”, “united”, “cosmo”
+            include:
+                after_body: aux/footer.html
+        pdf_document:
+            highlight: tango
+            toc: yes
+            toc_depth: 3
+            fig_caption: yes
+            keep_tex: yes
+            latex_engine: pdflatex #xelatex
+            number_section: yes
+            includes:
+                before_body: aux/license.tex
+            # template: ./aux/kev_latex.tex
+        word_document:
+            #toc: yes
+            fig_caption: yes
+            highlight: pygments
+        md_document:
+            variant: markdown_strict
+    bibliography: aux/mybiblio.bib
+    #csl: ./aux/nature.csl
+    #csl: ./aux/pnas.csl
+    csl: aux/journal-of-theoretical-biology.csl
+    header-includes:
+        - \usepackage{fancyhdr}
+        - \pagestyle{fancy}
+        - \fancyfoot[CO,CE]{Documents dynamiques avec R Markdown}
+        - \fancyfoot[R]{\thepage}
     ---
 
 L’indentation reflète les groupes de spécification. Ainsi, de "pdf_document:" à "word_document:", les commandes permettent de spécifier les sorties du document au format pdf. Notez que "toc" signifie "table of content" (table des matières), "toc_depth" permet de sélectionner le niveau maximal de sous-titre affiché dans la table des matières. De même "tof" signifie "table of figure" (table des figures). L'option "number_section:true" permet
@@ -188,7 +215,7 @@ Pour obtenir&nbsp;: \\ \& \# \$ \[. J'ajoute que certains sauts de ligne sont ob
 
 ## Décoration du texte
 
-- Pour écrire du *texte en italique*, vous avez deux possibilités&nbsp;:  
+- Pour écrire du *texte en italique*, vous avez deux possibilités&nbsp;:
 
             *le texte à mettre en italique*
             _le texte à mettre en italique_
@@ -313,7 +340,7 @@ En ajoutant au moins deux espaces à la fin des éléments d'une liste, chaque �
 
 Pour alterner des listes avec du texte ou du code, il faut utiliser des sauts de lignes avec l'indentation adéquate. Ainsi, avec les lignes suivantes&nbsp;:
 
-    - élément 1&nbsp;:  
+    - élément 1&nbsp;:
 
         Un petit texte qui pourrait expliciter ce qu'est l'élément 1.
 
@@ -324,7 +351,7 @@ Pour alterner des listes avec du texte ou du code, il faut utiliser des sauts de
 j'obtiens&nbsp;:
 
 
-- élément 1&nbsp;:  
+- élément 1&nbsp;:
 
     Un petit texte qui pourrait expliciter ce qu'est l'élément 1.
 
@@ -634,7 +661,7 @@ Pour insérer une image, deux solutions nous sont offertes&nbsp;:
 
 Il existe deux possibilités pour faire des références à une figure. Malheureusement aucune n'est idéale:
 
-1- On peut injecter une balise \\label{lelabel} et faire utiliser \ref{lelabel}, mais ce n'est valable pour le pdf (pour un exemple voir la section "[Les figures produites avec R][]")
+1- On peut injecter une balise `\\label{lelabel}` et utiliser `\\ref{lelabel}`, mais ce n'est valable que pour le pdf (pour un exemple voir la section "[Les figures produites avec R][]")
 2- On peut appeler un filtre particulier de pandoc&nbsp;: [pandoc-fignos](https://github.com/tomduck/pandoc-fignos), cela demande une installation à la main (mais cela peut vite changer),
 
 
@@ -657,7 +684,7 @@ On peut produire une note de bas de page en plaçant la balise "[\^id]" là où 
     Un bout de texte avec une note[^note1] et une autre [^note2].
 
     [^note1]: à la fin d'une section par exemple.
-    [^note2]: ou encore, à la fin du document.  
+    [^note2]: ou encore, à la fin du document.
 
 Un bout de texte avec une note[^note1] et une autre[^note2].
 
@@ -753,7 +780,7 @@ Il est important de savoir que la liste des références est mise à la fin du d
 
 # Intégration de R dans le document
 
-L'intérêt du package "rmarkdown" est d'étendre la syntaxe Pandoc Markdown avec les fonctionnalités du [package knitr](http://cran.r-project.org/web/packages/knitr/index.html) pour insérer du code R ainsi que les sorties associées (sorties console et figures). Nous obtenons ainsi un document dynamique en ce sens que si les données associées et/ou le code R changent, le document évolue aussi.
+L'intérêt du package `rmarkdown` est d'étendre la syntaxe Pandoc Markdown avec les fonctionnalités du [package knitr](http://cran.r-project.org/web/packages/knitr/index.html) pour insérer du code R ainsi que les sorties associées (sorties console et figures). Nous obtenons ainsi un document dynamique en ce sens que si les données associées et/ou le code R changent, le document évolue aussi.
 
 
 ## Les morceaux de code (*code chunks*)
@@ -794,7 +821,7 @@ L'apparence des morceaux de code peut être facilement modifiée dans le YAML, a
 
 Il est aussi possible de changer l'apparence des sorties console grâce au paramètre "results" dans l'accolade.
 
-- result='asis' pour que les résultats soient affichées avec la police du document texte principal&nbsp;:  
+- result='asis' pour que les résultats soient affichées avec la police du document texte principal&nbsp;:
 
 		`r ''```{r addition2, results='asis'}
 		# une addition avec R.
@@ -867,12 +894,12 @@ Les symboles devant les résultats de R peuvent être choisis en utilisant le pa
 Nous pouvons être amené à présenter du code qu'il ne faut pas exécuter, il existe pour cela le paramètre "eval". Ainsi, avec
 
     `r ''```{r, eval=FALSE}
-    install.packages("rmarkdown")
+    install.packages(`rmarkdown`)
     ```
-l'installation du package "rmarkdown" n'est pas exécutée mais bien affichée&nbsp;:
+l'installation du package `rmarkdown` n'est pas exécutée mais bien affichée&nbsp;:
 
 ```{r, eval=FALSE}
-install.packages("rmarkdown")
+install.packages(`rmarkdown`)
 ```
 
 Inversement, il est possible, grâce au paramètre "echo", de ne pas afficher un code, mais ce qu'il génère, les lignes suivantes&nbsp;:
@@ -916,7 +943,7 @@ Pour en savoir plus, reportez-vous à la documentation de cette fonction.
 
 ## Les figures produites avec R
 
-Avec le package "rmarkdown", il est très facile d'insérer les figures produites avec R dans un document, le plus simple est de regrader ce que nous génère l'appel à un plot simple.
+Avec le package `rmarkdown`, il est très facile d'insérer les figures produites avec R dans un document, le plus simple est de regrader ce que nous génère l'appel à un plot simple.
 
 ```{r}
 plot(table1$var1,table1$var2)
@@ -967,8 +994,15 @@ par(bty="l", mfrow=c(2,2))
 plot(mod1)
 ```
 
-Quatre lignes plus loin,... j'ai fini !
 
-\newpage
+
+
+
+
+<!-- # De nombreuse utilisation de RMarkdown -->
+
+<!-- Je voudrais finir par un tour d'horizon -->
+
+
 
 # Références

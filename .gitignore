@@ -1,13 +1,16 @@
-#
 *.pdf
-*.tex
+index.html
+UtiliserRMarkdown.html
+UtiliserRMarkdown.tex
+UtiliserRMarkdown.docx
+UtiliserRMarkdown.md
+*.log
 .DS_Store
 
 
 # History files
 .Rhistory
 .Rapp.history
-.DS_Store
 
 # Example code in package build process
 *-Ex.R
@@ -15,9 +18,3 @@
 # RStudio files
 .Rproj.user/
 
-# produced vignettes
-vignettes/*.html
-vignettes/*.pdf
-
-# folders
-enplus/**/**
