@@ -1,0 +1,20 @@
+*.pdf
+index.html
+UtiliserRMarkdown.html
+UtiliserRMarkdown.tex
+UtiliserRMarkdown.docx
+UtiliserRMarkdown.md
+*.log
+.DS_Store
+
+
+# History files
+.Rhistory
+.Rapp.history
+
+# Example code in package build process
+*-Ex.R
+
+# RStudio files
+.Rproj.user/
+
