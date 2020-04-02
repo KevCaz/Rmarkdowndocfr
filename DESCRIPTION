@@ -1,6 +1,0 @@
-Package: placeholder
-Type: Book
-Title: Utiliser R Markdown fr
-Version: 0.0.1
-Imports:
-  rmarkdown
