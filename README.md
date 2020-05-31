@@ -2,10 +2,13 @@
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 ![Render and deploy HTML document](https://github.com/KevCaz/Rmarkdowndocfr/workflows/Render%20and%20deploy%20HTML%20document/badge.svg)
 
-Le document `ex_Rmarkdown.md` est un exemple assez complet pour utiliser:
+Le document `ex_Rmarkdown.md` a été conçu pour :
 
-  1. la syntaxe Pandoc Markdown;
-  2. les fonctionnalités du packages `rmarkdown`.
+  1. apprendre la syntaxe Pandoc Markdown;
+  2. se familiariser les fonctionnalités du packages `rmarkdown`;
+  3. découvrir un certains nombre de resource disponible en ligne pour aller plus loin.
+
+
 
 Pour installer [`rmarkdown`](https://rmarkdown.rstudio.com/) :
 

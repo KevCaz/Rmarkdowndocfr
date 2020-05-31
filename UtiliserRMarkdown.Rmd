@@ -48,6 +48,31 @@ header-includes:
 ---
 
 
+# Avant-propos
+
+Ce document a été conçu comme une introduction à l'utilisation de R Markdown, il permet
+
+  1. d'apprendre la syntaxe Pandoc Markdown;
+  2. de se familiariser les fonctionnalités du packages `rmarkdown`;
+  3. de découvrir un certains nombre de resources disponibles en ligne pour aller plus loin.
+
+Ce document est lui-même écrit avec R Markdown et peut-être convertit en une
+page web (au format `.html`), en forma (.`.docx`) ou en PDF. Comme vous l'aurez vraisemblablement noté, dans "R Markdown", il y a "R" et "Markdown" et dans ce document je ne fais pas d'intriduction a R et j'invite les utilisateurs non-familier avec ce dernier de se reporter à l'une des différentes introduction disponible sur le site du CRAN: <https://cran.r-project.org/other-docs.html>.
+
+Ce document est déployé automatiquement par GitHub actions (voir
+<https://github.com/KevCaz/Rmarkdowndocfr/actions>), lors de la dernière
+compilation, la version `r packageVersion("rmarkdown")` du package `rmarkdown` a
+été utilisée. De plus amples informations relatives à l'environnement dans
+lequel le document a été compilé sont indiquées ci-dessous.
+
+<details>
+```{r sesinfo}
+sessionInfo()
+rmarkdown::pandoc_version()
+```
+</details>
+
+
 
 # Introduction
 
@@ -64,7 +89,16 @@ et des figures. Le package [`rmarkdown`](https://rmarkdown.rstudio.com/)
 développé par RStudio est un package R très populaire qui a rendu la création de
 documents dynamiques avec R très efficace.
 
-Dans `R Markdown`, il y a R et Markdown. Pour la suite du document, le lecteur doit être est familier avec [R](http://www.r-project.org)[^niveau]. Il me reste alors à parler de Markdown. Le ["Mardown original"](http://daringfireball.net/projects/markdown/)[^niveau] date de 2004, l'idée de départ est simple et élégante&nbsp;: produire un langage léger qui simplifie les balises HTML et facilement transformé en HyperText Markup Language (HTML, utilisé par tout les sites Internet). L'idée n'est pas tant de remplacer le HTML mais plutôt d'en augmenter l'efficacité d'écriture. Chemin faisant, Markdown séduit, en parallèle de la version originale (qui n'a jamais été standardisée), plusieurs extensions voient le jour. Il s'agit surtout de lever certaines limitations tout en préservant l'esprit d'origine, parmi elles:
+Nous devons la syntaxe "Markdown original" à John Gruber, avec une la version
+1.0.1 disponible sur son site internet depuis décembre 2004
+(<http://daringfireball.net/projects/markdown>. L'idée de départ est simple et
+élégante&nbsp;: produire un langage léger qui simplifie les balises HTML et
+facilement transformé en HyperText Markup Language (HTML, utilisé par tout les
+sites Internet). L'idée n'est pas tant de remplacer le HTML mais plutôt d'en
+augmenter l'efficacité d'écriture. Chemin faisant, Markdown séduit, en parallèle
+de la version originale (qui n'a jamais été standardisée), plusieurs extensions
+voient le jour. Il s'agit surtout de lever certaines limitations tout en
+préservant l'esprit d'origine, parmi elles:
 
  - [GitHub Flavored Markdown (GFM)](https://help.github.com/articles/github-flavored-markdown/)
  - [Kramdown](http://kramdown.gettalong.org/syntax.HTML#math-blocks)
@@ -104,7 +138,7 @@ Il y a également sur le site <https://bookdown.org>
 1. un livre en anglais
 très complet sur le sujet [disponible en
 ligne](https://bookdown.org/yihui/rmarkdown/) ;
-2. [un cook d'atuces](https://bookdown.org/yihui/rmarkdown-cookbook/)  en cours d'écriture.
+2. [un cook d'astuces](https://bookdown.org/yihui/rmarkdown-cookbook/)  en cours d'écriture.
 
 
  Le [site dédié à knitr](http://yihui.name/knitr/) permet de bien comprendre l'intégration des morceaux de codes et des figures de [R](http://www.r-project.org). Je tiens également à signaler la [présentation de Mansun Kuo sur Rpubs](http://rpubs.com/mansun_kuo/24330). Pour apprendre la syntaxe Pandoc Markdown, vous pouvez vous reportez à la [documentation disponible sur le site de Pandoc](http://pandoc.org/demo/example9/pandocs-markdown.html) ou à la [page internet de Jean-Daniel Bonjour](http://enacit1.epfl.ch/markdown-pandoc/#notes_bas_page) pour une documentation en français.
@@ -125,9 +159,9 @@ offertes&nbsp;:
 
 [^1]: La version 1 n'utilise pas Pandoc.
 [^2]: Pandoc est d'ailleurs capable de gérer différentes variantes de Markdown.
-[^3]: Vous les trouverez dans le dossier du package `rmarkdown`. Pour savoir où est ce dossier, enter "R.home()" dans votre console R, rendez-vous à l'adresse donnée puis, dans le sous-répertoire "library/rmarkdown".
+[^3]: Vous les trouverez dans le dossier d
 
-[^niveau]: Le lecteur doit être capable à minima d'utiliser des fonctions et de charger des packages.
+u package `rmarkdown`. Pour savoir où est ce dossier, enter "R.home()" dans votre console R, rendez-vous à l'adresse donnée puis, dans le sous-répertoire "library/rmarkdown".
 
 
 
@@ -153,21 +187,22 @@ utilisée, on peut aussi utiliser la syntaxe
 [Latex](http://www.latex-project.org) pour les équations (voir aussi
 https://bookdown.org/yihui/rmarkdown/markdown-syntax.html#).
 
+
 Quand le fichier est complet, et que le package `rmarkdown` est installé[^4],
 on utilise la fonction `render()` du package en lui indiquant le chemin de
 du fichier `.Rmd`. Si on est un utilisateur de RStudio, on peut cliquer sur `Knit` dans la barre contextuelle associée au fichier (
 voir la documentation associée, `?render`). Dans la suite du document, la function `render()` est utilisée:
 
+
 ```R
 render("ex_Rmardown.rmd", "all")
 ```
 
-L'argument "all" permet d’obtenir l'ensemble des fichiers pour lequel il existe une spécification dans le fichier YAML. Les formats utilisés ici sont&nbsp;:
+L'argument "all" permet d’obtenir tous les fichiers pour lesquel il existe une spécification dans le fichier YAML. Les formats utilisés ici sont&nbsp;:
 
 - [PDF](https://en.wikipedia.org/wiki/Portable_Document_Format)
 - [HTML](http://rmarkdown.rstudio.com/html_document_format.html)
 - [Word](http://rmarkdown.rstudio.com/word_document_format.html)
-
 
 Les documents au format pdf requièrent [l'installation de
 Latex](https://www.tug.org/texlive/quickinstall.html). En effet, pour produire
@@ -184,7 +219,7 @@ les figures), que nous devons au chercheur Edward Tufte.
 
 ## Le fichier YAML
 
-Il s'agit d'un ensemble de spécifications placées en tête de votre document ".rmd" (veuillez à ne pas introduire de commentaires avant). le [YAML (YAML Ain't Markup Language)](http://www.yaml.org/spec/1.2/spec.HTML) est un format de représentation de données intégré dans le fichier ".rmd" entre bloc de trois tirets. 
+Il s'agit d'un ensemble de spécifications placées en tête de votre document ".rmd" (veuillez à ne pas introduire de commentaires avant). le [YAML (YAML Ain't Markup Language)](http://www.yaml.org/spec/1.2/spec.HTML) est un format de représentation de données intégré dans le fichier ".rmd" entre bloc de trois tirets.
 C'est un ensemble de métadonnées relatives aux documents qui vont être générés. Ces données sont alors soit intégrées dans la ligne de commande Pandoc, soit dans les *templates*. Pour comprendre l'essentiel du fonctionnement du YAML, je vous conseille de regarder la [page française wikipedia](https://fr.wikipedia.org/wiki/YAML). La page anglaise sur le même sujet vous permet d'en apprendre davantage. Pour un aperçu assez complet des options YAML utilisables dans le fichier .rmd par défaut, rendez-vous à la dernière page du [guide de référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf). À titre d'exemple, ce document, utilise un grand nombre d'options en voici une reproduction quasi-identique (sans le résumé complet et sans la majorité des commentaires que vous pouvez trouver dans le fichier source de ce document)&nbsp;:
 
 ```yaml
@@ -259,37 +294,53 @@ Pour obtenir&nbsp;: \\ \& \# \$ \[. J'ajoute que certains sauts de ligne sont ob
 
 - Pour écrire du *texte en italique*, vous avez deux possibilités&nbsp;:
 
-            *le texte à mettre en italique*
-            _le texte à mettre en italique_
+```md
+*le texte à mettre en italique*
+_le texte à mettre en italique_
+```
 
 - Pour écrire du **texte en gras**, encore deux possibilités&nbsp;:
 
-            **le texte à mettre en gras**
-            __le texte à mettre en gras__
+```md
+**le texte à mettre en gras**
+__le texte à mettre en gras__
+```
 
 - Pour écrire du **_texte en gras et italique_**, utilisez&nbsp;:
 
-            **le _texte en italique et en gras_**
+```md
+**le _texte en italique et en gras_**
+```md
 
 - Pour obtenir un ~~texte rayé~~, entrez&nbsp;:
 
-            ~~texte rayé~~
+```md
+~~texte rayé~~
+```
 
 - Pour écrire un élément en ^exposant^, utilisez&nbsp;:
 
-            ^texte en exposant^
+```md
+^texte en exposant^
+```
 
 - Pour écrire un élément en ~indice~, tapez&nbsp;:
 
-            ~texte en indice~
+```md
+~texte en indice~
+```
 
 Attention, exposants et indices ne fonctionneront pas si l'élément à formater n'est pas exempt de tout espace. Notez qu'il n'y a pas de balises pour le soulignement du texte. Si vous souhaitez l'obtenir pour le HTML, vous pouvez utilisez la balise suivante:
 
-    <u>texte souligné</u>
+```md
+<u>texte souligné</u>
+```
 
 Pour le pdf vous pouvez utiliser:
 
-    \underline{texte souligné}
+```
+\underline{texte souligné}
+```
 
 Si vous utilisez l'une ou l'autre de ces balises, votre formatage sera moins général.
 
@@ -319,7 +370,10 @@ Un titre d'ordre 2
 
 ## Les listes
 
-Les listes sont très intuitives en Markdown, alors qu'elles requièrent des balises un peu lourdes que ce soit en Latex ou en HTML. Dans les exemples donnés, il faut toujours séparer le texte principal de la liste par des sauts de ligne.
+Les listes sont très intuitives en Markdown, alors qu'elles requièrent des
+balises un peu lourdes que ce soit en Latex ou en HTML. Dans les exemples
+donnés, il faut toujours séparer le texte principal de la liste par des sauts
+de ligne.
 
 
 ### Listes non numérotées
@@ -363,7 +417,7 @@ Dans tous les cas, cela donne
 + objet 3.
 
 
-En utilisant une indentation de 4 espaces (ou une tabulation), on peut obtenitr
+En utilisant une indentation de 4 espaces (ou une tabulation), on peut obtenir
 des listes hiérarchisées, ainsi:
 
 ```md
@@ -397,13 +451,16 @@ En ajoutant au moins deux espaces à la fin des éléments d'une liste, chaque
 
 Pour alterner des listes avec du texte ou du code, il faut utiliser des sauts de lignes avec l'indentation adéquate. Ainsi, avec les lignes suivantes&nbsp;:
 
-    - élément 1&nbsp;:
+```md
+- élément 1&nbsp;:
 
-        Un petit texte qui pourrait expliciter ce qu'est l'élément 1.
+    Un petit texte qui pourrait expliciter ce qu'est l'élément 1.
 
-    - machin 2:
+- machin 2:
 
-              for (i in 1:2) print(i)
+          for (i in 1:2) print(i)
+```
+
 
 j'obtiens&nbsp;:
 
@@ -548,19 +605,24 @@ ces lignes sont rendues ainsi&nbsp;:
 
 Pour utiliser un bloc de citation (la balise "blockquote" en HTML), il suffit d'utiliser "\>" avant la citation. Ainsi les lignes suivantes&nbsp;:
 
-    > la citation est ajoutée comme ceci, elle nous donne une indentation adéquate
-    pour une mise en page agréable dont le style peut être facilement travailler
-    en html grâce au CSS.
+```.md
+> la citation est ajoutée comme ceci, elle nous donne une indentation adéquate
+pour une mise en page agréable dont le style peut être facilement travailler
+en html grâce au CSS.
+```
 
 deviennent&nbsp;:
 
 > La citation est ajoutée comme ceci, elle nous donne une indentation adéquate pour une mise en page agréable dont le style peut être facilement travailler en html grâce au CSS.
 
+
 Pour ajouter une hiérarchie dans les citations, on entre&nbsp;:
 
-    > La citation de départ
-    >
-    >> une hiérarchie dans la citation
+```.md
+> La citation de départ
+>
+>> une hiérarchie dans la citation
+```
 
 ce qui donne&nbsp;:
 
@@ -571,22 +633,28 @@ ce qui donne&nbsp;:
 
 ## Blocs de code
 
-Pour l'ensemble des exemples que je présente sous forme de lignes de code, j'utilise un environnement simple qui utilise une police d'écriture à chasse fixe et affiche tous les caractères tel qu'il sont entrés (les balises ne sont pas interprétés).
-Pour cela, j'ajoute simplement 4 espaces (ou une tabulation) au début de chaque ligne pour que se soit considérer comme du code.
-L'indentation d'un bloc de code se fait toujours avec 4 espaces (ou une tabulation) de plus que le texte, les listes ou encore les citations.
+Pour l'ensemble des exemples que je présente sous forme de lignes de code,
+j'utilise un environnement simple qui utilise une police d'écriture à chasse
+fixe et affiche tous les caractères tels qu'ils sont entrés (les balises ne
+sont pas interprétées).
 
-Il est possible d'ajouter des morceaux de code colorés selon la nature des éléments de la syntaxe d'un langage donné. Cette fonctionnalité est apportée par le [Markdown extra](https://michelf.ca/projects/php-markdown/extra/)[^note_maex].
-Les morceaux de codes peuvent être écrits entre série de \~ et une accolade est nécessaire pour préciser le langage. Pour présenter un morceau de code C, par exemple&nbsp;:
+Il est possible d'ajouter des morceaux de code colorés selon la nature des
+éléments de la syntaxe d'un langage de programmation donné. Les morceaux de
+codes peuvent être écrits entre série de tildes (\~) et une accolade est nécessaire pour
+préciser le langage[^fenced]. Pour présenter un morceau de code C, par
+exemple&nbsp;:
 
-    ~~~~~~~~~~~~~~~{.c}
-    // Commentaire
-    int c,d,g ;
-    c=10 ;
-    d=4 ;
-    int func(int a,int b) { return a*b; }
-    g = func(c,d)
-    printf("%i",g)
-    ~~~~~~~~~~~~~~~
+```md
+~~~~~~~~~~~~~~~{.c}
+// Commentaire
+int c,d,g ;
+c=10 ;
+d=4 ;
+int func(int a,int b) { return a*b; }
+g = func(c,d)
+printf("%i",g)
+~~~~~~~~~~~~~~~
+```
 
 devient :
 
@@ -600,10 +668,44 @@ g = func(c,d);
 printf("%i",g);
 ~~~~~~~~~~~~~~~
 
-Il est possible d'inclure des lignes de tilde dans le morceaux de code. Pour cela il faut que les lignes de tildes en compte moins que celles qui délimitent le morceau de code.
+
+Plus simplement, on peut utiliser des bloc de trois apostrophes inversés
+(*backquote* en anglais) et enlever l’accolade et le point pour préciser le
+langage et ainsi, avec le code ci-dessous
 
 
-[^note_maex]: Une ressource intéressante est le site [Doxygen](http://mcs.une.edu.au/doc/doxygen/html/markdown.html) de l'université de Nouvelle Angleterre.
+    ```c
+    // Commentaire
+    int c,d,g ;
+    c=10 ;
+    d=4 ;
+    int func(int a,int b) { return a*b; }
+    g = func(c,d)
+    printf("%i",g)
+    ```
+
+on obtient bien la même bloc de code que précédemment.
+
+
+```c
+// Commentaire
+int c,d,g ;
+c=10 ;
+d=4 ;
+int func(int a,int b) { return a*b; }
+g = func(c,d)
+printf("%i",g)
+```
+
+
+Dans le document, j'utilise justement ces blocs de code pour montrer comment utiliser Markdown. Une autre façon simple pour faire un bloc de code st d'ajouter simplement 4 espaces au début de chaque ligne. C'est d'ailleurs ce que j'utilise quand je montre l'utilisation des apostrophes inversés ci-dessus!
+
+
+Un des grands intérêts de R Markdown est d'avoir des blocs de codes R qui peuvent être exécutés par R! Je détaille cette fonctionnalité plus bas.
+
+
+
+[^fenced]: Voir la section *Fenced code blocks* du manuel de référence <https://pandoc.org/MANUAL.html>.
 
 
 
@@ -702,7 +804,10 @@ xy &=& z
 \end{array}$$
 
 La référence aux équations se fait en utilisant "(\@label)" dans le texte.
-Ainsi, en écrivant "(\@eq1)", j'appelle l'équation (@eq1). De même je peux faire référence à l'équation (@eq2) en utilisant "(\@eq2)".
+Ainsi, en écrivant "(\@eq1)", j'appelle l'équation (@eq1). De même je peux faire référence à l'équation (@eq2) en utilisant "(\@eq2)"[^nbeq].
+
+
+[^nbeq]: voir https://tex.stackexchange.com/questions/111868/pandoc-how-can-i-get-numbered-latex-equations-to-show-up-in-both-pdf-and-html-o)
 
 
 
@@ -728,7 +833,7 @@ Pour insérer une image, deux solutions nous sont offertes&nbsp;:
 
 ![Le logo sur la page du Markdown original][img2]{#fig:logo}
 
-Il existe deux possibilités pour faire des références à une figure. Malheureusement aucune n'est idéale:
+Il existe deux possibilités pour faire des références à une figure. Malheureusement, aucune n'est idéale:
 
 1- On peut injecter une balise `\\label{lelabel}` et utiliser `\\ref{lelabel}`, mais ce n'est valable que pour le pdf (pour un exemple voir la section "[Les figures produites avec R][]")
 2- On peut appeler un filtre particulier de pandoc&nbsp;: [pandoc-fignos](https://github.com/tomduck/pandoc-fignos), cela demande une installation à la main (mais cela peut vite changer),
@@ -852,7 +957,12 @@ de Zotero](https://www.zotero.org/styles).
 
 # Intégration de R dans le document
 
-L'intérêt du package `rmarkdown` est d'étendre la syntaxe Pandoc Markdown avec les fonctionnalités du [package knitr](http://cran.r-project.org/web/packages/knitr/index.html) pour insérer du code R ainsi que les sorties associées (sorties console et figures). Nous obtenons ainsi un document dynamique en ce sens que si les données associées et/ou le code R changent, le document évolue aussi.
+L'intérêt du package `rmarkdown` est d'étendre la syntaxe Pandoc Markdown avec
+les fonctionnalités du [package
+knitr](http://cran.r-project.org/web/packages/knitr/index.html) pour insérer du
+code R ainsi que les sorties associées (sorties console et figures). Nous
+obtenons ainsi un document dynamique en ce sens que si les données associées
+et/ou le code R changent, le document évolue aussi.
 
 
 ## Les morceaux de code (*code chunks*)
@@ -1077,7 +1187,7 @@ for (i in 1:6) kcircle(1,c(cos(i*pi/3),sin(i*pi/3)), col="#0000AA88")
 ```
 
 
-## Une  application, modèle linéraire dynamique
+## Une  application, modèle linéaire dynamique
 
 
 Je souhaite faire un modèle linéaire avec la variable explicative *var1* et la
@@ -1085,7 +1195,7 @@ variable à expliquer *var2* de notre *table1*. Nous créons alors un petit
 document sachant que les données évolueront. Je vais faire une inclusion donc
 utiliser du code R dans mon document.
 
-```{r, fig.height=6, fig.cap="Mon modèle linéaire"}
+```{r, fig.height = 6, fig.cap = "Mon modèle linéaire"}
 mod1<-lm(var2~var1, data=table1)
 summary(mod1)
 par(bty="l", mfrow=c(2,2))
@@ -1097,11 +1207,11 @@ plot(mod1)
 
 
 
-# De nombreuse utilisation de R Markdown
+# De nombreuses utilisations de R Markdown
 
 WIP !! WIP !! WIP !!
 
-Nous concluons ce document par une ouverture sur davantage de fonctionalité du package R Markdown.
+Concluons ce document par une ouverture sur davantage de fonctionalité du package R Markdown.
 
 - pour les documents&nbsp;:
     - [PDF](https://en.wikipedia.org/wiki/Portable_Document_Format)

@@ -7,7 +7,7 @@ UtiliserRMarkdown.docx
 UtiliserRMarkdown.md
 *.log
 .DS_Store
-
+.vscode/
 
 # History files
 .Rhistory
