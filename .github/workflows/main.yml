@@ -11,11 +11,13 @@ jobs:
         uses: actions/checkout@master
       - name: Install Dependencies
         run: |-
-          Rscript -e "install.packages(c('remotes', 'bookdown'), repos = 'https://muug.ca/mirror/cran/')"
+          Rscript -e "install.packages(c('remotes', 'rmarkdown'), repos = 'https://muug.ca/mirror/cran/')"
           Rscript -e "remotes::install_deps(dependencies = TRUE, repos = 'https://muug.ca/mirror/cran/')"
-      - name: Build HTML
+          Rscript -e "tinytex::install_tinytex()"
+      - name: Build html, word, md and pdf
         run: |-
-          make html
+          make all
+          cp *.pdf public/
       - name: Deploy HTML document to gh-pages
         uses: peaceiris/actions-gh-pages@v2
         env:

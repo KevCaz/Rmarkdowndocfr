@@ -50,20 +50,26 @@ header-includes:
 
 # Avant-propos
 
-Ce document a été conçu comme une introduction à l'utilisation de R Markdown, il permet
+Ce document a été conçu comme une introduction à R Markdown avec les objectifs suivants:
 
-  1. d'apprendre la syntaxe Pandoc Markdown;
-  2. de se familiariser les fonctionnalités du packages `rmarkdown`;
-  3. de découvrir un certains nombre de resources disponibles en ligne pour aller plus loin.
+1. comprendre ce qu'est R Markdown;
+2. comprendre les liens entre R, Markdown et Pandoc;
+3. apprendre la syntaxe Pandoc Markdown;
+4. apprendre à créer des documents dynamiques avec le package `rmarkdown`;
 
-Ce document est lui-même écrit avec R Markdown et peut-être convertit en une
-page web (au format `.html`), en forma (.`.docx`) ou en PDF. Comme vous l'aurez vraisemblablement noté, dans "R Markdown", il y a "R" et "Markdown" et dans ce document je ne fais pas d'intriduction a R et j'invite les utilisateurs non-familier avec ce dernier de se reporter à l'une des différentes introduction disponible sur le site du CRAN: <https://cran.r-project.org/other-docs.html>.
+Ce document a lui-même été édité avec R Markdown et peut-être converti en une
+page internet (au format `.html`), en format Word (.`.docx`) ou en PDF. Bien
+que dans "R Markdown", il y ait "R" et "Markdown", ce document n'est pas une
+introduction à R. J'invite les utilisateurs non-familiers R à se reporter à
+l'une des différentes introduction disponibles, par exemple, sur le site du
+CRAN: <https://cran.r-project.org/other-docs.html>.
 
 Ce document est déployé automatiquement par GitHub actions (voir
 <https://github.com/KevCaz/Rmarkdowndocfr/actions>), lors de la dernière
-compilation, la version `r packageVersion("rmarkdown")` du package `rmarkdown` a
-été utilisée. De plus amples informations relatives à l'environnement dans
+compilation, la version `r packageVersion("rmarkdown")` du package `rmarkdown`
+a été utilisée. De plus amples informations relatives à l'environnement dans
 lequel le document a été compilé sont indiquées ci-dessous.
+
 
 <details>
 ```{r sesinfo}
@@ -76,22 +82,31 @@ rmarkdown::pandoc_version()
 
 # Introduction
 
-En milieu universitaire, de nos travaux préliminaires à nos manuscripts, nous
-produisons très souvent des documents intégrant analyses et figures. Il est
-alors convenient de pouvoir les intégrer directement dans un document complet
-qui peut également, au besoin, inclure le code source associé. Avec
+Dans de nombreux milieux professionnels, à des fins de communication diverses et
+variées, sont produits régulièrement des documents intégrant analyses et
+figures. Pour créer de tels documents, il faut être en mesure de faire les
+analyses analyses et figures pour les intégrer dans le document final.
+[R](http://www.r-project.org) est un langage de programmation dédié à l'analyse
+de données qui, au travers de nombreux packages, permet de manipuler et traiter
+un spectre très large de données et de les visualiser efficacement. Il est aussi
+possible d'intégrer de les intégrer directement dans un
+
+Il est alors
+convenient de pouvoir les intégrer directement dans un document complet qui peut
+également, au besoin, inclure le code source associé. Avec
 [R](http://www.r-project.org), c'est possible depuis de nombreuses années avec
 package de base `utils`, qui inclut la function `Sweave()` qui permet de
 remplacer du code R par son rendu. Le package
-["knitr"](http://cran.r-project.org/web/packages/knitr/index.html), qui utilise
+[`knitr`](http://cran.r-project.org/web/packages/knitr/index.html), qui utilise
 cette fonctionnalité, permet de produire des fichiers LaTeX intégrant du code R
 et des figures. Le package [`rmarkdown`](https://rmarkdown.rstudio.com/)
 développé par RStudio est un package R très populaire qui a rendu la création de
 documents dynamiques avec R très efficace.
 
-Nous devons la syntaxe "Markdown original" à John Gruber, avec une la version
-1.0.1 disponible sur son site internet depuis décembre 2004
-(<http://daringfireball.net/projects/markdown>. L'idée de départ est simple et
+Nous devons la syntaxe originale de Markdown à John Gruber, programmer et
+blogger et baladodiffuseur de Philadelphie. Sur son site "daringfireball", Markdown est décrit sur son site
+depuis décembre 2004 et on peut même y téléchager (voir
+<http://daringfireball.net/projects/markdown>. L'idée de départ est simple et
 élégante&nbsp;: produire un langage léger qui simplifie les balises HTML et
 facilement transformé en HyperText Markup Language (HTML, utilisé par tout les
 sites Internet). L'idée n'est pas tant de remplacer le HTML mais plutôt d'en
@@ -1188,7 +1203,6 @@ for (i in 1:6) kcircle(1,c(cos(i*pi/3),sin(i*pi/3)), col="#0000AA88")
 
 
 ## Une  application, modèle linéaire dynamique
-
 
 Je souhaite faire un modèle linéaire avec la variable explicative *var1* et la
 variable à expliquer *var2* de notre *table1*. Nous créons alors un petit
