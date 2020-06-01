@@ -88,36 +88,48 @@ rmarkdown::pandoc_version()
 Dans de nombreux milieux professionnels, à des fins de communication diverses,
 sont produits régulièrement des documents intégrant des analyses de données
 (tableaux, figures, tests statistiques, etc.). Pour créer de tels documents, il
-faut donc être en mesure de manipuler des données les analyser et créer des
-figures pour les intégrer dans le document final. [R](http://www.r-project.org)
-est un langage de programmation qui répond à ces besoins. Au travers de
-nombreux packages, R permet de manipuler et traiter un spectre très large de
-données et de les visualiser efficacement. Ce langage offre également la
-possibilité d'intégrer ces éléments directement dans un document, notamment
-avec le package très populaire `rmarkdown` qui permet d'intégrer du code R et
-code et les résultats de ce code (nombre, tableaux, figures) dans un document
-écrit avec Markdown et qui pourra être converti en de nombreux format de document (dont pdf, word, html).
+faut être en mesure de manipuler des données les analyser et créer des figures
+pour les intégrer dans le document final. [R](http://www.r-project.org) est un
+langage de programmation qui répond à ces besoins avec un grand nombre de
+package qui permettent de manipuler et traiter un spectre très large de données
+et de les visualiser efficacement. Ce langage offre également la possibilité
+d'intégrer code et les produits du code (résultats de tests, tableaux, figures,
+etc.) directement dans un document qui est alors qualifié de dynamique. Le
+package le plus utilisé pour créer des documents dynamiques est la package
+`rmarkdown` l'intégration de R dans un document écrit avec Markdown et qui peut
+être converti en de nombreux formats de document (dont pdf, word, html). C'est
+ce package qui est l'objet de ce document, bien qu'il nous faudra en mentionner
+d'autre ainsi que d'autres langages et outils pour comprendre ce package, en
+commençant par Markdown.
 
 Écrire un document en Markdown, quésaco? Markdown est un langage de balisage
-léger, c'est-à-dire un langage dans lequel on peut utiliser des ensembles
+léger, c'est-à-dire un langage dans lequel on peut utiliser des ensembles de
 caractères spécifiques (des balises) pour délimiter une zone de texte pour
-laquelle un formatage spécifique est appliqué. Markdown est aujourd'hui très
-répandu et il en existe différentes syntaxes. La syntaxe originale de Markdown
-est le fruit du travail de John Gruber, programmer, blogger et
-baladodiffuseur de Philadelphie. Sur son site "daringfireball", Markdown est
-décrit sur son site depuis décembre 2004 et on peut même y télécharger la
-version 1.0.1 (voir <http://daringfireball.net/projects/markdown>. L'idée de
-départ est simple et élégante&nbsp;: produire un langage léger qui simplifie
-les balises HTML ( utilisé par tout les sites Internet). L'idée n'est pas tant
-de remplacer le HTML mais plutôt d'en augmenter l'efficacité d'écriture et de
-fait, il est beaucoup plus rapide d'écrire en Markdown qui couvre les
-opérations de formatage les plus courantes (listes, hyperliens, etc.). 
+laquelle un formatage associé (e.g. **text en gras**) est appliqué. Markdown est
+aujourd'hui très répandu sur Internet, à tel point que vous pourriez une des
+différentes syntaxes existantes sans me le savoir. Sans être exhaustif, il est
+utile de donner un peu plus de détails sur ce point pour bien comprendre ce quel
+Markdown on utilise avec R Markdown. La syntaxe originale de Markdown est le
+fruit du travail de John Gruber[^wiki_gruber], programmeur, bloggeur et
+baladodiffuseur de Philadelphie en collaboration avec Aaron Swartz (lui même
+connu pour avoir participer a la création de Creative Commons et son tragique
+destin qui fut l'objet d'un film). Sur le site de John Gruber, "daringfireball",
+Markdown est décrit depuis décembre 2004 et on peut même y télécharger la
+version 1.0.1 (voir <http://daringfireball.net/projects/markdown>). L'idée de
+départ est simple et élégante&nbsp;: produire un langage léger qui simplifie les
+balises HTML (utilisé par tout les sites Internet). L'idée n'est pas tant de
+remplacer le HTML mais plutôt d'en augmenter l'efficacité d'écriture et de fait,
+il est beaucoup plus rapide d'écrire en Markdown qui couvre les opérations de
+formatage les plus courantes (listes, hyperliens, etc.). Notons qu'il existe
+d'autres langages qui répondent aux me objectif, par example
+ReStructuredText[^wiki_rst].
 
 
-Chemin faisant, Markdown séduit, en
-parallèle de la version originale (qui n'a jamais été standardisée), plusieurs
-extensions voient le jour. Il s'agit surtout de lever certaines limitations
-tout en préservant l'esprit d'origine, en voici une liste :
+Après la publication de Markdown, John Gruber a cessé de travailler sur
+Markdown[^blog_badparent] et d'autres développeurs, sans doute séduits par le
+langage, ont proposé différentes additions syntaxiques. Il s'agissait surtout de
+lever certaines limitations tout en préservant l'esprit d'origine. Ci-dessous,
+en voici une liste non exhaustive de différentes variantes Markdown:
 
  - [GitHub Flavored Markdown (GFM)](https://help.github.com/articles/github-flavored-markdown/)
  - [Kramdown](http://kramdown.gettalong.org/syntax.HTML#math-blocks)
@@ -125,44 +137,81 @@ tout en préservant l'esprit d'origine, en voici une liste :
  - [Multi Markdow](https://github.com/fletcher/MultiMarkdown/wiki/MultiMarkdown-Syntax-Guide#math-support)
  - [Pandoc Markdown](http://pandoc.org/README.HTML#pandocs-markdown)
 
-À noter aussi l'initiative [CommonMark](https://commonmark.org/) qui est une
-spécification (norme technique) pour Markdown de plus en plus utilisées. R
-Markdown(http://rmarkdown.rstudio.com)[^1] n'est pas une nouvelle variante
-Markdown. Il s'agit de d'utiliser de la variante [Pandoc
-Markdown](https://rmarkdown.rstudio.com/lesson-8.html)[^2] et d'y ajouter les
-fonctionnalités d'autres packages, notamment
-[`knitr`](http://cran.r-project.org/web/packages/knitr/index.html) pour intégrer
-du code R et ce qu'il produit dans le document.  et
-[`yaml`](http://cran.r-project.org/web/packages/yaml/index.html) e tout lié par
-l'utilisation de [Pandoc](http://www.pandoc.org/installing.html). Une précision
-relative à [Pandoc](http://www.pandoc.org/installing.HTML) s'impose. Il s'agit,
-comme l'indique le site internet, d'un "convertisseur de document universel", en
-une ligne de commande Pandoc convertit un document dans un format donné en de
-nombreux autres formats. Par exemple, on peut passer d'un fichier `.tex` (LaTeX)
-à un fichier `.docx` (Word)! Cela étant dit, revenons-en à `rmarkdown`. Les
-intérêts de ce package `sont nombreux :
+Fort heureusement, depuis 2014, CommonMark (<https://commonmark.org/>) propose
+une spécification (norme technique) pour Markdown de plus en plus
+utilisée[^goldmark], ce qui signifie qu'en allant d'un outil à l'autre qui
+utilise cette spécification, il n'y a pas de questions à se poser quant à savoir
+ce qui marche ou non en terme de syntaxe (un problème parfois frustrant quand on
+utilise divers outil qui utilise différents syntaxes), il suffit de se reporter
+à la spécification!
+
+
+Il est important de souligner que R Markdown (voir
+<http://rmarkdown.rstudio.com>)[^1] utilise la variante [Markdown de
+Pandoc](https://rmarkdown.rstudio.com/lesson-8.html)[^2]. Une précision relative
+à Pandoc (<http://www.pandoc.org>) s'impose: il s'agit, comme l'indique le site
+internet, d'un "convertisseur de document universel", en une ligne de commande
+Pandoc convertit un document dans un format donné en un document d'un autre
+format. Par exemple, Pandoc permet de passer d'un fichier `.tex` (LaTeX) à un
+fichier `.docx` (Word)! La variante Markdown de Pandoc a été pensé pour rester
+fidèle à l'esprit originel de Markdown tout en incluant davantage d'éléments de
+document communs différent format de documents[^pmd]. Pour rendre le document
+dynamique, R Markdown ajoute notamment les fonctionnalités de l'excellent
+package [`knitr`](http://cran.r-project.org/web/packages/knitr/index.html) qui
+intègre du code R et ce qu'il produit. Le document dynamique en question pourra
+être converti dans un grand nombre de format grâce à l'utilisation de
+[Pandoc](http://www.pandoc.org/installing.html). Les intérêts de R Markdown sont
+nombreux :
 
 1. utiliser une syntaxe épurée pour distinguer la mise en page, le texte, le formatage du texte et le code R,
-2. utiliser les fonctionnalités du package "knitr" pour créer morceaux de codes et figures dynamiquement,
-3. utiliser le format de sérialisation YAML pour personnaliser la mise en page des documents produits grâce à la fonction *render* elle-même appelée en quelques clics avec [Rstudio](http://www.rstudio.com),
-4. obtenir ainsi un document avec un contenu R dynamique en différents formats dont `html`, `pdf` et `docx`.
+2. utiliser les fonctionnalités du package `knitr` pour créer morceaux de codes, tableaux et figures dynamiquement,
+3. utiliser le format de sérialisation YAML pour personnaliser la mise en page des documents produits grâce à la fonction `render()`, elle-même appelée en quelques clics avec [RStudio](http://www.rstudio.com),
+4. obtenir ainsi un document avec un contenu R dynamique en différents formats dont HTML (fichier `.html`), PDF (`.pdf`) et Word (`.docx`).
 
-Concernant la documentation relative aux fonctionnalités du package `rmarkdown`, je recommande [le site officiel de R Markdown](http://rmarkdown.rstudio.com) sur lequel vous trouverez entre autres
+Il existe une documentation abondante relative à R Markdown, malheureusement
+presque exclusivement écrite en anglais. Pour les lecteurs capables de lire la
+la langue de Shakespeare, je recommande [le site officiel de R
+Markdown](http://rmarkdown.rstudio.com) sur lequel vous trouverez, entre autres:
 
-1. un condensé d'utilisation sous forme de [*Cheat Sheet*](http://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf);
-2. [guide de référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf).
+1. un condensé d'utilisation sous forme de *Cheat Sheet*, voir <http://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf>;
 
-Il y a également sur le site <https://bookdown.org>
+2. un guide de référence disponible sur le site de RStudio <http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf>.
 
-1. un livre en anglais
-très complet sur le sujet [disponible en
-ligne](https://bookdown.org/yihui/rmarkdown/) ;
-2. [un cook d'astuces](https://bookdown.org/yihui/rmarkdown-cookbook/)  en cours d'écriture.
+Il y a également sur le site <https://bookdown.org> :
+
+1. un livre en anglais très complet sur le sujet, par l'un des grands architectes de R Markdown, voir <https://bookdown.org/yihui/rmarkdown/>;
+
+2. [un livre d'astuces (*cook book*)](https://bookdown.org/yihui/rmarkdown-cookbook/)  en cours d'écriture.
 
 
-Ainsi Le Markdown devient une langage qui simplifie les actions les plus courantes d'autres autres et un point d'entrer pour aller rapidement, il n'est donc pas une alternative à ces-derniers. 
+Une section complète du site de l'auteur principal de `knitr`,
+<http://yihui.name/knitr/>, permet de bien comprendre l'intégration des morceaux
+de code et des résultats du code, contenu qui fait l'objet d'un livre de ce même
+auteur [@xie_dynamic_2017]. Je tiens également à signaler la [présentation de
+Mansun Kuo sur Rpubs](http://rpubs.com/mansun_kuo/24330). Pour apprendre la
+syntaxe Pandoc Markdown, vous pouvez vous reportez à la très complète page
+internet écrite en français par Jean-Daniel Bonjour,
+<http://enacit1.epfl.ch/markdown-pandoc>.
 
-Cette
+Pour conclure cette introduction, je signale que la syntaxe [Pandoc
+Markdown](http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html) est, à
+mon sens, très complète, mais elle ne permet pas une personnalisation totale de
+la mise en page de votre document. Il existe des moyens simples pour aller plus
+loin avec R Markdown, détaillé dans le livre d'astuce mentionné ci-dessus. Si
+toutefois vous souhaitez aller encore plus loin dans la mise en forme de votre
+document, vous pouvez utiliser une des trois approches suggérez ci-dessous.
+Néanmoins, avant d'envisager l'un de ces recours, il est très important de se
+demander si cette personnalisation est nécessaire.
+
+1. vous pouvez travailler sur le document dans le format qui vous intéresse après l'avoir générer, c'est une solution qui a une limite évident: à chaque fois que le document sera compilé, les modifications post-compilation seront perdues,
+2. vous pouvez utiliser un *template* personnel[^template], un fichier qui gère partie la mise en forme de votre document) associé à votre document,
+3. vous pouvez toujours composé en un langage donné, p. ex. [HTML](http://www.w3.org/html/) ou [Latex](http://www.latex-project.org), mais les commandes non valides pour un format donné, seront ignorées.
+
+
+
+
+
+<!-- Cette
 possibilité offerte depuis très longtemps avec la fonction `Sweave()` (package
 de base `utils`) qui permet de remplacer du code R par son rendu. Mais la
 véritable force vient des travaux de Yihui Xie avec le package
@@ -171,33 +220,7 @@ véritable force vient des travaux de Yihui Xie avec le package
 produire des fichiers LaTeX intégrant du code R et des figures. Le package
 [`rmarkdown`](https://rmarkdown.rstudio.com/) développé par RStudio est un
 package R très populaire qui a rendu la création de documents dynamiques avec R
-très efficace.
-
-Le [site dédié à knitr](http://yihui.name/knitr/) permet de bien comprendre l'intégration des morceaux de codes et des figures de [R](http://www.r-project.org). Je tiens également à signaler la [présentation de Mansun Kuo sur Rpubs](http://rpubs.com/mansun_kuo/24330). Pour apprendre la syntaxe Pandoc Markdown, vous pouvez vous reportez à la [documentation disponible sur le site de Pandoc](http://pandoc.org/demo/example9/pandocs-markdown.html) ou à la [page internet de Jean-Daniel Bonjour](http://enacit1.epfl.ch/markdown-pandoc/#notes_bas_page) pour une documentation en français.
-
-Pour conclure cette introduction, je signale que la syntaxe [Pandoc
-Markdown](http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html) est, à
-mon sens, très complète, mais elle ne permet pas une personnalisation totale de
-la mise en page de votre document. Néanmoins, avant d'envisager l'un des recours
-proposés ci-dessous, il est très important de vous demander si cette
-personnalisation est nécessaire. Si toutefois vous souhaitez aller plus loin
-dans la mise en forme de votre document, plusieurs options vous sont
-offertes&nbsp;:
-
-1. vous pouvez travailler sur le document dans le format qui vous intéresse après l'avoir générer,
-2. vous pouvez modifier le *template* (fichier qui gère en grande partie la mise en forme de votre document) associé à votre document[^3],
-3. vous pouvez toujours composé en un langage donné, p. ex. [HTML](http://www.w3.org/html/) ou [Latex](http://www.latex-project.org), mais les commandes non valides pour un format donné, seront ignorées.
-
-
-[^1]: La version 1 n'utilise pas Pandoc.
-[^2]: Pandoc est d'ailleurs capable de gérer différentes variantes de Markdown.
-[^3]: Vous les trouverez dans le dossier d
-
-u package `rmarkdown`. Pour savoir où est ce dossier, enter "R.home()" dans votre console R, rendez-vous à l'adresse donnée puis, dans le sous-répertoire "library/rmarkdown".
-
-
-
-
+très efficace. -->
 
 
 
@@ -205,12 +228,12 @@ u package `rmarkdown`. Pour savoir où est ce dossier, enter "R.home()" dans vot
 
 # Comment utiliser un fichier R Markdown
 
-Dans cette partie il est question de l'organisation générale d'un fichier R Markdown qui a pour extension `.Rmd` (ou `.rmd`). 
+Dans cette partie il est question de l'organisation générale d'un fichier R Markdown.
 
 
 ## Quelques repères
 
-Un fichier R Markdown (`.rmd` ou `.Rmd`), c'est :
+Un fichier R Markdown (dont l'extenstion est `.rmd` ou `.Rmd`), c'est :
 
 1. un document de texte plein qui utilise la syntaxe Pandoc Markdown;
 
@@ -1251,7 +1274,7 @@ plot(mod1)
 
 WIP !! WIP !! WIP !!
 
-Concluons ce document par une ouverture sur davantage de fonctionalité du package R Markdown.
+Concluons ce document par une ouverture sur davantage de fonctionnalité du package R Markdown.
 
 - pour les documents&nbsp;:
     - [PDF](https://en.wikipedia.org/wiki/Portable_Document_Format)
@@ -1267,4 +1290,17 @@ Concluons ce document par une ouverture sur davantage de fonctionalité du packa
 
 
 
+
 # Références
+
+
+
+
+[^wiki_gruber]: <https://en.wikipedia.org/wiki/John_Gruber>, consulté le 1^er^ juin 2020.
+[^wiki_rst]: <https://fr.wikipedia.org/wiki/ReStructuredText>, consulté le 1^er^ juin 2020.
+[^blog_badparent]: <https://blog.codinghorror.com/responsible-open-source-code-parenting/>, consulté le 1^er^ juin 2020.
+[^goldmark]: Par example Goldmark, <https://github.com/yuin/goldmard>, un parser Markdown écrit en Go et utilisé par Hugo (un générateur de site très populaire), est compatible avec Common Mark.
+[^pmd]: <https://pandoc.org/MANUAL.html#pandocs-markdown>,  1^er^ juin 2020.
+[^1]: La version 1 n'utilise pas Pandoc.
+[^2]: Pandoc est d'ailleurs capable de gérer différentes variantes de Markdown.
+[^template]: voir <https://pandoc.org/MANUAL.html#templates>, consulté le 1^er^ juin 2020.
