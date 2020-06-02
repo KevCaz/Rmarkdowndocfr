@@ -3,7 +3,7 @@ title: "Utiliser R Markdown pour créer des documents dynamiques"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 author: par Kevin Cazelles
 lang: fr
-abstract: Le package `rmarkdown` permet de créer des documents dynamiques qui intègrent des morceaux de code R et ce qu'ils génèrent (dont figures et tableaux). Ce document explique comment utiliser le package 'rmarkdown' et aussi la syntaxe "Pandoc Markdown". Le code source de ce document est en lui-même un exemple d'application du package. Le lecteur trouvera également un ensemble de références disponibles en ligne pour aller plus loin.
+abstract: Le package `rmarkdown` permet de créer des documents dynamiques qui intègrent des morceaux de code R et ce qu'ils génèrent (dont figures et tableaux). Ce document est une introduction à R Markdown qui passe en revue différents aspects techniques nécessaires à la bonne compréhension et l'utilisation du package `rmarkdown`. Le code source de ce document est en lui-même un exemple d'application du package. Le lecteur trouvera également un ensemble de références disponibles en ligne pour aller plus loin.
 fontfamily: fourier
 linestretch: 1
 fontsize: 10pt #11pt ou 12pt
@@ -147,7 +147,7 @@ utilise divers outil qui utilise différents syntaxes), il suffit de se reporter
 
 
 Il est important de souligner que R Markdown (voir
-<http://rmarkdown.rstudio.com>)[^1] utilise la variante [Markdown de
+<http://rmarkdown.rstudio.com>)[^1] utilise [la variante Markdown de
 Pandoc](https://rmarkdown.rstudio.com/lesson-8.html)[^2]. Une précision relative
 à Pandoc (<http://www.pandoc.org>) s'impose: il s'agit, comme l'indique le site
 internet, d'un "convertisseur de document universel", en une ligne de commande
@@ -183,7 +183,6 @@ Il y a également sur le site <https://bookdown.org> :
 
 2. [un livre d'astuces (*cook book*)](https://bookdown.org/yihui/rmarkdown-cookbook/)  en cours d'écriture.
 
-
 Une section complète du site de l'auteur principal de `knitr`,
 <http://yihui.name/knitr/>, permet de bien comprendre l'intégration des morceaux
 de code et des résultats du code, contenu qui fait l'objet d'un livre de ce même
@@ -208,9 +207,6 @@ demander si cette personnalisation est nécessaire.
 3. vous pouvez toujours composé en un langage donné, p. ex. [HTML](http://www.w3.org/html/) ou [Latex](http://www.latex-project.org), mais les commandes non valides pour un format donné, seront ignorées.
 
 
-
-
-
 <!-- Cette
 possibilité offerte depuis très longtemps avec la fonction `Sweave()` (package
 de base `utils`) qui permet de remplacer du code R par son rendu. Mais la
@@ -226,30 +222,55 @@ très efficace. -->
 
 
 
-# Comment utiliser un fichier R Markdown
-
-Dans cette partie il est question de l'organisation générale d'un fichier R Markdown.
 
 
-## Quelques repères
 
-Un fichier R Markdown (dont l'extenstion est `.rmd` ou `.Rmd`), c'est :
+# Utiliser un fichier R Markdown
 
-1. un document de texte plein qui utilise la syntaxe Pandoc Markdown;
+## Organisation générale
 
-2. des blocs de code particuliers (bloc de trois backticks \` avec une accolade \{R ...\}) qui peuvent exécuté par R:
+Un fichier R Markdown (dont l’extension est `.rmd` ou `.Rmd`), c'est :
 
-        ````{R nom, option1, option2}
-        # code R à exécuter
-        ```
-3. enfin, un *Front Matter* YAML optionnel (au début du fichier, dans un bloc de trois tirets&nbsp;: \-\-\-) qui permet de donner des indications sur le ou les documents à générer.
+1. un document de texte plein qui utilise la variante syntaxique Pandoc de Markdown;
+
+2. des blocs de code particuliers qui, en plus de pouvoir être utilisé pour présenter du code, le code va pouvoir être exécuter et le résultat du code va pouvoir être intégré dans le document. Ces blocs commencent et finissent trois accents graves (*backtick* ou *backquote* en anglais): \` et les trois accents graves ouvrant le bloc sont suivis d'une accolade qui commence par r ou R, par exemple
+
+
+    ````markdown
+    `r ''````{R name, option1, option2}
+    # code R à exécuter
+    ```
+    ````
+
+    ou encore
+
+    ````markdown
+    `r ''````{r option1}
+    # code R à exécuter
+    ```
+    ````
+
+3. enfin, un *Front Matter*[^notrad] YAML optionnel (au début du fichier, dans un bloc de trois tirets&nbsp;: \-\-\-) qui permet de donner des indications sur le ou les documents à générer.
+
 
 Au début, il peut-être un peu difficile de se retrouver un tel fichier car on y
-croise différents langages. Trois langages sont pleinement utilisés pour créer
-le document&nbsp;: Markdown, R et YAML. De plus, dans la syntaxe Pandoc Markdown
-utilisée, on peut aussi utiliser la syntaxe
-[Latex](http://www.latex-project.org) pour les équations (voir aussi
-https://bookdown.org/yihui/rmarkdown/markdown-syntax.html#).
+croise différents langages, notamment
+
+1. un langage de programmation pour les analyses, R;
+2. un langage de balisage pour l'écriture du document, Markdown;
+3. un langage de sérialisation de données pour spécifier les sorties du documents, YAML.
+
+On peut ajouter qu'avec la variante syntaxique Pandoc de Markdown les symboles
+mathématiques TeX[^wiki_TeX] sont utiliser pour rendre facile l'écriture, entre autres, des équations [^pm_math], en un sens c'est une quatrième langages a connaître!
+
+
+
+##  Créer un fichier
+
+<!-- KC: J'en suis la -->
+**WIP**
+
+![](images/open_rmd.png)
 
 
 Quand le fichier est complet, et que le package `rmarkdown` est installé[^4],
@@ -262,7 +283,7 @@ voir la documentation associée, `?render`). Dans la suite du document, la funct
 render("ex_Rmardown.rmd", "all")
 ```
 
-L'argument "all" permet d’obtenir tous les fichiers pour lesquel il existe une spécification dans le fichier YAML. Les formats utilisés ici sont&nbsp;:
+L'argument "all" permet d’obtenir tous les fichiers pour lesquels il existe une spécification dans le fichier YAML. Les formats utilisés ici sont&nbsp;:
 
 - [PDF](https://en.wikipedia.org/wiki/Portable_Document_Format)
 - [HTML](http://rmarkdown.rstudio.com/html_document_format.html)
@@ -281,7 +302,7 @@ les figures), que nous devons au chercheur Edward Tufte.
 
 
 
-## Le fichier YAML
+# Le fichier YAML
 
 Il s'agit d'un ensemble de spécifications placées en tête de votre document ".rmd" (veuillez à ne pas introduire de commentaires avant). le [YAML (YAML Ain't Markup Language)](http://www.yaml.org/spec/1.2/spec.HTML) est un format de représentation de données intégré dans le fichier ".rmd" entre bloc de trois tirets.
 C'est un ensemble de métadonnées relatives aux documents qui vont être générés. Ces données sont alors soit intégrées dans la ligne de commande Pandoc, soit dans les *templates*. Pour comprendre l'essentiel du fonctionnement du YAML, je vous conseille de regarder la [page française wikipedia](https://fr.wikipedia.org/wiki/YAML). La page anglaise sur le même sujet vous permet d'en apprendre davantage. Pour un aperçu assez complet des options YAML utilisables dans le fichier .rmd par défaut, rendez-vous à la dernière page du [guide de référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf). À titre d'exemple, ce document, utilise un grand nombre d'options en voici une reproduction quasi-identique (sans le résumé complet et sans la majorité des commentaires que vous pouvez trouver dans le fichier source de ce document)&nbsp;:
@@ -341,9 +362,16 @@ numérotation des différentes parties. Les commentaires sont introduits par un
 "\#".
 
 
-# Le "Pandoc Markdown"
 
-Dans cette partie, je détaille les éléments de formatage du texte proposés par Pandoc Markdown. L’ensemble est très bien présenté sur le [site de référence](http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html)[^noteswmk] et très bien résumé à la première page du [guide de référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf). Pour une source en français, j'ai trouvé un bon tour d'horizon nommé&nbsp;: ["Élaboration et conversion de documents avec Markdown et Pandoc"](http://enacit1.epfl.ch/markdown-pandoc/) écrit par Jean-Daniel Bonjour. Notez que certains symboles sont réservés au formatage du texte. Cependant, quand leur affichage est requit, on les fait précéder du caractère d'échappement qui est, pour Markdown, l'antislash&nbsp;: "\\". Par exemple, j'entre&nbsp;:
+
+
+
+
+
+# Le variante Pandoc de Markdown
+
+
+Dans cette partie, je détaille les éléments de formatage du texte proposés par Pandoc Markdown. L’ensemble est très bien présenté sur le [site de référence](http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html)[^noteswmk] et très bien résumé à la première page du [guide de référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf). Pour une source en français, j'ai trouvé un excellent tour d'horizon nommé&nbsp;: "Élaboration et conversion de documents avec Markdown et Pandoc" (<http://enacit1.epfl.ch/markdown-pandoc/>) écrit par Jean-Daniel Bonjour. Notez que certains symboles sont réservés au formatage du texte. Cependant, quand leur affichage est requis, on les fait précéder du caractère d'échappement qui est, pour Markdown, l'antislash&nbsp;: "\\". Par exemple, j'entre&nbsp;:
 
     \\ \& \# \$ \[
 
@@ -1033,7 +1061,7 @@ et/ou le code R changent, le document évolue aussi.
 
 ### Deux injections de code possible
 
-Il y a deux types de morceaux de code. En premier lieu, ceux qui sont insérés directement dans le texte ("inline"). Pour cela, il faut inclure le texte sous la forme&nbsp;: \`r+ commande R + \`. Je peux, par exemple, demander l'heure et la date à R en utilisant la function *Sys.time()*&nbsp;: `r Sys.time()`.
+Il y a deux types de morceaux de code. En premier lieu, ceux qui sont insérés directement dans le texte ("inline"). Pour cela, il faut inclure le texte sous la forme&nbsp;: `` `r "\u0060r expression\u0060"` ``. Je peux, par exemple, demander l'heure et la date à R en utilisant la function *Sys.time()*&nbsp;: `r Sys.time()`.
 
 Ensuite, il y a le code que nous souhaitons séparer du reste du texte et dont on souhaite obtenir le résulat. Les morceaux de code sont alors écrits&nbsp;:
 
@@ -1304,3 +1332,8 @@ Concluons ce document par une ouverture sur davantage de fonctionnalité du pack
 [^1]: La version 1 n'utilise pas Pandoc.
 [^2]: Pandoc est d'ailleurs capable de gérer différentes variantes de Markdown.
 [^template]: voir <https://pandoc.org/MANUAL.html#templates>, consulté le 1^er^ juin 2020.
+
+[^notrad]: du contenu préliminaire.
+
+[^wiki_TeX]: voir https://fr.wikibooks.org/wiki/LaTeX/%C3%89crire_des_math%C3%A9matiques, consulté le 2 juin 2020.
+[^pm_math]: Voir la section "Math" à l'URL suivant https://pandoc.org/MANUAL.html#pandocs-markdown, consulté le 2 juin 2020.
