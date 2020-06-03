@@ -252,7 +252,6 @@ Un fichier R Markdown (dont l’extension est `.rmd` ou `.Rmd`), c'est :
 
 3. enfin, un *Front Matter*[^notrad] YAML optionnel (au début du fichier, dans un bloc de trois tirets&nbsp;: \-\-\-) qui permet de donner des indications sur le ou les documents à générer.
 
-
 Au début, il peut-être un peu difficile de se retrouver un tel fichier car on y
 croise différents langages, notamment
 
@@ -261,48 +260,37 @@ croise différents langages, notamment
 3. un langage de sérialisation de données pour spécifier les sorties du documents, YAML.
 
 On peut ajouter qu'avec la variante syntaxique Pandoc de Markdown les symboles
-mathématiques TeX[^wiki_TeX] sont utiliser pour rendre facile l'écriture, entre autres, des équations [^pm_math], en un sens c'est une quatrième langages a connaître!
+mathématiques TeX[^wiki_TeX] sont utilisés pour rendre facile l'écriture, entre autres, des équations [^pm_math], en un sens c'est un quatrième langage à connaître!
 
 
 
-##  Créer un fichier
+## Créer un fichier R Markdown
 
-<!-- KC: J'en suis la -->
-**WIP**
+Créer un fichier R Markdown, c'est simplement créer un fichier dont l'extension est `.Rmd` ou `.rmd`, ce qui peut être vais avec n'importe quelle éditeur de texte, ou de code, ou même en ligne de commande. Par example, étant moi-même utilisateur du terminal, j'entre dans ce dernier la commande:
 
-![](images/open_rmd.png)
-
-
-Quand le fichier est complet, et que le package `rmarkdown` est installé[^4],
-on utilise la fonction `render()` du package en lui indiquant le chemin de
-du fichier `.Rmd`. Si on est un utilisateur de RStudio, on peut cliquer sur `Knit` dans la barre contextuelle associée au fichier (
-voir la documentation associée, `?render`). Dans la suite du document, la function `render()` est utilisée:
-
-
-```R
-render("ex_Rmardown.rmd", "all")
+```shell
+$ echo "---\nauthor: Kevin Cazelles\n---" > mondoc.Rmd
 ```
 
-L'argument "all" permet d’obtenir tous les fichiers pour lesquels il existe une spécification dans le fichier YAML. Les formats utilisés ici sont&nbsp;:
+et mon fichier est créé! Pour les utilisateurs de R Studio, cela peut se faire
+en 2 clics, comme illustré sur les figures qui suivent. L’intérêt d'utiliser R
+Studio est que le fichier créé contient des indications relatives à
+l'utilisation du fichier en question!
 
-- [PDF](https://en.wikipedia.org/wiki/Portable_Document_Format)
-- [HTML](http://rmarkdown.rstudio.com/html_document_format.html)
-- [Word](http://rmarkdown.rstudio.com/word_document_format.html)
 
-Les documents au format pdf requièrent [l'installation de
-Latex](https://www.tug.org/texlive/quickinstall.html). En effet, pour produire
-un pdf à partir d'un fichier ".rmd", un premier fichier Latex est produit. Pour
-le lecteur qui désire conserver le fichier Latex utilisé pour produire le pdf,
-il suffit d'ajouter l'option "keep_tex: true" dans les options relatives au
-format pdf dans le [Le fichier YAML][]. Pour le Markdown, un fichier ".md" est
-généré suivant la variante de Markdown précisée dans le YAML par "variant:
-markdown" (voir la section suivante). Le format "Tufte handout" est une mise en
-page particulière, avec marges larges où sont insérées les illustrations (dont
-les figures), que nous devons au chercheur Edward Tufte.
+![Première étape, utilisez l'icône de création de nouveaux fichiers.](images/open_rmd.png)
+
+![Seconde étape, choisissez le format de sortie désiré](images/open_rmd2.png)
+
+![Un document avec différentes instruction est produit.](images/open_rmd3.png)
 
 
 
-# Le fichier YAML
+
+## Spécifier les documents à obtenir avec le fichier YAML
+
+<!-- KC: J'en suis la a relire -->
+**WIP**
 
 Il s'agit d'un ensemble de spécifications placées en tête de votre document ".rmd" (veuillez à ne pas introduire de commentaires avant). le [YAML (YAML Ain't Markup Language)](http://www.yaml.org/spec/1.2/spec.HTML) est un format de représentation de données intégré dans le fichier ".rmd" entre bloc de trois tirets.
 C'est un ensemble de métadonnées relatives aux documents qui vont être générés. Ces données sont alors soit intégrées dans la ligne de commande Pandoc, soit dans les *templates*. Pour comprendre l'essentiel du fonctionnement du YAML, je vous conseille de regarder la [page française wikipedia](https://fr.wikipedia.org/wiki/YAML). La page anglaise sur le même sujet vous permet d'en apprendre davantage. Pour un aperçu assez complet des options YAML utilisables dans le fichier .rmd par défaut, rendez-vous à la dernière page du [guide de référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf). À titre d'exemple, ce document, utilise un grand nombre d'options en voici une reproduction quasi-identique (sans le résumé complet et sans la majorité des commentaires que vous pouvez trouver dans le fichier source de ce document)&nbsp;:
@@ -360,6 +348,44 @@ affiché dans la table des matières. De même "tof" signifie "table of figure"
 (table des figures). L'option "number_section:true" permet d'obtenir une
 numérotation des différentes parties. Les commentaires sont introduits par un
 "\#".
+
+
+
+## Éditer le fichier Markdown
+
+On écrit simplement du texte plein avec la syntaxe R markdown et on utilise les bloc de code R qui permettent d'éxécute du code
+
+
+
+## Obtenir le document final (ou les documents finaux)
+
+Quand le fichier est complet, et que le package `rmarkdown` est installé[^4], on
+utilise la fonction `render()` du package en lui indiquant le chemin de du
+fichier `.Rmd`. Si on est un utilisateur de RStudio, on peut cliquer sur `Knit`
+dans la barre contextuelle associée au fichier ( voir la documentation associée,
+`?render`). Dans la suite du document, la function `render()` est utilisée:
+
+
+```R
+render("ex_Rmardown.rmd", "all")
+```
+
+L'argument "all" permet d’obtenir tous les fichiers pour lesquels il existe une spécification dans le fichier YAML. Les formats utilisés ici sont&nbsp;:
+
+- [PDF](https://en.wikipedia.org/wiki/Portable_Document_Format)
+- [HTML](http://rmarkdown.rstudio.com/html_document_format.html)
+- [Word](http://rmarkdown.rstudio.com/word_document_format.html)
+
+Les documents au format pdf requièrent [l'installation de
+Latex](https://www.tug.org/texlive/quickinstall.html). En effet, pour produire
+un pdf à partir d'un fichier ".rmd", un premier fichier Latex est produit. Pour
+le lecteur qui désire conserver le fichier Latex utilisé pour produire le pdf,
+il suffit d'ajouter l'option "keep_tex: true" dans les options relatives au
+format pdf dans le [Le fichier YAML][]. Pour le Markdown, un fichier ".md" est
+généré suivant la variante de Markdown précisée dans le YAML par "variant:
+markdown" (voir la section suivante). Le format "Tufte handout" est une mise en
+page particulière, avec marges larges où sont insérées les illustrations (dont
+les figures), que nous devons au chercheur Edward Tufte.
 
 
 
@@ -1317,10 +1343,14 @@ Concluons ce document par une ouverture sur davantage de fonctionnalité du pack
 
 
 
+# Quelques conseils et astuces
+
+
+WIP !! WIP !! WIP !!
+
 
 
 # Références
-
 
 
 
