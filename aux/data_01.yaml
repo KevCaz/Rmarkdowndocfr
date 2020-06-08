@@ -1,0 +1,10 @@
+author: Kevin Cazelles
+date: 2020-06-06
+var1: [C, C++, Dart, Julia, Python, R, Rust]
+var2:
+  var2a:
+    - 1
+    - 2
+  var2b:
+    - a
+    - b

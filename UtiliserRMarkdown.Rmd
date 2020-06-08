@@ -142,8 +142,8 @@ une spécification (norme technique) pour Markdown de plus en plus
 utilisée[^goldmark], ce qui signifie qu'en allant d'un outil à l'autre qui
 utilise cette spécification, il n'y a pas de questions à se poser quant à savoir
 ce qui marche ou non en terme de syntaxe (un problème parfois frustrant quand on
-utilise divers outil qui utilise différents syntaxes), il suffit de se reporter
-à la spécification!
+utilise plusieurs outils qui utilisent différentes syntaxes Markdown), il
+suffit de se reporter à la spécification!
 
 
 Il est important de souligner que R Markdown (voir
@@ -185,9 +185,9 @@ Il y a également sur le site <https://bookdown.org> :
 
 Une section complète du site de l'auteur principal de `knitr`,
 <http://yihui.name/knitr/>, permet de bien comprendre l'intégration des morceaux
-de code et des résultats du code, contenu qui fait l'objet d'un livre de ce même
-auteur [@xie_dynamic_2017]. Je tiens également à signaler la [présentation de
-Mansun Kuo sur Rpubs](http://rpubs.com/mansun_kuo/24330). Pour apprendre la
+de code et des résultats de ce code, contenu qui fait l'objet d'un livre de ce
+même auteur [@xie_dynamic_2017]. Je tiens également à signaler la [présentation
+de Mansun Kuo sur Rpubs](http://rpubs.com/mansun_kuo/24330). Pour apprendre la
 syntaxe Pandoc Markdown, vous pouvez vous reportez à la très complète page
 internet écrite en français par Jean-Daniel Bonjour,
 <http://enacit1.epfl.ch/markdown-pandoc>.
@@ -272,10 +272,10 @@ Créer un fichier R Markdown, c'est simplement créer un fichier dont l'extensio
 $ echo "---\nauthor: Kevin Cazelles\n---" > mondoc.Rmd
 ```
 
-et mon fichier est créé! Pour les utilisateurs de R Studio, cela peut se faire
+et le fichier est créé! Pour les utilisateurs de R Studio, cela peut se faire
 en 2 clics, comme illustré sur les figures qui suivent. L’intérêt d'utiliser R
-Studio est que le fichier créé contient des indications relatives à
-l'utilisation du fichier en question!
+Studio pour cette opération est que le fichier créé contient des indications
+relatives à l'utilisation du fichier en question.
 
 
 ![Première étape, utilisez l'icône de création de nouveaux fichiers.](images/open_rmd.png)
@@ -287,13 +287,73 @@ l'utilisation du fichier en question!
 
 
 
-## Spécifier les documents à obtenir avec le fichier YAML
+## Spécifier les documents à obtenir avec YAML
 
-<!-- KC: J'en suis la a relire -->
+<!-- KC: J'en suis la, à relire -->
 **WIP**
 
-Il s'agit d'un ensemble de spécifications placées en tête de votre document ".rmd" (veuillez à ne pas introduire de commentaires avant). le [YAML (YAML Ain't Markup Language)](http://www.yaml.org/spec/1.2/spec.HTML) est un format de représentation de données intégré dans le fichier ".rmd" entre bloc de trois tirets.
-C'est un ensemble de métadonnées relatives aux documents qui vont être générés. Ces données sont alors soit intégrées dans la ligne de commande Pandoc, soit dans les *templates*. Pour comprendre l'essentiel du fonctionnement du YAML, je vous conseille de regarder la [page française wikipedia](https://fr.wikipedia.org/wiki/YAML). La page anglaise sur le même sujet vous permet d'en apprendre davantage. Pour un aperçu assez complet des options YAML utilisables dans le fichier .rmd par défaut, rendez-vous à la dernière page du [guide de référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf). À titre d'exemple, ce document, utilise un grand nombre d'options en voici une reproduction quasi-identique (sans le résumé complet et sans la majorité des commentaires que vous pouvez trouver dans le fichier source de ce document)&nbsp;:
+Le site officiel <https://yaml.org/> indique:
+
+> [*Traduction*]
+>
+> YAML est un standard de sérialisation de données pour tous langages de programmation adopté à l'humain.
+
+
+Autrement dit, dans un fichier au format YAML (extension `.yaml` ou `.yml`), on
+entre des données qui pourront être utilisées dans par de nombreux langages de
+programmation et ce fichier est facile à lire par l'humain. Pour que les données
+du fichier, il faut qu'il y est un capable de lire et de l'importer comme un
+objet/une variable du langage en question. Pour R, le package `yaml`[^ryaml]
+permet de lire de tels fichiers et de les importer sous forme de listes.
+
+<!-- predre qq examples simples et ajouter um fichier de lecture pour montere comment ça marche https://en.wikipedia.org/wiki/YAML -->
+
+
+Par example, voici le contenu du fichier `aux/data_01.yaml`
+
+
+```yaml
+author: Kevin Cazelles
+date: 2020-06-06
+var1: [C, C++, Dart, Julia, Python, R, Rust]
+var2:
+  var2a:
+    - 1
+    - 2
+  var2b:
+    - a
+    - b
+```
+
+Pour l'importer avec le package `yaml`, j'utilise les commandes suivantes:
+
+
+```{R yaml}
+library(yaml)
+yaml.load_file("aux/data_01.yaml")
+```
+
+
+
+
+
+Il s'agit d'un ensemble de spécifications placées en tête de votre document ".rmd" (veuillez à ne pas introduire de commentaires avant). le [YAML (YAML Ain't Markup Language)](http://www.yaml.org/spec/1.2/spec.HTML)
+
+Pour comprendre l'essentiel du fonctionnement du YAML, je vous conseille de
+regarder la [page française wikipedia](https://fr.wikipedia.org/wiki/YAML). La
+page anglaise sur le même sujet vous permet d'en apprendre davantage.
+
+Dans un fichier R Markdown, on intègre des données relative au document,
+appelées métadonnées, au début du document entre bloc de trois tirets. Pour un
+aperçu assez complet des options YAML utilisables dans fichier R MArkdown,
+rendez-vous à la dernière page du [guide de
+référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf).
+
+C'est un ensemble de métadonnées relatives aux documents qui vont être générés. Ces données sont alors soit intégrées dans la ligne de commande Pandoc, soit dans les *templates*.
+
+
+À titre d'exemple, ce document, utilise un grand nombre d'options en voici une reproduction quasi-identique (sans le résumé complet et sans la majorité des commentaires que vous pouvez trouver dans le fichier source de ce document)&nbsp;:
+
 
 ```yaml
 ---
@@ -349,6 +409,8 @@ affiché dans la table des matières. De même "tof" signifie "table of figure"
 numérotation des différentes parties. Les commentaires sont introduits par un
 "\#".
 
+
+<!-- https://hitchdev.com/strictyaml/ -->
 
 
 ## Éditer le fichier Markdown
@@ -1365,5 +1427,8 @@ WIP !! WIP !! WIP !!
 
 [^notrad]: du contenu préliminaire.
 
-[^wiki_TeX]: voir https://fr.wikibooks.org/wiki/LaTeX/%C3%89crire_des_math%C3%A9matiques, consulté le 2 juin 2020.
-[^pm_math]: Voir la section "Math" à l'URL suivant https://pandoc.org/MANUAL.html#pandocs-markdown, consulté le 2 juin 2020.
+[^wiki_TeX]: voir >https://fr.wikibooks.org/wiki/LaTeX/%C3%89crire_des_math%C3%A9matiques>, consulté le 2 juin 2020.
+[^pm_math]: Voir la section "Math" à l'URL suivant >https://pandoc.org/MANUAL.html#pandocs-markdown>, consulté le 2 juin 2020.
+
+
+[^ryaml]: <https://cran.r-project.org/web/packages/yaml/index.html>, consulté le 8 juin 2020.
