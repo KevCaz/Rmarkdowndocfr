@@ -1,10 +1,16 @@
 author: Kevin Cazelles
 date: 2020-06-06
+description: "Il s'agit d'un exemple, utilisez les guillemets pour les longs textes avec ponctuation!"
+# Un commentaire
 var1: [C, C++, Dart, Julia, Python, R, Rust]
-var2:
-  var2a:
-    - 1
-    - 2
-  var2b:
-    - a
-    - b
+var2: y
+var3:
+   var3a:
+      x: 1
+      "y": 2
+   var3b:
+     - a
+     - b
+   var3c: |
+      utiliser plusieurs
+      lignes et garder les sauts de lignes
