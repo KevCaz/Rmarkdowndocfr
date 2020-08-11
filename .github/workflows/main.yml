@@ -4,7 +4,7 @@ name: Render and deploy HTML document
   - pull_request
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     container: rocker/verse:latest
     steps:
       - name: Checkout Repository
@@ -25,4 +25,3 @@ jobs:
           ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: ./public
-          

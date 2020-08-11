@@ -327,7 +327,7 @@ nomduchamp: données
 nomduchamp2: données2
 ```
 
-Un champ données peut contenir une chaine de charactère, une date, des chiffres ou encore une liste, pa
+Un champ données peut contenir une chaîne de caractère, une date, des chiffres ou encore une liste:
 
 ```yaml
 nomduchamp: [élément1, élément2]
@@ -341,18 +341,18 @@ nomduchamp:
     - élément2
 ```
 
-Noté l'indentation utilisée, c'est capital dans  dans YAML car c'est
-Dans YAML, l'indentation est très importante.
-
-et les sous-champ peuvent eux aussi être nommées
+Noté que l'indentation est utilisée pour signifier la hiérarchie entre les différents éléments et que les commentaires sont introduits par un "\#".
 
 
 ```yaml
 nomduchamp:
     souchamp1: élément1
+# ce qui suit sont les élément dans le 2eme souschamp
     souchamp2:
         souchamp2a: élément2a
-        souchamp2b: élément2b
+        souchamp2b:
+            - élément2ba
+              élément2ba
 ```
 
 
@@ -366,7 +366,7 @@ GitHub <https://github.com/KevCaz/Rmarkdowndocfr/blob/master/aux/data_01.yaml>):
 author: Kevin Cazelles
 date: 2020-06-06
 description: "Il s'agit d'un exemple, utilisez les guillemets pour les longs textes avec ponctuation!"
-# Un commentaire
+# Les différents variables
 var1: [C, C++, Dart, Julia, Python, R, Rust]
 var2: y
 var3:
@@ -389,31 +389,34 @@ library(yaml)
 yaml.load_file("aux/data_01.yaml")
 ```
 
-Quelques remarques importantes "y, yes, true, TRUE" et "n, no, false, FALSE"
-seront interprétées  comme variables booléennes et donc `TRUE`, c'est une
-fonctionnalité bien pratique mais a double tranchant: si j'utilise `y`, le champ
-sera lui-même indiqué comme `TRUE` et donc il faut ajouter des guillemets.
+Les chaînes de caractères `y`, `yes`, `true`, `TRUE` ainsi que `n`, `no`,
+`false`, `FALSE` seront toutes interprétées comme variables booléennes
+(respectivement `TRUE` ou `FALSE` dans R). C'est une fonctionnalité bien
+pratique mais à double tranchant: par exemple si `y` est utilisé comme nom de
+champ, le nom du champ sera interprété comme `TRUE` et pour palier ce
+comportement, il faut ajouter des guillemets (voir l'exemple ci-dessus).
 
-<!-- KC: J'en suis la, à relire -->
-**WIP** **WIP** **WIP**
 
-Les remarques précédentes sont générales et vous pouvez facilement utiliser YAML
-pour autre chose que R Markdown. Revenons au fichier R Markdown dans lequel on
-utilise YAML d'une manière plus spécifique. Premièrement, les indications sont
-en début de document. Deuxièmement les champs concernent le format de sortie du
-document dynamique édité avec R Markdown. Troisièmement, seuls les champs qui
-sont définis dans des templates sont valides. Arrêtons-nous sur ce dernier
-point. On ne peut pas utiliser n'importe quelle champ.
-<!-- Autrement dit, si vous au, appelées métadonnées, au début du document entre bloc de trois tirets. -->
-
-Pour un aperçu assez complet des options YAML utilisables dans fichier R
-Markdown, rendez-vous à la dernière page du [guide de
+Les remarques précédentes sont générales et vous pourriez être amené à utiliser
+YAML dans un autre contexte que l'édition de document avec R Markdown, par
+exemple pour stocker des données. Revenons à l'utilisation de YAML dans un
+document R Markdown. Ce qu'il faut bien garder à l'esprit, c'est que les options
+utilisées servent à spécifier différents propriétés des documents à générer à
+partir du fichier `.Rmd` (p-ex le titre, la date, les polices de caractères
+utilisées, ajout d'une table des matières, etc.) grâce à des *templates*
+utilisés par Pandoc. Ainsi, les options disponibles dépendent des templates
+utilisés qui sont spécifiques à un format donné, les options par défaut varient
+ainsi d'un format à l'autre. Pour un aperçu assez complet des options YAML
+utilisables dans fichier R Markdown, rendez-vous à la dernière page du [guide de
 référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf).
+Notez qu'il est possible de créer ses propres templates et donc d'ajouter autant
+d'options que désiré.
 
-C'est un ensemble de métadonnées relatives aux documents qui vont être générés. Ces données sont alors soit intégrées dans la ligne de commande Pandoc, soit dans les *templates*.
 
-
-À titre d'exemple, ce document, utilise un grand nombre d'options en voici une reproduction quasi-identique (sans le résumé complet et sans la majorité des commentaires que vous pouvez trouver dans le fichier source de ce document)&nbsp;:
+À titre d'exemple, ce document utilise un grand nombre d'options en voici une
+reproduction quasi-identique (sans le résumé complet et sans la majorité des
+commentaires que vous pouvez trouverez dans le fichier source de ce
+document)&nbsp;:
 
 
 ```yaml
@@ -461,17 +464,21 @@ header-includes:
 ---
 ```
 
-L’indentation reflète les groupes de spécification. Ainsi, de "pdf_document:" à
-"word_document:", les commandes permettent de spécifier les sorties du document
-au format pdf. Notez que "toc" signifie "table of content" (table des
-matières), "toc_depth" permet de sélectionner le niveau maximal de sous-titre
-affiché dans la table des matières. De même "tof" signifie "table of figure"
-(table des figures). L'option "number_section:true" permet d'obtenir une
-numérotation des différentes parties. Les commentaires sont introduits par un
-"\#".
+Comme expliqué précédemment, l’indentation est utilisée pour regrouper les
+options par format. Ainsi, les lignes entre "pdf_document:" et "word_document:",
+spécifient différent aspect relative à la génération au format pdf. Par exemple,
+pour ajouter une table des matière, on ajoute `toc: yes`, "toc" signifiant
+*table of content* (table des matières) et pour en contrôler la profondeur (le
+niveau maximal de sous-titre affiché dans la table), on utilise "toc_depth".  De
+même, "tof" (*table of figure*) permet d'ajouter une table des figures. Aussi,
+l'option "number_section:true" permet d'obtenir une numérotation des différentes
+parties.
 
 
 <!-- https://hitchdev.com/strictyaml/ -->
+
+
+
 
 
 ## Éditer le fichier Markdown
