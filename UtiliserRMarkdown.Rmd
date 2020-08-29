@@ -192,7 +192,7 @@ syntaxe Pandoc Markdown, vous pouvez vous reportez à la très complète page
 internet écrite en français par Jean-Daniel Bonjour,
 <http://enacit1.epfl.ch/markdown-pandoc>.
 
-Pour conclure cette introduction, je signale que la syntaxe [Pandoc
+La syntaxe [Pandoc
 Markdown](http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html) est, à
 mon sens, très complète, mais elle ne permet pas une personnalisation totale de
 la mise en page de votre document. Il existe des moyens simples pour aller plus
@@ -206,6 +206,34 @@ demander si cette personnalisation est nécessaire.
 2. vous pouvez utiliser un *template* personnel[^template], un fichier qui gère partie la mise en forme de votre document) associé à votre document,
 3. vous pouvez toujours composé en un langage donné, p. ex. [HTML](http://www.w3.org/html/) ou [Latex](http://www.latex-project.org), mais les commandes non valides pour un format donné, seront ignorées.
 
+
+<!-- Pourrait faire l'objet de development future -->
+
+Avant de rentrer dans le vif du sujet, je souhaiterais insister sur le fait que
+cette introduction est axée sur la création de document en format Word, PDF et
+HTML pour de nombreux usages (rapport, article, etc.), mais que les possibilités
+offertes par `rmarkdown` sont plus vastes (voir le site dédié
+<http://rmarkdown.rstudio.com>), entre autres
+
+- pour les documents&nbsp;:
+    - [PDF](https://en.wikipedia.org/wiki/Portable_Document_Format)
+    - [HTML](http://rmarkdown.rstudio.com/html_document_format.html)
+    - [Word](http://rmarkdown.rstudio.com/word_document_format.html)
+    - [Tufte handout (Pdf)](http://rmarkdown.rstudio.com/tufte_handout_format.html)
+    - [Package Vignette (Html)](http://rmarkdown.rstudio.com/package_vignette_format.html)
+- pour les présentations&nbsp;:
+    - [Beamer](http://rmarkdown.rstudio.com/beamer_presentation_format.html)
+    - [ioslide](http://rmarkdown.rstudio.com/ioslides_presentation_format.html)
+    - [Slidy](http://rmarkdown.rstudio.com/slidy_presentation_format.html)
+
+De plus, il existe des packages qui se basent sur `rmarkdown` et en étendent les
+applications. Par exemple, `blogdown` vous permet d'écrire des postes de blogue
+avec R Markdown dans un site permet généré par Hugo (<https://gohugo.io/>).  De
+me, grâce à bookdown] (<https://bookdown.org/yihui/bookdown/>), vous pouvez
+créer de long documents HTML structuré comme un
+[Gitbook](https://www.gitbook.com). Anisi, les fonctionnalités décrites dans ce
+document permettent d'utiliser une très grande variété de médias pour partager
+les fruits de votre labeur.
 
 <!-- Cette
 possibilité offerte depuis très longtemps avec la fonction `Sweave()` (package
@@ -1025,7 +1053,16 @@ ou encore&nbsp;:
 
 ### Symboles mathématiques
 
-Pour utiliser les symboles mathématiques dans le texte, les commandes associées doivent être placées entre deux "\$". Bien sur, il faut connaître les combinaisons de caractère associées aux différents symboles. Ce sont les même que celles proposées par [Latex](http://latex-project.org/intro.html) et qui seront utilisées par [MathJax](http://www.mathjax.org) (par défaut) pour générer les expressions mathématiques dans le fichier HTML. Pour quelques exemples, [regarder ce site](http://www.suluclac.com/Wiki+MathJax+Syntax), pour quelque choses de plus complet, jetez un œil [ici](https://en.wikibooks.org/wiki/LaTeX/Mathematics). Voici tout de même quelques exemples&nbsp;:
+Pour utiliser les symboles mathématiques dans le texte, les commandes associées
+doivent être placées entre deux "\$". Bien sur, il faut connaître les
+combinaisons de caractère associées aux différents symboles. Ce sont les même
+que celles proposées par [Latex](http://latex-project.org/intro.html) et qui
+seront utilisées par [MathJax](http://www.mathjax.org) (par défaut) pour générer
+les expressions mathématiques dans le fichier HTML. Pour quelques exemples,
+[regarder ce site](http://www.suluclac.com/Wiki+MathJax+Syntax), pour quelque
+choses de plus complet, jetez un œil
+[ici](https://en.wikibooks.org/wiki/LaTeX/Mathematics). Voici tout de même
+quelques exemples&nbsp;:
 
 - quelques lettres grecques&nbsp;:
 
@@ -1081,9 +1118,11 @@ désiré. Ils existent différentes solutions pour palier ceci. Pour les documen
 HTML, il est possible d'utiliser le méchanisme de rendu HTML de bookdown (voir
 https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html), ce
 qui revient à utiliser un autre type de format de sortie, mais qui reste du
-HTML. Sinon, il est possible d'utiliser le filtre Pandoc
-[eqnos](https://github.com/tomduck/pandoc-eqnos) (noter qu'il y a des filtres
-équivalents pour les tables et les figures). Enfin, si vous voulez simplement un PDF, vous pouvez travailler comme dans un document LaTeX (voir https://www.overleaf.com/learn/latex/Cross%20referencing%20sections,%20equations%20and%20floats).
+HTML. Sinon, il est possible d'utiliser le filtre
+[pandoc-eqnos](https://github.com/tomduck/pandoc-eqnos) (noter qu'il y a des
+filtres équivalents pour les tables et les figures). Enfin, si vous voulez
+simplement un PDF, vous pouvez travailler comme dans un document LaTeX (voir
+https://www.overleaf.com/learn/latex/Cross%20referencing%20sections,%20equations%20and%20floats).
 
 [^nbeq]: voir https://tex.stackexchange.com/questions/111868/pandoc-how-can-i-get-numbered-latex-equations-to-show-up-in-both-pdf-and-html-o)
 
@@ -1198,9 +1237,11 @@ Rappelez vous la section [Liens hypertextes][]
 ### Références bibliographiques
 
 Un des points forts de Pandoc est la possibilité de gérer de manière très
-efficace votre bibliographie grace au processeur de citation [pandoc-citeproc](https://github.com/jgm/pandoc-citeproc). Un grand nombre de fichiers de bibliographie sont
-bien gérés[^notebibli], dont les fichiers bibtex. Pour plus de renseignements,
-visitez la [page du site de R Markdown
+efficace votre bibliographie grace au processeur de citation
+[pandoc-citeproc](https://github.com/jgm/pandoc-citeproc). Un grand nombre de
+fichiers de bibliographie sont bien gérés[^notebibli], dont les fichiers bibtex.
+Pour plus de renseignements pour utiliser pandoc-citeproc dans un document  R
+Markdown, visitez la [page du site de R Markdown
 consacrée](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html).
 
 L'exemple qui suit est basé sur le fichier bibtex (mybiblio.bib) disponible dans le dossier "aux" qui est donnée avec ce document et que je donne ci-dessous&nbsp;:
@@ -1293,9 +1334,21 @@ et/ou le code R changent, le document évolue aussi.
 
 Il y a deux types de morceaux de code. En premier lieu, ceux qui sont insérés directement dans le texte ("inline"). Pour cela, il faut inclure le texte sous la forme&nbsp;: `` `r "\u0060r expression\u0060"` ``. Je peux, par exemple, demander l'heure et la date à R en utilisant la function *Sys.time()*&nbsp;: `r Sys.time()`.
 
-Ensuite, il y a le code que nous souhaitons séparer du reste du texte et dont on souhaite obtenir le résulat. Les morceaux de code sont alors écrits&nbsp;:
+Ensuite, il y a le code que nous souhaitons séparer du reste du texte et dont on
+souhaite obtenir le résultat. Les morceaux de code sont alors écrits comme un
+bloc de code, mais dans l'accolade on peut identifier le bloc de code et varier différent paramètres de rendu &nbsp;:
 
-    `r ''````{r + spécifications}
+    `r ''````{r nomdublocdecode, param1=val1, param2=val2 ...}
+    ligne de code 1
+    ligne de code 2
+    ...
+    ligne de code n
+    ```
+
+la casse n'étant pas important pour le R de l'accolade, il est donc possible
+d'utiliser
+
+    `r ''````{R nomdublocdecode, param1=val1, param2=val2 ...}
     ligne de code 1
     ligne de code 2
     ...
@@ -1311,7 +1364,8 @@ commentaire et une addition :
     2+3
     ```
 
-Notez que "addition" qui suit "r" dans l'accolade est l'identifiant du morceau de code. Les lignes précédentes me donnent&nbsp;:
+Notez que "addition" qui suit "r" dans l'accolade est l'identifiant du morceau
+de code, qui permet notamment de facilement identifié  Les lignes précédentes me donnent&nbsp;:
 
 ```{r addition}
 # une addition avec R.
@@ -1526,31 +1580,6 @@ plot(mod1)
 
 
 
-
-
-# De nombreuses utilisations de R Markdown
-
-WIP !! WIP !! WIP !!
-
-Concluons ce document par une ouverture sur davantage de fonctionnalité du package R Markdown.
-
-- pour les documents&nbsp;:
-    - [PDF](https://en.wikipedia.org/wiki/Portable_Document_Format)
-    - [HTML](http://rmarkdown.rstudio.com/html_document_format.html)
-    - [Word](http://rmarkdown.rstudio.com/word_document_format.html)
-    - [Tufte handout (Pdf)](http://rmarkdown.rstudio.com/tufte_handout_format.html)
-    - [Package Vignette (Html)](http://rmarkdown.rstudio.com/package_vignette_format.html)
-- pour les présentations&nbsp;:
-    - [Beamer](http://rmarkdown.rstudio.com/beamer_presentation_format.html), un lien utile: [https://bitbucket.org/rivanvx/beamer/wiki/Home](https://bitbucket.org/rivanvx/beamer/wiki/Home)
-    - [ioslide](http://rmarkdown.rstudio.com/ioslides_presentation_format.html), un lien utile: [https://code.google.com/p/io-2012-slides/](https://code.google.com/p/io-2012-slides/)
-    - [Slidy](http://rmarkdown.rstudio.com/slidy_presentation_format.html), un lien utile [http://www.w3.org/Talks/Tools/Slidy2/#(1)](http://www.w3.org/Talks/Tools/Slidy2/#(1))
-
-
-
-# Quelques conseils et astuces
-
-
-WIP !! WIP !! WIP !!
 
 
 
