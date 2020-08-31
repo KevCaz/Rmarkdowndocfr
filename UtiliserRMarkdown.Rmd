@@ -1322,24 +1322,34 @@ de Zotero](https://www.zotero.org/styles).
 
 L'intérêt du package `rmarkdown` est d'étendre la syntaxe Pandoc Markdown avec
 les fonctionnalités du [package
-knitr](http://cran.r-project.org/web/packages/knitr/index.html) pour insérer du
-code R ainsi que les sorties associées (sorties console et figures). Nous
-obtenons ainsi un document dynamique en ce sens que si les données associées
-et/ou le code R changent, le document évolue aussi.
+knitr](http://cran.r-project.org/web/packages/knitr/index.html) pour insérer non
+seulement du code R mais aussi les sorties associées (sorties console et
+figures). Nous obtenons ainsi un document dynamique en ce sens que si les
+données associées et/ou le code R changent, le document évolue aussi. Cela
+permet, entre autres, de créer des rapports automatisés.
 
 
 ## Les blocs de code R
 
-Il y a deux types de morceaux de code. En premier lieu, ceux qui sont insérés directement dans le texte ("inline"). Pour cela, il faut inclure le texte sous la forme&nbsp;: `` `r "\u0060r expression\u0060"` ``. Je peux, par exemple, demander l'heure et la date à R en utilisant la function *Sys.time()*, `` `r "\u0060r Sys.time()\u0060"` ``&nbsp;: `r Sys.time()`.
+Il y a deux manières d'insérer des sorties R dans le document:
+1. directement dans le texte ("inline");
+2. en utilisant un bloc de code dédié.
 
-Ensuite, il y a le code que nous souhaitons séparer du reste du texte et dont on
-souhaite obtenir le résultat. Les morceaux de code (*code chunks*) sont alors
-écrits comme un bloc de code, mais dans l'accolade on peut identifier le bloc de
-code (`idbloc` ci-dessous) et varier différents paramètres de rendu (l'ensemble
-des paramètres sont disponible à l'URL suivante
-<https://yihui.org/knitr/hooks/>) &nbsp;:
+Pour inclure une sortie texte directement dans un paragraphe, on utilise &nbsp;:
+`` `r "\u0060r expression\u0060"` ``. Ainsi, par exemple, il est possible
+d'insérer l'heure et la date à R en utilisant la fonction *Sys.time()*,
+l'utilisation de `` `r "\u0060r Sys.time()\u0060"` ``&nbsp; nous donne `r
+Sys.time()`.
 
-    `r ''````{r, idbloc, param1 = val1, param2 = val2 ...}
+Le reste de cette section se concentre sur les bloc de code R (*code chunks*)
+qui s'utilisent comme les [blocs de code][Blocs de code] détaillés précédemment,
+mais,  à la différence de ces-derniers, il est possible d'identifier le bloc de
+code (`idbloc` ci-dessous) et varier différents paramètres d'affichage du code
+source et  des sorties (l'ensemble des paramètres sont disponible à l'URL
+suivante <https://yihui.org/knitr/options/>). Typiquement, l'utilisation d'un tel
+bloc de code ressemble à ceci&nbsp;:
+
+    `r ''````{r, idbloc, param1 = val1, param2 = val2}
     ligne de code 1
     ligne de code 2
     ...
@@ -1349,7 +1359,7 @@ des paramètres sont disponible à l'URL suivante
 Notons que la casse n'est pas important pour le R de l'accolade et qu'il n'est
 pas obligatoire d'identifier les blocs de code, il est donc possible d'utiliser
 
-    `r ''````{R param1 = val1, param2 = val2 ...}
+    `r ''````{R param1 = val1, param2 = val2}
     ligne de code 1
     ligne de code 2
     ...
@@ -1371,8 +1381,9 @@ commentaire et une addition :
     ```
 
 Notez que "addition" qui suit "r" dans l'accolade est l'identifiant du morceau
-de code (la virgule entre les deux éléments est facultative), qui permet
-notamment de facilement identifier les lignes précédentes me donnent&nbsp;:
+de code (la virgule entre les deux premiers éléments est facultative), qui
+permet notamment de facilement identifier les lignes précédentes me
+donnent&nbsp;:
 
 ```{r, addition}
 # une addition avec R.
@@ -1385,28 +1396,29 @@ l'addition. Je présente dans la suite un certain nombre d'options qui donnent
 une large flexibilité dans la création des morceaux de code. Pour avoir accès à
 plus de précisions, reportez-vous au [guide de
 référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
-ou au [site de knitr](http://yihui.name/knitr/options/). L'apparence des
-morceaux de code peut être facilement modifiée dans le YAML, avec le paramètre
-"highlight" (voir [plus haut][Le fichier YAML]) qui peut être spécifié pour les
-différents formats.
+ou au [site de knitr](http://yihui.name/knitr/options/).
 
 
 
-## Changer l'apparence du bloc de code et des sorties associées
+## Modifier l'affichage du code source et des sorties associées
 
 Grâce à différents paramètres, il est possible de sélectionner finement ce qui
-est affiché, aussi bien pour le code que pour les sorties associées. Cela donne
-une très grande flexibilité assis bien des raisons pédagogiques que pour ajouter
-des sorties R (figures, tables) sans avoir le code qui va avec.
+est affiché, aussi bien pour le code que pour les sorties associées. Cela permet
+à l'utilisateur de mettre en avant certaines parties du code, mais aussi de
+choisir finement les sorties R (figures, tables, etc) à ajouter dans le
+document.
 
-WIP!! WIP!! WIP!!
+Dans cette section, j'ai choisi de détailler quelques paramètres clefs, mais il
+y en a d'autres (voir <https://yihui.org/knitr/hooks/>) qui permettent d'aller
+plus loin. Il est cependant important de noter que tout n'est pas nécessairement
+faisable avec ces paramètres. Ainsi, il est possible de sélectionner différentes
+coloration syntaxiques avec le paramètre "highlight" dans [l'en-tête
+YAML][Spécifier les documents à obtenir avec YAML]). Aussi, pour changer la
+police de font des blocs de code dans un document HTML, il faudra modifier
+certaines propriétés CSS du document.
 
-Notez que pour les couleurs ou encore les polices de fontes, dealer avce les différents formats. Je me
-concentre sur le plus important. Dépendant du siupports différentes action mais plupart du temps possibles. 
 
-
-### Modifier ce qui est affiché
-
+### Modifier l'affichage du code source avec le paramètre `echo`
 
 Prenons le bloc de code suivant (volontairement non identifié).
 
@@ -1448,7 +1460,8 @@ a + b
 
 Le paramètre `echo` peut aussi être utilisé pour choisir les lignes à montrer.
 Pour cela, on utilise un vecteur indiquant les positions des lignes à montrer.
-Par exemple, pour montrer unique les lignes 1 et 4 on utilise `echo` de la sorte
+Par exemple, pour montrer uniquement les lignes 1 et 4 on utilise `echo` de la
+sorte
 
     `r ''```{r code14, echo = c(1, 4)}
     # une addition de variables avec R
@@ -1488,82 +1501,42 @@ a + b
 
 
 
-
 ### Modifier l'affichage des sorties
-
-
-### Le paramètre "results"
-
-<!-- ajouter markup -->
-
-Il est aussi possible de changer l'apparence des sorties console grâce au paramètre "results" dans l'accolade.
-
-- result='asis' pour que les résultats soient affichées avec la police du document texte principal&nbsp;:
-
-		`r ''```{r addition2, results='asis'}
-		# une addition avec R.
-		2+3
-		```
-
-```{r addition2, results='asis'}
-# une addition avec R.
-2+3
-```
-
-- result='hide'&nbsp;:
-
-		`r ''```{r addition3, results='hide'}
-		# une addition avec R.
-		2+3
-		```
-
-```{r addition3, results='hide'}
-# Commentaire : une addition avec R.
-2+3
-```
-
-- Il existe aussi les options "results='hide'" et "results='hold'". La première n'affiche pas les sorties console de R (sauf les messages spéciaux comme les messages d'erreur). La seconde permet d'afficher l'ensemble des sorties après le morceau de code. Par exemple, sans cette option, en utilisant le code suivant'&nbsp;:
-
-    `r ''```{r}
-    a <- 2
-    print(a)
-    b <- 3
-    print(b)
-    2+3
-    ```
-j'obtiens&nbsp;:
-
-```{r}
-a <- 2
-print(a)
-b <- 3
-print(b)
-2+3
-```
-
-alors qu'en ajoutant "results='hold'"&nbsp;:
-
-```{r, results='hold'}
-a <- 2
-print(a)
-b <- b
-print(b)
-2+3
-```
-
 
 #### Le paramètre `comment`
 
-Les symboles devant les sorties console de R peuvent être modifiés en utilisant le paramètre `comment`:
+Les symboles devant les sorties console de R peuvent être modifiées en utilisant
+le paramètre `comment`. Avec le bloc `comment1`
 
-    `r ''```{r comment, comment="$>>"}
+    `r ''```{r comment1, comment = "$ "}
     # une addition de variables avec R
     a <- 2
     b <- 3
     a + b
     ```
 
-```{r comment, comment="$>>"}
+on obtient
+
+```{r comment1, comment = "$ "}
+# une addition de variables avec R
+a <- 2
+b <- 3
+a + b
+```
+
+De me, `comment2` &nbsp;:
+
+    `r ''```{r comment2, comment="R>>"}
+    # une addition de variables avec R
+    a <- 2
+    b <- 3
+    a + b
+    ```
+
+il nous donne:
+
+
+```{r comment2, comment="R>>"}
 # une addition de variables avec R
 a <- 2
 b <- 3
@@ -1571,13 +1544,170 @@ a + b
 ```
 
 
+#### Le paramètre `results`
 
-Il est important de souligner que je n'essais pas d'être exhaustif. Pour plus de
-précisions, il y a le [guide de
-référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
-ou le [site de knitr](http://yihui.name/knitr/options/). Vous y apprendrez,
-entre autres, qu'il est possible de créer des dépendances entre morceaux de
-code, ce que je n'aborde pas dans le document.
+<!-- ajouter markup -->
+Le paramètre `results` permet de choisir comment les sorties d'un bloc de code R
+vont être traitées. Par défaut, c'est le mode "markup" qui est utilisé:
+
+    `r ''```{r markup, results = 'markup'}
+    # une division avec R
+    cat("Exemple de division avec R: 1/998.001 = ", 1/998.001)
+    ```
+
+```{r markup, results = 'markup'}
+# une division avec R
+cat("Exemple de division avec R: 1/998.001 = ", 1/998.001)
+```
+
+- Avec `result='asis'`, les résultats sont affichées comme un paragraphe du
+document texte principal&nbsp;:
+
+		`r ''```{r asis, results = 'asis'}
+        # une division avec R
+        cat("Exemple de division avec R: 1/998.001 = ", 1/998.001)
+		```
+
+```{r asis, results = 'asis'}
+# une division avec R
+cat("Exemple de division avec R: 1/998.001 = ", 1/998.001)
+```
+
+- Avec `result='hide'`, les sorties console ne sont pas ajoutées&nbsp;:
+
+		`r ''```{r hide, results='hide'}
+        # une division avec R
+        cat("Exemple de division avec R: 1/998.001 = ", 1/998.001)
+		```
+
+```{r hide, results='hide'}
+# une division avec R
+cat("Exemple de division avec R: 1/998.001 = ", 1/998.001)
+```
+
+- `results='hold'` permet d'afficher *toutes* les sorties après le morceau de
+  code. Sans cette option, les sorties sont ajoutées au fur et à mesure de
+  l’exécution du code et donc le bloc est interrompu. Par exemple, avec le code
+  suivant'&nbsp;:
+
+    `r ''```{r}
+    a <- 2
+    print(a)
+    b <- 3
+    print(b)
+    2 + 3
+    ```
+on obtient&nbsp;:
+
+```{r}
+a <- 2
+print(a)
+b <- 3
+print(b)
+2 + 3
+```
+
+alors qu'avec `results='hold'`,
+
+    `r ''```{r hold, results = 'hold'}
+    a <- 2
+    print(a)
+    b <- 3
+    print(b)
+    2 + 3
+    ```
+
+on a&nbsp;:
+
+```{r hold, results = 'hold'}
+a <- 2
+print(a)
+b <- b
+print(b)
+2 + 3
+```
+
+
+### Choisir les messages retournés
+
+Il y a trois type de messages retournés par R:
+
+1. les messages : une simple indication (voir la fonction `message()`);
+2. les avertissements qui soulignent que quelque chose est peut-être problématiques, mais le code est exécutable (voir la fonction `warning()`);
+3. les erreurs qui indiquent que quelques chose ne marche pas dans l’exécution du code.
+
+Considérons le bloc suivant qui inclut un message, un avertissement, une erreur
+(en commentaire) et une addition.
+
+    `r ''```{r}
+    message("Ceci est un message")
+    warning("Ceci est un avertissement")
+    # stop("PCeci est un problème")
+    2 + 3
+    ```
+
+```{r}
+message("Ceci est un message")
+warning("Ceci est un avertissement")
+# stop("PCeci est un problème")
+2 + 3
+```
+
+il est possible de supprimer le message en utilisant `message = FALSE`.
+
+
+    `r ''```{r sansmessage, message = FALSE}
+    message("Ceci est un message")
+    warning("Ceci est un avertissement")
+    # stop("Ceci est un problème")
+    2 + 3
+    ```
+
+```{r sansmessage, message = FALSE}
+message("Ceci est un message")
+warning("Ceci est un avertissement")
+# stop("Ceci est un problème")
+2 + 3
+```
+
+De la même manière il est possible de supprimer l'avertissement avec `warning = FALSE`.
+
+    `r ''```{r sansavertissment, warning = FALSE}
+    message("Ceci est un message")
+    warning("Ceci est un avertissement")
+    # stop("Ceci est un problème")
+    2 + 3
+    ```
+
+```{r sansavertissment, warning = FALSE}
+message("Ceci est un message")
+warning("Ceci est un avertissement")
+# stop("Ceci est un problème")
+2 + 3
+```
+
+
+Enfin, par défaut, si une erreur advient dans votre code, le document ne sera
+pas généré (c'est d'ailleurs la raison pour la ligne `stop("Ceci est un
+problème")` est commentée précédemment). Il est cependant parfois souhaitable de
+montrer une erreur (à des fins pédagogiques, par exemple). Pour ce faire, il
+faut utiliser `error = TRUE`:
+
+
+    `r ''```{r erreur, error = TRUE}
+    message("Ceci est un message")
+    warning("Ceci est un avertissement")
+    stop("Ceci est un problème")
+    2 + 3
+    ```
+
+
+```{r erreur, error = TRUE}
+message("Ceci est un message")
+warning("Ceci est un avertissement")
+stop("Ceci est un problème")
+2 + 3
+```
 
 
 
@@ -1585,15 +1715,17 @@ code, ce que je n'aborde pas dans le document.
 
 ### Modifier le mode d’exécution du code
 
-Par défaut code et sorties. On
+Par défaut, avec `rmarkdown`, dans un bloc de code R, le code est exécuté par R
+et les sorties sont ajoutées dans le document. Dans les parties précédentes
 
 
-#### Enlever toute sorties
+
+#### Enlever toutes sorties
 
 Nous pouvons être amené à présenter du code qu'il ne faut pas exécuter, il
 existe pour cela le paramètre "eval". Ainsi, avec
 
-    `r ''```{r, eval=FALSE}
+    `r ''```{r, eval = FALSE}
     install.packages(`rmarkdown`)
     ```
 l'installation du package `rmarkdown` n'est pas exécutée mais bien affichée&nbsp;:
@@ -1607,8 +1739,6 @@ install.packages(`rmarkdown`)
 ### Exécuter le code silencieusement
 
  <!-- include = FALSE -->
-
-
 
 
 
@@ -1720,8 +1850,26 @@ plot(mod1)
 
 
 
-## Changer les réglages par défaut
 
+
+
+
+
+# Fonctionnalités avancées
+
+!!WIP!! !!WIP!! !!WIP!! !!WIP!! !!WIP!!
+
+!!WIP!! ---- À venir ---- !!WIP!!
+
+!!WIP!! !!WIP!! !!WIP!! !!WIP!! !!WIP!!
+
+
+Dans cette section, je fais une mention rapide de quelques fonctionnalités que
+je qualifie d'avancées, au sens ou leur utilisation est peut-être moisn répandue
+et leurs intérêt mois évident pour l'utilisateur débutant.
+
+
+## Changer les réglages par défaut
 
 <!-- knitr::opts_chunk$set(
   comment = "#R>",
@@ -1733,6 +1881,16 @@ plot(mod1)
   fig.align = 'center',
   width = 100
 ) -->
+
+## Utiliser le cache
+
+## Extraire le code R
+
+## Utiliser du code depuis un script externe
+
+## Utiliser les hooks
+
+
 
 
 <!-- il existe aussi des options avancées  -->
