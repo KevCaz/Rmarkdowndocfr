@@ -1686,9 +1686,25 @@ warning("Ceci est un avertissement")
 2 + 3
 ```
 
+Notez que si vous utilisez `results = 'hide'` les avertissements seront tout de
+même ajoutés et cette remarque est valable pour les messages.
+
+    `r ''```{r sansavertissment2, warning = FALSE, results = 'hide'}
+    message("Ceci est un message")
+    warning("Ceci est un avertissement")
+    # stop("Ceci est un problème")
+    2 + 3
+    ```
+
+```{r sansavertissment2, warning = FALSE, results = 'hide'}
+message("Ceci est un message")
+warning("Ceci est un avertissement")
+# stop("Ceci est un problème")
+2 + 3
+```
 
 Enfin, par défaut, si une erreur advient dans votre code, le document ne sera
-pas généré (c'est d'ailleurs la raison pour la ligne `stop("Ceci est un
+pas généré (c'est d'ailleurs la raison pour laquelle la ligne `stop("Ceci est un
 problème")` est commentée précédemment). Il est cependant parfois souhaitable de
 montrer une erreur (à des fins pédagogiques, par exemple). Pour ce faire, il
 faut utiliser `error = TRUE`:
@@ -1713,32 +1729,92 @@ stop("Ceci est un problème")
 
 
 
-### Modifier le mode d’exécution du code
+### Modifier le mode d’evaluation du code
 
 Par défaut, avec `rmarkdown`, dans un bloc de code R, le code est exécuté par R
-et les sorties sont ajoutées dans le document. Dans les parties précédentes
-
+et les sorties sont ajoutées dans le document. Ci-dessus, nous avons vu comment
+modifier ce qui est présenté dans le code source et changer certain aspect de la
+sortie. Il est également possible de modifier l’exécution du code.
 
 
 #### Enlever toutes sorties
 
-Nous pouvons être amené à présenter du code qu'il ne faut pas exécuter, il
-existe pour cela le paramètre "eval". Ainsi, avec
+Dans certains cas, il peut s'avérer utile de montrer le code source sans
+l’exécuter. Pour empêcher l'évaluation du code, on utilise `eval = FALSE`.
+Ainsi, avec
 
-    `r ''```{r, eval = FALSE}
+    `r ''```{r eval, eval = FALSE}
     install.packages(`rmarkdown`)
     ```
 l'installation du package `rmarkdown` n'est pas exécutée mais bien affichée&nbsp;:
 
-```{r, eval=FALSE}
+```{r eval, eval = FALSE}
 install.packages(`rmarkdown`)
 ```
 
+On peut aussi utiliser un [blocs de code][Blocs de code] sans accolade
+
+    `r ''```r
+    install.packages(`rmarkdown`)
+    ```
+
+```r
+install.packages(`rmarkdown`)
+```
+
+Une des raisons de préférer `eval = FALSE` à un bloc sans accolade est la
+possibilité de suspendre l'évaluation d'un bloc de code tout en conservant les
+autres paramètres dans l'accolade, ce qui est très pratique lorsqu'on développe
+du contenu avec R Markdown.
 
 
-### Exécuter le code silencieusement
 
- <!-- include = FALSE -->
+#### Exécuter le code silencieusement
+
+Un autre cas relativement commun avec utilise R Markdown est de vouloir exécuter
+de manière silencieuse. En d'autres termes, on ne veut ni présenter le code ni
+aucune sortie, mais le code doit avoir été exécuté. Dans un rapport dynamique,
+par exemple, on est souvent amener à exécuter un script ou charger des fonctions
+qui serviront plus bas à créer des sorties qui seront intégrer dans le rapport.
+Avec ce qui a été vu précédemment, on sait qu'en utilisant les options `echo =
+FALSE`, `results = hide`, `message = FALSE` et `warning = FALSE` ensemble dans
+l'accolade, on est capable de d'arriver à ce résultat. Il existe cependant une
+manière plus rapide d'arriver à ce résultat en utilisant `include = FALSE` qui
+exécute le code silencieusement. Ci-dessous je créé une fonction qui fait une
+addition simple et j'assigne le résultat à la variable `res`
+
+
+    `r ''```{r include, include = FALSE}
+    mon_addition <- function(a, b) {
+        return(a + b)
+    }
+    res <- mon_addition(2, 3)
+    ```
+
+Ci-dessous j'utilise ce bloc de code ...
+
+```{r include, include = FALSE}
+mon_addition <- function(a, b) {
+    return(a + b)
+}
+res <- mon_addition(2, 3)
+```
+
+... et, comme attendu, ni code ni sortie ne sont retournés, mais pourtant le
+code a bien été exécuté, et donc si je demande l'affichage de `res`
+
+
+```{r res}
+print(res)
+```
+
+j'obtiens bien 5 et je peux également utiliser ma fonction `mon_addition()`&nbsp;:
+
+```{r mon_addition}
+mon_addition(12, 30)
+```
+
+
 
 
 
@@ -1746,11 +1822,13 @@ install.packages(`rmarkdown`)
 
 <!-- mettre des cartes -->
 
-Les remarques précédentes sont valides pour tous type de code  mais souvent on est intéressé par tables et figures.
+Les remarques précédentes sont valides pour tous type de code, mais on très est
+souvent intéressé par ajouter les tables et figures produites avec R et il y a
+un certain nombre de paramètres qui peuvent être utilisés.
 
-## Les tableaux depuis R
+### Les tables depuis R
 
-QAvec le package `knitr`, il est possible d'intégrer dans le texte une table
+Avec le package `knitr`, il est possible d'intégrer dans le texte une table
 créée sous R. Pour cela, il suffit de construire un objet R, le plus cohérent
 est de créer un `data.frame` avec R (éventuellement à partir d'un fichier
 importé), par exemple&nbsp;:
@@ -1777,7 +1855,7 @@ Pour en savoir plus, reportez-vous à la documentation de cette fonction. Le pac
 
 
 
-## Les figures produites avec R
+### Les figures produites avec R
 
 <!-- cartes -->
 
@@ -1830,7 +1908,7 @@ for (i in 1:6) kcircle(1,c(cos(i*pi/3),sin(i*pi/3)), col="#0000AA88")
 
 
 
-## Une application, modèle linéaire dynamique
+### Une application, modèle linéaire dynamique
 
 <!-- mettre une application carto à la place -->
 
@@ -1846,6 +1924,9 @@ summary(mod1)
 par(bty = "l", mfrow = c(2, 2))
 plot(mod1)
 ```
+
+
+
 
 
 
