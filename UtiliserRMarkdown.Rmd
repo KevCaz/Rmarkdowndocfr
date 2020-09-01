@@ -1575,12 +1575,12 @@ cat("Exemple de division avec R: 1/998.001 = ", 1/998.001)
 
 - Avec `result='hide'`, les sorties console ne sont pas ajoutées&nbsp;:
 
-		`r ''```{r hide, results='hide'}
+		`r ''```{r hide, results = 'hide'}
         # une division avec R
         cat("Exemple de division avec R: 1/998.001 = ", 1/998.001)
 		```
 
-```{r hide, results='hide'}
+```{r hide, results = 'hide'}
 # une division avec R
 cat("Exemple de division avec R: 1/998.001 = ", 1/998.001)
 ```
@@ -1729,6 +1729,9 @@ stop("Ceci est un problème")
 
 
 
+
+
+
 ### Modifier le mode d’evaluation du code
 
 Par défaut, avec `rmarkdown`, dans un bloc de code R, le code est exécuté par R
@@ -1818,7 +1821,7 @@ mon_addition(12, 30)
 
 
 
-## Tables, figures et widget
+## Tables et figures
 
 <!-- mettre des cartes -->
 
@@ -1849,6 +1852,12 @@ utilisant "markdown" par défaut on aura une table qui sera convertie dans le
 format désiré par Pandoc. De plus, la fonction *kable()* inclut le paramètre
 `caption` pour ajouter une légende.
 
+
+    `r ''```{r table1}
+    library(knitr)
+    kable(tab1, caption = "Table créée à partir de *df1*")
+    ```
+
 ```{r table1}
 library(knitr)
 kable(tab1, caption = "Table créée à partir de *df1*")
@@ -1858,6 +1867,10 @@ Il y a bien d'autre paramètres dans la fonction *kable()*, par exemple, il est
 possible de choisir le nombre de chiffres utilisés utiliser après la virgule ou
 encore d'inclure les numéros de lignes.
 
+
+    `r ''```{r table2}
+    kable(tab1, caption = "Table créée à partir de *df1*", digits = 3, row.names = TRUE)
+    ```
 
 ```{r table2}
 kable(tab1, caption = "Table créée à partir de *df1*", digits = 3, row.names = TRUE)
@@ -1871,121 +1884,193 @@ je vous recommande chaudement d'y jeter un coup d’œil.
 
 
 
-### Les figures produites avec R
+### Figures
 
-<!-- cartes -->
 
 Avec le package `rmarkdown`, il est très facile d'insérer les figures produites
-avec R dans un document, le plus simple est de regarder ce que nous génère
-l'appel à un plot simple.
+avec R dans un document, le plus simple est de regarder ce que génère un simple
+plot généré avec la fonction `plot()`. Je reprends le data frame créer plus haut
+pour cela.
 
-```{r}
+```{r figure}
 plot(tab1$var1, tab1$var2)
 ```
 
-J'obtiens la figure demandée qui est d'assez grande dimension et numérotée "Figure 3". Pour formater une figure obtenue avec R, il existe des options pour contrôler, entre autres, sa taille, son alignement et sa légende (taille et alignement ne sont pas supportés pour la sortie  Word). Pour visualiser l'ensemble des options disponibles, je vous invite à regarder la page 3 du [guide de référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf). Je vais changer la taille des figures, l'alignement et ajouter une légende
+J'obtiens la figure demandée, avec des dimensions par défaut qui prennent une
+bonne de la largeur du document, mais pas son entièreté. Pour formater une
+figure obtenue avec R, il existe des options pour contrôler, entre autres, sa
+taille, son alignement et sa légende (taille et alignement ne sont pas supportés
+pour la sortie  Word). Pour visualiser l'ensemble des options disponibles, je
+vous invite à regarder la page 3 du [guide de
+référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf).
+Dans le bloc de code ci-dessous, la taille de la figure et son alignement sont
+ajustés et une légende est ajoutées.
 
-    `r ''```{r, fig.cap="une figure avec une légende",
-    fig.height=4, fig.width=4,    fig.align='left'}
+    `r ''```{r figdim1, fig.cap = "Ceci est la légende de la figure",
+        fig.height = 4, fig.width = 4, fig.align = 'right'}
     plot(tab1$var1,tab1$var2)
     ```
 
-```{r, fig.cap = "une figure avec une légende", fig.height = 4, fig.width = 4, fig.align='left'}
+```{r figdim1, fig.cap = "une figure de avec une légende", fig.height = 4, fig.width = 4, fig.align = 'right'}
 plot(tab1$var1, tab1$var2)
 ```
 
-On peut alors profiter des facilités graphiques de R pour créer des figures
-élégantes. Je peux, par exemple, personnaliser la figure précédente avec
-quelques lignes supplémentaires.
+Les dimensions d'une figure sont toujours exprimées en
+[pouces](https://fr.wikipedia.org/wiki/Pouce_(unit%C3%A9)), si vous n'êtes pas
+habitué à manipuler les pouces, il faudra faire des conversations à la main (ou
+avec R) en gardant en tête que 1&nbsp;pouce vaut 2.54&nbsp;cm. Il est également
+possible de choisir une des deux dimensions est de changer le rapport de forme.
+Ainsi je peux dire que je veux une figure de 9&nbsp;pouces avec un rapport de forme de 1.5,
+ce qui revient a demandé une hauteur de 6&nbsp;pouces.
 
-```{r, fig.cap="Figure associé à la table 1 [...]. Le gris pour l'expérience 1, bleu pour la seconde et violet pour la troisième.\\label{figcol}", dpi=300, fig.heigh=4, fig.width=5}
-par(bty="l", font=2)
-plot(tab1$var1, tab1$var2, pch=15:19, col=rep(c(8,4,6),each=5), xlab="Mon axe des abscisses",
-    ylab="Mon axe des ordonnées")
-  legend("bottomright", letters[1:5], pch=15:19, bty="n")
-```
 
-J'ai ajouté à la fin de la légende "\\label{figcol}", je peux donc l'appeler en
-utilisant "\\ref{figcol}" mai ce n'est valable que pour la sortie PDF. De mon
-point de vue, on peut considérée qu'on a une extension graphique en ligne de
-commande un peu moins verbeuse que
-[PGF/TikZ](http://sourceforge.net/projects/pgf/).
+    `r ''```{r figdim2, fig.cap= "Figure 9x6", fig.width = 9, fig.aspect = 1.5}
+    plot(tab1$var1,tab1$var2)
+    ```
 
-```{r, fig.cap="Ma rosace", fig.height=6, fig.width=6}
-kcircle <- function(rad=1,centre=c(0,0),from=0,to=2*pi,dt=0.001,...){
-    pt <- seq(from, to, dt)
-    polygon(centre[1]+rad*cos(pt),centre[2]+rad*sin(pt),...)
-}
-plot(c(-1.5,1.5), c(-1.5,1.5), asp=1, type="n", ann=FALSE,
-    axes=FALSE, xaxs="i", yaxs="i")
-kcircle(col="#AA000088")
-for (i in 1:6) kcircle(1,c(cos(i*pi/3),sin(i*pi/3)), col="#0000AA88")
+```{r figdim2, fig.cap= "Figure 9x6", fig.width = 9, fig.aspect = 1.5}
+plot(tab1$var1,tab1$var2)
 ```
 
 
-
-### Une application, modèle linéaire dynamique
-
-<!-- mettre une application carto à la place -->
+Il est aussi possible de contrôler la largeur de la sortie en utilisant des
+pourcentage, pour cela on utilise `out.width`
 
 
-Je souhaite faire un modèle linéaire avec la variable explicative *var1* et la
-variable à expliquer *var2* de notre *tab1*. Nous créons alors un petit
-document sachant que les données évolueront. Je vais faire une inclusion donc
-utiliser du code R dans mon document.
+    `r ''```{r figdim3, out.width = "100%"}
+    plot(tab1$var1, tab1$var2)
+    ```
 
-```{r, fig.height = 6, fig.cap = "Mon modèle linéaire"}
+
+```{r figdim3, out.width = "100%"}
+plot(tab1$var1, tab1$var2)
+```
+
+
+Il est aussi possible de changer le format de sortie des figures peut être
+choisi avec le paramètre `dev` (la liste complète des formats est disponible à
+<https://yihui.org/knitr/options/>). Dans le bloc qui suit j'utilise le [format
+SVG](https://www.synbioz.com/blog/tech/le-svg-pour-quoi-faire)
+
+    `r ''```{r figdim4, out.width = "100%", dev = "svg"}
+    plot(tab1$var1, tab1$var2)
+    ```
+
+```{r figdim4, out.width = "100%", dev = "svg"}
+plot(tab1$var1, tab1$var2)
+```
+
+Pour les formats dits matriciels, il est possible de spécifier la résolution de l'image avec `fig.dpi`
+
+
+    `r ''```{r figdim5, out.width = "100%", dev = "png", fig.cap= "Faible résolution", dpi = 36}
+    plot(tab1$var1, tab1$var2)
+    ```
+
+```{r figdim5, out.width = "100%", dev = "png", fig.cap= "Faible résolution", dpi = 36}
+plot(tab1$var1, tab1$var2)
+```
+
+    `r ''```{r figdim6, out.width = "100%", dev = "png", fig.cap= "Forte résolution", dpi = 300}
+    plot(tab1$var1, tab1$var2)
+    ```
+
+```{r figdim6, out.width = "100%", dev = "png", fig.cap= "Forte résolution", dpi = 300}
+plot(tab1$var1, tab1$var2)
+```
+
+
+Encore une fois, il y a [d'autres options listées sur le site de
+`knitr`](https://yihui.org/knitr/options/), il est possible, entre autres,
+d'ajouter un hyperlien sur la figure. L'ensemble de ces paramètres nous
+permettent de facilement bénéficier de la large gamme de fonctions graphiques de
+R. Ainsi, avec R Markdown, il est possible, par exemple, de personnaliser la
+figure précédente avec quelques ligne de supplémentaires, d'en choisir le
+taille, le format, la position, la légende, d'ajouter un hyperlien et de masquer
+le code qui la génère. Voici le bloc qui me permet de modifier toutes ces
+options:
+
+    `r ''```{r figfinale, dev = "png", dpi = 300, fig.height = 5, fig.width = 8, echo = FALSE, fig.link = "https://github.com/KevCaz/Rmarkdowndocfr", fig.cap = "Figure associé à la table 1. Le gris pour l'expérience 1, bleu pour la seconde et violet pour la troisième."}
+    par(bty="l", font = 2, las = 1)
+    plot(tab1$var1, tab1$var2, pch = 15:19, col = rep(c(8, 4, 6), each = 5),
+        xlab = "Mon axe des abscisses", ylab = "Mon axe des ordonnées")
+    legend("bottomright", letters[1:5], pch = 15:19, bty = "n")
+    ```
+
+Qui donne:
+
+```{r figfinale, dev = "png", dpi = 300, fig.height = 5, fig.width = 8, echo = FALSE, fig.link = "https://github.com/KevCaz/Rmarkdowndocfr", fig.cap = "Figure associé à la table 1. Le gris pour l'expérience 1, bleu pour la seconde et violet pour la troisième."}
+par(bty="l", font = 2, las = 1)
+plot(tab1$var1, tab1$var2, pch = 15:19, col = rep(c(8, 4, 6), each = 5),
+    xlab = "Mon axe des abscisses", ylab = "Mon axe des ordonnées")
+legend("bottomright", letters[1:5], pch = 15:19, bty = "n")
+```
+
+
+
+### Graphiques non générées par R
+
+Dans la section traitant des [images](Les_images) avec Pandoc Markdown nous
+avons vu comment insérer une image dans un document. Il est aussi possible de
+faire une telle inclusion grâce à la fonction `include_graphics()` de `knitr`.
+L'avantage de cette manière de procéder est qu'elle permet de traiter le fichier
+extérieur comme un graphique produit par R. Par exemple pour ajouter le logo de
+R utiliser plus haut (`./images/Rlogo.png`), il est possible d'utiliser:
+
+
+    `r ''```{r iclgraph, fig.align = 'center', out.width = "40%", echo = FALSE}
+    include_graphics("./images/Rlogo.png")
+    ```
+
+
+```{r iclgraph, fig.align = 'center', out.width = "40%", echo = FALSE}
+include_graphics("./images/Rlogo.png")
+```
+
+
+
+
+## Application, modèle linéaire dynamique
+
+Supposons que je souhaite faire un modèle linéaire avec la variable explicative
+*var1* et la variable à expliquer *var2* de notre *tab1*. Pour ce faire je vais
+utiliser `lm()` et afficher les coefficients ainsi que les figures associés.
+J'utilise alors le bloc de code suivant :
+
+    `r ''```{r application, echo = FALSE, fig.cap = "Mon modèle linéaire", fig.width = 8,
+        fig.height = 8, fig.align = 'center'}
+    mod1 <- lm(var2 ~ var1, data = tab1)
+    kable(summary(mod1)$coefficients)
+    par(bty = "l", mfrow = c(2, 2))
+    plot(mod1)
+    ```
+
+avec le commentaire suivant: "La pente de la regression est de `` `r "\u0060r format(summary(mod1)$coefficients[2, 1], digits = 3)\u0060"` `` (et je mettrai le résultat en gras).
+
+
+Le résultat est le suivant :
+
+
+```{r application, echo = FALSE, fig.cap = "Mon modèle linéaire", fig.width = 8, fig.height = 8, fig.align = 'center'}
 mod1 <- lm(var2 ~ var1, data = tab1)
-summary(mod1)
+kable(summary(mod1)$coefficients)
 par(bty = "l", mfrow = c(2, 2))
 plot(mod1)
 ```
 
+La pente de la regression est de **`r format(summary(mod1)$coefficients[2, 1], digits = 3)`**.
+
+
+Si je change les données de tab1, la table, les graphiques et mon commentaires
+seront changées de manière adéquates ce qui peut s'avérer très utile quand on a
+des rapports similaires à produire d'un mois à l'autre (ou d'une année sur
+l'autre).
 
 
 
 
 
 
-
-
-
-
-
-# Fonctionnalités avancées
-
-!!WIP!! !!WIP!! !!WIP!! !!WIP!! !!WIP!!
-
-!!WIP!! ---- À venir ---- !!WIP!!
-
-!!WIP!! !!WIP!! !!WIP!! !!WIP!! !!WIP!!
-
-
-Dans cette section, je fais une mention rapide de quelques fonctionnalités que
-je qualifie d'avancées, au sens ou leur utilisation est peut-être moisn répandue
-et leurs intérêt mois évident pour l'utilisateur débutant.
-
-
-## Changer les réglages par défaut
-
-<!-- knitr::opts_chunk$set(
-  comment = "#R>",
-  collapse = TRUE,
-  warning = FALSE,
-  message = FALSE,
-  #fig.width = 7.5,
-  #fig.height = 6,
-  fig.align = 'center',
-  width = 100
-) -->
-
-## Utiliser le cache
-
-## Extraire le code R
-
-## Utiliser du code depuis un script externe
-
-## Utiliser les hooks
 
 
 
