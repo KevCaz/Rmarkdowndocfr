@@ -1822,36 +1822,52 @@ mon_addition(12, 30)
 
 <!-- mettre des cartes -->
 
-Les remarques précédentes sont valides pour tous type de code, mais on très est
-souvent intéressé par ajouter les tables et figures produites avec R et il y a
-un certain nombre de paramètres qui peuvent être utilisés.
+Les remarques de la section précédente sont valides pour tout type de sortie.
+Les tables et les figures créées avec R sont des sorties très souvent utilisées
+qu'il est bon de savoir personnaliser davantage.
 
-### Les tables depuis R
+
+### Tables
 
 Avec le package `knitr`, il est possible d'intégrer dans le texte une table
-créée sous R. Pour cela, il suffit de construire un objet R, le plus cohérent
-est de créer un `data.frame` avec R (éventuellement à partir d'un fichier
-importé), par exemple&nbsp;:
+créée sous R. Commençons par créer un objet `data.frame` :
 
 
 ```{r dataframe1}
-var1 <- 20*runif(15)
-table1 <- data.frame(
-    experience = paste0("exp",rep(1:3, each = 5)),
-    replicat = rep(letters[1:5], 3),
+var1 <- 20 * runif(12)
+tab1 <- data.frame(
+    experience = paste0("traitement_", rep(1:3, each = 4)),
+    replicat = rep(letters[1:4], 3),
     var1 = var1,
-    var2 = var1 + rnorm(15)
+    var2 = var1 + rnorm(12)
     )
 ```
 
-La fonction *kable()* du package "knitr" nous permet d'obtenir notre object
-*table1* en différents formats (dont "latex", "html", "markdown").
+La fonction *kable()* du package `knitr` nous permet d'obtenir notre object
+*tab1* en différents formats (dont "latex", "html", "markdown"). Ici, en
+utilisant "markdown" par défaut on aura une table qui sera convertie dans le
+format désiré par Pandoc. De plus, la fonction *kable()* inclut le paramètre
+`caption` pour ajouter une légende.
 
-```{r table1, results = ""}
-knitr::kable(table1, caption="Table créée à partir du data.frame *table1*")
+```{r table1}
+library(knitr)
+kable(tab1, caption = "Table créée à partir de *df1*")
 ```
 
-Pour en savoir plus, reportez-vous à la documentation de cette fonction. Le package [`kableExtra`](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html) vaut aussi le coupe d'oeil!
+Il y a bien d'autre paramètres dans la fonction *kable()*, par exemple, il est
+possible de choisir le nombre de chiffres utilisés utiliser après la virgule ou
+encore d'inclure les numéros de lignes.
+
+
+```{r table2}
+kable(tab1, caption = "Table créée à partir de *df1*", digits = 3, row.names = TRUE)
+```
+
+Pour en apprendre davantage, reportez-vous à la documentation de cette fonction.
+Le package
+[`kableExtra`](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html)
+offre de très nombreuses fonctionnalités pour créer des tableaux plus complexes,
+je vous recommande chaudement d'y jeter un coup d’œil.
 
 
 
@@ -1864,18 +1880,18 @@ avec R dans un document, le plus simple est de regarder ce que nous génère
 l'appel à un plot simple.
 
 ```{r}
-plot(table1$var1,table1$var2)
+plot(tab1$var1, tab1$var2)
 ```
 
 J'obtiens la figure demandée qui est d'assez grande dimension et numérotée "Figure 3". Pour formater une figure obtenue avec R, il existe des options pour contrôler, entre autres, sa taille, son alignement et sa légende (taille et alignement ne sont pas supportés pour la sortie  Word). Pour visualiser l'ensemble des options disponibles, je vous invite à regarder la page 3 du [guide de référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf). Je vais changer la taille des figures, l'alignement et ajouter une légende
 
     `r ''```{r, fig.cap="une figure avec une légende",
     fig.height=4, fig.width=4,    fig.align='left'}
-    plot(table1$var1,table1$var2)
+    plot(tab1$var1,tab1$var2)
     ```
 
-```{r, fig.cap="une figure avec une légende", fig.height=4, fig.width=4,    fig.align='left'}
-plot(table1$var1,table1$var2)
+```{r, fig.cap = "une figure avec une légende", fig.height = 4, fig.width = 4, fig.align='left'}
+plot(tab1$var1, tab1$var2)
 ```
 
 On peut alors profiter des facilités graphiques de R pour créer des figures
@@ -1884,7 +1900,7 @@ quelques lignes supplémentaires.
 
 ```{r, fig.cap="Figure associé à la table 1 [...]. Le gris pour l'expérience 1, bleu pour la seconde et violet pour la troisième.\\label{figcol}", dpi=300, fig.heigh=4, fig.width=5}
 par(bty="l", font=2)
-plot(table1$var1,table1$var2, pch=15:19, col=rep(c(8,4,6),each=5), xlab="Mon axe des abscisses",
+plot(tab1$var1, tab1$var2, pch=15:19, col=rep(c(8,4,6),each=5), xlab="Mon axe des abscisses",
     ylab="Mon axe des ordonnées")
   legend("bottomright", letters[1:5], pch=15:19, bty="n")
 ```
@@ -1914,12 +1930,12 @@ for (i in 1:6) kcircle(1,c(cos(i*pi/3),sin(i*pi/3)), col="#0000AA88")
 
 
 Je souhaite faire un modèle linéaire avec la variable explicative *var1* et la
-variable à expliquer *var2* de notre *table1*. Nous créons alors un petit
+variable à expliquer *var2* de notre *tab1*. Nous créons alors un petit
 document sachant que les données évolueront. Je vais faire une inclusion donc
 utiliser du code R dans mon document.
 
 ```{r, fig.height = 6, fig.cap = "Mon modèle linéaire"}
-mod1 <- lm(var2 ~ var1, data = table1)
+mod1 <- lm(var2 ~ var1, data = tab1)
 summary(mod1)
 par(bty = "l", mfrow = c(2, 2))
 plot(mod1)

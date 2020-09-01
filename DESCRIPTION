@@ -2,5 +2,6 @@ Package: placeholder
 Type: Book
 Title: Utiliser R Markdown fr
 Version: 0.0.1
+Date: 2020-09-01
 Imports:
   rmarkdown
