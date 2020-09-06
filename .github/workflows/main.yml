@@ -4,7 +4,10 @@ name: Render and deploy HTML document
   - pull_request
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+      strategy:
+        matrix:
+          os: [ubuntu-latest, macOS-latest, windows-latest]
     container: rocker/verse:latest
     steps:
       - name: Checkout Repository
@@ -20,6 +23,7 @@ jobs:
           mv UtiliserRMarkdown.docx public
           # cp *.pdf public/
       - name: Deploy HTML document to gh-pages
+        if: matrix.os == 'ubuntu-latest'
         uses: peaceiris/actions-gh-pages@v2
         env:
           ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
