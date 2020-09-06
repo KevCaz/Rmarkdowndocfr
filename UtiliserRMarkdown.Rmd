@@ -919,6 +919,53 @@ ces lignes sont rendues ainsi&nbsp;:
 (2) truc 4
 
 
+## Sauts de ligne
+
+En ajoutant une ligne (ou plus) vide entre deux paragraphes, les paragraphes sont correctement formatés[^sauthtml]. Ainsi, avec les lignes suivantes :
+
+
+```md
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+
+Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+```
+
+on obtient :
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+
+Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+Avec un simple retour à la ligne, aucun saut de ligne n'est inséré, les paragraphes sont mis bout à bout.
+
+
+```md
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+Il est cependant possible d'ajouter un retour à la ligne en utilisant un retour à la ligne et tabulation à la fin du premier paragraphe.
+
+
+```md
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.   
+Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.   
+Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+La seule différence entre l'exemple d'avant est l'ajout d'une tabulation après
+"veniam.".
+
+
+[^sauthtml]: Par exemple, avec HTML les deux paragraphes seront chacun des deux paragraphes seront des éléments paragraphes (balise `<p>`).
 
 ## Blocs de citation
 

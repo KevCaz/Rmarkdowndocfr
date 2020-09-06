@@ -5,9 +5,9 @@ name: Render and deploy HTML document
 jobs:
   build:
     runs-on: ${{ matrix.os }}
-      strategy:
-        matrix:
-          os: [ubuntu-latest, macOS-latest, windows-latest]
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
     container: rocker/verse:latest
     steps:
       - name: Checkout Repository
