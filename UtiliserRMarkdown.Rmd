@@ -13,13 +13,13 @@ output:
     html_document:
         toc: yes
         toc_float: yes
-        # css: ./aux/designR.css
+        # css: ./assets/designR.css
         highlight: default
         #“tango”, “pygments”, “kate”, “monochrome”, “espresso”, “zenburn”, “haddock”
         theme: flatly
         # ou “default”, “cerulean”, “journal”, “readable”, “spacelab”, “united”, “cosmo”
         include:
-            after_body: aux/footer.html
+            after_body: assets/footer.html
     pdf_document:
         highlight: tango
         toc: yes
@@ -29,17 +29,17 @@ output:
         latex_engine: pdflatex #xelatex
         number_section: yes
         includes:
-            before_body: aux/license.tex
-        # template: ./aux/kev_latex.tex
+            before_body: assets/license.tex
+        # template: ./assets/kev_latex.tex
     word_document:
         #toc: yes
         fig_caption: yes
         highlight: pygments
     md_document:
         variant: markdown_strict
-bibliography: aux/mybiblio.bib
-#csl: ./aux/nature.csl
-csl: aux/journal-of-theoretical-biology.csl
+bibliography: assets/mybiblio.bib
+#csl: ./assets/nature.csl
+csl: assets/journal-of-theoretical-biology.csl
 header-includes:
     - \usepackage{fancyhdr}
     - \pagestyle{fancy}
@@ -389,7 +389,7 @@ nomduchamp:
 Aussi, voici un
 exemple qui, bien que non-exhaustif, montre comment un fichier est structuré et
 comment l'important dans R (le fichier utilisé est disponible dans le répertoire
-GitHub <https://github.com/KevCaz/Rmarkdowndocfr/blob/master/aux/data_01.yaml>):
+GitHub <https://github.com/KevCaz/Rmarkdowndocfr/blob/master/assets/data_01.yaml>):
 
 
 ```yaml
@@ -416,7 +416,7 @@ Pour l'importer avec le package `yaml`, j'utilise les commandes suivantes:
 
 ```{R yaml}
 library(yaml)
-yaml.load_file("aux/data_01.yaml")
+yaml.load_file("assets/data_01.yaml")
 ```
 
 Les chaînes de caractères `y`, `yes`, `true`, `TRUE` ainsi que `n`, `no`,
@@ -467,7 +467,7 @@ output:
         highlight: default
         theme: flatly
         include:
-            after_body: aux/footer.html
+            after_body: assets/footer.html
     PDF_document:
         highlight: tango
         toc: yes
@@ -477,15 +477,15 @@ output:
         latex_engine: PDFlatex #xelatex
         number_section: yes
         includes:
-            before_body: aux/license.tex
+            before_body: assets/license.tex
     word_document:
         #toc: yes
         fig_caption: yes
         highlight: pygments
     md_document:
         variant: markdown_strict
-bibliography: aux/mybiblio.bib
-csl: aux/journal-of-theoretical-biology.csl
+bibliography: assets/mybiblio.bib
+csl: assets/journal-of-theoretical-biology.csl
 header-includes:
     - \usepackage{fancyhdr}
     - \pagestyle{fancy}
@@ -1278,7 +1278,7 @@ L'exemple qui suit est basé sur le fichier bibtex (mybiblio.bib) disponible dan
         year = {2014}
     }
 
-Ce fichier est spécifié dans le YAML&nbsp;: "bibliography: mybiblio.bib" (voir la section "[Le fichier YAML][]"). Le style de citation peut être spécifié, entre autres, à l'aide d'un fichier CSL, lui aussi spécifié dans le YAML et fourni dans le dossier "aux" &nbsp;: "csl: ./aux/journal-of-theoretical-biology.csl". Dans le texte, on peut appeler une référence en utilisant la forme sans parenthèse ou avec parenthèse.
+Ce fichier est spécifié dans le YAML&nbsp;: "bibliography: mybiblio.bib" (voir la section "[Le fichier YAML][]"). Le style de citation peut être spécifié, entre autres, à l'aide d'un fichier CSL, lui aussi spécifié dans le YAML et fourni dans le dossier "aux" &nbsp;: "csl: ./assets/journal-of-theoretical-biology.csl". Dans le texte, on peut appeler une référence en utilisant la forme sans parenthèse ou avec parenthèse.
 Pour la forme sans parenthèse, il suffit d'utiliser "\@id" où "id" est l'identifiant donné par le fichier "mybiblio.bib". Pour une référence sans parenthèse&nbsp;:
 
     1. Selon @Oreskes1994, la modélisation [...].
