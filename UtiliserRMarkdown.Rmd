@@ -1996,14 +1996,15 @@ plot(tab1$var1, tab1$var2)
 
 Il est aussi possible de changer le format de sortie des figures peut être
 choisi avec le paramètre `dev` (la liste complète des formats est disponible à
-<https://yihui.org/knitr/options/>). Dans le bloc qui suit j'utilise le [format
-SVG](https://www.synbioz.com/blog/tech/le-svg-pour-quoi-faire)
+<https://yihui.org/knitr/options/>). 
+<!-- Dans le bloc qui suit j'utilise le [format -->
+<!-- SVG](https://www.synbioz.com/blog/tech/le-svg-pour-quoi-faire) -->
 
-    `r ''```{r figdim4, out.width = "100%", dev = "svg"}
+    `r ''```{r figdim4, out.width = "100%", dev = "jpeg"}
     plot(tab1$var1, tab1$var2)
     ```
 
-```{r figdim4, out.width = "100%", dev = "svg"}
+```{r figdim4, out.width = "100%", dev = "jpeg"}
 plot(tab1$var1, tab1$var2)
 ```
 

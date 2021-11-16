@@ -5,3 +5,5 @@ Version: 0.0.1
 Date: 2020-09-01
 Imports:
   rmarkdown
+Suggests:
+  bookdown

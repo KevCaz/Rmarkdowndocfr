@@ -1,27 +1,52 @@
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
 name: Render and deploy HTML document
-'on':
-  - push
-  - pull_request
+
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.config.os }}
+
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
+
     strategy:
+      fail-fast: false
       matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
-    container: rocker/verse:latest
+        config:
+          - {os: macOS-latest, r: 'release'}
+          - {os: ubuntu-20.04, r: 'release'}
+          - {os: windows-latest, r: 'release'}
+
+    env:
+      R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
+      _R_CHECK_DONTTEST_EXAMPLES_: false
+      CRAN: ${{ matrix.config.cran }}
+
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@master
-      - name: Install Dependencies
-        run: |-
-          Rscript -e "install.packages(c('remotes', 'rmarkdown'), repos = 'https://muug.ca/mirror/cran/')"
-          Rscript -e "remotes::install_deps(dependencies = TRUE, repos = 'https://muug.ca/mirror/cran/')"
+      - uses: actions/checkout@v2
+      
+      - uses: r-lib/actions/setup-pandoc@v1
+          
+      - uses: r-lib/actions/setup-r@v1
+        with:
+          r-version: ${{ matrix.config.r }}
+          http-user-agent: ${{ matrix.config.http-user-agent }}
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v1
+      
       - name: Build html, word, md and pdf
+        if: matrix.os == 'ubuntu-latest'
         run: |-
-          make html
-          make word
-          mv UtiliserRMarkdown.docx public
-          # cp *.pdf public/
+          Rscript -e "dir.create("public")
+          Rscript -e "rmarkdown::render(
+            'UtiliserRMarkdown.Rmd',
+            output_format = c('html_document', 'word_document', 'md_document'),
+            output_dir = 'public')"
+                
       - name: Deploy HTML document to gh-pages
         if: matrix.os == 'ubuntu-latest'
         uses: peaceiris/actions-gh-pages@v3
