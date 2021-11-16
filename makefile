@@ -1,4 +1,3 @@
-
 all:
 	Rscript -e 'rmarkdown::render("UtiliserRMarkdown.Rmd", "all")'
 
@@ -14,3 +13,6 @@ html:
 	mv UtiliserRMarkdown.html public/index.html
 	cp -r images public/
 
+readme:
+	Rscript -e 'rmarkdown::render("README.Rmd", "github_document")'	
+	rm README.html
