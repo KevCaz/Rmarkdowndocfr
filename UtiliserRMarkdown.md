@@ -11,11 +11,11 @@ objectifs suivants:
     `rmarkdown`.
 
 Ce document a lui-même été édité avec R Markdown et peut-être converti
-en une page internet (au format HTML, `.html`), au format Word (`.docx`)
-ou encore en document portable (`.pdf`). Bien que dans “R Markdown”, il
-y ait “R” et “Markdown”, ce document n’est pas une introduction à R
+en une page internet (format HTML, `.html`), au format Word (`.docx`) ou
+encore en document portable (`.pdf`). Bien que dans “R Markdown”, il y
+ait “R” et “Markdown”, ce document n’est pas une introduction à R
 (<a href="http://www.r-project.org" class="uri">http://www.r-project.org</a>).
-Le contenu est accessible aux utilisateurs débutants et pour les
+Bien que le contenu est accessible aux utilisateurs débutants, pour les
 lecteurs intéressés qui ne connaissent pas encore R, une courte
 introduction à R est nécessaire. Ils pourront consulter l’une des
 différentes introductions disponibles sur le site du CRAN:
@@ -81,25 +81,25 @@ dynamique. Le package le plus utilisé pour créer des documents
 dynamiques est la package `rmarkdown` l’intégration de R dans un
 document écrit avec Markdown et qui peut être converti en de nombreux
 formats de document (dont PDF, word, HTML). C’est ce package qui est
-l’objet de ce document, bien qu’il nous faudra en mentionner d’autre
+l’objet de ce document, bien qu’il nous faudra en mentionner d’autres
 ainsi que d’autres langages et outils pour comprendre ce package, en
 commençant par Markdown.
 
-Écrire un document en Markdown, quésaco? Markdown est un langage de
-balisage léger, c’est-à-dire un langage dans lequel on peut utiliser des
-ensembles de caractères spécifiques (des balises) pour délimiter une
-zone de texte pour laquelle un formatage associé (e.g. **text en gras**)
-est appliqué. Markdown est aujourd’hui très répandu sur Internet, à tel
-point que vous pourriez une des différentes syntaxes existantes sans me
-le savoir. Sans être exhaustif, il est utile de donner un peu plus de
-détails sur ce point pour bien comprendre ce quel Markdown on utilise
-avec R Markdown. La syntaxe originale de Markdown est le fruit du
-travail de John Gruber[1], programmeur, bloggeur et baladodiffuseur de
-Philadelphie en collaboration avec Aaron Swartz (lui même connu pour
-avoir participer a la création de Creative Commons et son tragique
-destin qui fut l’objet d’un film). Sur le site de John Gruber,
-“daringfireball”, Markdown est décrit depuis décembre 2004 et on peut
-même y télécharger la version 1.0.1 (voir
+Markdown est un langage de balisage léger, c’est-à-dire un langage dans
+lequel on peut utiliser des ensembles de caractères spécifiques (des
+balises) pour délimiter une zone de texte pour laquelle un formatage
+associé (e.g. **text en gras**) est appliqué. Markdown est aujourd’hui
+très répandu sur Internet, à tel point que vous pourriez une des
+différentes syntaxes existantes sans me le savoir. Sans être exhaustif,
+il est utile de donner un peu plus de détails sur ce point pour bien
+comprendre ce quel Markdown on utilise avec R Markdown. La syntaxe
+originale de Markdown est le fruit du travail de John Gruber[1],
+programmeur, bloggeur et baladodiffuseur de Philadelphie en
+collaboration avec Aaron Swartz (lui même connu pour avoir participer a
+la création de Creative Commons et son tragique destin qui fut l’objet
+d’un film). Sur le site de John Gruber, “daringfireball”, Markdown est
+décrit depuis décembre 2004 et on peut même y télécharger la version
+1.0.1 (voir
 <a href="http://daringfireball.net/projects/markdown" class="uri">http://daringfireball.net/projects/markdown</a>).
 L’idée de départ est simple et élégante : produire un langage léger qui
 simplifie les balises HTML (utilisé par tout les sites Internet). L’idée
@@ -107,14 +107,13 @@ n’est pas tant de remplacer le HTML mais plutôt d’en augmenter
 l’efficacité d’écriture et de fait, il est beaucoup plus rapide d’écrire
 en Markdown qui couvre les opérations de formatage les plus courantes
 (listes, hyperliens, etc.). Notons qu’il existe d’autres langages qui
-répondent aux me objectif, par example ReStructuredText[2].
+répondent aux mêmes objectifs, par example ReStructuredText[2].
 
 Après la publication de Markdown, John Gruber a cessé de travailler sur
 Markdown[3] et d’autres développeurs, sans doute séduits par le langage,
 ont proposé différentes additions syntaxiques. Il s’agissait surtout de
-lever certaines limitations tout en préservant l’esprit d’origine.
-Ci-dessous, en voici une liste non exhaustive de différentes variantes
-Markdown:
+lever certaines limitations tout en préservant l’esprit d’origine. Voici
+une liste non exhaustive de différentes variantes Markdown:
 
 -   [GitHub Flavored Markdown
     (GFM)](https://help.github.com/articles/github-flavored-markdown/)
@@ -143,11 +142,11 @@ s’impose: il s’agit, comme l’indique le site internet, d’un
 “convertisseur de document universel”, en une ligne de commande Pandoc
 convertit un document dans un format donné en un document d’un autre
 format. Par exemple, Pandoc permet de passer d’un fichier `.tex` (LaTeX)
-à un fichier `.docx` (Word)! La variante Markdown de Pandoc a été pensé
+à un fichier `.docx` (Word)! La variante Markdown de Pandoc a été pensée
 pour rester fidèle à l’esprit originel de Markdown tout en incluant
 davantage d’éléments de document communs différent format de
-documents[7]. Pour rendre le document dynamique, R Markdown ajoute
-notamment les fonctionnalités de l’excellent package
+documents[7]. Pour rendre le document dynamique, R Markdown utilise les
+fonctionnalités de
 [`knitr`](http://cran.r-project.org/web/packages/knitr/index.html) qui
 intègre du code R et ce qu’il produit. Le document dynamique en question
 pourra être converti dans un grand nombre de format grâce à
@@ -166,29 +165,23 @@ intérêts de R Markdown sont nombreux :
     formats dont HTML (fichier `.html`), PDF (`.pdf`) et Word (`.docx`).
 
 Il existe une documentation abondante relative à R Markdown,
-malheureusement presque exclusivement écrite en anglais. Pour les
-lecteurs capables de lire la la langue de Shakespeare, je recommande [le
-site officiel de R Markdown](http://rmarkdown.rstudio.com) sur lequel
-vous trouverez, entre autres:
+malheureusement pour ceux qui ne pratiquent pas la langue de
+Shakespeare, cette documentation est presque exclusivement écrite en
+anglais. Pour les lecteurs capables de lire l’anglais, je recommande [le
+site officiel de R Markdown](https://rmarkdown.rstudio.com) sur lequel
+vous trouverez, entre autres, un condensé d’utilisation sous forme de
+*Cheat Sheet*, voir
+<a href="http://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf" class="uri">http://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf</a>.
+Aussi, sur le site
+<a href="https://bookdown.org" class="uri">https://bookdown.org</a> vous
+trouverez un livre en anglais très complet sur le sujet, par l’un des
+architectes de R Markdown, Yihui Xie,
+<a href="https://bookdown.org/yihui/rmarkdown/" class="uri">https://bookdown.org/yihui/rmarkdown/</a>
+ainsi qu’un [livre d’astuces (*cook
+book*)](https://bookdown.org/yihui/rmarkdown-cookbook/).
 
-1.  un condensé d’utilisation sous forme de *Cheat Sheet*, voir
-    <a href="http://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf" class="uri">http://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf</a>;
-
-2.  un guide de référence disponible sur le site de RStudio
-    <a href="http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf" class="uri">http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf</a>.
-
-Il y a également sur le site
-<a href="https://bookdown.org" class="uri">https://bookdown.org</a> :
-
-1.  un livre en anglais très complet sur le sujet, par l’un des grands
-    architectes de R Markdown, voir
-    <a href="https://bookdown.org/yihui/rmarkdown/" class="uri">https://bookdown.org/yihui/rmarkdown/</a>;
-
-2.  [un livre d’astuces (*cook
-    book*)](https://bookdown.org/yihui/rmarkdown-cookbook/) en cours
-    d’écriture.
-
-Une section complète du site de l’auteur principal de `knitr`,
+Une section complète du site de l’auteur principal de `knitr`, Yihui
+Xie, lui encore,
 <a href="http://yihui.name/knitr/" class="uri">http://yihui.name/knitr/</a>,
 permet de bien comprendre l’intégration des morceaux de code et des
 résultats de ce code, contenu qui fait l’objet d’un livre de ce même
@@ -203,11 +196,11 @@ Markdown](http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html)
 est, à mon sens, très complète, mais elle ne permet pas une
 personnalisation totale de la mise en page de votre document. Il existe
 des moyens simples pour aller plus loin avec R Markdown, détaillé dans
-le livre d’astuce mentionné ci-dessus. Si toutefois vous souhaitez aller
-encore plus loin dans la mise en forme de votre document, vous pouvez
-utiliser une des trois approches suggérez ci-dessous. Néanmoins, avant
-d’envisager l’un de ces recours, il est très important de se demander si
-cette personnalisation est nécessaire.
+le livre d’astuces mentionné ci-dessus. Si toutefois vous souhaitez
+aller encore plus loin dans la mise en forme de votre document, vous
+pouvez utiliser une des trois approches suggérez ci-dessous. Néanmoins,
+avant d’envisager l’un de ces recours, il est très important de se
+demander si cette personnalisation est nécessaire.
 
 1.  vous pouvez travailler sur le document dans le format qui vous
     intéresse après l’avoir générer, c’est une solution qui a une limite
@@ -247,9 +240,9 @@ De plus, il existe des packages qui se basent sur `rmarkdown` et en
 étendent les applications. Par exemple, `blogdown` vous permet d’écrire
 des postes de blogue avec R Markdown dans un site permet généré par Hugo
 (<a href="https://gohugo.io/" class="uri">https://gohugo.io/</a>). De
-me, grâce à bookdown\]
+même, avec bookdown
 (<a href="https://bookdown.org/yihui/bookdown/" class="uri">https://bookdown.org/yihui/bookdown/</a>),
-vous pouvez créer de long documents HTML structuré comme un
+vous pouvez créer de long documents HTML structurés comme un
 [Gitbook](https://www.gitbook.com). Ainsi, les fonctionnalités décrites
 dans ce document permettent d’utiliser une très grande variété de médias
 pour partager les fruits de votre labeur.
@@ -276,12 +269,13 @@ Un fichier R Markdown (dont l’extension est `.rmd` ou `.Rmd`), c’est :
 1.  un document de texte plein qui utilise la variante syntaxique Pandoc
     de Markdown;
 
-2.  des blocs de code particuliers qui, en plus de pouvoir être utilisé
+2.  des blocs de code particuliers qui, en plus de pouvoir être utilisés
     pour présenter du code, le code va pouvoir être exécuter et le
     résultat du code va pouvoir être intégré dans le document. Ces blocs
     commencent et finissent trois accents graves (*backtick* ou
     *backquote* en anglais): \` et les trois accents graves ouvrant le
-    bloc sont suivis d’une accolade qui commence par r ou R, par exemple
+    bloc sont suivis d’une accolade qui commence par `r` ou `R`, par
+    exemple
 
         ```{R name, option1, option2}
         # code R à exécuter
@@ -297,24 +291,25 @@ Un fichier R Markdown (dont l’extension est `.rmd` ou `.Rmd`), c’est :
     dans un bloc de trois tirets : ---) qui permet de donner des
     indications sur le ou les documents à générer.
 
-Au début, il peut-être un peu difficile de se retrouver un tel fichier
-car on y croise différents langages, notamment
+Au début, il peut-être un peu difficile de se retrouver dans un tel
+fichier car différents langages y sont utilisés, notamment
 
 1.  un langage de programmation pour les analyses, R;
 2.  un langage de balisage pour l’écriture du document, Markdown;
 3.  un langage de sérialisation de données pour spécifier les sorties du
     documents, YAML.
 
-On peut ajouter qu’avec la variante syntaxique Pandoc de Markdown les
-symboles mathématiques TeX[10] sont utilisés pour rendre facile
-l’écriture, entre autres, des équations[11], en un sens c’est un
-quatrième langage à connaître!
+Ajoutons à cela qu’avec la variante syntaxique Pandoc de Markdown, les
+symboles mathématiques TeX[10]
+(<a href="https://pandoc.org/MANUAL.html#math" class="uri">https://pandoc.org/MANUAL.html#math</a>)
+sont utilisés pour rendre facile l’écriture, entre autres, des
+équations[11], en un sens c’est un quatrième langage à connaître!
 
 Créer un fichier R Markdown
 ---------------------------
 
 Créer un fichier R Markdown, c’est simplement créer un fichier dont
-l’extension est `.Rmd` ou `.rmd`, ce qui peut être vais avec n’importe
+l’extension est `.Rmd` ou `.rmd`, ce qui peut être fait avec n’importe
 quelle éditeur de texte, ou de code, ou même en ligne de commande. Par
 example, étant moi-même utilisateur du terminal et travaillant dans un
 environment Linux, j’entre dans ce dernier la commande:
@@ -360,7 +355,7 @@ permet de lire de tels fichiers et de les importer sous forme de listes.
 Pour comprendre l’essentiel du fonctionnement du YAML, je vous
 recommande le tutoriel à l’URL suivante :
 <a href="https://sweetohm.net/article/introduction-yaml.html" class="uri">https://sweetohm.net/article/introduction-yaml.html</a>
-en vous concentrant sur la syntaxe et nous sur comment utiliser Python
+en vous concentrant sur la syntaxe et non sur comment utiliser Python
 pour le faire. De manière générale:
 
     nomduchamp: données
@@ -455,10 +450,10 @@ suivantes:
 Les chaînes de caractères `y`, `yes`, `true`, `TRUE` ainsi que `n`,
 `no`, `false`, `FALSE` seront toutes interprétées comme variables
 booléennes (respectivement `TRUE` ou `FALSE` dans R). C’est une
-fonctionnalité bien pratique mais à double tranchant: par exemple si `y`
-est utilisé comme nom de champ, le nom du champ sera interprété comme
-`TRUE` et pour palier ce comportement, il faut ajouter des guillemets
-(voir l’exemple ci-dessus).
+fonctionnalité pratique mais à double tranchant: par exemple si `y` est
+utilisé comme nom de champ, le nom du champ sera interprété comme `TRUE`
+et pour palier ce comportement, il faut ajouter des guillemets (voir
+l’exemple ci-dessus).
 
 Les remarques précédentes sont générales et vous pourriez être amené à
 utiliser YAML dans un autre contexte que l’édition de document avec R
@@ -484,7 +479,7 @@ source de ce document) :
 
     ---
     title: "Utiliser R Markdown pour créer des documents dynamiques"
-    date: "16 November 2021"
+    date: "17 November 2021"
     author: par Kevin Cazelles
     lang: fr
     abstract: "Le package [...] pour aller plus loin."
@@ -526,59 +521,172 @@ source de ce document) :
     ---
 
 Comme expliqué précédemment, l’indentation est utilisée pour regrouper
-les options par format. Ainsi, les lignes entre “pdf\_document:” et
-“word\_document:”, spécifient différent aspect relative à la génération
-au format PDF. Par exemple, pour ajouter une table des matière, on
-ajoute `toc: yes`, “toc” signifiant *table of content* (table des
-matières) et pour en contrôler la profondeur (le niveau maximal de
-sous-titre affiché dans la table), on utilise “toc\_depth”. De même,
-“tof” (*table of figure*) permet d’ajouter une table des figures. Aussi,
-l’option “number\_section:true” permet d’obtenir une numérotation des
-différentes parties.
+les options par format. Ainsi, les lignes qui se trouvent entre
+“pdf\_document:” et “word\_document:”, spécifient différents aspects
+relatifs à la génération au format PDF. Par exemple, pour ajouter une
+table des matières, on ajoute `toc: yes`, “toc” signifiant *table of
+content* (table des matières) et pour en contrôler la profondeur (le
+niveau maximal des sous-titres affichés dans la table), on utilise
+“toc\_depth”. De même, “tof” (*table of figure*) permet d’ajouter une
+table des figures. Aussi, l’option “number\_section:true” permet
+d’obtenir une numérotation des différentes parties.
+
+Avant de finir, une astuce qui peut être bien pratique, il est possible
+d’accéder à la liste des options passée dans l’en-tête YAML comme suit:
+
+    rmarkdown::metadata
+
+    ## $title
+    ## [1] "Utiliser R Markdown pour créer des documents dynamiques"
+    ## 
+    ## $date
+    ## [1] "`r format(Sys.time(), '%d %B %Y')`"
+    ## 
+    ## $author
+    ## [1] "par Kevin Cazelles"
+    ## 
+    ## $lang
+    ## [1] "fr"
+    ## 
+    ## $abstract
+    ## [1] "Le package `rmarkdown` permet de créer des documents dynamiques qui intègrent des morceaux de code R et ce qu'ils génèrent (dont figures et tableaux). Ce document est une introduction à R Markdown qui passe en revue différents aspects techniques nécessaires à la bonne compréhension et l'utilisation du package `rmarkdown`. Le code source de ce document est en lui-même un exemple d'application du package. Le lecteur trouvera également un ensemble de références disponibles en ligne pour aller plus loin."
+    ## 
+    ## $fontfamily
+    ## [1] "fourier"
+    ## 
+    ## $linestretch
+    ## [1] 1
+    ## 
+    ## $fontsize
+    ## [1] "10pt"
+    ## 
+    ## $lof
+    ## [1] TRUE
+    ## 
+    ## $output
+    ## $output$html_document
+    ## $output$html_document$toc
+    ## [1] TRUE
+    ## 
+    ## $output$html_document$toc_float
+    ## [1] TRUE
+    ## 
+    ## $output$html_document$highlight
+    ## [1] "default"
+    ## 
+    ## $output$html_document$theme
+    ## [1] "flatly"
+    ## 
+    ## $output$html_document$include
+    ## $output$html_document$include$after_body
+    ## [1] "assets/footer.html"
+    ## 
+    ## 
+    ## 
+    ## $output$pdf_document
+    ## $output$pdf_document$highlight
+    ## [1] "tango"
+    ## 
+    ## $output$pdf_document$toc
+    ## [1] TRUE
+    ## 
+    ## $output$pdf_document$toc_depth
+    ## [1] 3
+    ## 
+    ## $output$pdf_document$fig_caption
+    ## [1] TRUE
+    ## 
+    ## $output$pdf_document$keep_tex
+    ## [1] TRUE
+    ## 
+    ## $output$pdf_document$latex_engine
+    ## [1] "pdflatex"
+    ## 
+    ## $output$pdf_document$number_section
+    ## [1] TRUE
+    ## 
+    ## $output$pdf_document$includes
+    ## $output$pdf_document$includes$before_body
+    ## [1] "assets/license.tex"
+    ## 
+    ## 
+    ## 
+    ## $output$word_document
+    ## $output$word_document$fig_caption
+    ## [1] TRUE
+    ## 
+    ## $output$word_document$highlight
+    ## [1] "pygments"
+    ## 
+    ## 
+    ## $output$md_document
+    ## $output$md_document$variant
+    ## [1] "markdown_strict"
+    ## 
+    ## 
+    ## 
+    ## $bibliography
+    ## [1] "assets/mybiblio.bib"
+    ## 
+    ## $csl
+    ## [1] "assets/journal-of-theoretical-biology.csl"
+    ## 
+    ## $`header-includes`
+    ## [1] "\\usepackage{fancyhdr}"                                  
+    ## [2] "\\pagestyle{fancy}"                                      
+    ## [3] "\\fancyfoot[CO,CE]{Documents dynamiques avec R Markdown}"
+    ## [4] "\\fancyfoot[R]{\\thepage}"
 
 <!-- https://hitchdev.com/strictyaml/ -->
 
 Éditer le contenu du fichier R Markdown
 ---------------------------------------
 
-Pour cela, on utilise simplement du texte plein avec la syntaxe Pandoc
-Markdown (détaillée dans la section suivante), la différence avec un
-document Markdown est qu’il est possible d’exécuter du code R et
-d’utiliser les résultat du code, ce qui rend le document dynamique (voir
-la section dédiée).
+Pour éditer le contenu du fichier R Markdown, on utilise simplement du
+texte plein avec la syntaxe Pandoc Markdown (détaillée dans la section
+suivante), la différence avec un document Markdown est qu’il est
+possible d’exécuter du code R et d’utiliser les résultat du code, ce qui
+rend le document dynamique (voir la section dédiée plus bas).
 
 Obtenir le document final (ou les documents finaux)
 ---------------------------------------------------
 
-Une fois le fichier est prêt (ou qu’on souhaite voir le résultat) et que
-le package `rmarkdown` est installé\[^4\], on utilise la fonction
-`render()` du package en lui indiquant le chemin de du fichier `.Rmd`.
-Si on est un utilisateur de RStudio, on peut cliquer sur `Knit` dans la
-barre de menu contextuelle associée au fichier ( voir la documentation
-associée, `?render`). Dans la suite du document, la function `render()`
-est utilisée:
+Une fois que le fichier est prêt (ou lorsqu’on souhaite voir un aperçu
+de notre document) et que le package `rmarkdown` est installé\[^4\], on
+utilise la fonction `render()` du package en lui indiquant le chemin de
+du fichier `.Rmd`. Si on est un utilisateur de RStudio, on peut cliquer
+sur `Knit` dans la barre de menu contextuelle associée au fichier (voir
+la documentation associée, `?render`). Dans la suite du document, la
+fonction `render()` est utilisée:
 
-    render("ex_Rmardown.rmd", "all")
+    render("ex_Rmardown.rmd", output_format = "all")
 
-L’argument “all” permet d’obtenir tous les fichiers pour lesquels il
-existe une spécification dans le fichier YAML. Les formats utilisés ici
-sont :
+Passer “all” au paramètre `output_format` permet d’obtenir tous les
+fichiers pour lesquels il existe une spécification dans le fichier YAML.
+Les formats utilisés ici sont :
 
--   [PDF](https://en.wikipedia.org/wiki/Portable_Document_Format)
--   [HTML](http://rmarkdown.rstudio.com/html_document_format.html)
--   [Word](http://rmarkdown.rstudio.com/word_document_format.html)
+-   [PDF](https://bookdown.org/yihui/rmarkdown/pdf-document.html)
+-   [HTML](https://bookdown.org/yihui/rmarkdown/html-document.html)
+-   [Word](https://bookdown.org/yihui/rmarkdown/word-document.htmll)
+-   [Markdown](https://bookdown.org/yihui/rmarkdown/markdown-document.html)
 
 Les documents au format PDF requièrent [l’installation de
 Latex](https://www.tug.org/texlive/quickinstall.html) étant donné que
 pour produire un PDF à partir d’un fichier “.rmd”, un premier fichier
 Latex est produit. Pour le lecteur qui désire conserver le fichier Latex
-utilisé pour produire le PDF, il suffit d’ajouter l’option “keep\_tex:
-true” dans les options relatives au format PDF dans le \[Le fichier
-YAML\]\[\]. Pour le Markdown, un fichier “.md” est généré suivant la
-variante de Markdown précisée dans le YAML par “variant: markdown” (voir
-la section suivante). Le format “Tufte handout” est une mise en page qui
-inclue des marges larges où sont insérées les illustrations (dont les
-figures) et que nous devons au chercheur Edward Tufte.
+utilisé pour produire le PDF, il suffit d’ajouter l’option
+`keep_tex: true` dans les options relatives au format PDF dans le Le
+fichier YAML. Pour le Markdown, un fichier “.md” est généré suivant la
+variante de Markdown précisée dans le YAML par `variant: markdown` (voir
+la section suivante). Au passage, le format “Tufte handout” (qui n’est
+pas utilisé ici) est une mise en page qui inclue des marges larges où
+sont insérées les illustrations (dont les figures) et que nous devons au
+chercheur Edward Tufte.
+
+<!-- ###################################################################### -->
+<!-- ########################### JE SUIS ICI ############################## -->
+<!-- ###################################################################### -->
+<!-- NB Ajouter les liens vers la docs ou la spec -->
 
 Le variante Pandoc de Markdown
 ==============================
@@ -625,11 +733,11 @@ Décoration du texte
 <!-- -->
 
     **le _texte en italique et en gras_**
-    ```md
 
-    - Pour obtenir un ~~texte rayé~~, entrez&nbsp;:
+-   Pour obtenir un <s>texte rayé</s>, entrez :
 
-    ```md
+<!-- -->
+
     ~~texte rayé~~
 
 -   Pour écrire un élément en <sup>exposant</sup>, utilisez :
@@ -656,8 +764,8 @@ document R Markdown perd en généralité, en ce sens où il ne pourra pas
 être correctement généré dans tous les formats. Cela n’est cependant pas
 nécessairement un problème, par exemple, si vous souhaiter obtenir le
 document en un seul format, ce fonctionnement devient un atout puisque
-vous pouvez utiliser toute la gamme de mise en forme offert le langage
-en question.
+vous pouvez utiliser toute la gamme de mise en forme offerte par le
+langage en question.
 
 Les titres
 ----------
@@ -859,7 +967,7 @@ nous donne :
     3.  machin 3
 
 Nous avons aussi la possibilité de mélanger les niveaux numérotés et les
-niveaux non-numérotés :
+niveaux non-numérotés:
 
     1. machin 1,
         1. machin 1.1,
@@ -1074,7 +1182,7 @@ Mathématiques
 Pour utiliser les symboles mathématiques dans le texte, les commandes
 associées doivent être placées entre deux “$”. Bien sur, il faut
 connaître les combinaisons de caractère associées aux différents
-symboles. Ce sont les même que celles proposées par
+symboles. Ce sont les mêmes que celles proposées par
 [Latex](http://latex-project.org/intro.html) et qui seront utilisées par
 [MathJax](http://www.mathjax.org) (par défaut) pour générer les
 expressions mathématiques dans le fichier HTML. Pour quelques exemples,
@@ -1138,7 +1246,7 @@ peux faire référence à l’équation (2) en utilisant “(@eq2)”[16]. Les
 références seront gérées correctement, mais le rendu visuel n’est pas
 nécessairement celui désiré. Ils existent différentes solutions pour
 palier ceci. Pour les documents HTML, il est possible d’utiliser le
-méchanisme de rendu HTML de bookdown (voir
+mécanisme de rendu HTML de bookdown (voir
 <a href="https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html" class="uri">https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html</a>),
 ce qui revient à utiliser un autre type de format de sortie, mais qui
 reste du HTML. Sinon, il est possible d’utiliser le filtre
@@ -1921,74 +2029,74 @@ convertie dans le format désiré par Pandoc. De plus, la fonction
 <tr class="odd">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">11.846094</td>
-<td style="text-align: right;">11.850548</td>
+<td style="text-align: right;">13.267696</td>
+<td style="text-align: right;">15.116895</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">19.024040</td>
-<td style="text-align: right;">19.961357</td>
+<td style="text-align: right;">4.359005</td>
+<td style="text-align: right;">5.480613</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">4.540167</td>
-<td style="text-align: right;">3.842399</td>
+<td style="text-align: right;">15.851062</td>
+<td style="text-align: right;">16.900207</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">17.971994</td>
-<td style="text-align: right;">19.559138</td>
+<td style="text-align: right;">1.826501</td>
+<td style="text-align: right;">3.550115</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">4.311587</td>
-<td style="text-align: right;">4.383096</td>
+<td style="text-align: right;">8.145366</td>
+<td style="text-align: right;">7.403013</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">6.897579</td>
-<td style="text-align: right;">7.035883</td>
+<td style="text-align: right;">10.895933</td>
+<td style="text-align: right;">12.149343</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">13.109605</td>
-<td style="text-align: right;">13.774579</td>
+<td style="text-align: right;">18.186459</td>
+<td style="text-align: right;">18.781416</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">17.439032</td>
-<td style="text-align: right;">16.695456</td>
+<td style="text-align: right;">3.192698</td>
+<td style="text-align: right;">2.312519</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">14.869238</td>
-<td style="text-align: right;">16.825103</td>
+<td style="text-align: right;">3.564785</td>
+<td style="text-align: right;">4.316948</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">17.231148</td>
-<td style="text-align: right;">17.848698</td>
+<td style="text-align: right;">11.574991</td>
+<td style="text-align: right;">10.647385</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">18.340481</td>
-<td style="text-align: right;">17.307975</td>
+<td style="text-align: right;">18.252870</td>
+<td style="text-align: right;">18.743897</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">9.654182</td>
-<td style="text-align: right;">10.012052</td>
+<td style="text-align: right;">8.708582</td>
+<td style="text-align: right;">7.716352</td>
 </tr>
 </tbody>
 </table>
@@ -2019,85 +2127,85 @@ la virgule ou encore d’inclure les numéros de lignes.
 <td style="text-align: left;">1</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">11.846</td>
-<td style="text-align: right;">11.851</td>
+<td style="text-align: right;">13.268</td>
+<td style="text-align: right;">15.117</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">2</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">19.024</td>
-<td style="text-align: right;">19.961</td>
+<td style="text-align: right;">4.359</td>
+<td style="text-align: right;">5.481</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">3</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">4.540</td>
-<td style="text-align: right;">3.842</td>
+<td style="text-align: right;">15.851</td>
+<td style="text-align: right;">16.900</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">4</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">17.972</td>
-<td style="text-align: right;">19.559</td>
+<td style="text-align: right;">1.827</td>
+<td style="text-align: right;">3.550</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">5</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">4.312</td>
-<td style="text-align: right;">4.383</td>
+<td style="text-align: right;">8.145</td>
+<td style="text-align: right;">7.403</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">6</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">6.898</td>
-<td style="text-align: right;">7.036</td>
+<td style="text-align: right;">10.896</td>
+<td style="text-align: right;">12.149</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">7</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">13.110</td>
-<td style="text-align: right;">13.775</td>
+<td style="text-align: right;">18.186</td>
+<td style="text-align: right;">18.781</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">8</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">17.439</td>
-<td style="text-align: right;">16.695</td>
+<td style="text-align: right;">3.193</td>
+<td style="text-align: right;">2.313</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">9</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">14.869</td>
-<td style="text-align: right;">16.825</td>
+<td style="text-align: right;">3.565</td>
+<td style="text-align: right;">4.317</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">10</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">17.231</td>
-<td style="text-align: right;">17.849</td>
+<td style="text-align: right;">11.575</td>
+<td style="text-align: right;">10.647</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">11</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">18.340</td>
-<td style="text-align: right;">17.308</td>
+<td style="text-align: right;">18.253</td>
+<td style="text-align: right;">18.744</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">12</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">9.654</td>
-<td style="text-align: right;">10.012</td>
+<td style="text-align: right;">8.709</td>
+<td style="text-align: right;">7.716</td>
 </tr>
 </tbody>
 </table>
@@ -2113,7 +2221,7 @@ complexes, je vous recommande chaudement d’y jeter un coup d’œil.
 Avec le package `rmarkdown`, il est très facile d’insérer les figures
 produites avec R dans un document, le plus simple est de regarder ce que
 génère un simple plot généré avec la fonction `plot()`. Je reprends le
-data frame créer plus haut pour cela.
+data frame créé plus haut pour cela.
 
     plot(tab1$var1, tab1$var2)
 
@@ -2128,7 +2236,7 @@ visualiser l’ensemble des options disponibles, je vous invite à regarder
 la page 3 du [guide de
 référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf).
 Dans le bloc de code ci-dessous, la taille de la figure et son
-alignement sont ajustés et une légende est ajoutées.
+alignement sont ajustés et une légende est ajoutée.
 
     ``{r figdim1, fig.cap = "Ceci est la légende de la figure",
         fig.height = 4, fig.width = 4, fig.align = 'right'}
@@ -2146,10 +2254,10 @@ Les dimensions d’une figure sont toujours exprimées en
 [pouces](https://fr.wikipedia.org/wiki/Pouce_(unit%C3%A9)), si vous
 n’êtes pas habitué à manipuler les pouces, il faudra faire des
 conversations à la main (ou avec R) en gardant en tête que 1 pouce vaut
-2.54 cm. Il est également possible de choisir une des deux dimensions
-est de changer le rapport de forme. Ainsi je peux dire que je veux une
-figure de 9 pouces avec un rapport de forme de 1.5, ce qui revient a
-demandé une hauteur de 6 pouces.
+2.54 cm. Il est également possible de choisir une des deux dimensions et
+changer le rapport de forme, `fig.aspect`. Ainsi je peux dire que je
+veux une figure de 9 pouces avec un rapport de forme de 1.5, ce qui
+revient a demandé une hauteur de 6 pouces.
 
     ``{r figdim2, fig.cap= "Figure 9x6", fig.width = 9, fig.aspect = 1.5}
     plot(tab1$var1,tab1$var2)
@@ -2234,7 +2342,7 @@ Qui donne:
 la seconde et violet pour la
 troisième.](/home/runner/work/Rmarkdowndocfr/Rmarkdowndocfr/public/UtiliserRMarkdown_files/figure-markdown_strict/figfinale-1.png)](https://github.com/KevCaz/Rmarkdowndocfr)
 
-### Graphiques non générées par R
+### Graphiques non générés par R
 
 Dans la section traitant des [images](Les_images) avec Pandoc Markdown
 nous avons vu comment insérer une image dans un document. Il est aussi
@@ -2250,13 +2358,13 @@ produit par R. Par exemple pour ajouter le logo de R utiliser plus haut
 
 <img src="./images/Rlogo.png" width="40%" style="display: block; margin: auto;" />
 
-Application, modèle linéaire dynamique
+Application: modèle linéaire dynamique
 --------------------------------------
 
 Supposons que je souhaite faire un modèle linéaire avec la variable
 explicative *var1* et la variable à expliquer *var2* de notre *tab1*.
 Pour ce faire je vais utiliser `lm()` et afficher les coefficients ainsi
-que les figures associés. J’utilise alors le bloc de code suivant :
+que les figures associées. J’utilise alors le bloc de code suivant :
 
     ``{r application, echo = FALSE, fig.cap = "Mon modèle linéaire", fig.width = 8,
         fig.height = 8, fig.align = 'center'}
@@ -2285,16 +2393,16 @@ Le résultat est le suivant :
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-0.2529486</td>
-<td style="text-align: right;">0.7073139</td>
-<td style="text-align: right;">-0.3576186</td>
-<td style="text-align: right;">0.7280614</td>
+<td style="text-align: right;">0.3068031</td>
+<td style="text-align: right;">0.6460804</td>
+<td style="text-align: right;">0.4748682</td>
+<td style="text-align: right;">0.6450817</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">var1</td>
-<td style="text-align: right;">1.0444263</td>
-<td style="text-align: right;">0.0506997</td>
-<td style="text-align: right;">20.6002481</td>
+<td style="text-align: right;">1.0136737</td>
+<td style="text-align: right;">0.0571930</td>
+<td style="text-align: right;">17.7237320</td>
 <td style="text-align: right;">0.0000000</td>
 </tr>
 </tbody>
@@ -2305,15 +2413,18 @@ Le résultat est le suivant :
 Mon modèle linéaire
 </p>
 
-La pente de la regression est de **1.04**.
+La pente de la regression est de **1.01**.
 
-Si je change les données de tab1, la table, les graphiques et mon
-commentaires seront changées de manière adéquates ce qui peut s’avérer
-très utile quand on a des rapports similaires à produire d’un mois à
-l’autre (ou d’une année sur l’autre).
+Si je change les données de `tab1`, la table, les graphiques et mon
+commentaires seront changées de manière adéquate, ce qui peut s’avérer
+très utile pour créer rapidement des rapports similaires, par exemple un
+rapport mensuel pour lequel seules les données changent.
 
 <!-- il existe aussi des options avancées  -->
 <!-- https://yihui.org/knitr/hooks/ pas détaillé ici -->
+
+Utilisations avancées
+=====================
 
 Références
 ==========
