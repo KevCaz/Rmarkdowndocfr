@@ -99,7 +99,7 @@ ce package qui est l'objet de ce document, bien qu'il nous faudra en mentionner
 d'autres ainsi que d'autres langages et outils pour comprendre ce package, en
 commençant par Markdown.
 
-Markdown est un langage de balisage léger, c'est-à-dire un langage dans lequel on peut utiliser des ensembles de caractères spécifiques (des balises) pour délimiter une zone de texte pour laquelle un formatage associé (e.g. **text en gras**) est appliqué. Markdown est aujourd'hui très répandu sur Internet, à tel point que vous pourriez une des différentes syntaxes existantes sans me le savoir. Sans être exhaustif, il est utile de donner un peu plus de détails sur ce point pour bien comprendre ce quel Markdown on utilise avec R Markdown. La syntaxe originale de Markdown est le fruit du travail de John Gruber[^wiki_gruber], programmeur, bloggeur et baladodiffuseur de Philadelphie en collaboration avec Aaron Swartz (lui même connu pour avoir participer a la création de Creative Commons et son tragique destin qui fut l'objet d'un film). Sur le site de John Gruber, "daringfireball", Markdown est décrit depuis décembre 2004 et on peut même y télécharger la version 1.0.1 (voir <http://daringfireball.net/projects/markdown>). L'idée de départ est simple et élégante&nbsp;: produire un langage léger qui simplifie les balises HTML (utilisé par tout les sites Internet). L'idée n'est pas tant de remplacer le HTML mais plutôt d'en augmenter l'efficacité d'écriture et de fait, il est beaucoup plus rapide d'écrire en Markdown qui couvre les opérations de formatage les plus courantes (listes, hyperliens, etc.). Notons qu'il existe d'autres langages qui répondent aux mêmes objectifs, par example ReStructuredText[^wiki_rst]. 
+Markdown est un langage de balisage léger, c'est-à-dire un langage dans lequel on peut utiliser des ensembles de caractères spécifiques (des balises) pour délimiter une zone de texte pour laquelle un formatage associé (e.g. **text en gras**) est appliqué. Markdown est aujourd'hui très répandu sur Internet, à tel point que vous pourriez une des différentes syntaxes existantes sans me le savoir. Sans être exhaustif, il est utile de donner un peu plus de détails sur ce point pour bien comprendre ce quel Markdown on utilise avec R Markdown. La syntaxe originale de Markdown est le fruit du travail de John Gruber[^wiki_gruber], programmeur, blogueur et baladodiffuseur de Philadelphie en collaboration avec Aaron Swartz (lui même connu pour avoir participer a la création de Creative Commons et son tragique destin qui fut l'objet d'un film). Sur le site de John Gruber, "daringfireball", Markdown est décrit depuis décembre 2004 et on peut même y télécharger la version 1.0.1 (voir <http://daringfireball.net/projects/markdown>). L'idée de départ est simple et élégante&nbsp;: produire un langage léger qui simplifie les balises HTML (utilisé par tout les sites Internet). L'idée n'est pas tant de remplacer le HTML mais plutôt d'en augmenter l'efficacité d'écriture et de fait, il est beaucoup plus rapide d'écrire en Markdown qui couvre les opérations de formatage les plus courantes (listes, hyperliens, etc.). Notons qu'il existe d'autres langages qui répondent aux mêmes objectifs, par example ReStructuredText[^wiki_rst]. 
 
 Après la publication de Markdown, John Gruber a cessé de travailler sur
 Markdown[^blog_badparent] et d'autres développeurs, sans doute séduits par le
@@ -483,32 +483,24 @@ produit. Pour le lecteur qui désire conserver le fichier Latex utilisé pour
 produire le PDF, il suffit d'ajouter l'option `keep_tex: true` dans les options
 relatives au format PDF dans le Le fichier YAML. Pour le Markdown, un
 fichier ".md" est généré suivant la variante de Markdown précisée dans le YAML
-par `variant: markdown` (voir la section suivante). Au passage, le format "Tufte handout" (qui n'est pas utilisé ici) est une mise en page qui inclue des marges larges où sont insérées les illustrations (dont les figures) et que nous devons au chercheur Edward Tufte.
+par `variant: markdown` (voir la section suivante). Au passage, le format "Tufte handout" (qui n'est pas utilisé ici) est une mise en page qui inclut des marges larges où sont insérées les illustrations (dont les figures) et que nous devons au chercheur Edward Tufte.
 
 
 
 
 
 
-<!-- ###################################################################### -->
-<!-- ########################### JE SUIS ICI ############################## -->
-<!-- ###################################################################### -->
-<!-- NB Ajouter les liens vers la docs ou la spec -->
 
 # Le variante Pandoc de Markdown
 
 
-Dans cette partie, je détaille les éléments de formatage du texte proposés par
+Dans cette partie, je présente les éléments de formatage du texte proposés par
 la syntaxe Pandoc de Markdown. L’ensemble est très bien présenté sur le [site de
-référence](http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html)[^noteswmk]
+R Markdown](http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html)[^noteswmk]
 et très bien résumé à la première page du [guide de
-référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf).
-Pour une source en français, j'ai trouvé un excellent tour d'horizon
-nommé&nbsp;: "Élaboration et conversion de documents avec Markdown et Pandoc"
-(<http://enacit1.epfl.ch/markdown-pandoc/>) écrit par Jean-Daniel Bonjour. Notez
-que certains symboles sont réservés au formatage du texte. Cependant, quand leur
-affichage est requis, on les fait précéder du caractère d'échappement qui est,
-pour Markdown, l'antislash&nbsp;: "\\". Par exemple, j'entre&nbsp;:
+référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf). Pour une source en français, j'ai trouvé un excellent tour d'horizon nommé&nbsp;: "Élaboration et conversion de documents avec Markdown et Pandoc" (<http://enacit1.epfl.ch/markdown-pandoc/>) écrit par Jean-Daniel Bonjour. Parmi les nombreux tutoriels plus courts sur le sujet, je recommande celui de Sarah Simpkin [@simpkin_debuter_2020] disponible en ligne à l'adresse suivante <https://programminghistorian.org/fr/lecons/debuter-avec-markdown>. 
+
+Avant de commencer, je tiens à préciser que certains symboles sont réservés au formatage du texte. Cependant, quand leur affichage est requis, on les fait précéder du caractère d'échappement qui est l'antislash pour Markdown&nbsp;: "\\". Par exemple, j'entre&nbsp;:
 
     \\ \& \# \$ \[
 
@@ -570,15 +562,14 @@ en PDF. De même que si j'utilise `\underline{texte souligné}` le texte sera
 souligné en PDF, mais pas en HTML ni en Word. Procéder de la sorte n'est pas
 toujours souhaité car le document R Markdown perd en généralité, en ce sens où
 il ne pourra pas être correctement généré dans tous les formats. Cela n'est
-cependant pas nécessairement un problème, par exemple, si vous souhaiter obtenir
+cependant pas nécessairement un problème, par exemple, si vous souhaitez obtenir
 le document en un seul format, ce fonctionnement devient un atout puisque vous
 pouvez utiliser toute la gamme de mise en forme offerte par le langage en question.
 
 
 ## Les titres
 
-Le plus simple est d’utiliser un nombre croissant de `#` (ATX heading) pour
-descendre dans l'arborescence des titres:
+Le plus simple est d’utiliser un nombre croissant de `#` (*ATX-Style headers* en anglais) pour descendre dans l'arborescence des titres:
 
 ```md
 # Un titre d'ordre 1
@@ -587,9 +578,7 @@ descendre dans l'arborescence des titres:
 ```
 
 Il est aussi possible d'utiliser une série de "=" en dessous des titre de
-premier niveau et une ligne de "-" en dessous des titres de niveau 2. Cette
-option a la qualité de permettre de repérer facilement les titres dans le code
-source.
+premier niveau et une ligne de "-" en dessous des titres de niveau 2 (*SETEXT-Style headers* en anglais). Cette option permet de repérer facilement les titres dans le code source.
 
 
 ```md
@@ -602,10 +591,7 @@ Un titre d'ordre 2
 
 ## Les listes
 
-Les listes sont très intuitives en Markdown, alors qu'elles requièrent des
-balises un peu lourdes aussi bien en Latex qu'en HTML. Dans les exemples
-donnés, il faut toujours séparer le texte principal de la liste par des sauts
-de ligne. Aussi, il y a une différence de format
+Les listes sont très intuitives en Markdown, alors qu'elles requièrent des balises un peu lourdes aussi bien en Latex qu'en HTML. Notez que dans les exemples donnés, il faut toujours séparer le texte principal de la liste par des sauts de ligne.
 
 
 ### Listes non numérotées
@@ -648,8 +634,8 @@ Dans tous les cas, cela donne
 + objet 2,
 + objet 3.
 
-Et si j'utilise on ajoute un espace entre les éléments de la liste alors le
-rendu  change un peu, la liste est plus aérée, par exemple en HTML, une balise
+Et si j'utilise un espace entre les éléments de la liste alors le
+rendu change un peu, la liste est plus aérée, par exemple en HTML, une balise
 paragraphe, `<p> </p>` est ajoutée, ainsi
 
 ```md
@@ -669,8 +655,7 @@ devient:
 * objet 3.
 
 
-En utilisant une indentation de 4 espaces (ou une tabulation), on peut obtenir
-des listes hiérarchisées, ainsi:
+En utilisant une indentation de 4 espaces (ou une tabulation), il est possible de créer des listes hiérarchisées, ainsi:
 
 
 ```md
@@ -745,9 +730,8 @@ J'obtiens:
 2. machin 2,
 3. machin 3.
 
-Si les nombres ne sont pas écrits manière ordonnée, cela ne changera pas le
-résultat. Néanmoins, le premier nombre détermine le point de la liste. En
-écrivant&nbsp;:
+Si les nombres ne sont pas écrits de manière ordonnée, cela ne changera pas le
+résultat. Néanmoins, le premier nombre détermine le premier numéros de la liste, ainsi en utilisant&nbsp;:
 
 ```md
 3. machin 1,
@@ -870,7 +854,6 @@ Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo proident
 
 on obtient :
 
-
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
 
 Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -899,7 +882,7 @@ Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo proident
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.   
 Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-La seule différence entre l'exemple d'avant est l'ajout d'une tabulation après
+La seule différence avec l'exemple précédent est l'ajout d'une tabulation après
 "veniam.".
 
 
@@ -921,12 +904,12 @@ deviennent&nbsp;:
 > La citation est ajoutée comme ceci, elle nous donne une indentation adéquate pour une mise en page agréable dont le style peut être facilement travailler en HTML grâce au CSS.
 
 
-Pour ajouter une hiérarchie dans les citations, on entre&nbsp;:
+Il est possible d'imbriquer une citation dans une citation en utilisant `>>`&nbsp;:
 
 ```.md
 > La citation de départ
 >
->> une hiérarchie dans la citation
+>> une citation dans la citation 
 ```
 
 ce qui donne&nbsp;:
@@ -934,7 +917,6 @@ ce qui donne&nbsp;:
 > La citation de départ
 >
 >> une hiérarchie dans la citation
-
 
 ## Blocs de code
 
@@ -975,9 +957,7 @@ printf("%i",g);
 ~~~~~~~~~~~
 
 
-Plus simplement, on peut utiliser des blocs de trois apostrophes inversés
-(*backquote* en anglais) et enlever l’accolade et le point pour préciser le
-langage et ainsi, avec le code ci-dessous
+Plus simplement, il est possible d'utiliser des blocs de trois apostrophes inversés (*backquote* en anglais) et enlever l’accolade et le point pour préciser le langage et ainsi, avec le code ci-dessous
 
 
     ```c
@@ -1010,7 +990,7 @@ j'utilise quand je montre l'utilisation des apostrophes inversés ci-dessus!
 
 
 Un des grands intérêts de R Markdown est d'avoir des blocs de codes R qui
-peuvent être exécutés par R! Je détaille cette fonctionnalité plus bas.
+peuvent être exécutés par R, ce que nous verrons dans la suite.
 
 
 [^fenced]: Voir la section *Fenced code blocks* du manuel de référence <https://pandoc.org/MANUAL.html>.
@@ -1045,8 +1025,7 @@ que celles proposées par [Latex](http://latex-project.org/intro.html) et qui
 seront utilisées par [MathJax](http://www.mathjax.org) (par défaut) pour générer
 les expressions mathématiques dans le fichier HTML. Pour quelques exemples,
 [regarder ce site](http://www.suluclac.com/Wiki+MathJax+Syntax), pour quelque
-choses de plus complet, jetez un œil
-[ici](https://en.wikibooks.org/wiki/LaTeX/Mathematics). Voici tout de même
+choses de plus complet, jetez un œil à l'article de Wikipedia sur le sujet <https://en.wikibooks.org/wiki/LaTeX/Mathematics>. Voici tout de même
 quelques exemples&nbsp;:
 
 - quelques lettres grecques&nbsp;:
@@ -1083,7 +1062,7 @@ Pour utiliser des équations numérotées, il faut ajouter "(\@label)" avant l'�
 
 (@eq1) $$\frac{vache}{oiseau} = \frac{2\pi}{l}$$
 
-Je rajoute une seconde équation qui utilise les balises Latex pour créer un système :
+Je rajoute une seconde équation qui utilise les balises Latex pour créer un système&nbsp;:
 
     (@eq2) $$\begin{array}{ccc}
     x^2+y^2 &=& z^2 \\
@@ -1132,12 +1111,7 @@ Pour insérer une image, deux solutions nous sont offertes&nbsp;:
 
 
 Pour faire des références aux figures, comme pour les équations, vous pouvez
-utiliser un filtre dédié,
-[pandoc-fignos](https://github.com/tomduck/pandoc-fignos), ou, si vous souhaitez
-simplement avoir les références dans un document PDF' vous pouvez peut injecter
-une balise `\\label{lelabel}` et utiliser `\\ref{lelabel}`. Notez qu'avec R
-Markdown, on peut très facilement inclure des graphiques produits avec R et meme
-n'importe quelle image (voir plus bas).
+utiliser un filtre dédié, [pandoc-fignos](https://github.com/tomduck/pandoc-fignos), ou, si vous souhaitez simplement avoir les références dans un document PDF' vous pouvez peut injecter une balise `\\label{lelabel}` et utiliser `\\ref{lelabel}`. Notez que R Markdown nous permet d'inclure aisément des graphiques produits avec R et même n'importe quelle image (voir plus bas).
 
 ## Les tables
 
@@ -1205,13 +1179,13 @@ Notez qu'il faut séparer le texte des notes de bas de pages du texte principal 
 
 ### Références à une section
 
-La référence à une section se fait à l'aide de deux crochets. Dans le premier crochet, on trouve le texte associé au lien et dans le second, le nom de la partie à laquelle on fait référence&nbsp;:
+La référence à une section se fait à l'aide de deux crochets. Le premier crochet inclut le texte associé au lien et le second, le nom de la partie à laquelle le texte renvoie&nbsp;:
 
-    Référence à la [section sur les liens hypertextes][Liens hypertextes]
+    Référence à la [section sur les tables][Les tables]
 
-Référence à la [section sur les liens hypertextes][Liens hypertextes]
+Référence à la [section sur les tables][Les tables]
 
-On peut également utiliser le nom de la section dans le premier crochet et rien dans le second&nbsp;:
+On peut également utiliser le nom de la section dans le premier crochet (s'il est suffisant) et rien dans le second&nbsp;:
 
     Rappelez vous la section [Liens hypertextes][]
 
@@ -1221,13 +1195,7 @@ Rappelez vous la section [Liens hypertextes][]
 
 ### Références bibliographiques
 
-Un des points forts de Pandoc est la possibilité de gérer de manière très
-efficace votre bibliographie grace au processeur de citation
-[pandoc-citeproc](https://github.com/jgm/pandoc-citeproc). Un grand nombre de
-fichiers de bibliographie sont bien gérés[^notebibli], dont les fichiers bibtex.
-Pour plus de renseignements pour utiliser pandoc-citeproc dans un document  R
-Markdown, visitez la [page du site de R Markdown
-consacrée](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html).
+Un des points forts de Pandoc est la possibilité de gérer de manière très efficace votre bibliographie. Pour les versions antérieures à Pandoc 2.11, les citation étaient gérées par le processeur de citation [pandoc-citeproc](https://github.com/jgm/pandoc-citeproc) qui a été depuis intégrée dans Pandoc. Un grand nombre de fichiers de bibliographie sont bien gérés[^notebibli], dont le format bibtex `.bib` qui est utilisé pour ce document. Pour plus de renseignements, visitez la [page du manuel de Pandoc](https://pandoc.org/MANUAL.html#citations) et la [section du livre *R markdown cookbook*](https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html).
 
 L'exemple qui suit est basé sur le fichier bibtex (mybiblio.bib) disponible dans le dossier "aux" qui est donnée avec ce document et que je donne ci-dessous&nbsp;:
 
@@ -1263,8 +1231,9 @@ L'exemple qui suit est basé sur le fichier bibtex (mybiblio.bib) disponible dan
         year = {2014}
     }
 
-Ce fichier est spécifié dans le YAML&nbsp;: "bibliography: mybiblio.bib" (voir la section "[Le fichier YAML][]"). Le style de citation peut être spécifié, entre autres, à l'aide d'un fichier CSL, lui aussi spécifié dans le YAML et fourni dans le dossier "aux" &nbsp;: "csl: ./assets/journal-of-theoretical-biology.csl". Dans le texte, on peut appeler une référence en utilisant la forme sans parenthèse ou avec parenthèse.
-Pour la forme sans parenthèse, il suffit d'utiliser "\@id" où "id" est l'identifiant donné par le fichier "mybiblio.bib". Pour une référence sans parenthèse&nbsp;:
+<!-- je me demande ci c'est quelques chose qui est bien gérer par Pandoc et
+pas R markdown TBC -->
+Ce fichier est spécifié dans le YAML&nbsp;: "bibliography: mybiblio.bib" (voir la section "[Le fichier YAML][]"). Le style de citation peut être spécifié, entre autres, à l'aide d'un fichier CSL, lui aussi spécifié dans le YAML et fourni dans le dossier "aux" &nbsp;: "csl: ./assets/journal-of-theoretical-biology.csl". Dans le texte, on peut appeler une référence en utilisant la forme sans parenthèse ou avec parenthèse. Pour la forme sans parenthèse, il suffit d'utiliser "\@id" où "id" est l'identifiant donné par le fichier "mybiblio.bib". Pour une référence sans parenthèse&nbsp;:
 
     1. Selon @Oreskes1994, la modélisation [...].
 
@@ -1277,7 +1246,7 @@ Pour les citations entre parenthèses, les citations sont insérées entre croch
 2. Dans la littérature [...] [@Oreskes1994] bien que [...] [@Lande1979; @Knauff2014].
 
 
-On peut facilement ajouter du texte dans la parenthèse
+Pour ajouter du texte dans la parenthèse, il suffit d'ajouter le texte dans le crochet.
 
 
     3. Dans la littérature, [...] [voir @Oreskes1994] bien que [...] [@Lande1979 entre autres].
@@ -1302,22 +1271,20 @@ de Zotero](https://www.zotero.org/styles).
 
 
 
+<!-- ########################### JE SUIS LA TBC ########################### -->
+
+
 
 # Intégration de R dans le document
 
-L'intérêt du package `rmarkdown` est d'étendre la syntaxe Pandoc Markdown avec
-les fonctionnalités du [package
-knitr](http://cran.r-project.org/web/packages/knitr/index.html) pour insérer non
-seulement du code R mais aussi les sorties associées (sorties console et
-figures). Nous obtenons ainsi un document dynamique en ce sens que si les
-données associées et/ou le code R changent, le document évolue aussi. Cela
-permet, entre autres, de créer des rapports automatisés.
+L'intérêt du package `rmarkdown` est d'étendre la syntaxe Pandoc Markdown avec les fonctionnalités du [package knitr](http://cran.r-project.org/web/packages/knitr/index.html) pour insérer non seulement du code R mais aussi les sorties associées (sorties console et figures). Nous obtenons ainsi un document dynamique en ce sens que si les données associées et/ou le code R changent, le document évolue aussi. Cela permet, entre autres, de créer des rapports automatisés.
 
 
 ## Les blocs de code R
 
 Il y a deux manières d'insérer des sorties R dans le document:
-1. directement dans le texte ("inline");
+
+1. directement dans le texte (*inline* en anglais); 
 2. en utilisant un bloc de code dédié.
 
 Pour inclure une sortie texte directement dans un paragraphe, on utilise &nbsp;:
