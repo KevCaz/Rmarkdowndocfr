@@ -94,7 +94,7 @@ différentes syntaxes existantes sans me le savoir. Sans être exhaustif,
 il est utile de donner un peu plus de détails sur ce point pour bien
 comprendre ce quel Markdown on utilise avec R Markdown. La syntaxe
 originale de Markdown est le fruit du travail de John Gruber[1],
-programmeur, bloggeur et baladodiffuseur de Philadelphie en
+programmeur, blogueur et baladodiffuseur de Philadelphie en
 collaboration avec Aaron Swartz (lui même connu pour avoir participer a
 la création de Creative Commons et son tragique destin qui fut l’objet
 d’un film). Sur le site de John Gruber, “daringfireball”, Markdown est
@@ -479,7 +479,7 @@ source de ce document) :
 
     ---
     title: "Utiliser R Markdown pour créer des documents dynamiques"
-    date: "17 November 2021"
+    date: "18 November 2021"
     author: par Kevin Cazelles
     lang: fr
     abstract: "Le package [...] pour aller plus loin."
@@ -679,31 +679,31 @@ utilisé pour produire le PDF, il suffit d’ajouter l’option
 fichier YAML. Pour le Markdown, un fichier “.md” est généré suivant la
 variante de Markdown précisée dans le YAML par `variant: markdown` (voir
 la section suivante). Au passage, le format “Tufte handout” (qui n’est
-pas utilisé ici) est une mise en page qui inclue des marges larges où
+pas utilisé ici) est une mise en page qui inclut des marges larges où
 sont insérées les illustrations (dont les figures) et que nous devons au
 chercheur Edward Tufte.
-
-<!-- ###################################################################### -->
-<!-- ########################### JE SUIS ICI ############################## -->
-<!-- ###################################################################### -->
-<!-- NB Ajouter les liens vers la docs ou la spec -->
 
 Le variante Pandoc de Markdown
 ==============================
 
-Dans cette partie, je détaille les éléments de formatage du texte
+Dans cette partie, je présente les éléments de formatage du texte
 proposés par la syntaxe Pandoc de Markdown. L’ensemble est très bien
-présenté sur le [site de
-référence](http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html)[13]
+présenté sur le [site de R
+Markdown](http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html)[13]
 et très bien résumé à la première page du [guide de
 référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf).
 Pour une source en français, j’ai trouvé un excellent tour d’horizon
 nommé : “Élaboration et conversion de documents avec Markdown et Pandoc”
 (<a href="http://enacit1.epfl.ch/markdown-pandoc/" class="uri">http://enacit1.epfl.ch/markdown-pandoc/</a>)
-écrit par Jean-Daniel Bonjour. Notez que certains symboles sont réservés
-au formatage du texte. Cependant, quand leur affichage est requis, on
-les fait précéder du caractère d’échappement qui est, pour Markdown,
-l’antislash : “\\”. Par exemple, j’entre :
+écrit par Jean-Daniel Bonjour. Parmi les nombreux tutoriels plus courts
+sur le sujet, je recommande celui de Sarah Simpkin (Simpkin, 2020)
+disponible en ligne à l’adresse suivante
+<a href="https://programminghistorian.org/fr/lecons/debuter-avec-markdown" class="uri">https://programminghistorian.org/fr/lecons/debuter-avec-markdown</a>.
+
+Avant de commencer, je tiens à préciser que certains symboles sont
+réservés au formatage du texte. Cependant, quand leur affichage est
+requis, on les fait précéder du caractère d’échappement qui est
+l’antislash pour Markdown : “\\”. Par exemple, j’entre :
 
     \\ \& \# \$ \[
 
@@ -762,7 +762,7 @@ d’avoir un texte souligné en Word ou en PDF. De même que si j’utilise
 HTML ni en Word. Procéder de la sorte n’est pas toujours souhaité car le
 document R Markdown perd en généralité, en ce sens où il ne pourra pas
 être correctement généré dans tous les formats. Cela n’est cependant pas
-nécessairement un problème, par exemple, si vous souhaiter obtenir le
+nécessairement un problème, par exemple, si vous souhaitez obtenir le
 document en un seul format, ce fonctionnement devient un atout puisque
 vous pouvez utiliser toute la gamme de mise en forme offerte par le
 langage en question.
@@ -770,17 +770,17 @@ langage en question.
 Les titres
 ----------
 
-Le plus simple est d’utiliser un nombre croissant de `#` (ATX heading)
-pour descendre dans l’arborescence des titres:
+Le plus simple est d’utiliser un nombre croissant de `#` (*ATX-Style
+headers* en anglais) pour descendre dans l’arborescence des titres:
 
     # Un titre d'ordre 1
     ## Un titre d'ordre 2
     ### Un titre d'ordre 3
 
 Il est aussi possible d’utiliser une série de “=” en dessous des titre
-de premier niveau et une ligne de “-” en dessous des titres de niveau 2.
-Cette option a la qualité de permettre de repérer facilement les titres
-dans le code source.
+de premier niveau et une ligne de “-” en dessous des titres de niveau 2
+(*SETEXT-Style headers* en anglais). Cette option permet de repérer
+facilement les titres dans le code source.
 
     Un titre d'ordre 1
     ==================
@@ -792,9 +792,9 @@ Les listes
 ----------
 
 Les listes sont très intuitives en Markdown, alors qu’elles requièrent
-des balises un peu lourdes aussi bien en Latex qu’en HTML. Dans les
-exemples donnés, il faut toujours séparer le texte principal de la liste
-par des sauts de ligne. Aussi, il y a une différence de format
+des balises un peu lourdes aussi bien en Latex qu’en HTML. Notez que
+dans les exemples donnés, il faut toujours séparer le texte principal de
+la liste par des sauts de ligne.
 
 ### Listes non numérotées
 
@@ -828,9 +828,9 @@ Dans tous les cas, cela donne
 -   objet 2,
 -   objet 3.
 
-Et si j’utilise on ajoute un espace entre les éléments de la liste alors
-le rendu change un peu, la liste est plus aérée, par exemple en HTML,
-une balise paragraphe, `<p> </p>` est ajoutée, ainsi
+Et si j’utilise un espace entre les éléments de la liste alors le rendu
+change un peu, la liste est plus aérée, par exemple en HTML, une balise
+paragraphe, `<p> </p>` est ajoutée, ainsi
 
     * objet 1,
 
@@ -846,8 +846,8 @@ devient:
 
 -   objet 3.
 
-En utilisant une indentation de 4 espaces (ou une tabulation), on peut
-obtenir des listes hiérarchisées, ainsi:
+En utilisant une indentation de 4 espaces (ou une tabulation), il est
+possible de créer des listes hiérarchisées, ainsi:
 
     - objet 1,
         + machin 1
@@ -911,9 +911,9 @@ J’obtiens:
 2.  machin 2,
 3.  machin 3.
 
-Si les nombres ne sont pas écrits manière ordonnée, cela ne changera pas
-le résultat. Néanmoins, le premier nombre détermine le point de la
-liste. En écrivant :
+Si les nombres ne sont pas écrits de manière ordonnée, cela ne changera
+pas le résultat. Néanmoins, le premier nombre détermine le premier
+numéros de la liste, ainsi en utilisant :
 
     3. machin 1,
     3. machin 2,
@@ -1060,8 +1060,8 @@ veniam.
 Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-La seule différence entre l’exemple d’avant est l’ajout d’une tabulation
-après “veniam.”.
+La seule différence avec l’exemple précédent est l’ajout d’une
+tabulation après “veniam.”.
 
 Blocs de citation
 -----------------
@@ -1079,11 +1079,12 @@ deviennent :
 > adéquate pour une mise en page agréable dont le style peut être
 > facilement travailler en HTML grâce au CSS.
 
-Pour ajouter une hiérarchie dans les citations, on entre :
+Il est possible d’imbriquer une citation dans une citation en utilisant
+`>>` :
 
     > La citation de départ
     >
-    >> une hiérarchie dans la citation
+    >> une citation dans la citation 
 
 ce qui donne :
 
@@ -1125,9 +1126,9 @@ devient :
     g = func(c,d);
     printf("%i",g);
 
-Plus simplement, on peut utiliser des blocs de trois apostrophes
-inversés (*backquote* en anglais) et enlever l’accolade et le point pour
-préciser le langage et ainsi, avec le code ci-dessous
+Plus simplement, il est possible d’utiliser des blocs de trois
+apostrophes inversés (*backquote* en anglais) et enlever l’accolade et
+le point pour préciser le langage et ainsi, avec le code ci-dessous
 
     ```c
     // Commentaire
@@ -1156,8 +1157,7 @@ d’ailleurs ce que j’utilise quand je montre l’utilisation des
 apostrophes inversés ci-dessus!
 
 Un des grands intérêts de R Markdown est d’avoir des blocs de codes R
-qui peuvent être exécutés par R! Je détaille cette fonctionnalité plus
-bas.
+qui peuvent être exécutés par R, ce que nous verrons dans la suite.
 
 Les barres horizontales
 -----------------------
@@ -1187,9 +1187,10 @@ symboles. Ce sont les mêmes que celles proposées par
 [MathJax](http://www.mathjax.org) (par défaut) pour générer les
 expressions mathématiques dans le fichier HTML. Pour quelques exemples,
 [regarder ce site](http://www.suluclac.com/Wiki+MathJax+Syntax), pour
-quelque choses de plus complet, jetez un œil
-[ici](https://en.wikibooks.org/wiki/LaTeX/Mathematics). Voici tout de
-même quelques exemples :
+quelque choses de plus complet, jetez un œil à l’article de Wikipedia
+sur le sujet
+<a href="https://en.wikibooks.org/wiki/LaTeX/Mathematics" class="uri">https://en.wikibooks.org/wiki/LaTeX/Mathematics</a>.
+Voici tout de même quelques exemples :
 
 -   quelques lettres grecques :
 
@@ -1227,7 +1228,7 @@ l’équation, je ré-utilise l’équation précédente :
     $$\\frac{vache}{oiseau} = \\frac{2\\pi}{l}$$
 
 Je rajoute une seconde équation qui utilise les balises Latex pour créer
-un système :
+un système :
 
     (@eq2) $$\begin{array}{ccc}
     x^2+y^2 &=& z^2 \\
@@ -1281,9 +1282,9 @@ pouvez utiliser un filtre dédié,
 [pandoc-fignos](https://github.com/tomduck/pandoc-fignos), ou, si vous
 souhaitez simplement avoir les références dans un document PDF’ vous
 pouvez peut injecter une balise `\\label{lelabel}` et utiliser
-`\\ref{lelabel}`. Notez qu’avec R Markdown, on peut très facilement
-inclure des graphiques produits avec R et meme n’importe quelle image
-(voir plus bas).
+`\\ref{lelabel}`. Notez que R Markdown nous permet d’inclure aisément
+des graphiques produits avec R et même n’importe quelle image (voir plus
+bas).
 
 Les tables
 ----------
@@ -1380,16 +1381,16 @@ principal d’un saut de ligne.
 
 ### Références à une section
 
-La référence à une section se fait à l’aide de deux crochets. Dans le
-premier crochet, on trouve le texte associé au lien et dans le second,
-le nom de la partie à laquelle on fait référence :
+La référence à une section se fait à l’aide de deux crochets. Le premier
+crochet inclut le texte associé au lien et le second, le nom de la
+partie à laquelle le texte renvoie :
 
-    Référence à la [section sur les liens hypertextes][Liens hypertextes]
+    Référence à la [section sur les tables][Les tables]
 
-Référence à la [section sur les liens hypertextes](#liens-hypertextes)
+Référence à la [section sur les tables](#les-tables)
 
 On peut également utiliser le nom de la section dans le premier crochet
-et rien dans le second :
+(s’il est suffisant) et rien dans le second :
 
     Rappelez vous la section [Liens hypertextes][]
 
@@ -1398,13 +1399,15 @@ Rappelez vous la section [Liens hypertextes](#liens-hypertextes)
 ### Références bibliographiques
 
 Un des points forts de Pandoc est la possibilité de gérer de manière
-très efficace votre bibliographie grace au processeur de citation
-[pandoc-citeproc](https://github.com/jgm/pandoc-citeproc). Un grand
-nombre de fichiers de bibliographie sont bien gérés[19], dont les
-fichiers bibtex. Pour plus de renseignements pour utiliser
-pandoc-citeproc dans un document R Markdown, visitez la [page du site de
-R Markdown
-consacrée](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html).
+très efficace votre bibliographie. Pour les versions antérieures à
+Pandoc 2.11, les citation étaient gérées par le processeur de citation
+[pandoc-citeproc](https://github.com/jgm/pandoc-citeproc) qui a été
+depuis intégrée dans Pandoc. Un grand nombre de fichiers de
+bibliographie sont bien gérés[19], dont le format bibtex `.bib` qui est
+utilisé pour ce document. Pour plus de renseignements, visitez la [page
+du manuel de Pandoc](https://pandoc.org/MANUAL.html#citations) et la
+[section du livre *R markdown
+cookbook*](https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html).
 
 L’exemple qui suit est basé sur le fichier bibtex (mybiblio.bib)
 disponible dans le dossier “aux” qui est donnée avec ce document et que
@@ -1442,6 +1445,9 @@ je donne ci-dessous :
         year = {2014}
     }
 
+<!-- je me demande ci c'est quelques chose qui est bien gérer par Pandoc et
+pas R markdown TBC -->
+
 Ce fichier est spécifié dans le YAML : “bibliography: mybiblio.bib”
 (voir la section “\[Le fichier YAML\]\[\]”). Le style de citation peut
 être spécifié, entre autres, à l’aide d’un fichier CSL, lui aussi
@@ -1464,7 +1470,8 @@ crochets et séparées par des points-virgules :
 1.  Dans la littérature \[…\] (Oreskes et al., 1994) bien que \[…\]
     (Knauff and Nejasmic, 2014; Lande, 1979).
 
-On peut facilement ajouter du texte dans la parenthèse
+Pour ajouter du texte dans la parenthèse, il suffit d’ajouter le texte
+dans le crochet.
 
     3. Dans la littérature, [...] [voir @Oreskes1994] bien que [...] [@Lande1979 entre autres].
 
@@ -1477,6 +1484,8 @@ fin du document pour lui donner un titre. Une autre remarque pour vous
 dire qu’il existe de nombreux fichiers “csl” (acronyme pour [*Citation
 Style Langage*](https://en.wikipedia.org/wiki/Citation_Style_Language))
 sur le [site de Zotero](https://www.zotero.org/styles).
+
+<!-- ########################### JE SUIS LA TBC ########################### -->
 
 Intégration de R dans le document
 =================================
@@ -1493,9 +1502,10 @@ automatisés.
 Les blocs de code R
 -------------------
 
-Il y a deux manières d’insérer des sorties R dans le document: 1.
-directement dans le texte (“inline”); 2. en utilisant un bloc de code
-dédié.
+Il y a deux manières d’insérer des sorties R dans le document:
+
+1.  directement dans le texte (*inline* en anglais);
+2.  en utilisant un bloc de code dédié.
 
 Pour inclure une sortie texte directement dans un paragraphe, on utilise
  : `` `r expression` ``. Ainsi, par exemple, il est possible d’insérer
@@ -2029,74 +2039,74 @@ convertie dans le format désiré par Pandoc. De plus, la fonction
 <tr class="odd">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">13.267696</td>
-<td style="text-align: right;">15.116895</td>
+<td style="text-align: right;">11.0870245</td>
+<td style="text-align: right;">12.2872780</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">4.359005</td>
-<td style="text-align: right;">5.480613</td>
+<td style="text-align: right;">16.9193951</td>
+<td style="text-align: right;">16.4048387</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">15.851062</td>
-<td style="text-align: right;">16.900207</td>
+<td style="text-align: right;">17.5509090</td>
+<td style="text-align: right;">16.7147944</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">1.826501</td>
-<td style="text-align: right;">3.550115</td>
+<td style="text-align: right;">5.3603954</td>
+<td style="text-align: right;">6.1780871</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">8.145366</td>
-<td style="text-align: right;">7.403013</td>
+<td style="text-align: right;">6.4948945</td>
+<td style="text-align: right;">5.0890414</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">10.895933</td>
-<td style="text-align: right;">12.149343</td>
+<td style="text-align: right;">19.3866924</td>
+<td style="text-align: right;">18.6097152</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">18.186459</td>
-<td style="text-align: right;">18.781416</td>
+<td style="text-align: right;">18.3435917</td>
+<td style="text-align: right;">19.1498104</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">3.192698</td>
-<td style="text-align: right;">2.312519</td>
+<td style="text-align: right;">6.6615698</td>
+<td style="text-align: right;">6.1525816</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">3.564785</td>
-<td style="text-align: right;">4.316948</td>
+<td style="text-align: right;">16.8523356</td>
+<td style="text-align: right;">15.9919897</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">11.574991</td>
-<td style="text-align: right;">10.647385</td>
+<td style="text-align: right;">3.2283973</td>
+<td style="text-align: right;">2.5342444</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">18.252870</td>
-<td style="text-align: right;">18.743897</td>
+<td style="text-align: right;">3.2130710</td>
+<td style="text-align: right;">3.4466714</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">8.708582</td>
-<td style="text-align: right;">7.716352</td>
+<td style="text-align: right;">0.1007339</td>
+<td style="text-align: right;">-0.0140159</td>
 </tr>
 </tbody>
 </table>
@@ -2127,85 +2137,85 @@ la virgule ou encore d’inclure les numéros de lignes.
 <td style="text-align: left;">1</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">13.268</td>
-<td style="text-align: right;">15.117</td>
+<td style="text-align: right;">11.087</td>
+<td style="text-align: right;">12.287</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">2</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">4.359</td>
-<td style="text-align: right;">5.481</td>
+<td style="text-align: right;">16.919</td>
+<td style="text-align: right;">16.405</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">3</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">15.851</td>
-<td style="text-align: right;">16.900</td>
+<td style="text-align: right;">17.551</td>
+<td style="text-align: right;">16.715</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">4</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">1.827</td>
-<td style="text-align: right;">3.550</td>
+<td style="text-align: right;">5.360</td>
+<td style="text-align: right;">6.178</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">5</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">8.145</td>
-<td style="text-align: right;">7.403</td>
+<td style="text-align: right;">6.495</td>
+<td style="text-align: right;">5.089</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">6</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">10.896</td>
-<td style="text-align: right;">12.149</td>
+<td style="text-align: right;">19.387</td>
+<td style="text-align: right;">18.610</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">7</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">18.186</td>
-<td style="text-align: right;">18.781</td>
+<td style="text-align: right;">18.344</td>
+<td style="text-align: right;">19.150</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">8</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">3.193</td>
-<td style="text-align: right;">2.313</td>
+<td style="text-align: right;">6.662</td>
+<td style="text-align: right;">6.153</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">9</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">3.565</td>
-<td style="text-align: right;">4.317</td>
+<td style="text-align: right;">16.852</td>
+<td style="text-align: right;">15.992</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">10</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">11.575</td>
-<td style="text-align: right;">10.647</td>
+<td style="text-align: right;">3.228</td>
+<td style="text-align: right;">2.534</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">11</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">18.253</td>
-<td style="text-align: right;">18.744</td>
+<td style="text-align: right;">3.213</td>
+<td style="text-align: right;">3.447</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">12</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">8.709</td>
-<td style="text-align: right;">7.716</td>
+<td style="text-align: right;">0.101</td>
+<td style="text-align: right;">-0.014</td>
 </tr>
 </tbody>
 </table>
@@ -2393,16 +2403,16 @@ Le résultat est le suivant :
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">0.3068031</td>
-<td style="text-align: right;">0.6460804</td>
-<td style="text-align: right;">0.4748682</td>
-<td style="text-align: right;">0.6450817</td>
+<td style="text-align: right;">-0.0906557</td>
+<td style="text-align: right;">0.4512984</td>
+<td style="text-align: right;">-0.2008775</td>
+<td style="text-align: right;">0.8448212</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">var1</td>
-<td style="text-align: right;">1.0136737</td>
-<td style="text-align: right;">0.0571930</td>
-<td style="text-align: right;">17.7237320</td>
+<td style="text-align: right;">0.9874911</td>
+<td style="text-align: right;">0.0363509</td>
+<td style="text-align: right;">27.1655404</td>
 <td style="text-align: right;">0.0000000</td>
 </tr>
 </tbody>
@@ -2413,7 +2423,7 @@ Le résultat est le suivant :
 Mon modèle linéaire
 </p>
 
-La pente de la regression est de **1.01**.
+La pente de la regression est de **0.987**.
 
 Si je change les données de `tab1`, la table, les graphiques et mon
 commentaires seront changées de manière adéquate, ce qui peut s’avérer
@@ -2440,6 +2450,9 @@ Y). 33, 402–416.
 Oreskes, N., Shrader-Frechette, K., Belitz, K., 1994. Verification,
 validation, and confirmation of numerical models in the earth sciences.
 Science (80-. ). 263, 641–646.
+
+Simpkin, S., 2020. Débuter avec Markdown. Programming Historian en
+français. <https://doi.org/10.46430/phfr0007>
 
 Xie, Y., 2017. Dynamic documents with R and knitr. CRC Press, Boca
 Raton, Florida.
