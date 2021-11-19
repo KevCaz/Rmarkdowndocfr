@@ -1,13 +1,9 @@
-The R Encoding FAQ
+Utiliser R markdown
 ================
 
--   [Document pour apprendre à utiliser le package “R
-    markdown”](#document-pour-apprendre-à-utiliser-le-package-r-markdown)
 -   [Remerciements](#remerciements)
 -   [Contribuer](#contribuer)
 -   [License](#license)
-
-# Document pour apprendre à utiliser le package “R markdown”
 
 [![Project Status: WIP – Initial development is in progress, but there
 has not yet been a stable, usable release suitable for the
@@ -16,7 +12,7 @@ public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostat
 document](https://github.com/KevCaz/Rmarkdowndocfr/workflows/Render%20and%20deploy%20HTML%20document/badge.svg)](https://github.com/KevCaz/Rmarkdowndocfr/actions?query=workflow%3A%22Render+and+deploy+HTML+document%22)
 
 [Ce document](https://kevcaz.github.io/Rmarkdowndocfr/) est une
-introduction à R Markdown conçu pour répondre aux objectifs suivants:
+introduction à R Markdown conçue pour répondre aux objectifs suivants:
 
 1.  comprendre ce qu’est R Markdown;
 2.  comprendre les liens entre R, Markdown et Pandoc;
@@ -33,7 +29,8 @@ install.packages("rmarkdown")
 Notez que ce package requiert [Pandoc](https://pandoc.org/), voir
 <https://pandoc.org/installing.html> si vous rencontrez des problèmes
 d’installation. Une fois le package installé, vous pouvez le charger et
-voir les versions du package et de pandoc comme suit:
+vérifier la version du package installée ainsi que celle de Pandoc comme
+suit:
 
 ``` r
 library(rmarkdown)

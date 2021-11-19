@@ -1,12 +1,11 @@
 ---
-title: "The R Encoding FAQ"
+title: "Utiliser R markdown"
 output: 
   github_document:
     toc: true
     toc_depth: 2
 ---
 
-# Document pour apprendre à utiliser le package "R markdown"
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 [![Render and deploy HTML document](https://github.com/KevCaz/Rmarkdowndocfr/workflows/Render%20and%20deploy%20HTML%20document/badge.svg)](https://github.com/KevCaz/Rmarkdowndocfr/actions?query=workflow%3A"Render+and+deploy+HTML+document")
 
