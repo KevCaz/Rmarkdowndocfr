@@ -257,6 +257,7 @@ produire des fichiers LaTeX intégrant du code R et des figures. Le package
 [`rmarkdown`](https://rmarkdown.rstudio.com/) développé par RStudio est un
 package R très populaire qui a rendu la création de documents dynamiques avec R
 très efficace. -->
+<!-- TODO add table references sites ouvrages -->
 
 Utiliser un fichier R Markdown
 ==============================
@@ -479,7 +480,7 @@ source de ce document) :
 
     ---
     title: "Utiliser R Markdown pour créer des documents dynamiques"
-    date: "18 November 2021"
+    date: "19 November 2021"
     author: par Kevin Cazelles
     lang: fr
     abstract: "Le package [...] pour aller plus loin."
@@ -1485,13 +1486,11 @@ dire qu’il existe de nombreux fichiers “csl” (acronyme pour [*Citation
 Style Langage*](https://en.wikipedia.org/wiki/Citation_Style_Language))
 sur le [site de Zotero](https://www.zotero.org/styles).
 
-<!-- ########################### JE SUIS LA TBC ########################### -->
-
 Intégration de R dans le document
 =================================
 
-L’intérêt du package `rmarkdown` est d’étendre la syntaxe Pandoc
-Markdown avec les fonctionnalités du [package
+Le package `rmarkdown` combine la syntaxe Pandoc Markdown avec les
+fonctionnalités du [package
 knitr](http://cran.r-project.org/web/packages/knitr/index.html) pour
 insérer non seulement du code R mais aussi les sorties associées
 (sorties console et figures). Nous obtenons ainsi un document dynamique
@@ -1509,40 +1508,43 @@ Il y a deux manières d’insérer des sorties R dans le document:
 
 Pour inclure une sortie texte directement dans un paragraphe, on utilise
  : `` `r expression` ``. Ainsi, par exemple, il est possible d’insérer
-l’heure et la date à R en utilisant la fonction *Sys.time()*,
-l’utilisation de `` `r Sys.time()` ``  nous donne `r Sys.time()`.
+l’heure et la date au moment de la compilation du document en utilisant
+la fonction *Sys.time()*, ainsi, `` `r Sys.time()` ``  nous donne
+2021-11-19 14:24:21.
 
-Le reste de cette section se concentre sur les bloc de code R (*code
-chunks*) qui s’utilisent comme les [blocs de code](#blocs-de-code)
-détaillés précédemment, mais, à la différence de ces-derniers, il est
-possible d’identifier le bloc de code (`idbloc` ci-dessous) et varier
-différents paramètres d’affichage du code source et des sorties
-(l’ensemble des paramètres sont disponible à l’URL suivante
+Le reste de cette section se concentre sur les blocs de code R (*code
+chunks* en anglais) qui s’utilisent comme les [blocs de
+code](#blocs-de-code) détaillés précédemment, mais, à la différence de
+ces-derniers, il est possible d’identifier le bloc de code (`idbloc`
+ci-dessous) et varier différents paramètres d’affichage du code source
+et des sorties (l’ensemble des paramètres sont disponibles à l’URL
+suivante
 <a href="https://yihui.org/knitr/options/" class="uri">https://yihui.org/knitr/options/</a>).
 Typiquement, l’utilisation d’un tel bloc de code ressemble à ceci :
 
     ```{r, idbloc, param1 = val1, param2 = val2}
     ligne de code 1
     ligne de code 2
-    ...
+    [...]
     ligne de code n
     ```
 
 Notons que la casse n’est pas important pour le R de l’accolade et qu’il
-n’est pas obligatoire d’identifier les blocs de code, il est donc
-possible d’utiliser
+n’est pas obligatoire d’identifier les blocs de code:
 
-    ```{R param1 = val1, param2 = val2}
+    ```{R, param1 = val1, param2 = val2}
     ligne de code 1
     ligne de code 2
     ...
     ligne de code n
     ```
 
-Si l’identification du bloc de code n’est pas obligatoire, il est en
-revanche important de ne pas nommer deux blocs de code R avec le me
-identifiant, cela posera problème au moment de générer le code (un
-message d’erreur sera retourné).
+Dans ce cas, une identification par défaut sera ajoutée
+(`unnamed-chunk-i` pour le i<sup>ème</sup> bloc non identifié).
+Personnellement, je recommande vivement d’identifier les blocs de code
+R, cela permet d’identifier les potentiels problèmes. Aussi, si deux
+blocs de code R ont le même identifiant,un message d’erreur sera
+retourné avant que la compilation ne débute.
 
 Les commentaires sont introduits, comme dans R, sous la forme de lignes
 de codes commençant par un `#`. Débutons avec un exemple simple qui
@@ -1568,20 +1570,19 @@ coloration du code) avec la sortie console associée, en l’occurrence, le
 résultat de l’addition. Je présente dans la suite un certain nombre
 d’options qui donnent une large flexibilité dans la création des
 morceaux de code. Pour avoir accès à plus de précisions, reportez-vous
-au [guide de
-référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
-ou au [site de knitr](http://yihui.name/knitr/options/).
+aux ouvrages de référence (Xie, 2014; Xie et al., 2019, 2020) ou aux
+pages internet asssociées.
 
 Modifier l’affichage du code source et des sorties associées
 ------------------------------------------------------------
 
-Grâce à différents paramètres, il est possible de sélectionner finement
-ce qui est affiché, aussi bien pour le code que pour les sorties
-associées. Cela permet à l’utilisateur de mettre en avant certaines
-parties du code, mais aussi de choisir finement les sorties R (figures,
-tables, etc) à ajouter dans le document.
+Grâce aux différents paramètres des blocs de code, il est possible de
+sélectionner finement ce qui est affiché, aussi bien pour le code que
+pour les sorties associées. Cela permet à l’utilisateur de mettre en
+avant certaines parties du code, mais aussi de choisir finement les
+sorties R (figures, tables, etc) à ajouter dans le document.
 
-Dans cette section, j’ai choisi de détailler quelques paramètres clefs,
+Dans cette section, j’ai choisi de détailler quelques paramètres clés,
 mais il y en a d’autres (voir
 <a href="https://yihui.org/knitr/hooks/" class="uri">https://yihui.org/knitr/hooks/</a>)
 qui permettent d’aller plus loin. Il est cependant important de noter
@@ -1625,10 +1626,10 @@ donne:
 
     ## [1] 5
 
-Le paramètre `echo` peut aussi être utilisé pour choisir les lignes à
-montrer. Pour cela, on utilise un vecteur indiquant les positions des
-lignes à montrer. Par exemple, pour montrer uniquement les lignes 1 et 4
-on utilise `echo` de la sorte
+Le paramètre `echo` peut aussi être utilisé pour sélectionner un
+sous-ensemble de ligne à afficher. Cela ce fait en utilisant un vecteur
+indiquant les positions des lignes à afficher. Par exemple, pour montrer
+uniquement les lignes 1 et 4 on utilise `echo` de la sorte
 
     ``{r code14, echo = c(1, 4)}
     # une addition de variables avec R
@@ -1644,9 +1645,9 @@ ce qui donne:
 
     ## [1] 5
 
-On peut aussi choisir les lignes à ne pas montrer en utilisant des
-valeurs négatives. Ainsi, je peux enlever les trois premières lignes du
-bloc de code:
+Il est aussi possible de sélectionner les lignes à ne pas montrer en
+utilisant des valeurs négatives. Ainsi, je peux enlever les trois
+premières lignes du bloc de code:
 
     ``{r codesans13, echo = -c(1:3)}
     # une addition de variables avec R
@@ -1684,7 +1685,7 @@ on obtient
 
     $  [1] 5
 
-De me, `comment2`  :
+De même, `comment2`  :
 
     ``{r comment2, comment="R>>"}
     # une addition de variables avec R
@@ -1708,7 +1709,7 @@ il nous donne:
 
 Le paramètre `results` permet de choisir comment les sorties d’un bloc
 de code R vont être traitées. Par défaut, c’est le mode “markup” qui est
-utilisé:
+utilis&nbsp;:
 
     ``{r markup, results = 'markup'}
     # une division avec R
@@ -1752,8 +1753,8 @@ Exemple de division avec R: 1/998.001 = 0.001002003
     et à mesure de l’exécution du code et donc le bloc est interrompu.
     Par exemple, avec le code suivant’ :
 
-    \`\`{r} a &lt;- 2 print(a) b &lt;- 3 print(b) 2 + 3 \`\`\` on
-    obtient :
+    \`\`{r} a &lt;- 2 print(a) b &lt;- 3 print(b) 2 + 3 \`\`\` nous
+    obtenons :
 
 <!-- -->
 
@@ -1781,7 +1782,7 @@ alors qu’avec `results='hold'`,
     2 + 3
     ```
 
-on a :
+nous avons :
 
     a <- 2
     print(a)
@@ -1795,14 +1796,14 @@ on a :
 
 ### Choisir les messages retournés
 
-Il y a trois type de messages retournés par R:
+Il y a trois types de messages retournés par R:
 
 1.  les messages : une simple indication (voir la fonction `message()`);
 2.  les avertissements qui soulignent que quelque chose est peut-être
     problématiques, mais le code est exécutable (voir la fonction
     `warning()`);
 3.  les erreurs qui indiquent que quelques chose ne marche pas dans
-    l’exécution du code.
+    l’exécution du code (voir `stop()`).
 
 Considérons le bloc suivant qui inclut un message, un avertissement, une
 erreur (en commentaire) et une addition.
@@ -1866,8 +1867,8 @@ De la même manière il est possible de supprimer l’avertissement avec
 
     ## [1] 5
 
-Notez que si vous utilisez `results = 'hide'` les avertissements seront
-tout de même ajoutés et cette remarque est valable pour les messages.
+Notez qu’en utilisant `results = 'hide'`, les avertissements seront tout
+de même ajoutés et cette remarque est valable pour les messages.
 
     ``{r sansavertissment2, warning = FALSE, results = 'hide'}
     message("Ceci est un message")
@@ -1937,7 +1938,8 @@ affichée :
 
     install.packages(`rmarkdown`)
 
-On peut aussi utiliser un [blocs de code](#blocs-de-code) sans accolade
+Il est aussi possible d’utiliser un [blocs de code](#blocs-de-code) sans
+accolade
 
     ``r
     install.packages(`rmarkdown`)
@@ -1945,26 +1947,28 @@ On peut aussi utiliser un [blocs de code](#blocs-de-code) sans accolade
 
     install.packages(`rmarkdown`)
 
-Une des raisons de préférer `eval = FALSE` à un bloc sans accolade est
-la possibilité de suspendre l’évaluation d’un bloc de code tout en
-conservant les autres paramètres dans l’accolade, ce qui est très
-pratique lorsqu’on développe du contenu avec R Markdown.
+Utiliser `eval = FALSE` permet de suspendre l’évaluation d’un bloc de
+code tout en conservant les autres paramètres dans l’accolade, ce qui
+est très pratique dans des phases de développement de contenu qui prenne
+du temps à exécuter. Une autre stratégie possible dans ce genre de
+situation consiste à utiliser le cache (voir plus bas).
 
 #### Exécuter le code silencieusement
 
-Un autre cas relativement commun avec utilise R Markdown est de vouloir
-exécuter de manière silencieuse. En d’autres termes, on ne veut ni
-présenter le code ni aucune sortie, mais le code doit avoir été exécuté.
-Dans un rapport dynamique, par exemple, on est souvent amener à exécuter
-un script ou charger des fonctions qui serviront plus bas à créer des
-sorties qui seront intégrer dans le rapport. Avec ce qui a été vu
-précédemment, on sait qu’en utilisant les options `echo = FALSE`,
-`results = hide`, `message = FALSE` et `warning = FALSE` ensemble dans
-l’accolade, on est capable de d’arriver à ce résultat. Il existe
-cependant une manière plus rapide d’arriver à ce résultat en utilisant
-`include = FALSE` qui exécute le code silencieusement. Ci-dessous je
-créé une fonction qui fait une addition simple et j’assigne le résultat
-à la variable `res`
+R Markdown nous permet d’imbriquer du code dans un document dynamique et
+il est fréquent que la sortie importe plus que le code et pour obtenir
+une sortie, parfois des blocs de code intermédiaires doivent être
+exécutés. Dans de telles situation, ces blocs doivent pouvoir être
+exécutée de manière silencieuse: ni le code, ni les messages, ni les
+sorties ne doivent être affichés. C’est typiquement le cas pour les
+scripts et fonctions intermédiaires à charger pour être utiliser
+ultérieurement. D’après ce qui a été vu précédemment, nous pourrions
+combiner les options `echo = FALSE`, `results = hide`, `message = FALSE`
+et `warning = FALSE` ensemble dans l’accolade. Il existe cependant une
+manière plus rapide d’arriver à ce résultat en utilisant un seul
+paramètre, `include = FALSE`, qui exécute le code silencieusement.
+Ci-dessous je créé une fonction qui fait une addition simple et
+j’assigne le résultat à la variable `res`
 
     ``{r include, include = FALSE}
     mon_addition <- function(a, b) {
@@ -2013,8 +2017,8 @@ table créée sous R. Commençons par créer un objet `data.frame` :
 
 La fonction *kable()* du package `knitr` nous permet d’obtenir notre
 object *tab1* en différents formats (dont “latex”, “html”, “markdown”).
-Ici, en utilisant “markdown” par défaut on aura une table qui sera
-convertie dans le format désiré par Pandoc. De plus, la fonction
+Ici, en utilisant “markdown” par défaut, nous obtenons une table qui
+sera convertie dans le format désiré par Pandoc. De plus, la fonction
 *kable()* inclut le paramètre `caption` pour ajouter une légende.
 
     ``{r table1}
@@ -2039,81 +2043,81 @@ convertie dans le format désiré par Pandoc. De plus, la fonction
 <tr class="odd">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">11.0870245</td>
-<td style="text-align: right;">12.2872780</td>
+<td style="text-align: right;">17.906201</td>
+<td style="text-align: right;">17.586508</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">16.9193951</td>
-<td style="text-align: right;">16.4048387</td>
+<td style="text-align: right;">13.845489</td>
+<td style="text-align: right;">15.354770</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">17.5509090</td>
-<td style="text-align: right;">16.7147944</td>
+<td style="text-align: right;">12.068050</td>
+<td style="text-align: right;">12.521911</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">5.3603954</td>
-<td style="text-align: right;">6.1780871</td>
+<td style="text-align: right;">4.106771</td>
+<td style="text-align: right;">4.921635</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">6.4948945</td>
-<td style="text-align: right;">5.0890414</td>
+<td style="text-align: right;">15.583299</td>
+<td style="text-align: right;">14.797047</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">19.3866924</td>
-<td style="text-align: right;">18.6097152</td>
+<td style="text-align: right;">15.864955</td>
+<td style="text-align: right;">16.055862</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">18.3435917</td>
-<td style="text-align: right;">19.1498104</td>
+<td style="text-align: right;">3.809734</td>
+<td style="text-align: right;">3.733000</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">6.6615698</td>
-<td style="text-align: right;">6.1525816</td>
+<td style="text-align: right;">19.008347</td>
+<td style="text-align: right;">18.862583</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">16.8523356</td>
-<td style="text-align: right;">15.9919897</td>
+<td style="text-align: right;">13.672087</td>
+<td style="text-align: right;">12.705242</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">3.2283973</td>
-<td style="text-align: right;">2.5342444</td>
+<td style="text-align: right;">15.947815</td>
+<td style="text-align: right;">17.758350</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">3.2130710</td>
-<td style="text-align: right;">3.4466714</td>
+<td style="text-align: right;">12.593382</td>
+<td style="text-align: right;">14.288391</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">0.1007339</td>
-<td style="text-align: right;">-0.0140159</td>
+<td style="text-align: right;">6.910168</td>
+<td style="text-align: right;">7.131883</td>
 </tr>
 </tbody>
 </table>
 
-Il y a bien d’autre paramètres dans la fonction *kable()*, par exemple,
-il est possible de choisir le nombre de chiffres utilisés utiliser après
-la virgule ou encore d’inclure les numéros de lignes.
+Il y a bien d’autres paramètres dans la fonction *kable()*, par exemple,
+il est possible de choisir le nombre de chiffres utilisés après la
+virgule ou encore d’inclure les numéros de lignes.
 
     ``{r table2}
     kable(tab1, caption = "Table créée à partir de *df1*", digits = 3, row.names = TRUE)
@@ -2137,94 +2141,94 @@ la virgule ou encore d’inclure les numéros de lignes.
 <td style="text-align: left;">1</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">11.087</td>
-<td style="text-align: right;">12.287</td>
+<td style="text-align: right;">17.906</td>
+<td style="text-align: right;">17.587</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">2</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">16.919</td>
-<td style="text-align: right;">16.405</td>
+<td style="text-align: right;">13.845</td>
+<td style="text-align: right;">15.355</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">3</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">17.551</td>
-<td style="text-align: right;">16.715</td>
+<td style="text-align: right;">12.068</td>
+<td style="text-align: right;">12.522</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">4</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">5.360</td>
-<td style="text-align: right;">6.178</td>
+<td style="text-align: right;">4.107</td>
+<td style="text-align: right;">4.922</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">5</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">6.495</td>
-<td style="text-align: right;">5.089</td>
+<td style="text-align: right;">15.583</td>
+<td style="text-align: right;">14.797</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">6</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">19.387</td>
-<td style="text-align: right;">18.610</td>
+<td style="text-align: right;">15.865</td>
+<td style="text-align: right;">16.056</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">7</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">18.344</td>
-<td style="text-align: right;">19.150</td>
+<td style="text-align: right;">3.810</td>
+<td style="text-align: right;">3.733</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">8</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">6.662</td>
-<td style="text-align: right;">6.153</td>
+<td style="text-align: right;">19.008</td>
+<td style="text-align: right;">18.863</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">9</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">16.852</td>
-<td style="text-align: right;">15.992</td>
+<td style="text-align: right;">13.672</td>
+<td style="text-align: right;">12.705</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">10</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">3.228</td>
-<td style="text-align: right;">2.534</td>
+<td style="text-align: right;">15.948</td>
+<td style="text-align: right;">17.758</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">11</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">3.213</td>
-<td style="text-align: right;">3.447</td>
+<td style="text-align: right;">12.593</td>
+<td style="text-align: right;">14.288</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">12</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">0.101</td>
-<td style="text-align: right;">-0.014</td>
+<td style="text-align: right;">6.910</td>
+<td style="text-align: right;">7.132</td>
 </tr>
 </tbody>
 </table>
 
 Pour en apprendre davantage, reportez-vous à la documentation de cette
-fonction. Le package
-[`kableExtra`](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html)
-offre de très nombreuses fonctionnalités pour créer des tableaux plus
-complexes, je vous recommande chaudement d’y jeter un coup d’œil.
+fonction. Je tiens au passage à signaler le package
+[`kableExtra`](https:/%20cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html)
+qui offre de très nombreuses fonctionnalités pour créer des tableaux
+plus complexes, je vous recommande chaudement d’y jeter un coup d’œil.
 
 ### Figures
 
@@ -2238,13 +2242,13 @@ data frame créé plus haut pour cela.
 ![](/home/runner/work/Rmarkdowndocfr/Rmarkdowndocfr/public/UtiliserRMarkdown_files/figure-markdown_strict/figure-1.png)
 
 J’obtiens la figure demandée, avec des dimensions par défaut qui
-prennent une bonne de la largeur du document, mais pas son entièreté.
-Pour formater une figure obtenue avec R, il existe des options pour
-contrôler, entre autres, sa taille, son alignement et sa légende (taille
-et alignement ne sont pas supportés pour la sortie Word). Pour
-visualiser l’ensemble des options disponibles, je vous invite à regarder
-la page 3 du [guide de
-référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf).
+prennent une bonne partie de la largeur du document, mais pas son
+entièreté. Pour formater une figure obtenue avec R, il existe des
+options pour contrôler, entre autres, sa taille, son alignement et sa
+légende (taille et alignement ne sont pas supportés pour la sortie
+Word). Pour visualiser l’ensemble des options disponibles, je vous
+invite à regarder la page 3 du [guide de
+référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown%20reference.pdf).
 Dans le bloc de code ci-dessous, la taille de la figure et son
 alignement sont ajustés et une légende est ajoutée.
 
@@ -2265,9 +2269,9 @@ Les dimensions d’une figure sont toujours exprimées en
 n’êtes pas habitué à manipuler les pouces, il faudra faire des
 conversations à la main (ou avec R) en gardant en tête que 1 pouce vaut
 2.54 cm. Il est également possible de choisir une des deux dimensions et
-changer le rapport de forme, `fig.aspect`. Ainsi je peux dire que je
-veux une figure de 9 pouces avec un rapport de forme de 1.5, ce qui
-revient a demandé une hauteur de 6 pouces.
+changer le rapport de forme, `fig.aspect`. Ainsi, pour une figure de
+ poucesx pouces, je peux utliser une largeure de 9 pouces et un rapport
+de forme de 1.5.
 
     ``{r figdim2, fig.cap= "Figure 9x6", fig.width = 9, fig.aspect = 1.5}
     plot(tab1$var1,tab1$var2)
@@ -2289,9 +2293,8 @@ des pourcentage, pour cela on utilise `out.width`
 
 <img src="/home/runner/work/Rmarkdowndocfr/Rmarkdowndocfr/public/UtiliserRMarkdown_files/figure-markdown_strict/figdim3-1.png" width="100%" />
 
-Il est aussi possible de changer le format de sortie des figures peut
-être choisi avec le paramètre `dev` (la liste complète des formats est
-disponible à
+Il est aussi possible de changer le format de sortie des figures avec le
+paramètre `dev` (la liste complète des formats est disponible à
 <a href="https://yihui.org/knitr/options/" class="uri">https://yihui.org/knitr/options/</a>).
 <!-- Dans le bloc qui suit j'utilise le [format -->
 <!-- SVG](https://www.synbioz.com/blog/tech/le-svg-pour-quoi-faire) -->
@@ -2334,8 +2337,8 @@ Encore une fois, il y a [d’autres options listées sur le site de
 autres, d’ajouter un hyperlien sur la figure. L’ensemble de ces
 paramètres nous permettent de facilement bénéficier de la large gamme de
 fonctions graphiques de R. Ainsi, avec R Markdown, il est possible, par
-exemple, de personnaliser la figure précédente avec quelques ligne de
-supplémentaires, d’en choisir le taille, le format, la position, la
+exemple, de personnaliser la figure précédente avec quelques lignes de
+code supplémentaires, d’en choisir le taille, le format, la position, la
 légende, d’ajouter un hyperlien et de masquer le code qui la génère.
 Voici le bloc qui me permet de modifier toutes ces options:
 
@@ -2359,7 +2362,7 @@ nous avons vu comment insérer une image dans un document. Il est aussi
 possible de faire une telle inclusion grâce à la fonction
 `include_graphics()` de `knitr`. L’avantage de cette manière de procéder
 est qu’elle permet de traiter le fichier extérieur comme un graphique
-produit par R. Par exemple pour ajouter le logo de R utiliser plus haut
+produit par R. Par exemple, pour ajouter le logo de R utiliser plus haut
 (`./images/Rlogo.png`), il est possible d’utiliser:
 
     ``{r iclgraph, fig.align = 'center', out.width = "40%", echo = FALSE}
@@ -2374,7 +2377,8 @@ Application: modèle linéaire dynamique
 Supposons que je souhaite faire un modèle linéaire avec la variable
 explicative *var1* et la variable à expliquer *var2* de notre *tab1*.
 Pour ce faire je vais utiliser `lm()` et afficher les coefficients ainsi
-que les figures associées. J’utilise alors le bloc de code suivant :
+que les figures associées. J’utilise alors le bloc de code
+suivant&nbsp;:
 
     ``{r application, echo = FALSE, fig.cap = "Mon modèle linéaire", fig.width = 8,
         fig.height = 8, fig.align = 'center'}
@@ -2388,7 +2392,7 @@ avec le commentaire suivant: "La pente de la regression est de
 `` `r format(summary(mod1)$coefficients[2, 1], digits = 3)` `` (et je
 mettrai le résultat en gras).
 
-Le résultat est le suivant :
+Le résultat est le suivant&nbsp;:
 
 <table>
 <thead>
@@ -2403,16 +2407,16 @@ Le résultat est le suivant :
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-0.0906557</td>
-<td style="text-align: right;">0.4512984</td>
-<td style="text-align: right;">-0.2008775</td>
-<td style="text-align: right;">0.8448212</td>
+<td style="text-align: right;">0.5992859</td>
+<td style="text-align: right;">0.7748619</td>
+<td style="text-align: right;">0.77341</td>
+<td style="text-align: right;">0.4571727</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">var1</td>
-<td style="text-align: right;">0.9874911</td>
-<td style="text-align: right;">0.0363509</td>
-<td style="text-align: right;">27.1655404</td>
+<td style="text-align: right;">0.9815582</td>
+<td style="text-align: right;">0.0573212</td>
+<td style="text-align: right;">17.12383</td>
 <td style="text-align: right;">0.0000000</td>
 </tr>
 </tbody>
@@ -2423,18 +2427,40 @@ Le résultat est le suivant :
 Mon modèle linéaire
 </p>
 
-La pente de la regression est de **0.987**.
+La pente de la regression est de **0.982**.
 
 Si je change les données de `tab1`, la table, les graphiques et mon
-commentaires seront changées de manière adéquate, ce qui peut s’avérer
-très utile pour créer rapidement des rapports similaires, par exemple un
+commentaire seront adéquatement modifiés, ce qui peut s’avérer très
+utile pour créer rapidement des rapports similaires, par exemple un
 rapport mensuel pour lequel seules les données changent.
-
-<!-- il existe aussi des options avancées  -->
-<!-- https://yihui.org/knitr/hooks/ pas détaillé ici -->
 
 Utilisations avancées
 =====================
+
+:construction: WIP :construction:
+
+<!-- mettre cache plus haut -->
+
+Changer les réglages
+--------------------
+
+Extraire du code R
+------------------
+
+Utiliser un script externe
+--------------------------
+
+Utiliser les hooks
+------------------
+
+Autres packages
+---------------
+
+<!-- emjoi -->
+<!-- ici hooks  -->
+<!--  -->
+<!-- il existe aussi des options avancées  -->
+<!-- https://yihui.org/knitr/hooks/ pas détaillé ici -->
 
 Références
 ==========
@@ -2456,6 +2482,15 @@ français. <https://doi.org/10.46430/phfr0007>
 
 Xie, Y., 2017. Dynamic documents with R and knitr. CRC Press, Boca
 Raton, Florida.
+
+Xie, Y., 2014. Dynamic documents with R and Knitr, Chapman & Hall/CRC
+the R series. CRC Press, Taylor & Francis, Boca Raton.
+
+Xie, Y., Allaire, J.J., Grolemund, G., 2019. R Markdown: The definitive
+guide. CRC Press, Taylor and Francis Group, Boca Raton.
+
+Xie, Y., Dervieux, C., Riederer, E., 2020. R markdown cookbook, 1st ed,
+The R Series. Taylor and Francis, CRC Press, Boca Raton.
 
 [1] <a href="https://en.wikipedia.org/wiki/John_Gruber" class="uri">https://en.wikipedia.org/wiki/John_Gruber</a>,
 consulté le 1<sup>er</sup> juin 2020.
