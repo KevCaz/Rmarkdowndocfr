@@ -202,7 +202,7 @@ très efficace. -->
 
 
 
-
+<!-- TODO add table references sites ouvrages -->
 
 
 
@@ -1271,13 +1271,10 @@ de Zotero](https://www.zotero.org/styles).
 
 
 
-<!-- ########################### JE SUIS LA TBC ########################### -->
-
-
 
 # Intégration de R dans le document
 
-L'intérêt du package `rmarkdown` est d'étendre la syntaxe Pandoc Markdown avec les fonctionnalités du [package knitr](http://cran.r-project.org/web/packages/knitr/index.html) pour insérer non seulement du code R mais aussi les sorties associées (sorties console et figures). Nous obtenons ainsi un document dynamique en ce sens que si les données associées et/ou le code R changent, le document évolue aussi. Cela permet, entre autres, de créer des rapports automatisés.
+Le package `rmarkdown` combine la syntaxe Pandoc Markdown avec les fonctionnalités du [package knitr](http://cran.r-project.org/web/packages/knitr/index.html) pour insérer non seulement du code R mais aussi les sorties associées (sorties console et figures). Nous obtenons ainsi un document dynamique en ce sens que si les données associées et/ou le code R changent, le document évolue aussi. Cela permet, entre autres, de créer des rapports automatisés.
 
 
 ## Les blocs de code R
@@ -1287,41 +1284,27 @@ Il y a deux manières d'insérer des sorties R dans le document:
 1. directement dans le texte (*inline* en anglais); 
 2. en utilisant un bloc de code dédié.
 
-Pour inclure une sortie texte directement dans un paragraphe, on utilise &nbsp;:
-`` `r "\u0060r expression\u0060"` ``. Ainsi, par exemple, il est possible
-d'insérer l'heure et la date à R en utilisant la fonction *Sys.time()*,
-l'utilisation de `` `r "\u0060r Sys.time()\u0060"` ``&nbsp; nous donne `r
-Sys.time()`.
+Pour inclure une sortie texte directement dans un paragraphe, on utilise &nbsp;: `` `r "\u0060r expression\u0060"` ``. Ainsi, par exemple, il est possible d'insérer l'heure et la date au moment de la compilation du document en utilisant la fonction *Sys.time()*, ainsi, `` `r "\u0060r Sys.time()\u0060"` ``&nbsp; nous donne `r Sys.time()`.
 
-Le reste de cette section se concentre sur les bloc de code R (*code chunks*)
-qui s'utilisent comme les [blocs de code][Blocs de code] détaillés précédemment,
-mais,  à la différence de ces-derniers, il est possible d'identifier le bloc de
-code (`idbloc` ci-dessous) et varier différents paramètres d'affichage du code
-source et  des sorties (l'ensemble des paramètres sont disponible à l'URL
-suivante <https://yihui.org/knitr/options/>). Typiquement, l'utilisation d'un tel
-bloc de code ressemble à ceci&nbsp;:
+Le reste de cette section se concentre sur les blocs de code R (*code chunks* en anglais) qui s'utilisent comme les [blocs de code][Blocs de code] détaillés précédemment, mais, à la différence de ces-derniers, il est possible d'identifier le bloc de code (`idbloc` ci-dessous) et varier différents paramètres d'affichage du code source et  des sorties (l'ensemble des paramètres sont disponibles à l'URL suivante <https://yihui.org/knitr/options/>). Typiquement, l'utilisation d'un tel bloc de code ressemble à ceci&nbsp;:
 
     `r ''````{r, idbloc, param1 = val1, param2 = val2}
     ligne de code 1
     ligne de code 2
-    ...
+    [...]
     ligne de code n
     ```
 
 Notons que la casse n'est pas important pour le R de l'accolade et qu'il n'est
-pas obligatoire d'identifier les blocs de code, il est donc possible d'utiliser
+pas obligatoire d'identifier les blocs de code:
 
-    `r ''````{R param1 = val1, param2 = val2}
+    `r ''````{R, param1 = val1, param2 = val2}
     ligne de code 1
     ligne de code 2
     ...
     ligne de code n
     ```
-
-Si l'identification du bloc de code n'est pas obligatoire, il est en revanche
-important de ne pas nommer deux blocs de code R avec le me identifiant, cela
-posera problème au moment de générer le code (un message d’erreur sera
-retourné).
+Dans ce cas, une identification par défaut sera ajoutée (`unnamed-chunk-i` pour le i^ème^ bloc non identifié). Personnellement, je recommande vivement d'identifier les blocs de code R, cela permet d'identifier les potentiels problèmes. Aussi, si deux blocs de code R ont le même identifiant,un message d’erreur sera retourné avant que la compilation ne débute.
 
 Les commentaires sont introduits, comme dans R, sous la forme de lignes de
 codes commençant par un `#`. Débutons avec un exemple simple qui inclut un
@@ -1342,25 +1325,15 @@ donnent&nbsp;:
 2+3
 ```
 
-J'obtiens ainsi le code de R dans un environnement adéquate (voir la coloration
-du code) avec la sortie console associée, en l'occurrence, le résultat de
-l'addition. Je présente dans la suite un certain nombre d'options qui donnent
-une large flexibilité dans la création des morceaux de code. Pour avoir accès à
-plus de précisions, reportez-vous au [guide de
-référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
-ou au [site de knitr](http://yihui.name/knitr/options/).
+J'obtiens ainsi le code de R dans un environnement adéquate (voir la coloration du code) avec la sortie console associée, en l'occurrence, le résultat de l'addition. Je présente dans la suite un certain nombre d'options qui donnent une large flexibilité dans la création des morceaux de code. Pour avoir accès à plus de précisions, reportez-vous aux ouvrages de référence [@xie_dynamic_2014; @xie_markdown_2019; @xie_markdown_2020] ou aux pages internet asssociées. 
 
 
 
 ## Modifier l'affichage du code source et des sorties associées
 
-Grâce à différents paramètres, il est possible de sélectionner finement ce qui
-est affiché, aussi bien pour le code que pour les sorties associées. Cela permet
-à l'utilisateur de mettre en avant certaines parties du code, mais aussi de
-choisir finement les sorties R (figures, tables, etc) à ajouter dans le
-document.
+Grâce aux différents paramètres des blocs de code, il est possible de sélectionner finement ce qui est affiché, aussi bien pour le code que pour les sorties associées. Cela permet à l'utilisateur de mettre en avant certaines parties du code, mais aussi de choisir finement les sorties R (figures, tables, etc) à ajouter dans le document.
 
-Dans cette section, j'ai choisi de détailler quelques paramètres clefs, mais il
+Dans cette section, j'ai choisi de détailler quelques paramètres clés, mais il
 y en a d'autres (voir <https://yihui.org/knitr/hooks/>) qui permettent d'aller
 plus loin. Il est cependant important de noter que tout n'est pas nécessairement
 faisable avec ces paramètres. Ainsi, il est possible de sélectionner différentes
@@ -1410,10 +1383,7 @@ b <- 3
 a + b
 ```
 
-Le paramètre `echo` peut aussi être utilisé pour choisir les lignes à montrer.
-Pour cela, on utilise un vecteur indiquant les positions des lignes à montrer.
-Par exemple, pour montrer uniquement les lignes 1 et 4 on utilise `echo` de la
-sorte
+Le paramètre `echo` peut aussi être utilisé pour sélectionner un sous-ensemble de ligne à afficher. Cela ce fait en utilisant un vecteur indiquant les positions des lignes à afficher. Par exemple, pour montrer uniquement les lignes 1 et 4 on utilise `echo` de la sorte
 
     `r ''```{r code14, echo = c(1, 4)}
     # une addition de variables avec R
@@ -1431,8 +1401,7 @@ b <- 3
 a + b
 ```
 
-On peut aussi choisir les lignes à ne pas montrer en utilisant des valeurs
-négatives. Ainsi, je peux enlever les trois premières lignes du bloc de code:
+Il est aussi possible de sélectionner les lignes à ne pas montrer en utilisant des valeurs négatives. Ainsi, je peux enlever les trois premières lignes du bloc de code:
 
 
     `r ''```{r codesans13, echo = -c(1:3)}
@@ -1476,7 +1445,7 @@ b <- 3
 a + b
 ```
 
-De me, `comment2` &nbsp;:
+De même, `comment2` &nbsp;:
 
     `r ''```{r comment2, comment="R>>"}
     # une addition de variables avec R
@@ -1500,7 +1469,7 @@ a + b
 
 <!-- ajouter markup -->
 Le paramètre `results` permet de choisir comment les sorties d'un bloc de code R
-vont être traitées. Par défaut, c'est le mode "markup" qui est utilisé:
+vont être traitées. Par défaut, c'est le mode "markup" qui est utilis\&nbsp;:
 
     `r ''```{r markup, results = 'markup'}
     # une division avec R
@@ -1549,7 +1518,7 @@ cat("Exemple de division avec R: 1/998.001 = ", 1/998.001)
     print(b)
     2 + 3
     ```
-on obtient&nbsp;:
+nous obtenons&nbsp;:
 
 ```{r}
 a <- 2
@@ -1569,7 +1538,7 @@ alors qu'avec `results='hold'`,
     2 + 3
     ```
 
-on a&nbsp;:
+nous avons&nbsp;:
 
 ```{r hold, results = 'hold'}
 a <- 2
@@ -1582,11 +1551,11 @@ print(b)
 
 ### Choisir les messages retournés
 
-Il y a trois type de messages retournés par R:
+Il y a trois types de messages retournés par R:
 
 1. les messages : une simple indication (voir la fonction `message()`);
 2. les avertissements qui soulignent que quelque chose est peut-être problématiques, mais le code est exécutable (voir la fonction `warning()`);
-3. les erreurs qui indiquent que quelques chose ne marche pas dans l’exécution du code.
+3. les erreurs qui indiquent que quelques chose ne marche pas dans l’exécution du code (voir `stop()`).
 
 Considérons le bloc suivant qui inclut un message, un avertissement, une erreur
 (en commentaire) et une addition.
@@ -1638,7 +1607,7 @@ warning("Ceci est un avertissement")
 2 + 3
 ```
 
-Notez que si vous utilisez `results = 'hide'` les avertissements seront tout de
+Notez qu'en utilisant `results = 'hide'`, les avertissements seront tout de
 même ajoutés et cette remarque est valable pour les messages.
 
     `r ''```{r sansavertissment2, warning = FALSE, results = 'hide'}
@@ -1683,7 +1652,6 @@ stop("Ceci est un problème")
 
 
 
-
 ### Modifier le mode d’evaluation du code
 
 Par défaut, avec `rmarkdown`, dans un bloc de code R, le code est exécuté par R
@@ -1707,7 +1675,7 @@ l'installation du package `rmarkdown` n'est pas exécutée mais bien affichée&n
 install.packages(`rmarkdown`)
 ```
 
-On peut aussi utiliser un [blocs de code][Blocs de code] sans accolade
+Il est aussi possible d'utiliser un [blocs de code][Blocs de code] sans accolade
 
     `r ''```r
     install.packages(`rmarkdown`)
@@ -1717,26 +1685,13 @@ On peut aussi utiliser un [blocs de code][Blocs de code] sans accolade
 install.packages(`rmarkdown`)
 ```
 
-Une des raisons de préférer `eval = FALSE` à un bloc sans accolade est la
-possibilité de suspendre l'évaluation d'un bloc de code tout en conservant les
-autres paramètres dans l'accolade, ce qui est très pratique lorsqu'on développe
-du contenu avec R Markdown.
+Utiliser `eval = FALSE` permet de suspendre l'évaluation d'un bloc de code tout en conservant les autres paramètres dans l'accolade, ce qui est très pratique dans des phases de développement de contenu qui prenne du temps à exécuter. Une autre stratégie possible dans ce genre de situation consiste à utiliser le cache (voir plus bas).
 
 
 
 #### Exécuter le code silencieusement
 
-Un autre cas relativement commun avec utilise R Markdown est de vouloir exécuter
-de manière silencieuse. En d'autres termes, on ne veut ni présenter le code ni
-aucune sortie, mais le code doit avoir été exécuté. Dans un rapport dynamique,
-par exemple, on est souvent amener à exécuter un script ou charger des fonctions
-qui serviront plus bas à créer des sorties qui seront intégrer dans le rapport.
-Avec ce qui a été vu précédemment, on sait qu'en utilisant les options `echo =
-FALSE`, `results = hide`, `message = FALSE` et `warning = FALSE` ensemble dans
-l'accolade, on est capable de d'arriver à ce résultat. Il existe cependant une
-manière plus rapide d'arriver à ce résultat en utilisant `include = FALSE` qui
-exécute le code silencieusement. Ci-dessous je créé une fonction qui fait une
-addition simple et j'assigne le résultat à la variable `res`
+R Markdown nous permet d'imbriquer du code dans un document dynamique et il est fréquent que la sortie importe plus que le code et pour obtenir une sortie, parfois des blocs de code intermédiaires doivent être exécutés. Dans de telles situation, ces blocs doivent pouvoir être exécutée de manière silencieuse: ni le code, ni les messages, ni les sorties ne doivent être affichés. C'est typiquement le cas pour les scripts et fonctions intermédiaires à charger pour être utiliser ultérieurement. D'après ce qui a été vu précédemment, nous pourrions combiner les options `echo = FALSE`, `results = hide`, `message = FALSE` et `warning = FALSE` ensemble dans l'accolade. Il existe cependant une manière plus rapide d'arriver à ce résultat en utilisant un seul paramètre, `include = FALSE`, qui exécute le code silencieusement. Ci-dessous je créé une fonction qui fait une addition simple et j'assigne le résultat à la variable `res`
 
 
     `r ''```{r include, include = FALSE}
@@ -1798,11 +1753,7 @@ tab1 <- data.frame(
     )
 ```
 
-La fonction *kable()* du package `knitr` nous permet d'obtenir notre object
-*tab1* en différents formats (dont "latex", "html", "markdown"). Ici, en
-utilisant "markdown" par défaut on aura une table qui sera convertie dans le
-format désiré par Pandoc. De plus, la fonction *kable()* inclut le paramètre
-`caption` pour ajouter une légende.
+La fonction *kable()* du package `knitr` nous permet d'obtenir notre object *tab1* en différents formats (dont "latex", "html", "markdown"). Ici, en utilisant "markdown" par défaut, nous obtenons une table qui sera convertie dans le format désiré par Pandoc. De plus, la fonction *kable()* inclut le paramètre `caption` pour ajouter une légende.
 
 
     `r ''```{r table1}
@@ -1815,10 +1766,9 @@ library(knitr)
 kable(tab1, caption = "Table créée à partir de *df1*")
 ```
 
-Il y a bien d'autre paramètres dans la fonction *kable()*, par exemple, il est
-possible de choisir le nombre de chiffres utilisés utiliser après la virgule ou
+Il y a bien d'autres paramètres dans la fonction *kable()*, par exemple, il est
+possible de choisir le nombre de chiffres utilisés après la virgule ou
 encore d'inclure les numéros de lignes.
-
 
     `r ''```{r table2}
     kable(tab1, caption = "Table créée à partir de *df1*", digits = 3, row.names = TRUE)
@@ -1828,16 +1778,11 @@ encore d'inclure les numéros de lignes.
 kable(tab1, caption = "Table créée à partir de *df1*", digits = 3, row.names = TRUE)
 ```
 
-Pour en apprendre davantage, reportez-vous à la documentation de cette fonction.
-Le package
-[`kableExtra`](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html)
-offre de très nombreuses fonctionnalités pour créer des tableaux plus complexes,
-je vous recommande chaudement d'y jeter un coup d’œil.
+Pour en apprendre davantage, reportez-vous à la documentation de cette fonction. Je tiens au passage à signaler le package [`kableExtra`](https:/ cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html) qui offre de très nombreuses fonctionnalités pour créer des tableaux plus complexes, je vous recommande chaudement d'y jeter un coup d’œil.
 
 
 
 ### Figures
-
 
 Avec le package `rmarkdown`, il est très facile d'insérer les figures produites
 avec R dans un document, le plus simple est de regarder ce que génère un simple
@@ -1849,14 +1794,7 @@ plot(tab1$var1, tab1$var2)
 ```
 
 J'obtiens la figure demandée, avec des dimensions par défaut qui prennent une
-bonne de la largeur du document, mais pas son entièreté. Pour formater une
-figure obtenue avec R, il existe des options pour contrôler, entre autres, sa
-taille, son alignement et sa légende (taille et alignement ne sont pas supportés
-pour la sortie  Word). Pour visualiser l'ensemble des options disponibles, je
-vous invite à regarder la page 3 du [guide de
-référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf).
-Dans le bloc de code ci-dessous, la taille de la figure et son alignement sont
-ajustés et une légende est ajoutée.
+bonne partie de la largeur du document, mais pas son entièreté. Pour formater une figure obtenue avec R, il existe des options pour contrôler, entre autres, sa taille, son alignement et sa légende (taille et alignement ne sont pas supportés pour la sortie  Word). Pour visualiser l'ensemble des options disponibles, je vous invite à regarder la page 3 du [guide de référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown reference.pdf). Dans le bloc de code ci-dessous, la taille de la figure et son alignement sont ajustés et une légende est ajoutée.
 
     `r ''```{r figdim1, fig.cap = "Ceci est la légende de la figure",
         fig.height = 4, fig.width = 4, fig.align = 'right'}
@@ -1867,12 +1805,7 @@ ajustés et une légende est ajoutée.
 plot(tab1$var1, tab1$var2)
 ```
 
-Les dimensions d'une figure sont toujours exprimées en
-[pouces](https://fr.wikipedia.org/wiki/Pouce_(unit%C3%A9)), si vous n'êtes pas
-habitué à manipuler les pouces, il faudra faire des conversations à la main (ou
-avec R) en gardant en tête que 1&nbsp;pouce vaut 2.54&nbsp;cm. Il est également
-possible de choisir une des deux dimensions et changer le rapport de forme, `fig.aspect`. Ainsi je peux dire que je veux une figure de 9&nbsp;pouces avec un rapport de forme de 1.5,
-ce qui revient a demandé une hauteur de 6&nbsp;pouces.
+Les dimensions d'une figure sont toujours exprimées en [pouces](https://fr.wikipedia.org/wiki/Pouce_(unit%C3%A9)), si vous n'êtes pas habitué à manipuler les pouces, il faudra faire des conversations à la main (ou avec R) en gardant en tête que 1&nbsp;pouce vaut 2.54&nbsp;cm. Il est également possible de choisir une des deux dimensions et changer le rapport de forme, `fig.aspect`. Ainsi, pour une figure de &nbsp;poucesx&nbsp;pouces, je peux utliser une largeure de 9&nbsp;pouces et un rapport de forme de 1.5.
 
 
     `r ''```{r figdim2, fig.cap= "Figure 9x6", fig.width = 9, fig.aspect = 1.5}
@@ -1898,8 +1831,7 @@ plot(tab1$var1, tab1$var2)
 ```
 
 
-Il est aussi possible de changer le format de sortie des figures peut être
-choisi avec le paramètre `dev` (la liste complète des formats est disponible à
+Il est aussi possible de changer le format de sortie des figures avec le paramètre `dev` (la liste complète des formats est disponible à
 <https://yihui.org/knitr/options/>). 
 <!-- Dans le bloc qui suit j'utilise le [format -->
 <!-- SVG](https://www.synbioz.com/blog/tech/le-svg-pour-quoi-faire) -->
@@ -1937,7 +1869,7 @@ Encore une fois, il y a [d'autres options listées sur le site de
 d'ajouter un hyperlien sur la figure. L'ensemble de ces paramètres nous
 permettent de facilement bénéficier de la large gamme de fonctions graphiques de
 R. Ainsi, avec R Markdown, il est possible, par exemple, de personnaliser la
-figure précédente avec quelques ligne de supplémentaires, d'en choisir le
+figure précédente avec quelques lignes de code supplémentaires, d'en choisir le
 taille, le format, la position, la légende, d'ajouter un hyperlien et de masquer
 le code qui la génère. Voici le bloc qui me permet de modifier toutes ces
 options:
@@ -1960,14 +1892,10 @@ legend("bottomright", letters[1:5], pch = 15:19, bty = "n")
 
 
 
+
 ### Graphiques non générés par R
 
-Dans la section traitant des [images](Les_images) avec Pandoc Markdown nous
-avons vu comment insérer une image dans un document. Il est aussi possible de
-faire une telle inclusion grâce à la fonction `include_graphics()` de `knitr`.
-L'avantage de cette manière de procéder est qu'elle permet de traiter le fichier
-extérieur comme un graphique produit par R. Par exemple pour ajouter le logo de
-R utiliser plus haut (`./images/Rlogo.png`), il est possible d'utiliser:
+Dans la section traitant des [images](Les_images) avec Pandoc Markdown nous avons vu comment insérer une image dans un document. Il est aussi possible de faire une telle inclusion grâce à la fonction `include_graphics()` de `knitr`. L'avantage de cette manière de procéder est qu'elle permet de traiter le fichier extérieur comme un graphique produit par R. Par exemple, pour ajouter le logo de R utiliser plus haut (`./images/Rlogo.png`), il est possible d'utiliser:
 
 
     `r ''```{r iclgraph, fig.align = 'center', out.width = "40%", echo = FALSE}
@@ -1987,7 +1915,7 @@ include_graphics("./images/Rlogo.png")
 Supposons que je souhaite faire un modèle linéaire avec la variable explicative
 *var1* et la variable à expliquer *var2* de notre *tab1*. Pour ce faire je vais
 utiliser `lm()` et afficher les coefficients ainsi que les figures associées.
-J'utilise alors le bloc de code suivant :
+J'utilise alors le bloc de code suivant\&nbsp;:
 
     `r ''```{r application, echo = FALSE, fig.cap = "Mon modèle linéaire", fig.width = 8,
         fig.height = 8, fig.align = 'center'}
@@ -2000,7 +1928,7 @@ J'utilise alors le bloc de code suivant :
 avec le commentaire suivant: "La pente de la regression est de `` `r "\u0060r format(summary(mod1)$coefficients[2, 1], digits = 3)\u0060"` `` (et je mettrai le résultat en gras).
 
 
-Le résultat est le suivant :
+Le résultat est le suivant\&nbsp;:
 
 
 ```{r application, echo = FALSE, fig.cap = "Mon modèle linéaire", fig.width = 8, fig.height = 8, fig.align = 'center'}
@@ -2013,8 +1941,7 @@ plot(mod1)
 La pente de la regression est de **`r format(summary(mod1)$coefficients[2, 1], digits = 3)`**.
 
 
-Si je change les données de `tab1`, la table, les graphiques et mon commentaires
-seront changées de manière adéquate, ce qui peut s'avérer très utile pour créer rapidement des rapports similaires, par exemple un rapport mensuel pour lequel seules les données changent.
+Si je change les données de `tab1`, la table, les graphiques et mon commentaire seront adéquatement modifiés, ce qui peut s'avérer très utile pour créer rapidement des rapports similaires, par exemple un rapport mensuel pour lequel seules les données changent.
 
 
 
@@ -2023,16 +1950,34 @@ seront changées de manière adéquate, ce qui peut s'avérer très utile pour c
 
 
 
-
-
-<!-- il existe aussi des options avancées  -->
-<!-- https://yihui.org/knitr/hooks/ pas détaillé ici -->
 
 
 # Utilisations avancées
 
+:construction: WIP :construction:
 
 
+
+<!-- mettre cache plus haut -->
+
+## Changer les réglages 
+
+## Extraire du code R 
+
+## Utiliser un script externe
+
+## Utiliser les hooks
+
+## Autres packages 
+
+<!-- emjoi -->
+
+
+<!-- ici hooks  -->
+<!--  -->
+
+<!-- il existe aussi des options avancées  -->
+<!-- https://yihui.org/knitr/hooks/ pas détaillé ici -->
 
 
 
