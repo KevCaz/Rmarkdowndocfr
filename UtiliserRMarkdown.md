@@ -53,7 +53,7 @@ dans lequel le document a été compilé sont indiquées ci-dessous.
     ## 
     ## loaded via a namespace (and not attached):
     ##  [1] compiler_4.1.2  magrittr_2.0.1  fastmap_1.1.0   tools_4.1.2    
-    ##  [5] htmltools_0.5.2 jquerylib_0.1.4 stringi_1.7.5   rmarkdown_2.11 
+    ##  [5] htmltools_0.5.2 jquerylib_0.1.4 stringi_1.7.6   rmarkdown_2.11 
     ##  [9] highr_0.9       stringr_1.4.0   xfun_0.28       digest_0.6.28  
     ## [13] rlang_0.4.12    evaluate_0.14
 
@@ -480,7 +480,7 @@ source de ce document) :
 
     ---
     title: "Utiliser R Markdown pour créer des documents dynamiques"
-    date: "19 November 2021"
+    date: "30 November 2021"
     author: par Kevin Cazelles
     lang: fr
     abstract: "Le package [...] pour aller plus loin."
@@ -1510,7 +1510,7 @@ Pour inclure une sortie texte directement dans un paragraphe, on utilise
  : `` `r expression` ``. Ainsi, par exemple, il est possible d’insérer
 l’heure et la date au moment de la compilation du document en utilisant
 la fonction *Sys.time()*, ainsi, `` `r Sys.time()` ``  nous donne
-2021-11-19 14:40:40.
+2021-11-30 14:25:58.
 
 Le reste de cette section se concentre sur les blocs de code R (*code
 chunks* en anglais) qui s’utilisent comme les [blocs de
@@ -2043,74 +2043,74 @@ sera convertie dans le format désiré par Pandoc. De plus, la fonction
 <tr class="odd">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">10.0765791</td>
-<td style="text-align: right;">8.4911290</td>
+<td style="text-align: right;">10.2229189</td>
+<td style="text-align: right;">8.6060752</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">4.1174981</td>
-<td style="text-align: right;">4.2103530</td>
+<td style="text-align: right;">10.8261322</td>
+<td style="text-align: right;">11.5284331</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">12.9770847</td>
-<td style="text-align: right;">12.1875687</td>
+<td style="text-align: right;">8.2363017</td>
+<td style="text-align: right;">7.5466028</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">6.6953145</td>
-<td style="text-align: right;">7.5698674</td>
+<td style="text-align: right;">2.9814598</td>
+<td style="text-align: right;">4.3346709</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">12.0816216</td>
-<td style="text-align: right;">13.1414911</td>
+<td style="text-align: right;">8.1270461</td>
+<td style="text-align: right;">8.2878238</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">2.5242919</td>
-<td style="text-align: right;">4.3298157</td>
+<td style="text-align: right;">14.6691864</td>
+<td style="text-align: right;">13.7577916</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">18.1656983</td>
-<td style="text-align: right;">19.3906705</td>
+<td style="text-align: right;">11.4653645</td>
+<td style="text-align: right;">11.1992028</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">3.5881118</td>
-<td style="text-align: right;">3.2085710</td>
+<td style="text-align: right;">9.9623756</td>
+<td style="text-align: right;">9.7730564</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">9.9604733</td>
-<td style="text-align: right;">10.5611576</td>
+<td style="text-align: right;">1.2267945</td>
+<td style="text-align: right;">-0.4370897</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">0.6000025</td>
-<td style="text-align: right;">0.4074149</td>
+<td style="text-align: right;">13.1323065</td>
+<td style="text-align: right;">14.3003914</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">15.8783249</td>
-<td style="text-align: right;">15.2080769</td>
+<td style="text-align: right;">0.6999224</td>
+<td style="text-align: right;">-0.2537702</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">11.5318784</td>
-<td style="text-align: right;">12.1822748</td>
+<td style="text-align: right;">6.4557206</td>
+<td style="text-align: right;">8.2896630</td>
 </tr>
 </tbody>
 </table>
@@ -2141,85 +2141,85 @@ virgule ou encore d’inclure les numéros de lignes.
 <td style="text-align: left;">1</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">10.077</td>
-<td style="text-align: right;">8.491</td>
+<td style="text-align: right;">10.223</td>
+<td style="text-align: right;">8.606</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">2</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">4.117</td>
-<td style="text-align: right;">4.210</td>
+<td style="text-align: right;">10.826</td>
+<td style="text-align: right;">11.528</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">3</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">12.977</td>
-<td style="text-align: right;">12.188</td>
+<td style="text-align: right;">8.236</td>
+<td style="text-align: right;">7.547</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">4</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">6.695</td>
-<td style="text-align: right;">7.570</td>
+<td style="text-align: right;">2.981</td>
+<td style="text-align: right;">4.335</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">5</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">12.082</td>
-<td style="text-align: right;">13.141</td>
+<td style="text-align: right;">8.127</td>
+<td style="text-align: right;">8.288</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">6</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">2.524</td>
-<td style="text-align: right;">4.330</td>
+<td style="text-align: right;">14.669</td>
+<td style="text-align: right;">13.758</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">7</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">18.166</td>
-<td style="text-align: right;">19.391</td>
+<td style="text-align: right;">11.465</td>
+<td style="text-align: right;">11.199</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">8</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">3.588</td>
-<td style="text-align: right;">3.209</td>
+<td style="text-align: right;">9.962</td>
+<td style="text-align: right;">9.773</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">9</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">9.960</td>
-<td style="text-align: right;">10.561</td>
+<td style="text-align: right;">1.227</td>
+<td style="text-align: right;">-0.437</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">10</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">0.600</td>
-<td style="text-align: right;">0.407</td>
+<td style="text-align: right;">13.132</td>
+<td style="text-align: right;">14.300</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">11</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">15.878</td>
-<td style="text-align: right;">15.208</td>
+<td style="text-align: right;">0.700</td>
+<td style="text-align: right;">-0.254</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">12</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">11.532</td>
-<td style="text-align: right;">12.182</td>
+<td style="text-align: right;">6.456</td>
+<td style="text-align: right;">8.290</td>
 </tr>
 </tbody>
 </table>
@@ -2365,7 +2365,7 @@ est qu’elle permet de traiter le fichier extérieur comme un graphique
 produit par R. Par exemple, pour ajouter le logo de R utiliser plus haut
 (`./images/Rlogo.png`), il est possible d’utiliser:
 
-    ``{r iclgraph, fig.align = 'center', out.width = "40%", echo = FALSE}
+    ```{r iclgraph, fig.align = 'center', out.width = "40%", echo = FALSE}
     include_graphics("./images/Rlogo.png")
     ```
 
@@ -2407,17 +2407,17 @@ Le résultat est le suivant&nbsp;:
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">0.3121038</td>
-<td style="text-align: right;">0.5864097</td>
-<td style="text-align: right;">0.5322283</td>
-<td style="text-align: right;">0.60619</td>
+<td style="text-align: right;">-0.293814</td>
+<td style="text-align: right;">0.7418655</td>
+<td style="text-align: right;">-0.3960475</td>
+<td style="text-align: right;">0.7003885</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">var1</td>
-<td style="text-align: right;">0.9902610</td>
-<td style="text-align: right;">0.0560906</td>
-<td style="text-align: right;">17.6546589</td>
-<td style="text-align: right;">0.00000</td>
+<td style="text-align: right;">1.025030</td>
+<td style="text-align: right;">0.0802112</td>
+<td style="text-align: right;">12.7791327</td>
+<td style="text-align: right;">0.0000002</td>
 </tr>
 </tbody>
 </table>
@@ -2427,7 +2427,7 @@ Le résultat est le suivant&nbsp;:
 Mon modèle linéaire
 </p>
 
-La pente de la regression est de **0.99**.
+La pente de la regression est de **1.03**.
 
 Si je change les données de `tab1`, la table, les graphiques et mon
 commentaire seront adéquatement modifiés, ce qui peut s’avérer très
@@ -2444,17 +2444,68 @@ Utilisations avancées
 Changer les réglages
 --------------------
 
+TODO
+
 Extraire du code R
 ------------------
+
+TODO
 
 Utiliser un script externe
 --------------------------
 
+Pour insérer dans un fichier de code, il peut parfois être plus pratique
+d’utiliser un script externe, autrement avoir une partie (ou
+l’entièreté) du code dans un fichier `.R` (ou `.r`). Plusieurs manières
+de procéder existent, plus ou moins pertinentes selon ce que nous
+voulons faire. Si le code est simplement un ensemble de ligne à exécuter
+de manière silencieuse, alors utiliser `source()` est probablement une
+bonne option. Il y a cependant une petite chose à savoir, c’est qu’il
+est préférable d’utiliser `local` pour s’assurer que le code sera
+exécuter dans le bon environment, voir le chapitre *Source external R
+scripts* de Xie et al. (2020) (aussi disponible à l’URL suivante
+<a href="https://bookdown.org/yihui/rmarkdown-cookbook/source-script.html" class="uri">https://bookdown.org/yihui/rmarkdown-cookbook/source-script.html</a>).
+Le script à charger est disponible à l’URL suivante et
+<a href="https://github.com/KevCaz/Rmarkdowndocfrscripts/scr_externe1.R" class="uri">https://github.com/KevCaz/Rmarkdowndocfrscripts/scr_externe1.R</a>,
+il contient les ligne suivant:
+
+    var1 <- 2
+    var2 <- 10*var1
+    var3 <- cos(var2)
+    var4 <- sin(var2)
+
+que nous chargeons avec la fonction `source()`
+
+    ```{r source-script, include = FALSE}
+    source("scripts/scr_externe1.R", local = knitr::knit_global())
+    ```
+
+Une fois chargé, nous pouvons alors accéder à son contenu.
+
+    var4
+
+    ## [1] 0.9129453
+
+Utiliser source ne nous permet pas d’afficher le code, si on decide
+d’afficher le code nous voyons `source`. Pour voir le code, utiliser
+l’option `code` et lire le code avec `readLines` ou readutf8… TODO
+
+Code ne nous permet pas de selectionner des parties du scripe, mais cela
+est possible avec `read_chunk` TODO
+
+<!-- faire un snippet pour les code et changer les code chunk a monter -->
+
+<!-- https://stackoverflow.com/questions/52397430/include-code-from-an-external-r-script-run-in-display-both-code-and-output -->
+
 Utiliser les hooks
 ------------------
 
+TODO
+
 Autres packages
 ---------------
+
+TODO
 
 <!-- emjoi -->
 <!-- ici hooks  -->
