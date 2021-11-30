@@ -79,6 +79,10 @@ rmarkdown::pandoc_version()
 </details>
 
 
+```{r extfun, include = FALSE}
+source("scripts/zzz.R", local = knitr::knit_global())
+```
+
 
 # Introduction
 
@@ -1794,7 +1798,7 @@ plot(tab1$var1, tab1$var2)
 ```
 
 J'obtiens la figure demandée, avec des dimensions par défaut qui prennent une
-bonne partie de la largeur du document, mais pas son entièreté. Pour formater une figure obtenue avec R, il existe des options pour contrôler, entre autres, sa taille, son alignement et sa légende (taille et alignement ne sont pas supportés pour la sortie  Word). Pour visualiser l'ensemble des options disponibles, je vous invite à regarder la page 3 du [guide de référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown reference.pdf). Dans le bloc de code ci-dessous, la taille de la figure et son alignement sont ajustés et une légende est ajoutée.
+bonne partie de la largeur du document, mais pas son entièreté. Pour formater une figure obtenue avec R, il existe des options pour contrôler, entre autres, sa taille, son alignement et sa légende (taille et alignement ne sont pas supportés pour la sortie Word). Pour visualiser l'ensemble des options disponibles, je vous invite à regarder la page 3 du [guide de référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown reference.pdf). Dans le bloc de code ci-dessous, la taille de la figure et son alignement sont ajustés et une légende est ajoutée.
 
     `r ''```{r figdim1, fig.cap = "Ceci est la légende de la figure",
         fig.height = 4, fig.width = 4, fig.align = 'right'}
@@ -1897,11 +1901,11 @@ legend("bottomright", letters[1:5], pch = 15:19, bty = "n")
 
 Dans la section traitant des [images](Les_images) avec Pandoc Markdown nous avons vu comment insérer une image dans un document. Il est aussi possible de faire une telle inclusion grâce à la fonction `include_graphics()` de `knitr`. L'avantage de cette manière de procéder est qu'elle permet de traiter le fichier extérieur comme un graphique produit par R. Par exemple, pour ajouter le logo de R utiliser plus haut (`./images/Rlogo.png`), il est possible d'utiliser:
 
-
-    `r ''```{r iclgraph, fig.align = 'center', out.width = "40%", echo = FALSE}
-    include_graphics("./images/Rlogo.png")
-    ```
-
+````md
+```{r iclgraph, fig.align = 'center', out.width = "40%", echo = FALSE}`r ''`
+include_graphics("./images/Rlogo.png")
+```
+````
 
 ```{r iclgraph, fig.align = 'center', out.width = "40%", echo = FALSE}
 include_graphics("./images/Rlogo.png")
@@ -1962,13 +1966,57 @@ Si je change les données de `tab1`, la table, les graphiques et mon commentaire
 
 ## Changer les réglages 
 
+TODO
+
 ## Extraire du code R 
+
+TODO
 
 ## Utiliser un script externe
 
+Pour insérer dans un fichier de code, il peut parfois être plus pratique d'utiliser un script externe, autrement avoir une partie (ou l'entièreté) du code dans un fichier `.R` (ou `.r`). Plusieurs manières de procéder existent, plus ou moins pertinentes selon ce que nous voulons faire. Si le code est simplement un ensemble de ligne à exécuter de manière silencieuse, alors utiliser `source()` est probablement une bonne option. Il y a cependant une petite chose à savoir, c'est qu'il est préférable d'utiliser `local` pour s'assurer que le code sera exécuter dans le bon environment, voir le chapitre *Source external R scripts* de @xie_markdown_2020 (aussi disponible à l'URL suivante https://bookdown.org/yihui/rmarkdown-cookbook/source-script.html). Le script à charger est disponible à l'URL suivante et `r url_this_gh("scripts/scr_externe1.R")`, il contient les ligne suivant: 
+
+```{r showextcode, code=readLines("scripts/scr_externe1.R"), eval = FALSE}
+```
+
+que nous chargeons avec la fonction `source()`
+
+
+````md
+```{r source-script, include = FALSE}`r ''`
+source("scripts/scr_externe1.R", local = knitr::knit_global())
+```
+````
+
+
+```{r source-script, include = FALSE}
+source("scripts/scr_externe1.R", local = knitr::knit_global())
+```
+
+Une fois chargé, nous pouvons alors accéder à son contenu.
+
+```{r resextcode}
+var4
+```
+
+
+Utiliser source ne nous permet pas d'afficher le code, si on decide d'afficher le code nous voyons `source`. Pour voir le code,  utiliser l'option `code` et lire le code avec `readLines` ou readutf8... TODO
+
+
+Code ne nous permet pas de selectionner des parties du scripe, mais cela est possible avec `read_chunk` TODO
+
+<!-- faire un snippet pour les code et changer les code chunk a monter -->
+
+
+ <!-- https://stackoverflow.com/questions/52397430/include-code-from-an-external-r-script-run-in-display-both-code-and-output -->
+
 ## Utiliser les hooks
 
+TODO 
+
 ## Autres packages 
+
+TODO 
 
 <!-- emjoi -->
 
