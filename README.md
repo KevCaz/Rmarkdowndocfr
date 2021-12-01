@@ -1,8 +1,8 @@
 Utiliser R markdown
 ================
 
--   [Remerciements](#remerciements)
 -   [Contribuer](#contribuer)
+-   [Remerciements](#remerciements)
 -   [License](#license)
 
 [![Project Status: WIP – Initial development is in progress, but there
@@ -63,16 +63,16 @@ De même, pour obtenir le document en html, Markdown, pdf et Word :
 render("UtiliserRMarkdown.Rmd", "all")  
 ```
 
+# Contribuer
+
+Toutes les contributions sont les bienvenues et même souhaitées. Des
+fautes d’orthographe, de grammaire, des coquilles? Il manque de
+l’information? N’hésitez pas à ouvrir un “issue” et même mieux, une PR!
+
 # Remerciements
 
 Merci à [Nicolas Casajus](https://github.com/ahasverus) pour avoir
 corrigé des coquilles dans une première version du document!
-
-# Contribuer
-
-Toutes les contributions sone bienvenues et même souhaitées. Des fautes
-d’orthographe, de grammaire, des coquilles? Il manque de l’information?
-N’hésitez pas à ouvrir un “issue” et même mieux, une PR!
 
 # License
 

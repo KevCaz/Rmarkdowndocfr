@@ -222,16 +222,16 @@ Un fichier R Markdown (dont l’extension est `.rmd` ou `.Rmd`), c'est :
 2. des blocs de code particuliers qui, en plus de pouvoir être utilisés pour présenter du code, le code va pouvoir être exécuter et le résultat du code va pouvoir être intégré dans le document. Ces blocs commencent et finissent trois accents graves (*backtick* ou *backquote* en anglais): \` et les trois accents graves ouvrant le bloc sont suivis d'une accolade qui commence par `r` ou `R`, par exemple
 
 
-    ````markdown
-    `r ''````{R name, option1, option2}
+    ````md
+    ```{R name, option1, option2}`r ''`
     # code R à exécuter
     ```
     ````
 
     ou encore
 
-    ````markdown
-    `r ''````{r option1}
+    ````md
+    ```{r option1}`r ''`
     # code R à exécuter
     ```
     ````
@@ -1351,7 +1351,7 @@ certaines propriétés CSS du document.
 
 Prenons le bloc de code suivant (volontairement non identifié).
 
-    `r ''```{r}
+    ```{r}`r ''`
     # une addition de variables avec R
     a <- 2
     b <- 3
@@ -1370,7 +1370,7 @@ Pour enlever le code (et uniquement le code), il suffit d'utiliser `echo =
 FALSE`, (`echo = TRUE` par défaut). Ainsi, le bloc de code `sanscode`
 
 
-    `r ''```{r sanscode, echo = FALSE}
+    ```{r}`r ''`
     # une addition de variables avec R
     a <- 2
     b <- 3
@@ -1389,7 +1389,7 @@ a + b
 
 Le paramètre `echo` peut aussi être utilisé pour sélectionner un sous-ensemble de ligne à afficher. Cela ce fait en utilisant un vecteur indiquant les positions des lignes à afficher. Par exemple, pour montrer uniquement les lignes 1 et 4 on utilise `echo` de la sorte
 
-    `r ''```{r code14, echo = c(1, 4)}
+    ```{r}`r ''`
     # une addition de variables avec R
     a <- 2
     b <- 3
@@ -1408,7 +1408,7 @@ a + b
 Il est aussi possible de sélectionner les lignes à ne pas montrer en utilisant des valeurs négatives. Ainsi, je peux enlever les trois premières lignes du bloc de code:
 
 
-    `r ''```{r codesans13, echo = -c(1:3)}
+    ```{r}`r ''`
     # une addition de variables avec R
     a <- 2
     b <- 3
@@ -1433,7 +1433,7 @@ a + b
 Les symboles devant les sorties console de R peuvent être modifiées en utilisant
 le paramètre `comment`. Avec le bloc `comment1`
 
-    `r ''```{r comment1, comment = "$ "}
+    ```{r}`r ''`
     # une addition de variables avec R
     a <- 2
     b <- 3
@@ -1451,7 +1451,7 @@ a + b
 
 De même, `comment2` &nbsp;:
 
-    `r ''```{r comment2, comment="R>>"}
+    ```{r}`r ''`
     # une addition de variables avec R
     a <- 2
     b <- 3
@@ -1475,7 +1475,7 @@ a + b
 Le paramètre `results` permet de choisir comment les sorties d'un bloc de code R
 vont être traitées. Par défaut, c'est le mode "markup" qui est utilis\&nbsp;:
 
-    `r ''```{r markup, results = 'markup'}
+    ```{r}`r ''`
     # une division avec R
     cat("Exemple de division avec R: 1/998.001 = ", 1/998.001)
     ```
@@ -1488,7 +1488,7 @@ cat("Exemple de division avec R: 1/998.001 = ", 1/998.001)
 - Avec `result='asis'`, les résultats sont affichées comme un paragraphe du
 document texte principal&nbsp;:
 
-		`r ''```{r asis, results = 'asis'}
+		```{r}`r ''`
         # une division avec R
         cat("Exemple de division avec R: 1/998.001 = ", 1/998.001)
 		```
@@ -1500,7 +1500,7 @@ cat("Exemple de division avec R: 1/998.001 = ", 1/998.001)
 
 - Avec `result='hide'`, les sorties console ne sont pas ajoutées&nbsp;:
 
-		`r ''```{r hide, results = 'hide'}
+		```{r}`r ''`
         # une division avec R
         cat("Exemple de division avec R: 1/998.001 = ", 1/998.001)
 		```
@@ -1515,7 +1515,7 @@ cat("Exemple de division avec R: 1/998.001 = ", 1/998.001)
   l’exécution du code et donc le bloc est interrompu. Par exemple, avec le code
   suivant'&nbsp;:
 
-    `r ''```{r}
+    ```{r}`r ''`
     a <- 2
     print(a)
     b <- 3
@@ -1534,7 +1534,7 @@ print(b)
 
 alors qu'avec `results='hold'`,
 
-    `r ''```{r hold, results = 'hold'}
+    ```{r}`r ''`
     a <- 2
     print(a)
     b <- 3
@@ -1564,12 +1564,14 @@ Il y a trois types de messages retournés par R:
 Considérons le bloc suivant qui inclut un message, un avertissement, une erreur
 (en commentaire) et une addition.
 
-    `r ''```{r}
+    ```{r}`r ''`
     message("Ceci est un message")
     warning("Ceci est un avertissement")
-    # stop("PCeci est un problème")
+    # stop("Ceci est un problème")
     2 + 3
     ```
+
+Voila ce qu'il nous donne
 
 ```{r}
 message("Ceci est un message")
@@ -1581,7 +1583,7 @@ warning("Ceci est un avertissement")
 il est possible de supprimer le message en utilisant `message = FALSE`.
 
 
-    `r ''```{r sansmessage, message = FALSE}
+    ```{r}`r ''`
     message("Ceci est un message")
     warning("Ceci est un avertissement")
     # stop("Ceci est un problème")
@@ -1597,12 +1599,14 @@ warning("Ceci est un avertissement")
 
 De la même manière il est possible de supprimer l'avertissement avec `warning = FALSE`.
 
-    `r ''```{r sansavertissment, warning = FALSE}
+    ```{r}`r ''`
     message("Ceci est un message")
     warning("Ceci est un avertissement")
     # stop("Ceci est un problème")
     2 + 3
     ```
+    
+ce qui donne 
 
 ```{r sansavertissment, warning = FALSE}
 message("Ceci est un message")
@@ -1614,12 +1618,13 @@ warning("Ceci est un avertissement")
 Notez qu'en utilisant `results = 'hide'`, les avertissements seront tout de
 même ajoutés et cette remarque est valable pour les messages.
 
-    `r ''```{r sansavertissment2, warning = FALSE, results = 'hide'}
+    ```{r}`r ''`
     message("Ceci est un message")
     warning("Ceci est un avertissement")
     # stop("Ceci est un problème")
     2 + 3
     ```
+ce qui donne 
 
 ```{r sansavertissment2, warning = FALSE, results = 'hide'}
 message("Ceci est un message")
@@ -1635,13 +1640,14 @@ montrer une erreur (à des fins pédagogiques, par exemple). Pour ce faire, il
 faut utiliser `error = TRUE`:
 
 
-    `r ''```{r erreur, error = TRUE}
+    ```{r}`r ''`
     message("Ceci est un message")
     warning("Ceci est un avertissement")
     stop("Ceci est un problème")
     2 + 3
     ```
 
+ce qui donne 
 
 ```{r erreur, error = TRUE}
 message("Ceci est un message")
@@ -1670,9 +1676,12 @@ Dans certains cas, il peut s'avérer utile de montrer le code source sans
 l’exécuter. Pour empêcher l'évaluation du code, on utilise `eval = FALSE`.
 Ainsi, avec
 
-    `r ''```{r eval, eval = FALSE}
-    install.packages(`rmarkdown`)
-    ```
+````md
+```{r eval, eval = FALSE}`r ''`
+install.packages(`rmarkdown`)
+```
+````
+    
 l'installation du package `rmarkdown` n'est pas exécutée mais bien affichée&nbsp;:
 
 ```{r eval, eval = FALSE}
@@ -1681,9 +1690,11 @@ install.packages(`rmarkdown`)
 
 Il est aussi possible d'utiliser un [blocs de code][Blocs de code] sans accolade
 
-    `r ''```r
-    install.packages(`rmarkdown`)
-    ```
+````md
+```r
+install.packages(`rmarkdown`)
+```
+````
 
 ```r
 install.packages(`rmarkdown`)
@@ -1698,12 +1709,12 @@ Utiliser `eval = FALSE` permet de suspendre l'évaluation d'un bloc de code tout
 R Markdown nous permet d'imbriquer du code dans un document dynamique et il est fréquent que la sortie importe plus que le code et pour obtenir une sortie, parfois des blocs de code intermédiaires doivent être exécutés. Dans de telles situation, ces blocs doivent pouvoir être exécutée de manière silencieuse: ni le code, ni les messages, ni les sorties ne doivent être affichés. C'est typiquement le cas pour les scripts et fonctions intermédiaires à charger pour être utiliser ultérieurement. D'après ce qui a été vu précédemment, nous pourrions combiner les options `echo = FALSE`, `results = hide`, `message = FALSE` et `warning = FALSE` ensemble dans l'accolade. Il existe cependant une manière plus rapide d'arriver à ce résultat en utilisant un seul paramètre, `include = FALSE`, qui exécute le code silencieusement. Ci-dessous je créé une fonction qui fait une addition simple et j'assigne le résultat à la variable `res`
 
 
-    `r ''```{r include, include = FALSE}
-    mon_addition <- function(a, b) {
-        return(a + b)
+  ```{r include, include = FALSE}`r ''`
+  mon_addition <- function(a, b) {
+      return(a + b)
     }
-    res <- mon_addition(2, 3)
-    ```
+  res <- mon_addition(2, 3)
+  ```
 
 Ci-dessous j'utilise ce bloc de code ...
 
@@ -1738,7 +1749,7 @@ mon_addition(12, 30)
 
 Les remarques de la section précédente sont valides pour tout type de sortie.
 Les tables et les figures créées avec R sont des sorties très souvent utilisées
-qu'il est bon de savoir personnaliser davantage.
+que nous pouvons personnaliser au besoin.
 
 
 ### Tables
@@ -1759,8 +1770,7 @@ tab1 <- data.frame(
 
 La fonction *kable()* du package `knitr` nous permet d'obtenir notre object *tab1* en différents formats (dont "latex", "html", "markdown"). Ici, en utilisant "markdown" par défaut, nous obtenons une table qui sera convertie dans le format désiré par Pandoc. De plus, la fonction *kable()* inclut le paramètre `caption` pour ajouter une légende.
 
-
-    `r ''```{r table1}
+    ```{r table1}`r ''`
     library(knitr)
     kable(tab1, caption = "Table créée à partir de *df1*")
     ```
@@ -1770,13 +1780,15 @@ library(knitr)
 kable(tab1, caption = "Table créée à partir de *df1*")
 ```
 
+
 Il y a bien d'autres paramètres dans la fonction *kable()*, par exemple, il est
 possible de choisir le nombre de chiffres utilisés après la virgule ou
 encore d'inclure les numéros de lignes.
 
-    `r ''```{r table2}
-    kable(tab1, caption = "Table créée à partir de *df1*", digits = 3, row.names = TRUE)
+    ```{r table2}`r ''`
+    kable(tab1, caption = "Table créée à partir de *df1*", digits = 3, row.names =  TRUE)
     ```
+
 
 ```{r table2}
 kable(tab1, caption = "Table créée à partir de *df1*", digits = 3, row.names = TRUE)
@@ -1800,21 +1812,25 @@ plot(tab1$var1, tab1$var2)
 J'obtiens la figure demandée, avec des dimensions par défaut qui prennent une
 bonne partie de la largeur du document, mais pas son entièreté. Pour formater une figure obtenue avec R, il existe des options pour contrôler, entre autres, sa taille, son alignement et sa légende (taille et alignement ne sont pas supportés pour la sortie Word). Pour visualiser l'ensemble des options disponibles, je vous invite à regarder la page 3 du [guide de référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown reference.pdf). Dans le bloc de code ci-dessous, la taille de la figure et son alignement sont ajustés et une légende est ajoutée.
 
-    `r ''```{r figdim1, fig.cap = "Ceci est la légende de la figure",
-        fig.height = 4, fig.width = 4, fig.align = 'right'}
-    plot(tab1$var1,tab1$var2)
-    ```
+````md
+```{r figdim1, fig.cap = "Ceci est la légende de la figure",
+    fig.height = 4, fig.width = 4, fig.align = "right"}`r ''`
+plot(tab1$var1,tab1$var2)
+```
+````
 
-```{r figdim1, fig.cap = "une figure de avec une légende", fig.height = 4, fig.width = 4, fig.align = 'right'}
+```{r figdim1, fig.cap = "une figure de avec une légende", fig.height = 4, fig.width = 4, fig.align = "right"}
 plot(tab1$var1, tab1$var2)
 ```
 
-Les dimensions d'une figure sont toujours exprimées en [pouces](https://fr.wikipedia.org/wiki/Pouce_(unit%C3%A9)), si vous n'êtes pas habitué à manipuler les pouces, il faudra faire des conversations à la main (ou avec R) en gardant en tête que 1&nbsp;pouce vaut 2.54&nbsp;cm. Il est également possible de choisir une des deux dimensions et changer le rapport de forme, `fig.aspect`. Ainsi, pour une figure de &nbsp;poucesx&nbsp;pouces, je peux utliser une largeure de 9&nbsp;pouces et un rapport de forme de 1.5.
+Les dimensions d'une figure sont toujours exprimées en [pouces](https://fr.wikipedia.org/wiki/Pouce_(unit%C3%A9)), si vous n'êtes pas habitué à manipuler les pouces, il faudra faire des conversations à la main (ou avec R) en gardant en tête que 1&nbsp;pouce vaut 2.54&nbsp;cm. Il est également possible de choisir une des deux dimensions et changer le rapport de forme, `fig.aspect`. Ainsi, pour une figure de &nbsp;poucesx&nbsp;pouces, je peux utiliser une largeur de 9&nbsp;pouces et un rapport de forme de 1.5.
 
 
-    `r ''```{r figdim2, fig.cap= "Figure 9x6", fig.width = 9, fig.aspect = 1.5}
-    plot(tab1$var1,tab1$var2)
-    ```
+````md
+```{r figdim2, fig.cap= "Figure 9x6", fig.width = 9, fig.aspect = 1.5}`r ''`
+plot(tab1$var1,tab1$var2)
+```
+````
 
 ```{r figdim2, fig.cap= "Figure 9x6", fig.width = 9, fig.aspect = 1.5}
 plot(tab1$var1,tab1$var2)
@@ -1824,11 +1840,11 @@ plot(tab1$var1,tab1$var2)
 Il est aussi possible de contrôler la largeur de la sortie en utilisant des
 pourcentage, pour cela on utilise `out.width`
 
-
-    `r ''```{r figdim3, out.width = "100%"}
-    plot(tab1$var1, tab1$var2)
-    ```
-
+````md
+```{r figdim3, out.width = "100%"}`r ''`
+plot(tab1$var1, tab1$var2)
+```
+````
 
 ```{r figdim3, out.width = "100%"}
 plot(tab1$var1, tab1$var2)
@@ -1840,28 +1856,37 @@ Il est aussi possible de changer le format de sortie des figures avec le paramè
 <!-- Dans le bloc qui suit j'utilise le [format -->
 <!-- SVG](https://www.synbioz.com/blog/tech/le-svg-pour-quoi-faire) -->
 
-    `r ''```{r figdim4, out.width = "100%", dev = "jpeg"}
-    plot(tab1$var1, tab1$var2)
-    ```
+````md
+```{r figdim4, out.width = "100%", dev = "jpeg"}`r ''`
+plot(tab1$var1, tab1$var2)
+```
+````
 
 ```{r figdim4, out.width = "100%", dev = "jpeg"}
 plot(tab1$var1, tab1$var2)
 ```
 
+
 Pour les formats dits matriciels, il est possible de spécifier la résolution de l'image avec `fig.dpi`
 
 
-    `r ''```{r figdim5, out.width = "100%", dev = "png", fig.cap= "Faible résolution", dpi = 36}
-    plot(tab1$var1, tab1$var2)
-    ```
+````md
+```{r figdim5, out.width = "100%", dev = "png", fig.cap= "Faiblrésolution", dpi = 36}`r ''`
+plot(tab1$var1, tab1$var2)
+```
+````
 
 ```{r figdim5, out.width = "100%", dev = "png", fig.cap= "Faible résolution", dpi = 36}
 plot(tab1$var1, tab1$var2)
 ```
 
-    `r ''```{r figdim6, out.width = "100%", dev = "png", fig.cap= "Forte résolution", dpi = 300}
-    plot(tab1$var1, tab1$var2)
-    ```
+````md
+```{r figdim6, out.width = "100%", dev = "png", fig.cap= "Fortrésolution", dpi = 300}`r ''`
+plot(tab1$var1, tab1$var2)
+```
+````
+
+ce qui donne 
 
 ```{r figdim6, out.width = "100%", dev = "png", fig.cap= "Forte résolution", dpi = 300}
 plot(tab1$var1, tab1$var2)
@@ -1878,12 +1903,14 @@ taille, le format, la position, la légende, d'ajouter un hyperlien et de masque
 le code qui la génère. Voici le bloc qui me permet de modifier toutes ces
 options:
 
-    `r ''```{r figfinale, dev = "png", dpi = 300, fig.height = 5, fig.width = 8, echo = FALSE, fig.link = "https://github.com/KevCaz/Rmarkdowndocfr", fig.cap = "Figure associé à la table 1. Le gris pour l'expérience 1, bleu pour la seconde et violet pour la troisième."}
-    par(bty="l", font = 2, las = 1)
-    plot(tab1$var1, tab1$var2, pch = 15:19, col = rep(c(8, 4, 6), each = 5),
-        xlab = "Mon axe des abscisses", ylab = "Mon axe des ordonnées")
-    legend("bottomright", letters[1:5], pch = 15:19, bty = "n")
-    ```
+````md
+{r figfinale, dev = "png", dpi = 300, fig.height = 5, fig.width =8, echo = FALSE, fig.link = "https://github.com/KevCaz/Rmarkdowndocfr", fig.cap = "Figure associé à la table 1. Le gris pour l'expérience 1, bleu pour la seconde et violet pour la troisième."}`r ''`
+par(bty="l", font = 2, las = 1)
+plot(tab1$var1, tab1$var2, pch = 15:19, col = rep(c(8, 4, 6), each = 5),
+    xlab = "Mon axe des abscisses", ylab = "Mon axe des ordonnées")
+legend("bottomright", letters[1:5], pch = 15:19, bty = "n")
+```
+````
 
 Qui donne:
 
@@ -1899,15 +1926,15 @@ legend("bottomright", letters[1:5], pch = 15:19, bty = "n")
 
 ### Graphiques non générés par R
 
-Dans la section traitant des [images](Les_images) avec Pandoc Markdown nous avons vu comment insérer une image dans un document. Il est aussi possible de faire une telle inclusion grâce à la fonction `include_graphics()` de `knitr`. L'avantage de cette manière de procéder est qu'elle permet de traiter le fichier extérieur comme un graphique produit par R. Par exemple, pour ajouter le logo de R utiliser plus haut (`./images/Rlogo.png`), il est possible d'utiliser:
+Dans la section traitant des [images](Les_images) avec Pandoc Markdown nous avons vu comment insérer une image dans un document. Il est aussi possible de faire une telle inclusion grâce à la fonction `include_graphics()` de `knitr`. L'avantage de cette manière de procéder est qu'elle permet de traiter le fichier extérieur comme un graphique produit par R. Par exemple, pour ajouter le logo de R utilisé plus haut (`./images/Rlogo.png`), il est possible d'utiliser:
 
 ````md
-```{r iclgraph, fig.align = 'center', out.width = "40%", echo = FALSE}`r ''`
+```{r iclgraph, fig.align = "center", out.width = "40%", echo = FALSE}`r ''`
 include_graphics("./images/Rlogo.png")
 ```
 ````
 
-```{r iclgraph, fig.align = 'center', out.width = "40%", echo = FALSE}
+```{r iclgraph, fig.align = "center", out.width = "40%", echo = FALSE}
 include_graphics("./images/Rlogo.png")
 ```
 
@@ -1921,13 +1948,16 @@ Supposons que je souhaite faire un modèle linéaire avec la variable explicativ
 utiliser `lm()` et afficher les coefficients ainsi que les figures associées.
 J'utilise alors le bloc de code suivant\&nbsp;:
 
-    `r ''```{r application, echo = FALSE, fig.cap = "Mon modèle linéaire", fig.width = 8,
-        fig.height = 8, fig.align = 'center'}
-    mod1 <- lm(var2 ~ var1, data = tab1)
-    kable(summary(mod1)$coefficients)
-    par(bty = "l", mfrow = c(2, 2))
-    plot(mod1)
-    ```
+
+````md
+```{r application, echo = FALSE, fig.cap = "Mon modèle linéaire", fig.width= 8,
+fig.height = 8, fig.align = "center"}`r ''`
+mod1 <- lm(var2 ~ var1, data = tab1)
+kable(summary(mod1)$coefficients)
+par(bty = "l", mfrow = c(2, 2))
+plot(mod1)
+```
+````
 
 avec le commentaire suivant: "La pente de la regression est de `` `r "\u0060r format(summary(mod1)$coefficients[2, 1], digits = 3)\u0060"` `` (et je mettrai le résultat en gras).
 
@@ -1974,7 +2004,7 @@ TODO
 
 ## Utiliser un script externe
 
-Pour insérer dans un fichier de code, il peut parfois être plus pratique d'utiliser un script externe, autrement avoir une partie (ou l'entièreté) du code dans un fichier `.R` (ou `.r`). Plusieurs manières de procéder existent, plus ou moins pertinentes selon ce que nous voulons faire. Si le code est simplement un ensemble de ligne à exécuter de manière silencieuse, alors utiliser `source()` est probablement une bonne option. Il y a cependant une petite chose à savoir, c'est qu'il est préférable d'utiliser `local` pour s'assurer que le code sera exécuter dans le bon environment, voir le chapitre *Source external R scripts* de @xie_markdown_2020 (aussi disponible à l'URL suivante https://bookdown.org/yihui/rmarkdown-cookbook/source-script.html). Le script à charger est disponible à l'URL suivante et `r url_this_gh("scripts/scr_externe1.R")`, il contient les ligne suivant: 
+Pour insérer dans un fichier de code, il peut parfois être plus pratique d'utiliser un script externe, autrement avoir une partie (ou l'entièreté) du code dans un fichier `.R` (ou `.r`). Plusieurs manières de procéder existent, plus ou moins pertinentes selon ce que nous voulons faire. Si le code est simplement un ensemble de ligne à exécuter de manière silencieuse, alors utiliser `source()` est probablement une bonne option. Il y a cependant une petite chose à savoir: il est préférable d'utiliser l'argument `local` pour s'assurer que le code sera exécuter dans le bon environment, voir le chapitre *Source external R scripts* de @xie_markdown_2020 (aussi disponible à l'URL suivante https://bookdown.org/yihui/rmarkdown-cookbook/source-script.html). Le script à charger est disponible à l'URL suivante et `r url_this_gh("scripts/scr_externe1.R")`, il contient les lignes suivantes: 
 
 ```{r showextcode, code=readLines("scripts/scr_externe1.R"), eval = FALSE}
 ```
