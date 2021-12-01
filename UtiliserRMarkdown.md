@@ -54,7 +54,7 @@ dans lequel le document a été compilé sont indiquées ci-dessous.
     ## loaded via a namespace (and not attached):
     ##  [1] compiler_4.1.2  magrittr_2.0.1  fastmap_1.1.0   tools_4.1.2    
     ##  [5] htmltools_0.5.2 jquerylib_0.1.4 stringi_1.7.6   rmarkdown_2.11 
-    ##  [9] highr_0.9       stringr_1.4.0   xfun_0.28       digest_0.6.28  
+    ##  [9] highr_0.9       stringr_1.4.0   xfun_0.28       digest_0.6.29  
     ## [13] rlang_0.4.12    evaluate_0.14
 
     rmarkdown::pandoc_version()
@@ -480,7 +480,7 @@ source de ce document) :
 
     ---
     title: "Utiliser R Markdown pour créer des documents dynamiques"
-    date: "30 November 2021"
+    date: "01 December 2021"
     author: par Kevin Cazelles
     lang: fr
     abstract: "Le package [...] pour aller plus loin."
@@ -1510,7 +1510,7 @@ Pour inclure une sortie texte directement dans un paragraphe, on utilise
  : `` `r expression` ``. Ainsi, par exemple, il est possible d’insérer
 l’heure et la date au moment de la compilation du document en utilisant
 la fonction *Sys.time()*, ainsi, `` `r Sys.time()` ``  nous donne
-2021-11-30 14:25:58.
+2021-12-01 14:30:40.
 
 Le reste de cette section se concentre sur les blocs de code R (*code
 chunks* en anglais) qui s’utilisent comme les [blocs de
@@ -1597,7 +1597,7 @@ faudra modifier certaines propriétés CSS du document.
 
 Prenons le bloc de code suivant (volontairement non identifié).
 
-    ``{r}
+    ```{r}
     # une addition de variables avec R
     a <- 2
     b <- 3
@@ -1615,7 +1615,7 @@ Pour enlever le code (et uniquement le code), il suffit d’utiliser
 `echo = FALSE`, (`echo = TRUE` par défaut). Ainsi, le bloc de code
 `sanscode`
 
-    ``{r sanscode, echo = FALSE}
+    ```{r}
     # une addition de variables avec R
     a <- 2
     b <- 3
@@ -1631,7 +1631,7 @@ sous-ensemble de ligne à afficher. Cela ce fait en utilisant un vecteur
 indiquant les positions des lignes à afficher. Par exemple, pour montrer
 uniquement les lignes 1 et 4 on utilise `echo` de la sorte
 
-    ``{r code14, echo = c(1, 4)}
+    ```{r}
     # une addition de variables avec R
     a <- 2
     b <- 3
@@ -1649,7 +1649,7 @@ Il est aussi possible de sélectionner les lignes à ne pas montrer en
 utilisant des valeurs négatives. Ainsi, je peux enlever les trois
 premières lignes du bloc de code:
 
-    ``{r codesans13, echo = -c(1:3)}
+    ```{r}
     # une addition de variables avec R
     a <- 2
     b <- 3
@@ -1669,7 +1669,7 @@ ce qui donne:
 Les symboles devant les sorties console de R peuvent être modifiées en
 utilisant le paramètre `comment`. Avec le bloc `comment1`
 
-    ``{r comment1, comment = "$ "}
+    ```{r}
     # une addition de variables avec R
     a <- 2
     b <- 3
@@ -1687,7 +1687,7 @@ on obtient
 
 De même, `comment2`  :
 
-    ``{r comment2, comment="R>>"}
+    ```{r}
     # une addition de variables avec R
     a <- 2
     b <- 3
@@ -1711,7 +1711,7 @@ Le paramètre `results` permet de choisir comment les sorties d’un bloc
 de code R vont être traitées. Par défaut, c’est le mode “markup” qui est
 utilis&nbsp;:
 
-    ``{r markup, results = 'markup'}
+    ```{r}
     # une division avec R
     cat("Exemple de division avec R: 1/998.001 = ", 1/998.001)
     ```
@@ -1724,7 +1724,7 @@ utilis&nbsp;:
 -   Avec `result='asis'`, les résultats sont affichées comme un
     paragraphe du document texte principal :
 
-          ``{r asis, results = 'asis'}
+          ```{r}
           # une division avec R
           cat("Exemple de division avec R: 1/998.001 = ", 1/998.001)
           ```
@@ -1738,7 +1738,7 @@ Exemple de division avec R: 1/998.001 = 0.001002003
 
 -   Avec `result='hide'`, les sorties console ne sont pas ajoutées :
 
-          ``{r hide, results = 'hide'}
+          ```{r}
           # une division avec R
           cat("Exemple de division avec R: 1/998.001 = ", 1/998.001)
           ```
@@ -1753,8 +1753,13 @@ Exemple de division avec R: 1/998.001 = 0.001002003
     et à mesure de l’exécution du code et donc le bloc est interrompu.
     Par exemple, avec le code suivant’ :
 
-    \`\`{r} a &lt;- 2 print(a) b &lt;- 3 print(b) 2 + 3 \`\`\` nous
-    obtenons :
+        a <- 2
+        print(a)
+        b <- 3
+        print(b)
+        2 + 3
+
+    nous obtenons :
 
 <!-- -->
 
@@ -1774,7 +1779,7 @@ Exemple de division avec R: 1/998.001 = 0.001002003
 
 alors qu’avec `results='hold'`,
 
-    ``{r hold, results = 'hold'}
+    ```{r}
     a <- 2
     print(a)
     b <- 3
@@ -1808,12 +1813,14 @@ Il y a trois types de messages retournés par R:
 Considérons le bloc suivant qui inclut un message, un avertissement, une
 erreur (en commentaire) et une addition.
 
-    ``{r}
+    ```{r}
     message("Ceci est un message")
     warning("Ceci est un avertissement")
-    # stop("PCeci est un problème")
+    # stop("Ceci est un problème")
     2 + 3
     ```
+
+Voila ce qu’il nous donne
 
     message("Ceci est un message")
 
@@ -1830,7 +1837,7 @@ erreur (en commentaire) et une addition.
 
 il est possible de supprimer le message en utilisant `message = FALSE`.
 
-    ``{r sansmessage, message = FALSE}
+    ```{r}
     message("Ceci est un message")
     warning("Ceci est un avertissement")
     # stop("Ceci est un problème")
@@ -1850,12 +1857,14 @@ il est possible de supprimer le message en utilisant `message = FALSE`.
 De la même manière il est possible de supprimer l’avertissement avec
 `warning = FALSE`.
 
-    ``{r sansavertissment, warning = FALSE}
+    ```{r}
     message("Ceci est un message")
     warning("Ceci est un avertissement")
     # stop("Ceci est un problème")
     2 + 3
     ```
+
+ce qui donne
 
     message("Ceci est un message")
 
@@ -1870,12 +1879,14 @@ De la même manière il est possible de supprimer l’avertissement avec
 Notez qu’en utilisant `results = 'hide'`, les avertissements seront tout
 de même ajoutés et cette remarque est valable pour les messages.
 
-    ``{r sansavertissment2, warning = FALSE, results = 'hide'}
+    ```{r}
     message("Ceci est un message")
     warning("Ceci est un avertissement")
     # stop("Ceci est un problème")
     2 + 3
     ```
+
+ce qui donne
 
     message("Ceci est un message")
 
@@ -1892,12 +1903,14 @@ cependant parfois souhaitable de montrer une erreur (à des fins
 pédagogiques, par exemple). Pour ce faire, il faut utiliser
 `error = TRUE`:
 
-    ``{r erreur, error = TRUE}
+    ```{r}
     message("Ceci est un message")
     warning("Ceci est un avertissement")
     stop("Ceci est un problème")
     2 + 3
     ```
+
+ce qui donne
 
     message("Ceci est un message")
 
@@ -1929,7 +1942,7 @@ Dans certains cas, il peut s’avérer utile de montrer le code source sans
 l’exécuter. Pour empêcher l’évaluation du code, on utilise
 `eval = FALSE`. Ainsi, avec
 
-    ``{r eval, eval = FALSE}
+    ```{r eval, eval = FALSE}
     install.packages(`rmarkdown`)
     ```
 
@@ -1941,7 +1954,7 @@ affichée :
 Il est aussi possible d’utiliser un [blocs de code](#blocs-de-code) sans
 accolade
 
-    ``r
+    ```r
     install.packages(`rmarkdown`)
     ```
 
@@ -1970,12 +1983,7 @@ paramètre, `include = FALSE`, qui exécute le code silencieusement.
 Ci-dessous je créé une fonction qui fait une addition simple et
 j’assigne le résultat à la variable `res`
 
-    ``{r include, include = FALSE}
-    mon_addition <- function(a, b) {
-        return(a + b)
-    }
-    res <- mon_addition(2, 3)
-    ```
+`{r include, include = FALSE}   mon_addition <- function(a, b) {       return(a + b)     }   res <- mon_addition(2, 3)`
 
 Ci-dessous j’utilise ce bloc de code …
 
@@ -2000,7 +2008,7 @@ Tables et figures
 
 Les remarques de la section précédente sont valides pour tout type de
 sortie. Les tables et les figures créées avec R sont des sorties très
-souvent utilisées qu’il est bon de savoir personnaliser davantage.
+souvent utilisées que nous pouvons personnaliser au besoin.
 
 ### Tables
 
@@ -2021,7 +2029,7 @@ Ici, en utilisant “markdown” par défaut, nous obtenons une table qui
 sera convertie dans le format désiré par Pandoc. De plus, la fonction
 *kable()* inclut le paramètre `caption` pour ajouter une légende.
 
-    ``{r table1}
+    ```{r table1}
     library(knitr)
     kable(tab1, caption = "Table créée à partir de *df1*")
     ```
@@ -2043,74 +2051,74 @@ sera convertie dans le format désiré par Pandoc. De plus, la fonction
 <tr class="odd">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">10.2229189</td>
-<td style="text-align: right;">8.6060752</td>
+<td style="text-align: right;">16.901650</td>
+<td style="text-align: right;">15.813753</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">10.8261322</td>
-<td style="text-align: right;">11.5284331</td>
+<td style="text-align: right;">19.603520</td>
+<td style="text-align: right;">19.630129</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">8.2363017</td>
-<td style="text-align: right;">7.5466028</td>
+<td style="text-align: right;">6.030410</td>
+<td style="text-align: right;">5.332537</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">2.9814598</td>
-<td style="text-align: right;">4.3346709</td>
+<td style="text-align: right;">2.452911</td>
+<td style="text-align: right;">2.668383</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">8.1270461</td>
-<td style="text-align: right;">8.2878238</td>
+<td style="text-align: right;">1.277527</td>
+<td style="text-align: right;">1.502150</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">14.6691864</td>
-<td style="text-align: right;">13.7577916</td>
+<td style="text-align: right;">6.737792</td>
+<td style="text-align: right;">6.011222</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">11.4653645</td>
-<td style="text-align: right;">11.1992028</td>
+<td style="text-align: right;">9.292226</td>
+<td style="text-align: right;">10.215211</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">9.9623756</td>
-<td style="text-align: right;">9.7730564</td>
+<td style="text-align: right;">11.793537</td>
+<td style="text-align: right;">11.730263</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">1.2267945</td>
-<td style="text-align: right;">-0.4370897</td>
+<td style="text-align: right;">11.419913</td>
+<td style="text-align: right;">10.389382</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">13.1323065</td>
-<td style="text-align: right;">14.3003914</td>
+<td style="text-align: right;">14.524502</td>
+<td style="text-align: right;">13.892520</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">0.6999224</td>
-<td style="text-align: right;">-0.2537702</td>
+<td style="text-align: right;">12.267248</td>
+<td style="text-align: right;">14.294778</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">6.4557206</td>
-<td style="text-align: right;">8.2896630</td>
+<td style="text-align: right;">18.875386</td>
+<td style="text-align: right;">19.674652</td>
 </tr>
 </tbody>
 </table>
@@ -2119,8 +2127,8 @@ Il y a bien d’autres paramètres dans la fonction *kable()*, par exemple,
 il est possible de choisir le nombre de chiffres utilisés après la
 virgule ou encore d’inclure les numéros de lignes.
 
-    ``{r table2}
-    kable(tab1, caption = "Table créée à partir de *df1*", digits = 3, row.names = TRUE)
+    ```{r table2}
+    kable(tab1, caption = "Table créée à partir de *df1*", digits = 3, row.names =  TRUE)
     ```
 
     kable(tab1, caption = "Table créée à partir de *df1*", digits = 3, row.names = TRUE)
@@ -2141,85 +2149,85 @@ virgule ou encore d’inclure les numéros de lignes.
 <td style="text-align: left;">1</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">10.223</td>
-<td style="text-align: right;">8.606</td>
+<td style="text-align: right;">16.902</td>
+<td style="text-align: right;">15.814</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">2</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">10.826</td>
-<td style="text-align: right;">11.528</td>
+<td style="text-align: right;">19.604</td>
+<td style="text-align: right;">19.630</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">3</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">8.236</td>
-<td style="text-align: right;">7.547</td>
+<td style="text-align: right;">6.030</td>
+<td style="text-align: right;">5.333</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">4</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">2.981</td>
-<td style="text-align: right;">4.335</td>
+<td style="text-align: right;">2.453</td>
+<td style="text-align: right;">2.668</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">5</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">8.127</td>
-<td style="text-align: right;">8.288</td>
+<td style="text-align: right;">1.278</td>
+<td style="text-align: right;">1.502</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">6</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">14.669</td>
-<td style="text-align: right;">13.758</td>
+<td style="text-align: right;">6.738</td>
+<td style="text-align: right;">6.011</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">7</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">11.465</td>
-<td style="text-align: right;">11.199</td>
+<td style="text-align: right;">9.292</td>
+<td style="text-align: right;">10.215</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">8</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">9.962</td>
-<td style="text-align: right;">9.773</td>
+<td style="text-align: right;">11.794</td>
+<td style="text-align: right;">11.730</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">9</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">1.227</td>
-<td style="text-align: right;">-0.437</td>
+<td style="text-align: right;">11.420</td>
+<td style="text-align: right;">10.389</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">10</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">13.132</td>
-<td style="text-align: right;">14.300</td>
+<td style="text-align: right;">14.525</td>
+<td style="text-align: right;">13.893</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">11</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">0.700</td>
-<td style="text-align: right;">-0.254</td>
+<td style="text-align: right;">12.267</td>
+<td style="text-align: right;">14.295</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">12</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">6.456</td>
-<td style="text-align: right;">8.290</td>
+<td style="text-align: right;">18.875</td>
+<td style="text-align: right;">19.675</td>
 </tr>
 </tbody>
 </table>
@@ -2252,8 +2260,8 @@ référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown%20refer
 Dans le bloc de code ci-dessous, la taille de la figure et son
 alignement sont ajustés et une légende est ajoutée.
 
-    ``{r figdim1, fig.cap = "Ceci est la légende de la figure",
-        fig.height = 4, fig.width = 4, fig.align = 'right'}
+    ```{r figdim1, fig.cap = "Ceci est la légende de la figure",
+        fig.height = 4, fig.width = 4, fig.align = "right"}
     plot(tab1$var1,tab1$var2)
     ```
 
@@ -2270,10 +2278,10 @@ n’êtes pas habitué à manipuler les pouces, il faudra faire des
 conversations à la main (ou avec R) en gardant en tête que 1 pouce vaut
 2.54 cm. Il est également possible de choisir une des deux dimensions et
 changer le rapport de forme, `fig.aspect`. Ainsi, pour une figure de
- poucesx pouces, je peux utliser une largeure de 9 pouces et un rapport
+ poucesx pouces, je peux utiliser une largeur de 9 pouces et un rapport
 de forme de 1.5.
 
-    ``{r figdim2, fig.cap= "Figure 9x6", fig.width = 9, fig.aspect = 1.5}
+    ```{r figdim2, fig.cap= "Figure 9x6", fig.width = 9, fig.aspect = 1.5}
     plot(tab1$var1,tab1$var2)
     ```
 
@@ -2285,7 +2293,7 @@ de forme de 1.5.
 Il est aussi possible de contrôler la largeur de la sortie en utilisant
 des pourcentage, pour cela on utilise `out.width`
 
-    ``{r figdim3, out.width = "100%"}
+    ```{r figdim3, out.width = "100%"}
     plot(tab1$var1, tab1$var2)
     ```
 
@@ -2299,7 +2307,7 @@ paramètre `dev` (la liste complète des formats est disponible à
 <!-- Dans le bloc qui suit j'utilise le [format -->
 <!-- SVG](https://www.synbioz.com/blog/tech/le-svg-pour-quoi-faire) -->
 
-    ``{r figdim4, out.width = "100%", dev = "jpeg"}
+    ```{r figdim4, out.width = "100%", dev = "jpeg"}
     plot(tab1$var1, tab1$var2)
     ```
 
@@ -2310,7 +2318,7 @@ paramètre `dev` (la liste complète des formats est disponible à
 Pour les formats dits matriciels, il est possible de spécifier la
 résolution de l’image avec `fig.dpi`
 
-    ``{r figdim5, out.width = "100%", dev = "png", fig.cap= "Faible résolution", dpi = 36}
+    ```{r figdim5, out.width = "100%", dev = "png", fig.cap= "Faiblrésolution", dpi = 36}
     plot(tab1$var1, tab1$var2)
     ```
 
@@ -2321,9 +2329,11 @@ résolution de l’image avec `fig.dpi`
 Faible résolution
 </p>
 
-    ``{r figdim6, out.width = "100%", dev = "png", fig.cap= "Forte résolution", dpi = 300}
+    ```{r figdim6, out.width = "100%", dev = "png", fig.cap= "Fortrésolution", dpi = 300}
     plot(tab1$var1, tab1$var2)
     ```
+
+ce qui donne
 
     plot(tab1$var1, tab1$var2)
 
@@ -2342,7 +2352,7 @@ code supplémentaires, d’en choisir le taille, le format, la position, la
 légende, d’ajouter un hyperlien et de masquer le code qui la génère.
 Voici le bloc qui me permet de modifier toutes ces options:
 
-    ``{r figfinale, dev = "png", dpi = 300, fig.height = 5, fig.width = 8, echo = FALSE, fig.link = "https://github.com/KevCaz/Rmarkdowndocfr", fig.cap = "Figure associé à la table 1. Le gris pour l'expérience 1, bleu pour la seconde et violet pour la troisième."}
+    {r figfinale, dev = "png", dpi = 300, fig.height = 5, fig.width =8, echo = FALSE, fig.link = "https://github.com/KevCaz/Rmarkdowndocfr", fig.cap = "Figure associé à la table 1. Le gris pour l'expérience 1, bleu pour la seconde et violet pour la troisième."}
     par(bty="l", font = 2, las = 1)
     plot(tab1$var1, tab1$var2, pch = 15:19, col = rep(c(8, 4, 6), each = 5),
         xlab = "Mon axe des abscisses", ylab = "Mon axe des ordonnées")
@@ -2362,10 +2372,10 @@ nous avons vu comment insérer une image dans un document. Il est aussi
 possible de faire une telle inclusion grâce à la fonction
 `include_graphics()` de `knitr`. L’avantage de cette manière de procéder
 est qu’elle permet de traiter le fichier extérieur comme un graphique
-produit par R. Par exemple, pour ajouter le logo de R utiliser plus haut
+produit par R. Par exemple, pour ajouter le logo de R utilisé plus haut
 (`./images/Rlogo.png`), il est possible d’utiliser:
 
-    ```{r iclgraph, fig.align = 'center', out.width = "40%", echo = FALSE}
+    ```{r iclgraph, fig.align = "center", out.width = "40%", echo = FALSE}
     include_graphics("./images/Rlogo.png")
     ```
 
@@ -2380,8 +2390,8 @@ Pour ce faire je vais utiliser `lm()` et afficher les coefficients ainsi
 que les figures associées. J’utilise alors le bloc de code
 suivant&nbsp;:
 
-    ``{r application, echo = FALSE, fig.cap = "Mon modèle linéaire", fig.width = 8,
-        fig.height = 8, fig.align = 'center'}
+    ```{r application, echo = FALSE, fig.cap = "Mon modèle linéaire", fig.width= 8,
+    fig.height = 8, fig.align = "center"}
     mod1 <- lm(var2 ~ var1, data = tab1)
     kable(summary(mod1)$coefficients)
     par(bty = "l", mfrow = c(2, 2))
@@ -2407,17 +2417,17 @@ Le résultat est le suivant&nbsp;:
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-0.293814</td>
-<td style="text-align: right;">0.7418655</td>
-<td style="text-align: right;">-0.3960475</td>
-<td style="text-align: right;">0.7003885</td>
+<td style="text-align: right;">-0.0271109</td>
+<td style="text-align: right;">0.5986209</td>
+<td style="text-align: right;">-0.0452889</td>
+<td style="text-align: right;">0.9647687</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">var1</td>
-<td style="text-align: right;">1.025030</td>
-<td style="text-align: right;">0.0802112</td>
-<td style="text-align: right;">12.7791327</td>
-<td style="text-align: right;">0.0000002</td>
+<td style="text-align: right;">1.0023151</td>
+<td style="text-align: right;">0.0484359</td>
+<td style="text-align: right;">20.6936534</td>
+<td style="text-align: right;">0.0000000</td>
 </tr>
 </tbody>
 </table>
@@ -2427,7 +2437,7 @@ Le résultat est le suivant&nbsp;:
 Mon modèle linéaire
 </p>
 
-La pente de la regression est de **1.03**.
+La pente de la regression est de **1**.
 
 Si je change les données de `tab1`, la table, les graphiques et mon
 commentaire seront adéquatement modifiés, ce qui peut s’avérer très
@@ -2460,14 +2470,14 @@ l’entièreté) du code dans un fichier `.R` (ou `.r`). Plusieurs manières
 de procéder existent, plus ou moins pertinentes selon ce que nous
 voulons faire. Si le code est simplement un ensemble de ligne à exécuter
 de manière silencieuse, alors utiliser `source()` est probablement une
-bonne option. Il y a cependant une petite chose à savoir, c’est qu’il
-est préférable d’utiliser `local` pour s’assurer que le code sera
+bonne option. Il y a cependant une petite chose à savoir: il est
+préférable d’utiliser l’argument `local` pour s’assurer que le code sera
 exécuter dans le bon environment, voir le chapitre *Source external R
 scripts* de Xie et al. (2020) (aussi disponible à l’URL suivante
 <a href="https://bookdown.org/yihui/rmarkdown-cookbook/source-script.html" class="uri">https://bookdown.org/yihui/rmarkdown-cookbook/source-script.html</a>).
 Le script à charger est disponible à l’URL suivante et
 <a href="https://github.com/KevCaz/Rmarkdowndocfrscripts/scr_externe1.R" class="uri">https://github.com/KevCaz/Rmarkdowndocfrscripts/scr_externe1.R</a>,
-il contient les ligne suivant:
+il contient les lignes suivantes:
 
     var1 <- 2
     var2 <- 10*var1
