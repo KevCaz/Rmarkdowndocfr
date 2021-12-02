@@ -480,7 +480,7 @@ source de ce document) :
 
     ---
     title: "Utiliser R Markdown pour créer des documents dynamiques"
-    date: "01 December 2021"
+    date: "02 December 2021"
     author: par Kevin Cazelles
     lang: fr
     abstract: "Le package [...] pour aller plus loin."
@@ -1510,7 +1510,7 @@ Pour inclure une sortie texte directement dans un paragraphe, on utilise
  : `` `r expression` ``. Ainsi, par exemple, il est possible d’insérer
 l’heure et la date au moment de la compilation du document en utilisant
 la fonction *Sys.time()*, ainsi, `` `r Sys.time()` ``  nous donne
-2021-12-01 14:30:40.
+2021-12-02 14:31:29.
 
 Le reste de cette section se concentre sur les blocs de code R (*code
 chunks* en anglais) qui s’utilisent comme les [blocs de
@@ -2051,74 +2051,74 @@ sera convertie dans le format désiré par Pandoc. De plus, la fonction
 <tr class="odd">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">16.901650</td>
-<td style="text-align: right;">15.813753</td>
+<td style="text-align: right;">8.4008211</td>
+<td style="text-align: right;">8.4437693</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">19.603520</td>
-<td style="text-align: right;">19.630129</td>
+<td style="text-align: right;">0.7609439</td>
+<td style="text-align: right;">0.8043271</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">6.030410</td>
-<td style="text-align: right;">5.332537</td>
+<td style="text-align: right;">1.5847165</td>
+<td style="text-align: right;">0.8521272</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">2.452911</td>
-<td style="text-align: right;">2.668383</td>
+<td style="text-align: right;">18.0965951</td>
+<td style="text-align: right;">16.6589982</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">1.277527</td>
-<td style="text-align: right;">1.502150</td>
+<td style="text-align: right;">10.1369097</td>
+<td style="text-align: right;">10.3186860</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">6.737792</td>
-<td style="text-align: right;">6.011222</td>
+<td style="text-align: right;">12.5011381</td>
+<td style="text-align: right;">12.8528315</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">9.292226</td>
-<td style="text-align: right;">10.215211</td>
+<td style="text-align: right;">14.1564677</td>
+<td style="text-align: right;">13.3979365</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">11.793537</td>
-<td style="text-align: right;">11.730263</td>
+<td style="text-align: right;">9.5566143</td>
+<td style="text-align: right;">10.6819234</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">11.419913</td>
-<td style="text-align: right;">10.389382</td>
+<td style="text-align: right;">10.3574336</td>
+<td style="text-align: right;">8.6207925</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">14.524502</td>
-<td style="text-align: right;">13.892520</td>
+<td style="text-align: right;">2.1089861</td>
+<td style="text-align: right;">2.6115608</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">12.267248</td>
-<td style="text-align: right;">14.294778</td>
+<td style="text-align: right;">17.2478924</td>
+<td style="text-align: right;">16.7969136</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">18.875386</td>
-<td style="text-align: right;">19.674652</td>
+<td style="text-align: right;">17.7341136</td>
+<td style="text-align: right;">15.1682967</td>
 </tr>
 </tbody>
 </table>
@@ -2149,85 +2149,85 @@ virgule ou encore d’inclure les numéros de lignes.
 <td style="text-align: left;">1</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">16.902</td>
-<td style="text-align: right;">15.814</td>
+<td style="text-align: right;">8.401</td>
+<td style="text-align: right;">8.444</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">2</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">19.604</td>
-<td style="text-align: right;">19.630</td>
+<td style="text-align: right;">0.761</td>
+<td style="text-align: right;">0.804</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">3</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">6.030</td>
-<td style="text-align: right;">5.333</td>
+<td style="text-align: right;">1.585</td>
+<td style="text-align: right;">0.852</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">4</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">2.453</td>
-<td style="text-align: right;">2.668</td>
+<td style="text-align: right;">18.097</td>
+<td style="text-align: right;">16.659</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">5</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">1.278</td>
-<td style="text-align: right;">1.502</td>
+<td style="text-align: right;">10.137</td>
+<td style="text-align: right;">10.319</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">6</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">6.738</td>
-<td style="text-align: right;">6.011</td>
+<td style="text-align: right;">12.501</td>
+<td style="text-align: right;">12.853</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">7</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">9.292</td>
-<td style="text-align: right;">10.215</td>
+<td style="text-align: right;">14.156</td>
+<td style="text-align: right;">13.398</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">8</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">11.794</td>
-<td style="text-align: right;">11.730</td>
+<td style="text-align: right;">9.557</td>
+<td style="text-align: right;">10.682</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">9</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">11.420</td>
-<td style="text-align: right;">10.389</td>
+<td style="text-align: right;">10.357</td>
+<td style="text-align: right;">8.621</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">10</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">14.525</td>
-<td style="text-align: right;">13.893</td>
+<td style="text-align: right;">2.109</td>
+<td style="text-align: right;">2.612</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">11</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">12.267</td>
-<td style="text-align: right;">14.295</td>
+<td style="text-align: right;">17.248</td>
+<td style="text-align: right;">16.797</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">12</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">18.875</td>
-<td style="text-align: right;">19.675</td>
+<td style="text-align: right;">17.734</td>
+<td style="text-align: right;">15.168</td>
 </tr>
 </tbody>
 </table>
@@ -2348,9 +2348,9 @@ autres, d’ajouter un hyperlien sur la figure. L’ensemble de ces
 paramètres nous permettent de facilement bénéficier de la large gamme de
 fonctions graphiques de R. Ainsi, avec R Markdown, il est possible, par
 exemple, de personnaliser la figure précédente avec quelques lignes de
-code supplémentaires, d’en choisir le taille, le format, la position, la
+code supplémentaires, d’en choisir la taille, le format, la position, la
 légende, d’ajouter un hyperlien et de masquer le code qui la génère.
-Voici le bloc qui me permet de modifier toutes ces options:
+Voici le bloc qui nous permet de modifier toutes ces options:
 
     {r figfinale, dev = "png", dpi = 300, fig.height = 5, fig.width =8, echo = FALSE, fig.link = "https://github.com/KevCaz/Rmarkdowndocfr", fig.cap = "Figure associé à la table 1. Le gris pour l'expérience 1, bleu pour la seconde et violet pour la troisième."}
     par(bty="l", font = 2, las = 1)
@@ -2359,7 +2359,7 @@ Voici le bloc qui me permet de modifier toutes ces options:
     legend("bottomright", letters[1:5], pch = 15:19, bty = "n")
     ```
 
-Qui donne:
+et ce dernier nous donne:
 
 [![Figure associé à la table 1. Le gris pour l’expérience 1, bleu pour
 la seconde et violet pour la
@@ -2417,17 +2417,17 @@ Le résultat est le suivant&nbsp;:
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-0.0271109</td>
-<td style="text-align: right;">0.5986209</td>
-<td style="text-align: right;">-0.0452889</td>
-<td style="text-align: right;">0.9647687</td>
+<td style="text-align: right;">0.3990771</td>
+<td style="text-align: right;">0.5535860</td>
+<td style="text-align: right;">0.7208945</td>
+<td style="text-align: right;">0.487485</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">var1</td>
-<td style="text-align: right;">1.0023151</td>
-<td style="text-align: right;">0.0484359</td>
-<td style="text-align: right;">20.6936534</td>
-<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">0.9166408</td>
+<td style="text-align: right;">0.0468475</td>
+<td style="text-align: right;">19.5664939</td>
+<td style="text-align: right;">0.000000</td>
 </tr>
 </tbody>
 </table>
@@ -2437,7 +2437,7 @@ Le résultat est le suivant&nbsp;:
 Mon modèle linéaire
 </p>
 
-La pente de la regression est de **1**.
+La pente de la regression est de **0.917**.
 
 Si je change les données de `tab1`, la table, les graphiques et mon
 commentaire seront adéquatement modifiés, ce qui peut s’avérer très
@@ -2451,31 +2451,29 @@ Utilisations avancées
 
 <!-- mettre cache plus haut -->
 
-Changer les réglages
---------------------
+Changer les réglages par défault
+--------------------------------
 
 TODO
 
 Extraire du code R
 ------------------
 
-TODO
-
 Utiliser un script externe
 --------------------------
 
 Pour insérer dans un fichier de code, il peut parfois être plus pratique
 d’utiliser un script externe, autrement avoir une partie (ou
-l’entièreté) du code dans un fichier `.R` (ou `.r`). Plusieurs manières
-de procéder existent, plus ou moins pertinentes selon ce que nous
-voulons faire. Si le code est simplement un ensemble de ligne à exécuter
-de manière silencieuse, alors utiliser `source()` est probablement une
-bonne option. Il y a cependant une petite chose à savoir: il est
+l’entièreté) du code d’un fichier `.R` (ou `.r`). Plusieurs manières de
+procéder existent, plus ou moins pertinentes selon ce que nous voulons
+faire. Si le code est simplement un ensemble de lignes à exécuter de
+manière silencieuse, alors utiliser `source()` est probablement une
+bonne option. Il y a cependant une petite chose à savoir : il est
 préférable d’utiliser l’argument `local` pour s’assurer que le code sera
-exécuter dans le bon environment, voir le chapitre *Source external R
+exécuté dans le bon environment, voir le chapitre *Source external R
 scripts* de Xie et al. (2020) (aussi disponible à l’URL suivante
 <a href="https://bookdown.org/yihui/rmarkdown-cookbook/source-script.html" class="uri">https://bookdown.org/yihui/rmarkdown-cookbook/source-script.html</a>).
-Le script à charger est disponible à l’URL suivante et
+Le script à charger est disponible à l’URL suivante
 <a href="https://github.com/KevCaz/Rmarkdowndocfrscripts/scr_externe1.R" class="uri">https://github.com/KevCaz/Rmarkdowndocfrscripts/scr_externe1.R</a>,
 il contient les lignes suivantes:
 
@@ -2486,36 +2484,116 @@ il contient les lignes suivantes:
 
 que nous chargeons avec la fonction `source()`
 
-    ```{r source-script, include = FALSE}
-    source("scripts/scr_externe1.R", local = knitr::knit_global())
-    ```
+`{r source-script, include = FALSE} source("scripts/scr_externe1.R", local = knitr::knit_global())`
 
-Une fois chargé, nous pouvons alors accéder à son contenu.
+Une fois chargé, nous pouvons accéder aux variables qui y sont
+déclarées, par exemple
 
     var4
 
     ## [1] 0.9129453
 
-Utiliser source ne nous permet pas d’afficher le code, si on decide
-d’afficher le code nous voyons `source`. Pour voir le code, utiliser
-l’option `code` et lire le code avec `readLines` ou readutf8… TODO
+Comme vous l’aurez peut-être compris, utiliser `source()` ne nous permet
+pas d’afficher le code contenu dans le script. Si pour une raison ou une
+autre il est préférable d’afficher le code, il est possible d’utiliser
+l’option `code` pour enter le code à ajouter.
 
-Code ne nous permet pas de selectionner des parties du scripe, mais cela
-est possible avec `read_chunk` TODO
+    ```{r showextcode, code ="var1 <- 1"}
+    ```
 
-<!-- faire un snippet pour les code et changer les code chunk a monter -->
+    var1 <- 1
+
+Ce qui est pratique avec cette option c’est qu’il est possible
+d’utiliser une fonction qui va lire un fichier et donc il est aisé
+d’insérer le contenu d’un script R. C’est possible de le faire avec la
+fonction `readLines()`, ou encore avec la function `read_utf8()` du
+package [`xfun`](https://CRAN.R-project.org/package=xfun) qui retourne
+un avertissement si le fichier contient des caractères qui ne sont pas
+encodés en UTF-8. Ainsi, le bloc suivant
+
+    ```{r showextcode, code = readLines("scripts/scr_externe1.R")}
+    ```
+
+nous donne
+
+    var1 <- 2
+    var2 <- 10*var1
+    var3 <- cos(var2)
+    var4 <- sin(var2)
+
+Une limite de cette approche est qu’elle nous permet pas d’exécuter
+différente partie du script dans différent bloc de code, ce qui peut, à
+des fins pédagogiques, être utile. Il existe cependant un moyen simple
+d’utiliser différentes parties d’un script en l’annotant avec des
+balises `@knitr`. Prenons le script
+[scr\_externe2.R](https://github.com/KevCaz/Rmarkdowndocfrscripts/scr_externe2.R)
+
+    # @knitr part1
+    var1 <- 2
+    var2 <- 10*var1
+    # @knitr end_part1
+
+    # @knitr part2
+    var3 <- cos(var2)
+    var4 <- sin(var2)
+    # @knitr end_part2
+
+Le code est séparé en deux parties., chacune limitée par des balises
+`@knitr` qui suivent le format suivant  
+
+    # @knitr id
+    code
+    # @knitr end_id   <-- NB: optionnel! ouvrir une nouvelle balise fermera la précédente
+
+Une fois les balises ajoutées dans le script, pour l’utiliser, la
+première étape est de charger le script, ce qui ce fait avec la fonction
+`read_chunk()`.
+
+    read_chunk("scripts/scr_externe2.R")
+
+La seconde étape est d’ajouter les blocs de code qui contiennent le ou
+les parties à utiliser. Pour cela on utilise un bloc de code R avec
+l’identifiant de la partie à utiliser entre chevrons doublés. Par
+exemple, pour ajouter la partie 1, nous utilisons
+
+    ```{r part1}
+    <<part1>>
+    ```
+
+ce qui donne
+
+    var1 <- 2
+    var2 <- 10*var1
+
+Nous utilisons la même approche pour la partie 2
+
+    ```{r part2}
+    <<part2>>
+    ```
+
+ce qui nous donne
+
+    var3 <- cos(var2)
+    var4 <- sin(var2)
+
+Noter que les commandes ajoutées à la suite serons ignorées.
 
 <!-- https://stackoverflow.com/questions/52397430/include-code-from-an-external-r-script-run-in-display-both-code-and-output -->
 
-Utiliser les hooks
-------------------
+Utiliser les *hooks*
+--------------------
 
 TODO
 
 Autres packages
 ---------------
 
-TODO
+faire un tour d’horizon de quelques packages TODO
+
+-   [`bookdown`](https://CRAN.R-project.org/package=bookdown)
+-   [`blogdown`](https://CRAN.R-project.org/package=blogdown)
+-   [`pagedown`](https://CRAN.R-project.org/package=pagedown)
+-   [`xaringan`](https://CRAN.R-project.org/package=xaringan)
 
 <!-- emjoi -->
 <!-- ici hooks  -->
