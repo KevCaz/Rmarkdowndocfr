@@ -1898,9 +1898,9 @@ Encore une fois, il y a [d'autres options listées sur le site de
 d'ajouter un hyperlien sur la figure. L'ensemble de ces paramètres nous
 permettent de facilement bénéficier de la large gamme de fonctions graphiques de
 R. Ainsi, avec R Markdown, il est possible, par exemple, de personnaliser la
-figure précédente avec quelques lignes de code supplémentaires, d'en choisir le
+figure précédente avec quelques lignes de code supplémentaires, d'en choisir la
 taille, le format, la position, la légende, d'ajouter un hyperlien et de masquer
-le code qui la génère. Voici le bloc qui me permet de modifier toutes ces
+le code qui la génère. Voici le bloc qui nous permet de modifier toutes ces
 options:
 
 ````md
@@ -1912,7 +1912,7 @@ legend("bottomright", letters[1:5], pch = 15:19, bty = "n")
 ```
 ````
 
-Qui donne:
+et ce dernier nous donne:
 
 ```{r figfinale, dev = "png", dpi = 300, fig.height = 5, fig.width = 8, echo = FALSE, fig.link = "https://github.com/KevCaz/Rmarkdowndocfr", fig.cap = "Figure associé à la table 1. Le gris pour l'expérience 1, bleu pour la seconde et violet pour la troisième."}
 par(bty="l", font = 2, las = 1)
@@ -1994,59 +1994,121 @@ Si je change les données de `tab1`, la table, les graphiques et mon commentaire
 
 <!-- mettre cache plus haut -->
 
-## Changer les réglages 
+## Changer les réglages par défault
 
 TODO
 
 ## Extraire du code R 
 
-TODO
 
 ## Utiliser un script externe
 
-Pour insérer dans un fichier de code, il peut parfois être plus pratique d'utiliser un script externe, autrement avoir une partie (ou l'entièreté) du code dans un fichier `.R` (ou `.r`). Plusieurs manières de procéder existent, plus ou moins pertinentes selon ce que nous voulons faire. Si le code est simplement un ensemble de ligne à exécuter de manière silencieuse, alors utiliser `source()` est probablement une bonne option. Il y a cependant une petite chose à savoir: il est préférable d'utiliser l'argument `local` pour s'assurer que le code sera exécuter dans le bon environment, voir le chapitre *Source external R scripts* de @xie_markdown_2020 (aussi disponible à l'URL suivante https://bookdown.org/yihui/rmarkdown-cookbook/source-script.html). Le script à charger est disponible à l'URL suivante et `r url_this_gh("scripts/scr_externe1.R")`, il contient les lignes suivantes: 
+Pour insérer dans un fichier de code, il peut parfois être plus pratique d'utiliser un script externe, autrement avoir une partie (ou l'entièreté) du code d'un fichier `.R` (ou `.r`). Plusieurs manières de procéder existent, plus ou moins pertinentes selon ce que nous voulons faire. Si le code est simplement un ensemble de lignes à exécuter de manière silencieuse, alors utiliser `source()` est probablement une bonne option. Il y a cependant une petite chose à savoir&nbsp;: il est préférable d'utiliser l'argument `local` pour s'assurer que le code sera exécuté dans le bon environment, voir le chapitre *Source external R scripts* de @xie_markdown_2020 (aussi disponible à l'URL suivante https://bookdown.org/yihui/rmarkdown-cookbook/source-script.html). Le script à charger est disponible à l'URL suivante `r url_this_gh("scripts/scr_externe1.R")`, il contient les lignes suivantes: 
 
-```{r showextcode, code=readLines("scripts/scr_externe1.R"), eval = FALSE}
+```{r showcode, code=readLines("scripts/scr_externe1.R"), eval = FALSE}
 ```
 
 que nous chargeons avec la fonction `source()`
 
-
-````md
 ```{r source-script, include = FALSE}`r ''`
 source("scripts/scr_externe1.R", local = knitr::knit_global())
 ```
-````
 
 
 ```{r source-script, include = FALSE}
 source("scripts/scr_externe1.R", local = knitr::knit_global())
 ```
 
-Une fois chargé, nous pouvons alors accéder à son contenu.
+Une fois chargé, nous pouvons accéder aux variables qui y sont déclarées, par exemple
 
 ```{r resextcode}
 var4
 ```
 
 
-Utiliser source ne nous permet pas d'afficher le code, si on decide d'afficher le code nous voyons `source`. Pour voir le code,  utiliser l'option `code` et lire le code avec `readLines` ou readutf8... TODO
+Comme vous l'aurez peut-être compris, utiliser `source()` ne nous permet pas d'afficher le code contenu dans le script. Si pour une raison ou une autre il est préférable d'afficher le code, il est possible d'utiliser l'option `code` pour enter le code à ajouter. 
 
 
-Code ne nous permet pas de selectionner des parties du scripe, mais cela est possible avec `read_chunk` TODO
+    ```{r showextcode, code ="var1 <- 1"}`r ''`
+    ```
 
-<!-- faire un snippet pour les code et changer les code chunk a monter -->
+  ```{r showextcode, code ="var1 <- 1"}
+  ```
 
+Ce qui est pratique avec cette option c'est qu'il est possible d'utiliser une fonction qui va lire un fichier et donc il est aisé d'insérer le contenu d'un script R. C'est possible de le faire avec la fonction `readLines()`, ou encore avec la function `read_utf8()` du package [`xfun`](https://CRAN.R-project.org/package=xfun) qui retourne un avertissement si le fichier contient des caractères qui ne sont pas encodés en UTF-8. Ainsi, le bloc suivant
+
+
+    ```{r showextcode, code = readLines("scripts/scr_externe1.R")}`r ''`
+    ```
+
+nous donne
+
+```{r showextcode, code = readLines("scripts/scr_externe1.R")}
+```
+
+Une limite de cette approche est qu'elle nous permet pas d'exécuter différente partie du script dans différent bloc de code, ce qui peut, à des fins pédagogiques, être utile. Il existe cependant un moyen simple d'utiliser différentes parties d'un script en l'annotant avec des balises `@knitr`. Prenons le script `r url_this_gh("scripts/scr_externe2.R", "scr_externe2.R")`
+
+```{r showcode, code=readLines("scripts/scr_externe2.R"), eval = FALSE}
+```
+
+Le code est séparé en deux parties., chacune limitée par des balises `@knitr` qui suivent le format suivant &nbsp;
+
+```r
+# @knitr id
+code
+# @knitr end_id   <-- NB: optionnel! ouvrir une nouvelle balise fermera la précédente
+```
+
+Une fois les balises ajoutées dans le script, pour l'utiliser, la première étape est de charger le script, ce qui ce fait avec la fonction `read_chunk()`.
+
+```{r read_chunk}
+read_chunk("scripts/scr_externe2.R")
+```
+
+La seconde étape est d'ajouter les blocs de code qui contiennent le ou les parties à utiliser. Pour cela on utilise un bloc de code R avec l'identifiant de la partie à utiliser entre chevrons doublés. Par exemple, pour ajouter la partie 1, nous utilisons
+
+    ```{r part1}`r ''`
+    <<part1>>
+    ```
+    
+ce qui donne 
+
+```{r part1}
+<<part1>>
+```
+
+Nous utilisons la même approche pour la partie 2
+
+    ```{r part2}`r ''`
+    <<part2>>
+    ```
+
+ce qui nous donne
+
+```{r part2}
+<<part2>>
+```
+
+Noter que les commandes ajoutées à la suite serons ignorées.
 
  <!-- https://stackoverflow.com/questions/52397430/include-code-from-an-external-r-script-run-in-display-both-code-and-output -->
+ 
 
-## Utiliser les hooks
+
+## Utiliser les *hooks*
 
 TODO 
+
+
 
 ## Autres packages 
 
-TODO 
+faire un tour d'horizon de quelques packages TODO 
+
+- [`bookdown`](https://CRAN.R-project.org/package=bookdown)
+- [`blogdown`](https://CRAN.R-project.org/package=blogdown)
+- [`pagedown`](https://CRAN.R-project.org/package=pagedown)
+- [`xaringan`](https://CRAN.R-project.org/package=xaringan)
 
 <!-- emjoi -->
 
