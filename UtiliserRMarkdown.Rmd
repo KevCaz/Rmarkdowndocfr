@@ -1991,13 +1991,6 @@ Si je change les données de `tab1`, la table, les graphiques et mon commentaire
 :construction: WIP :construction:
 
 
-
-<!-- mettre cache plus haut -->
-
-## Changer les réglages par défault
-
-TODO
-
 ## Extraire du code R 
 
 
@@ -2097,27 +2090,74 @@ Noter que les commandes ajoutées à la suite serons ignorées.
 
 ## Utiliser les *hooks*
 
-TODO 
+### Options et *hooks*
 
+WIP 
+
+Comme nous l'avons vu plus haut, il y a de nombreuse options dans les blocs de code. A ces nombreuses options, `knitr` ajoute la possibilité de les modifier et de créer nos propre options, cela se fait grâce a des *hooks* (<https://yihui.org/knitr/hooks/>). Il en existe différents type: 
+
+1. *chunk hooks*
+2. *output hooks*
+3. *options hooks*
+
+### Changer les options par défaut 
+
+Avant d'aller plus loin, une première chose qu'on va garder en tête. Les options d'un code chunk sont dans la liste `opts_chunk` et nous avons accès relativement facilement aux valeurs par défaut avec la fonction `get()` de cette liste.
+
+```{r}
+knitr::opts_chunk$get()
+```  
+
+Et nous pouvons changer les valeurs par défaut avec `set()`. Par exemple 
+
+```{r}
+knitr::opts_chunk$set(
+    comment = "#R>",
+    dev = "png",
+    dpi = 155,
+    fig.align = 'center',
+    width = 120
+)
+```  
+
+
+```{r}
+knitr::opts_chunk$get()
+``` 
+
+me permet d'avoir
+
+
+```{r}
+knitr::opts_chunk$restore()
+```  
+
+me permet de restaurer les options.
+
+
+```{r}
+knitr::opts_chunk$get()
+``` 
+
+et nous pouvons les c
+
+
+<!-- https://kbroman.org/knitr_knutshell/pages/Rmarkdown.html -->
+<!--  -->
+
+<!-- essayer de faire un compte de figure pour un hook sympa -->
 
 
 ## Autres packages 
 
-faire un tour d'horizon de quelques packages TODO 
+TODO
 
-- [`bookdown`](https://CRAN.R-project.org/package=bookdown)
-- [`blogdown`](https://CRAN.R-project.org/package=blogdown)
-- [`pagedown`](https://CRAN.R-project.org/package=pagedown)
-- [`xaringan`](https://CRAN.R-project.org/package=xaringan)
+R Markdown permet de convertir un document en de nombreux formats. Aujourd'hui, il y a en fait tout un écosystème de packages qui utilisent rmarkdown pour permettre de réaliser autres types de support. Voici quelques examples, probablement les plus populaire    
 
-<!-- emjoi -->
-
-
-<!-- ici hooks  -->
-<!--  -->
-
-<!-- il existe aussi des options avancées  -->
-<!-- https://yihui.org/knitr/hooks/ pas détaillé ici -->
+- [`bookdown`](https://CRAN.R-project.org/package=bookdown)  git book
+- [`blogdown`](https://CRAN.R-project.org/package=blogdown) Hugo, Jekkyl 
+- [`pagedown`](https://CRAN.R-project.org/package=pagedown) pagejs 
+- [`xaringan`](https://CRAN.R-project.org/package=xaringan) remark
 
 
 
