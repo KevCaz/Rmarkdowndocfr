@@ -480,7 +480,7 @@ source de ce document) :
 
     ---
     title: "Utiliser R Markdown pour créer des documents dynamiques"
-    date: "03 December 2021"
+    date: "06 December 2021"
     author: par Kevin Cazelles
     lang: fr
     abstract: "Le package [...] pour aller plus loin."
@@ -1510,7 +1510,7 @@ Pour inclure une sortie texte directement dans un paragraphe, on utilise
  : `` `r expression` ``. Ainsi, par exemple, il est possible d’insérer
 l’heure et la date au moment de la compilation du document en utilisant
 la fonction *Sys.time()*, ainsi, `` `r Sys.time()` ``  nous donne
-2021-12-03 18:11:16.
+2021-12-06 14:46:22.
 
 Le reste de cette section se concentre sur les blocs de code R (*code
 chunks* en anglais) qui s’utilisent comme les [blocs de
@@ -2051,74 +2051,74 @@ sera convertie dans le format désiré par Pandoc. De plus, la fonction
 <tr class="odd">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">14.8792245</td>
-<td style="text-align: right;">12.8802218</td>
+<td style="text-align: right;">6.5985004</td>
+<td style="text-align: right;">6.425777</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">16.7063654</td>
-<td style="text-align: right;">18.0273934</td>
+<td style="text-align: right;">5.1862613</td>
+<td style="text-align: right;">5.977564</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">14.4778388</td>
-<td style="text-align: right;">12.7464026</td>
+<td style="text-align: right;">12.7055926</td>
+<td style="text-align: right;">11.445526</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">9.7784621</td>
-<td style="text-align: right;">9.3029192</td>
+<td style="text-align: right;">15.9420345</td>
+<td style="text-align: right;">16.236449</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">15.4599447</td>
-<td style="text-align: right;">14.6341295</td>
+<td style="text-align: right;">8.9424940</td>
+<td style="text-align: right;">7.815696</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">2.8265175</td>
-<td style="text-align: right;">1.3071075</td>
+<td style="text-align: right;">14.7188342</td>
+<td style="text-align: right;">14.471027</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">19.6409712</td>
-<td style="text-align: right;">18.1494141</td>
+<td style="text-align: right;">9.4877552</td>
+<td style="text-align: right;">8.960087</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">19.8208940</td>
-<td style="text-align: right;">18.0806170</td>
+<td style="text-align: right;">15.7760445</td>
+<td style="text-align: right;">16.357607</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">18.1872308</td>
-<td style="text-align: right;">18.4927112</td>
+<td style="text-align: right;">16.5909769</td>
+<td style="text-align: right;">17.102428</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">3.0573293</td>
-<td style="text-align: right;">2.0964612</td>
+<td style="text-align: right;">0.0829685</td>
+<td style="text-align: right;">1.483637</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">0.0402893</td>
-<td style="text-align: right;">-0.9133828</td>
+<td style="text-align: right;">8.5803878</td>
+<td style="text-align: right;">11.833267</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">19.6814400</td>
-<td style="text-align: right;">20.4061165</td>
+<td style="text-align: right;">3.5441629</td>
+<td style="text-align: right;">4.498327</td>
 </tr>
 </tbody>
 </table>
@@ -2149,85 +2149,85 @@ virgule ou encore d’inclure les numéros de lignes.
 <td style="text-align: left;">1</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">14.879</td>
-<td style="text-align: right;">12.880</td>
+<td style="text-align: right;">6.599</td>
+<td style="text-align: right;">6.426</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">2</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">16.706</td>
-<td style="text-align: right;">18.027</td>
+<td style="text-align: right;">5.186</td>
+<td style="text-align: right;">5.978</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">3</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">14.478</td>
-<td style="text-align: right;">12.746</td>
+<td style="text-align: right;">12.706</td>
+<td style="text-align: right;">11.446</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">4</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">9.778</td>
-<td style="text-align: right;">9.303</td>
+<td style="text-align: right;">15.942</td>
+<td style="text-align: right;">16.236</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">5</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">15.460</td>
-<td style="text-align: right;">14.634</td>
+<td style="text-align: right;">8.942</td>
+<td style="text-align: right;">7.816</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">6</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">2.827</td>
-<td style="text-align: right;">1.307</td>
+<td style="text-align: right;">14.719</td>
+<td style="text-align: right;">14.471</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">7</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">19.641</td>
-<td style="text-align: right;">18.149</td>
+<td style="text-align: right;">9.488</td>
+<td style="text-align: right;">8.960</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">8</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">19.821</td>
-<td style="text-align: right;">18.081</td>
+<td style="text-align: right;">15.776</td>
+<td style="text-align: right;">16.358</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">9</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">18.187</td>
-<td style="text-align: right;">18.493</td>
+<td style="text-align: right;">16.591</td>
+<td style="text-align: right;">17.102</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">10</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">3.057</td>
-<td style="text-align: right;">2.096</td>
+<td style="text-align: right;">0.083</td>
+<td style="text-align: right;">1.484</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">11</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">0.040</td>
-<td style="text-align: right;">-0.913</td>
+<td style="text-align: right;">8.580</td>
+<td style="text-align: right;">11.833</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">12</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">19.681</td>
-<td style="text-align: right;">20.406</td>
+<td style="text-align: right;">3.544</td>
+<td style="text-align: right;">4.498</td>
 </tr>
 </tbody>
 </table>
@@ -2417,17 +2417,17 @@ Le résultat est le suivant&nbsp;:
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-1.209067</td>
-<td style="text-align: right;">0.6639584</td>
-<td style="text-align: right;">-1.820998</td>
-<td style="text-align: right;">0.098616</td>
+<td style="text-align: right;">1.0439373</td>
+<td style="text-align: right;">0.7577712</td>
+<td style="text-align: right;">1.377642</td>
+<td style="text-align: right;">0.1983611</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">var1</td>
-<td style="text-align: right;">1.033401</td>
-<td style="text-align: right;">0.0454684</td>
-<td style="text-align: right;">22.727882</td>
-<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.9316508</td>
+<td style="text-align: right;">0.0681649</td>
+<td style="text-align: right;">13.667608</td>
+<td style="text-align: right;">0.0000001</td>
 </tr>
 </tbody>
 </table>
@@ -2437,7 +2437,7 @@ Le résultat est le suivant&nbsp;:
 Mon modèle linéaire
 </p>
 
-La pente de la regression est de **1.03**.
+La pente de la regression est de **0.932**.
 
 Si je change les données de `tab1`, la table, les graphiques et mon
 commentaire seront adéquatement modifiés, ce qui peut s’avérer très
@@ -2573,30 +2573,32 @@ Noter que les commandes ajoutées à la suite serons ignorées.
 
 <!-- https://stackoverflow.com/questions/52397430/include-code-from-an-external-r-script-run-in-display-both-code-and-output -->
 
-Utiliser les *hooks*
---------------------
-
-### Options et *hooks*
+Changer les options par défaut et utiliser les *hooks*
+------------------------------------------------------
 
 WIP
 
-Comme nous l’avons vu plus haut, il y a de nombreuse options dans les
-blocs de code. A ces nombreuses options, `knitr` ajoute la possibilité
-de les modifier et de créer nos propre options, cela se fait grâce a des
-*hooks*
+Comme nous l’avons vu plus haut, il y a de nombreuses options
+disponibles pour ajuster l’affiche des blocs de code et des sorties
+associées. Le package `knitr` nous offre non seulement la possibilité de
+passer différentes valeurs pour ces options, mais il nous offre aussi la
+possibilité de changer les options par défaut, le comportement des
+options existantes et aussi de créer nos propre options, cela se fait
+grâce à des *hooks*
 (<a href="https://yihui.org/knitr/hooks/" class="uri">https://yihui.org/knitr/hooks/</a>).
-Il en existe différents type:
+Il en existe différents types:
 
-1.  *chunk hooks*
-2.  *output hooks*
-3.  *options hooks*
+1.  *chunk hooks*: `knit_hooks`
+2.  *output hooks*: `knit_hooks`
+3.  *options hooks*: `opts_chunk`
+
+Ci-dessous, nous détaillons comment les utiliser.
 
 ### Changer les options par défaut
 
-Avant d’aller plus loin, une première chose qu’on va garder en tête. Les
-options d’un code chunk sont dans la liste `opts_chunk` et nous avons
-accès relativement facilement aux valeurs par défaut avec la fonction
-`get()` de cette liste.
+Les options par défaut d’un bloc de code sont stockées dans la liste
+`opts_chunk` et nous avons accès à ses valeurs avec la fonction `get()`
+de cette liste.
 
     knitr::opts_chunk$get()
 
@@ -2759,352 +2761,120 @@ accès relativement facilement aux valeurs par défaut avec la fonction
     ## $purl
     ## [1] TRUE
 
-Et nous pouvons changer les valeurs par défaut avec `set()`. Par exemple
+Nous pouvons changer ces valeurs avec `set()` et donc nous pouvons a
+tout moment changer le comportement du reste des bloc de code. Par
+exemple, avec
 
     knitr::opts_chunk$set(
         comment = "#R>",
         dev = "png",
         dpi = 155,
         fig.align = 'center',
-        width = 120
+        fig.width = 4
     )
 
-    knitr::opts_chunk$get()
+Avec ces nouveaux réglages par défaut (voir ce que retourne
+`knitr::opts_chunk$get()` maintenant), les commentaires seront affichés
+en commençant pas `#R>`, les figures seront exportées en format PNG avec
+une résolution de 155&nbsp;dpi (*dot per inch*, point par pouce en
+français), elles seront alignées au centre avec une largeur de 4 pouces.
+Par exemple
 
-    #R> $eval
-    #R> [1] TRUE
-    #R> 
-    #R> $echo
-    #R> [1] TRUE
-    #R> 
-    #R> $results
-    #R> [1] "markup"
-    #R> 
-    #R> $tidy
-    #R> [1] FALSE
-    #R> 
-    #R> $tidy.opts
-    #R> NULL
-    #R> 
-    #R> $collapse
-    #R> [1] FALSE
-    #R> 
-    #R> $prompt
-    #R> [1] FALSE
-    #R> 
-    #R> $comment
-    #R> [1] "#R>"
-    #R> 
-    #R> $highlight
-    #R> [1] TRUE
-    #R> 
-    #R> $size
-    #R> [1] "normalsize"
-    #R> 
-    #R> $background
-    #R> [1] "#F7F7F7"
-    #R> 
-    #R> $strip.white
-    #R> [1] TRUE
-    #R> 
-    #R> $cache
-    #R> [1] FALSE
-    #R> 
-    #R> $cache.path
-    #R> [1] "UtiliserRMarkdown_cache/markdown_strict/"
-    #R> 
-    #R> $cache.vars
-    #R> NULL
-    #R> 
-    #R> $cache.lazy
-    #R> [1] TRUE
-    #R> 
-    #R> $dependson
-    #R> NULL
-    #R> 
-    #R> $autodep
-    #R> [1] FALSE
-    #R> 
-    #R> $cache.rebuild
-    #R> [1] FALSE
-    #R> 
-    #R> $fig.keep
-    #R> [1] "high"
-    #R> 
-    #R> $fig.show
-    #R> [1] "asis"
-    #R> 
-    #R> $fig.align
-    #R> [1] "center"
-    #R> 
-    #R> $fig.path
-    #R> [1] "/home/runner/work/Rmarkdowndocfr/Rmarkdowndocfr/public/UtiliserRMarkdown_files/figure-markdown_strict/"
-    #R> 
-    #R> $dev
-    #R> [1] "png"
-    #R> 
-    #R> $dev.args
-    #R> NULL
-    #R> 
-    #R> $dpi
-    #R> [1] 155
-    #R> 
-    #R> $fig.ext
-    #R> NULL
-    #R> 
-    #R> $fig.width
-    #R> [1] 7
-    #R> 
-    #R> $fig.height
-    #R> [1] 5
-    #R> 
-    #R> $fig.env
-    #R> [1] "figure"
-    #R> 
-    #R> $fig.cap
-    #R> NULL
-    #R> 
-    #R> $fig.scap
-    #R> NULL
-    #R> 
-    #R> $fig.lp
-    #R> [1] "fig:"
-    #R> 
-    #R> $fig.subcap
-    #R> NULL
-    #R> 
-    #R> $fig.pos
-    #R> [1] ""
-    #R> 
-    #R> $out.width
-    #R> NULL
-    #R> 
-    #R> $out.height
-    #R> NULL
-    #R> 
-    #R> $out.extra
-    #R> NULL
-    #R> 
-    #R> $fig.retina
-    #R> NULL
-    #R> 
-    #R> $external
-    #R> [1] TRUE
-    #R> 
-    #R> $sanitize
-    #R> [1] FALSE
-    #R> 
-    #R> $interval
-    #R> [1] 1
-    #R> 
-    #R> $aniopts
-    #R> [1] "controls,loop"
-    #R> 
-    #R> $warning
-    #R> [1] TRUE
-    #R> 
-    #R> $error
-    #R> [1] FALSE
-    #R> 
-    #R> $message
-    #R> [1] TRUE
-    #R> 
-    #R> $render
-    #R> NULL
-    #R> 
-    #R> $ref.label
-    #R> NULL
-    #R> 
-    #R> $child
-    #R> NULL
-    #R> 
-    #R> $engine
-    #R> [1] "R"
-    #R> 
-    #R> $split
-    #R> [1] FALSE
-    #R> 
-    #R> $include
-    #R> [1] TRUE
-    #R> 
-    #R> $purl
-    #R> [1] TRUE
-    #R> 
-    #R> $width
-    #R> [1] 120
+    # Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    plot(1, 1)
 
-me permet d’avoir
+<img src="/home/runner/work/Rmarkdowndocfr/Rmarkdowndocfr/public/UtiliserRMarkdown_files/figure-markdown_strict/dummy-1.png" style="display: block; margin: auto;" />
+
+A tout moment, il est possible de restaurer les valeurs par défaut
+contenues dans le package `knitr` en utilisant la fonction `restore()`
+de la liste.
 
     knitr::opts_chunk$restore()
 
-me permet de restaurer les options.
+### Ajouter une nouvelle option
 
-    knitr::opts_chunk$get()
+Un hook est une fonction qui sera appelée quand l’option à laquelle elle
+a été assignée sera non null. Elle permet de rouler du code avant ou
+après le code chunk en utilisant éventuellement les autres options du
+code chunk. Comme expliquée par l’auteur de `knitr`, (voir
+<a href="https://yihui.org/knitr/hooks/#chunk-hooks" class="uri">https://yihui.org/knitr/hooks/#chunk-hooks</a>),
+la déclaration se fait de la manière suivante
 
-    ## $eval
-    ## [1] TRUE
-    ## 
-    ## $echo
-    ## [1] TRUE
-    ## 
-    ## $results
-    ## [1] "markup"
-    ## 
-    ## $tidy
-    ## [1] FALSE
-    ## 
-    ## $tidy.opts
-    ## NULL
-    ## 
-    ## $collapse
-    ## [1] FALSE
-    ## 
-    ## $prompt
-    ## [1] FALSE
-    ## 
-    ## $comment
-    ## [1] "##"
-    ## 
-    ## $highlight
-    ## [1] TRUE
-    ## 
-    ## $size
-    ## [1] "normalsize"
-    ## 
-    ## $background
-    ## [1] "#F7F7F7"
-    ## 
-    ## $strip.white
-    ## [1] TRUE
-    ## 
-    ## $cache
-    ## [1] FALSE
-    ## 
-    ## $cache.path
-    ## [1] "cache/"
-    ## 
-    ## $cache.vars
-    ## NULL
-    ## 
-    ## $cache.lazy
-    ## [1] TRUE
-    ## 
-    ## $dependson
-    ## NULL
-    ## 
-    ## $autodep
-    ## [1] FALSE
-    ## 
-    ## $cache.rebuild
-    ## [1] FALSE
-    ## 
-    ## $fig.keep
-    ## [1] "high"
-    ## 
-    ## $fig.show
-    ## [1] "asis"
-    ## 
-    ## $fig.align
-    ## [1] "default"
-    ## 
-    ## $fig.path
-    ## [1] "figure/"
-    ## 
-    ## $dev
-    ## NULL
-    ## 
-    ## $dev.args
-    ## NULL
-    ## 
-    ## $dpi
-    ## [1] 72
-    ## 
-    ## $fig.ext
-    ## NULL
-    ## 
-    ## $fig.width
-    ## [1] 7
-    ## 
-    ## $fig.height
-    ## [1] 7
-    ## 
-    ## $fig.env
-    ## [1] "figure"
-    ## 
-    ## $fig.cap
-    ## NULL
-    ## 
-    ## $fig.scap
-    ## NULL
-    ## 
-    ## $fig.lp
-    ## [1] "fig:"
-    ## 
-    ## $fig.subcap
-    ## NULL
-    ## 
-    ## $fig.pos
-    ## [1] ""
-    ## 
-    ## $out.width
-    ## NULL
-    ## 
-    ## $out.height
-    ## NULL
-    ## 
-    ## $out.extra
-    ## NULL
-    ## 
-    ## $fig.retina
-    ## [1] 1
-    ## 
-    ## $external
-    ## [1] TRUE
-    ## 
-    ## $sanitize
-    ## [1] FALSE
-    ## 
-    ## $interval
-    ## [1] 1
-    ## 
-    ## $aniopts
-    ## [1] "controls,loop"
-    ## 
-    ## $warning
-    ## [1] TRUE
-    ## 
-    ## $error
-    ## [1] TRUE
-    ## 
-    ## $message
-    ## [1] TRUE
-    ## 
-    ## $render
-    ## NULL
-    ## 
-    ## $ref.label
-    ## NULL
-    ## 
-    ## $child
-    ## NULL
-    ## 
-    ## $engine
-    ## [1] "R"
-    ## 
-    ## $split
-    ## [1] FALSE
-    ## 
-    ## $include
-    ## [1] TRUE
-    ## 
-    ## $purl
-    ## [1] TRUE
+    knit_hooks$set(mon_hook = function(before, options, envir) {
+        if (before) {
+            ## code à exécuter avant le bloc de code 
+        } else {
+            ## code à exécuter après le bloc de code 
+        }
+    })
 
-et nous pouvons les c
+Quelques exemples sont donnés au lien suivant
+<a href="https://github.com/yihui/knitr-examples/blob/master/045-chunk-hook.md" class="uri">https://github.com/yihui/knitr-examples/blob/master/045-chunk-hook.md</a>
+que nous reprenons avec quelques modifications
 
+    knit_hooks$set(hook1 = function(before, options, envir) {
+        if (before) {
+            "_Code exécuté avant le bloc!_\n\n"
+        } else {
+            "\n\n_Code exécuté après le bloc..._"
+        }
+    })
+
+    ```{r ex_hook1, hook1 = TRUE}
+    1 + 1
+    ```
+
+*Code exécuté avant le bloc!*
+
+    1 + 1
+
+    ## [1] 2
+
+*Code exécuté après le bloc…*
+
+    options(c("opt1"))
+
+    ## $opt1
+    ## NULL
+
+    # voir https://github.com/yihui/knitr-examples/blob/master/045-chunk-hook.md
+    knit_hooks$set(foo2 = function(before, options, envir) {
+        if (!before) {
+            z = capture.output(str(options[c("eval", "foo2", "bar1")]))
+            z = paste("    ", z, sep = "", collapse = "\n")
+            paste("Some chunk options in the above chunk are:\n\n", z, sep = "")
+        }
+    })
+
+Pour déclencher la fonction, il suffit d’utiliser une valeur non null,
+par exemple
+
+    ```{r, foo2 = TRUE, bar1 = "cool"}
+    ```
+
+Some chunk options in the above chunk are:
+
+    List of 3
+     $ eval: logi TRUE
+     $ foo2: logi TRUE
+     $ bar1: chr "cool"
+
+ou une valeur
+
+    ```{r, foo2 = 10, bar1 = "cool"}
+    ```
+
+Some chunk options in the above chunk are:
+
+    List of 3
+     $ eval: logi TRUE
+     $ foo2: num 10
+     $ bar1: chr "cool2"
+
+et donc on peut utiliser toute les valeurs dans le *hook!*
+
+<!-- TODO add ex -->
 <!-- https://kbroman.org/knitr_knutshell/pages/Rmarkdown.html -->
-<!--  -->
-<!-- essayer de faire un compte de figure pour un hook sympa -->
 
 Autres packages
 ---------------
@@ -3118,9 +2888,18 @@ quelques examples, probablement les plus populaire
 
 -   [`bookdown`](https://CRAN.R-project.org/package=bookdown) git book
 -   [`blogdown`](https://CRAN.R-project.org/package=blogdown) Hugo,
-    Jekkyl
+    Jekyll
 -   [`pagedown`](https://CRAN.R-project.org/package=pagedown) pagejs
 -   [`xaringan`](https://CRAN.R-project.org/package=xaringan) remark
+
+Divers
+------
+
+TODO (p-e)
+
+-   utiliser des émojis
+-   faire un template pour un rapport avec whisker ou juste utiliser
+    whisker
 
 Références
 ==========
