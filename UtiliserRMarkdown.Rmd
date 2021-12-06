@@ -2088,27 +2088,28 @@ Noter que les commandes ajoutées à la suite serons ignorées.
  
 
 
-## Utiliser les *hooks*
-
-### Options et *hooks*
+## Changer les options par défaut et utiliser les *hooks*
 
 WIP 
 
-Comme nous l'avons vu plus haut, il y a de nombreuse options dans les blocs de code. A ces nombreuses options, `knitr` ajoute la possibilité de les modifier et de créer nos propre options, cela se fait grâce a des *hooks* (<https://yihui.org/knitr/hooks/>). Il en existe différents type: 
+Comme nous l'avons vu plus haut, il y a de nombreuses options disponibles pour ajuster l'affiche des blocs de code et des sorties associées. Le package `knitr` nous offre non seulement la possibilité de passer différentes valeurs pour ces options, mais il nous offre aussi la possibilité de changer les options par défaut, le comportement des options existantes et aussi de créer nos propre options, cela se fait grâce à des *hooks* (<https://yihui.org/knitr/hooks/>). Il en existe différents types: 
 
-1. *chunk hooks*
-2. *output hooks*
-3. *options hooks*
+1. *chunk hooks*: `knit_hooks`
+2. *output hooks*: `knit_hooks`
+3. *options hooks*: `opts_chunk`
+
+Ci-dessous, nous détaillons comment les utiliser. 
+
 
 ### Changer les options par défaut 
 
-Avant d'aller plus loin, une première chose qu'on va garder en tête. Les options d'un code chunk sont dans la liste `opts_chunk` et nous avons accès relativement facilement aux valeurs par défaut avec la fonction `get()` de cette liste.
+Les options par défaut d'un bloc de code sont stockées dans la liste `opts_chunk` et nous avons accès à ses valeurs avec la fonction `get()` de cette liste.
 
 ```{r}
 knitr::opts_chunk$get()
 ```  
 
-Et nous pouvons changer les valeurs par défaut avec `set()`. Par exemple 
+Nous pouvons changer ces valeurs avec `set()` et donc nous pouvons a tout moment changer le comportement du reste des bloc de code. Par exemple, avec
 
 ```{r}
 knitr::opts_chunk$set(
@@ -2116,36 +2117,98 @@ knitr::opts_chunk$set(
     dev = "png",
     dpi = 155,
     fig.align = 'center',
-    width = 120
+    fig.width = 4
 )
 ```  
 
+Avec ces nouveaux réglages par défaut (voir ce que retourne `knitr::opts_chunk$get()` maintenant), les commentaires seront affichés en commençant pas `#R>`, les figures seront exportées en format PNG avec une résolution de 155\&nbsp;dpi (*dot per inch*, point par pouce en français), elles seront alignées au centre avec une largeur de 4 pouces. Par exemple
 
-```{r}
-knitr::opts_chunk$get()
-``` 
+```{r dummy}
+# Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+plot(1, 1)
+```
 
-me permet d'avoir
-
+A tout moment, il est possible de restaurer les valeurs par défaut contenues dans le package `knitr` en utilisant la fonction `restore()` de la liste. 
 
 ```{r}
 knitr::opts_chunk$restore()
 ```  
 
-me permet de restaurer les options.
+
+### Ajouter une nouvelle option
+
+Un hook est une fonction qui sera appelée quand l'option à laquelle elle a été assignée sera non null. Elle permet de rouler du code avant ou après le code chunk en utilisant éventuellement les autres options du code chunk. Comme expliquée par l'auteur de `knitr`, (voir <https://yihui.org/knitr/hooks/#chunk-hooks>), la déclaration se fait de la manière suivante 
+
+
+```r
+knit_hooks$set(mon_hook = function(before, options, envir) {
+    if (before) {
+        ## code à exécuter avant le bloc de code 
+    } else {
+        ## code à exécuter après le bloc de code 
+    }
+})
+```
+
+Quelques exemples sont donnés au lien suivant <https://github.com/yihui/knitr-examples/blob/master/045-chunk-hook.md> que nous reprenons avec quelques modifications
 
 
 ```{r}
-knitr::opts_chunk$get()
-``` 
+knit_hooks$set(hook1 = function(before, options, envir) {
+    if (before) {
+        "_Code exécuté avant le bloc!_\n\n"
+    } else {
+        "\n\n_Code exécuté après le bloc..._"
+    }
+})
+```
 
-et nous pouvons les c
+    ```{r ex_hook1, hook1 = TRUE}`r ''`
+    1 + 1
+    ```
 
+```{r ex_hook1, hook1 = TRUE}
+1 + 1
+```
+
+
+```{r opt1 = "cool"}
+options(c("opt1"))
+```
+
+```{r}
+# voir https://github.com/yihui/knitr-examples/blob/master/045-chunk-hook.md
+knit_hooks$set(foo2 = function(before, options, envir) {
+    if (!before) {
+        z = capture.output(str(options[c("eval", "foo2", "bar1")]))
+        z = paste("    ", z, sep = "", collapse = "\n")
+        paste("Some chunk options in the above chunk are:\n\n", z, sep = "")
+    }
+})
+```
+
+Pour déclencher la fonction, il suffit d'utiliser une valeur non null, par exemple 
+
+
+    ```{r, foo2 = TRUE, bar1 = "cool"}`r ''`
+    ```
+
+```{r, foo2 = TRUE, bar1 = "cool"}
+```
+
+ou une valeur 
+
+    ```{r, foo2 = 10, bar1 = "cool"}`r ''`
+    ```
+
+```{r, foo2 = 10, bar1 = "cool2"}
+```
+
+et donc on peut utiliser toute les valeurs dans le *hook!*
+
+<!-- TODO add ex -->
 
 <!-- https://kbroman.org/knitr_knutshell/pages/Rmarkdown.html -->
-<!--  -->
-
-<!-- essayer de faire un compte de figure pour un hook sympa -->
 
 
 ## Autres packages 
@@ -2154,13 +2217,18 @@ TODO
 
 R Markdown permet de convertir un document en de nombreux formats. Aujourd'hui, il y a en fait tout un écosystème de packages qui utilisent rmarkdown pour permettre de réaliser autres types de support. Voici quelques examples, probablement les plus populaire    
 
-- [`bookdown`](https://CRAN.R-project.org/package=bookdown)  git book
-- [`blogdown`](https://CRAN.R-project.org/package=blogdown) Hugo, Jekkyl 
+- [`bookdown`](https://CRAN.R-project.org/package=bookdown) git book
+- [`blogdown`](https://CRAN.R-project.org/package=blogdown) Hugo, Jekyll 
 - [`pagedown`](https://CRAN.R-project.org/package=pagedown) pagejs 
 - [`xaringan`](https://CRAN.R-project.org/package=xaringan) remark
 
 
+## Divers 
 
+TODO (p-e)
+
+- utiliser des émojis
+- faire un template pour un rapport avec whisker ou juste utiliser whisker
 
 
 
