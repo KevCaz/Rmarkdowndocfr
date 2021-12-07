@@ -1,9 +1,11 @@
 Package: placeholder
 Type: Book
 Title: Utiliser R Markdown fr
-Version: 0.0.1
-Date: 2020-09-01
+Version: 0.0.1.9000
+Date: 2021-09-01
 Imports:
-  rmarkdown
+  rmarkdown,
+  JuliaCalls,
+  reticulate
 Suggests:
   bookdown

@@ -81,6 +81,11 @@ rmarkdown::pandoc_version()
 
 ```{r extfun, include = FALSE}
 source("scripts/zzz.R", local = knitr::knit_global())
+if (Sys.info()["user"] == "kevcaz") {
+  JuliaCall::julia_setup("/home/kevcaz/Applications/julia/usr/bin")
+} else {
+  library(JuliaCall)
+}
 ```
 
 
@@ -103,7 +108,7 @@ ce package qui est l'objet de ce document, bien qu'il nous faudra en mentionner
 d'autres ainsi que d'autres langages et outils pour comprendre ce package, en
 commençant par Markdown.
 
-Markdown est un langage de balisage léger, c'est-à-dire un langage dans lequel on peut utiliser des ensembles de caractères spécifiques (des balises) pour délimiter une zone de texte pour laquelle un formatage associé (e.g. **text en gras**) est appliqué. Markdown est aujourd'hui très répandu sur Internet, à tel point que vous pourriez une des différentes syntaxes existantes sans me le savoir. Sans être exhaustif, il est utile de donner un peu plus de détails sur ce point pour bien comprendre ce quel Markdown on utilise avec R Markdown. La syntaxe originale de Markdown est le fruit du travail de John Gruber[^wiki_gruber], programmeur, blogueur et baladodiffuseur de Philadelphie en collaboration avec Aaron Swartz (lui même connu pour avoir participer a la création de Creative Commons et son tragique destin qui fut l'objet d'un film). Sur le site de John Gruber, "daringfireball", Markdown est décrit depuis décembre 2004 et on peut même y télécharger la version 1.0.1 (voir <http://daringfireball.net/projects/markdown>). L'idée de départ est simple et élégante&nbsp;: produire un langage léger qui simplifie les balises HTML (utilisé par tout les sites Internet). L'idée n'est pas tant de remplacer le HTML mais plutôt d'en augmenter l'efficacité d'écriture et de fait, il est beaucoup plus rapide d'écrire en Markdown qui couvre les opérations de formatage les plus courantes (listes, hyperliens, etc.). Notons qu'il existe d'autres langages qui répondent aux mêmes objectifs, par example ReStructuredText[^wiki_rst]. 
+Markdown est un langage de balisage léger, c'est-à-dire un langage dans lequel on peut utiliser des ensembles de caractères spécifiques (des balises) pour délimiter une zone de texte pour laquelle un formatage associé (e.g. **text en gras**) est appliqué. Markdown est aujourd'hui très répandu sur Internet, à tel point que vous pourriez une des différentes syntaxes existantes sans me le savoir. Sans être exhaustif, il est utile de donner un peu plus de détails sur ce point pour bien comprendre ce quel Markdown on utilise avec R Markdown. La syntaxe originale de Markdown est le fruit du travail de John Gruber[^wiki_gruber], programmeur, blogueur et baladodiffuseur de Philadelphie en collaboration avec Aaron Swartz (lui même connu pour avoir participer a la création de Creative Commons et son tragique destin qui fut l'objet d'un film). Sur le site de John Gruber, "daringfireball", Markdown est décrit depuis décembre 2004 et on peut même y télécharger la version 1.0.1 (voir <http://daringfireball.net/projects/markdown>). L'idée de départ est simple et élégante&nbsp;: produire un langage léger qui simplifie les balises HTML (utilisé par tout les sites Internet). L'idée n'est pas tant de remplacer le HTML mais plutôt d'en augmenter l'efficacité d'écriture et de fait, il est beaucoup plus rapide d'écrire en Markdown qui couvre les opérations de formatage les plus courantes (listes, hyperliens, etc.). Notons qu'il existe d'autres langages qui répondent aux mêmes objectifs, par exemple ReStructuredText[^wiki_rst]. 
 
 Après la publication de Markdown, John Gruber a cessé de travailler sur
 Markdown[^blog_badparent] et d'autres développeurs, sans doute séduits par le
@@ -253,7 +258,7 @@ Ajoutons à cela qu'avec la variante syntaxique Pandoc de Markdown, les symboles
 
 Créer un fichier R Markdown, c'est simplement créer un fichier dont l'extension
 est `.Rmd` ou `.rmd`, ce qui peut être fait avec n'importe quelle éditeur de
-texte, ou de code, ou même en ligne de commande. Par example, étant moi-même
+texte, ou de code, ou même en ligne de commande. Par exemple, étant moi-même
 utilisateur du terminal et travaillant dans un environment Linux, j'entre dans
 ce dernier la commande:
 
@@ -271,7 +276,7 @@ indications relatives à l'utilisation du fichier en question.
 
 ![Seconde étape, choisissez le format de sortie désiré](images/open_rmd2.png)
 
-![Un document contenant différentes instructions et examples est généré.](images/open_rmd3.png)
+![Un document contenant différentes instructions et exemples est généré.](images/open_rmd3.png)
 
 
 
@@ -293,7 +298,7 @@ donné, il faut que le code ad hoc soit disponible. Pour les utilisateurs de R,
 c'est le package `yaml`[^ryaml] qui permet de lire de tels fichiers et de les
 importer sous forme de listes.
 
-<!-- predre qq examples simples et ajouter um fichier de lecture pour montere comment ça marche https://en.wikipedia.org/wiki/YAML -->
+<!-- predre qq exemples simples et ajouter um fichier de lecture pour montere comment ça marche https://en.wikipedia.org/wiki/YAML -->
 
 
 Pour comprendre l'essentiel du fonctionnement du YAML, je vous recommande le
@@ -1993,6 +1998,7 @@ Si je change les données de `tab1`, la table, les graphiques et mon commentaire
 
 ## Extraire du code R 
 
+TODO
 
 ## Utiliser un script externe
 
@@ -2003,9 +2009,9 @@ Pour insérer dans un fichier de code, il peut parfois être plus pratique d'uti
 
 que nous chargeons avec la fonction `source()`
 
-```{r source-script, include = FALSE}`r ''`
-source("scripts/scr_externe1.R", local = knitr::knit_global())
-```
+    ```{r source-script, include = FALSE}`r ''`
+    source("scripts/scr_externe1.R", local = knitr::knit_global())
+    ```
 
 
 ```{r source-script, include = FALSE}
@@ -2025,8 +2031,8 @@ Comme vous l'aurez peut-être compris, utiliser `source()` ne nous permet pas d'
     ```{r showextcode, code ="var1 <- 1"}`r ''`
     ```
 
-  ```{r showextcode, code ="var1 <- 1"}
-  ```
+```{r showextcode, code ="var1 <- 1"}
+```
 
 Ce qui est pratique avec cette option c'est qu'il est possible d'utiliser une fonction qui va lire un fichier et donc il est aisé d'insérer le contenu d'un script R. C'est possible de le faire avec la fonction `readLines()`, ou encore avec la function `read_utf8()` du package [`xfun`](https://CRAN.R-project.org/package=xfun) qui retourne un avertissement si le fichier contient des caractères qui ne sont pas encodés en UTF-8. Ainsi, le bloc suivant
 
@@ -2082,23 +2088,45 @@ ce qui nous donne
 <<part2>>
 ```
 
-Noter que les commandes ajoutées à la suite serons ignorées.
+Notons que les commandes ajoutées à la suite seront ignorées.
 
  <!-- https://stackoverflow.com/questions/52397430/include-code-from-an-external-r-script-run-in-display-both-code-and-output -->
  
 
 
-## Changer les options par défaut et utiliser les *hooks*
+## Modifier les options par défaut
+
+Le package `knitr` nous offre aussi la possibilité de changer non seulement les options par défaut mais aussi le comportement des options existantes ainsi que la possibilité de créer nos propre options 
+https://yihui.org/knitr/objects/
+
+
+- `opts_chunk`: manages options for code chunks
+- `opts_current`: 
+- `opts_knit`: manages options for the knitr package
+- `knit_hooks`: manages hook functions
+- `knit_patterns`: manages regular expressions to extract R code from the input document
+- `knit_engines`: functions to deal with other languages
+
+
+function ont une méthode `get()` pour accéder aux différente valeur, une function `set()` pour changer les 
+
+
+
+
+## Créer des points d'ancrage personnalisés
 
 WIP 
 
-Comme nous l'avons vu plus haut, il y a de nombreuses options disponibles pour ajuster l'affiche des blocs de code et des sorties associées. Le package `knitr` nous offre non seulement la possibilité de passer différentes valeurs pour ces options, mais il nous offre aussi la possibilité de changer les options par défaut, le comportement des options existantes et aussi de créer nos propre options, cela se fait grâce à des *hooks* (<https://yihui.org/knitr/hooks/>). Il en existe différents types: 
+Comme nous l'avons vu plus haut, il y a de nombreuses options disponibles pour ajuster l'affiche des blocs de code et des sorties associées. Le package `knitr` nous offre aussi la possibilité de changer non seulement les options par défaut mais aussi le comportement des options existantes ainsi que la possibilité de créer nos propre options. Cela se fait grâce à des points d'ancrage, *hooks* en anglais[^note_trad], (<https://yihui.org/knitr/hooks/>) Il en existe différents types: 
 
-1. *chunk hooks*: `knit_hooks`
-2. *output hooks*: `knit_hooks`
-3. *options hooks*: `opts_chunk`
+1. les points d'ancrange pour les bloc de code (*chunk hooks*): `knit_hooks`
+2. les points d'ancrange des sorties (*output hooks)*: `knit_hooks`
+3. les points d'ancrage des options (*options hooks*): `opts_chunk`
 
 Ci-dessous, nous détaillons comment les utiliser. 
+
+
+[^note_trad]: La traduction de *hook* est crochet mais point d'ancrage est peut-être plus approprié ici.
 
 
 ### Changer les options par défaut 
@@ -2109,13 +2137,19 @@ Les options par défaut d'un bloc de code sont stockées dans la liste `opts_chu
 knitr::opts_chunk$get()
 ```  
 
+
+```{r, comment = "#R>"}
+knitr::opts_current$get()
+```  
+
+
 Nous pouvons changer ces valeurs avec `set()` et donc nous pouvons a tout moment changer le comportement du reste des bloc de code. Par exemple, avec
 
 ```{r}
 knitr::opts_chunk$set(
     comment = "#R>",
     dev = "png",
-    dpi = 155,
+    dpi = 144,
     fig.align = 'center',
     fig.width = 4
 )
@@ -2124,11 +2158,10 @@ knitr::opts_chunk$set(
 Avec ces nouveaux réglages par défaut (voir ce que retourne `knitr::opts_chunk$get()` maintenant), les commentaires seront affichés en commençant pas `#R>`, les figures seront exportées en format PNG avec une résolution de 155\&nbsp;dpi (*dot per inch*, point par pouce en français), elles seront alignées au centre avec une largeur de 4 pouces. Par exemple
 
 ```{r dummy}
-# Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 plot(1, 1)
 ```
 
-A tout moment, il est possible de restaurer les valeurs par défaut contenues dans le package `knitr` en utilisant la fonction `restore()` de la liste. 
+A tout moment, il est possible de restaurer les valeurs par défaut contenues dans le package `knitr` en appelant la fonction `restore()` de la liste (`opts_chunk`). 
 
 ```{r}
 knitr::opts_chunk$restore()
@@ -2137,7 +2170,7 @@ knitr::opts_chunk$restore()
 
 ### Ajouter une nouvelle option
 
-Un hook est une fonction qui sera appelée quand l'option à laquelle elle a été assignée sera non null. Elle permet de rouler du code avant ou après le code chunk en utilisant éventuellement les autres options du code chunk. Comme expliquée par l'auteur de `knitr`, (voir <https://yihui.org/knitr/hooks/#chunk-hooks>), la déclaration se fait de la manière suivante 
+Dans le context d'utilisation de `knitr`, un point d'ancrage est une fonction qui sera appelée quand l'option à laquelle elle a été assignée sera non null. Elle permet de rouler du code avant ou après le code chunk en utilisant éventuellement les autres options du code chunk. Comme expliquée par l'auteur de `knitr`, (voir <https://yihui.org/knitr/hooks/#chunk-hooks>), la déclaration se fait en ajoutant une fonction de la manière suivante 
 
 
 ```r
@@ -2150,7 +2183,7 @@ knit_hooks$set(mon_hook = function(before, options, envir) {
 })
 ```
 
-Quelques exemples sont donnés au lien suivant <https://github.com/yihui/knitr-examples/blob/master/045-chunk-hook.md> que nous reprenons avec quelques modifications
+Quelques exemples sont donnés au lien suivant: <https://github.com/yihui/knitr-examples/blob/master/045-chunk-hook.md>. Nous les reprenons avec quelques modifications. 
 
 
 ```{r}
@@ -2176,6 +2209,7 @@ knit_hooks$set(hook1 = function(before, options, envir) {
 options(c("opt1"))
 ```
 
+
 ```{r}
 # voir https://github.com/yihui/knitr-examples/blob/master/045-chunk-hook.md
 knit_hooks$set(foo2 = function(before, options, envir) {
@@ -2188,7 +2222,6 @@ knit_hooks$set(foo2 = function(before, options, envir) {
 ```
 
 Pour déclencher la fonction, il suffit d'utiliser une valeur non null, par exemple 
-
 
     ```{r, foo2 = TRUE, bar1 = "cool"}`r ''`
     ```
@@ -2211,11 +2244,70 @@ et donc on peut utiliser toute les valeurs dans le *hook!*
 <!-- https://kbroman.org/knitr_knutshell/pages/Rmarkdown.html -->
 
 
+## Exécuter des blocs de code dans un autre language 
+
+Comme nous l'avons vu jusqu'ici, R Markdown est un outil privilégié pour R, les blocs de code sont exécutés et les sorties y sont ajoutées. Un des principes fondamentaux de R est de s'interfacer avec différents langages [@chambers_extending_2016]. Il existe ainsi différents package pour venir, le plus populaire étant [`Rcpp`](https://CRAN.R-project.org/package=Rcpp) qui offre une intégration avec [C++](https://isocpp.org/). Il en existe d'autres comme [`reticulate`](https://CRAN.R-project.org/package=reticulate) [@ushey_reticulate_2021] qui connect R avec [Python](https://www.python.org/) et [`JuliaCall`](https://CRAN.R-project.org/package=JuliaCall) [@li_JuliaCall_2019] qui fait le lien entre R et [Julia](https://julialang.org/). Grâce à ces packages qui connectent R avec d'autres languages, il est possible de les intégrer directement dans markdown en sélectionnant le bon engin[^nt2]. La liste des engins disponibles est contenu dans `knit_engines` qui se manipule comme `opts_chunk`. 
+
+```{r}
+names(knitr::knit_engines$get())
+```
+
+[^nt2]: *engine* en anglais, ce n'est peut-être pas la meilleure traduction.
+
+
+Nous allons prendre pour exemple Python (voir aussi https://github.com/rstudio/reticulate#python-in-r-markdown) et Julia (voir https://cran.r-project.org/web/packages/JuliaCall/vignettes/Julia_in_RMarkdown.html). Il est donc important que les deux packages soient installés. 
+
+```{r eval = FALSE}
+install.packages(c("reticulate", "JuliaCall"))
+```
+
+Pour Python, voici l'engin utilisé.
+
+```{r}
+knitr::knit_engines$get()$python 
+```
+
+Et voici comment nous pouvons utiliser un bloc de code Python dans R Markdown. 
+
+    ```{python py1, comment = "#py>"}`r ''`
+    [2, 2] * 3
+    ```
+
+```{python py1, comment = "#py>"}
+[2, 2] * 3
+```
+
+Si vous reprenez la ligne de l'engin utilisé, vous comprenez que toutes les options du bloc de code et les données sont passées à la fonction `eng_python()` du package `reticulate` qui s'occupe d’exécuter le code et de réunir les sorties.
+
+<!-- monter le mix R / Python -->
+
+Pour Julia, voici l'engin utilisé.
+
+```{r}
+knitr::knit_engines$get()$julia
+```
+
+Dans ce cas ci, le code et les options sont passées à a fonction `eng_juliacall()` du package `JuliaCall`. 
+
+
+    ```{julia, comment = "#jl>"}`r ''`
+    [2, 2] .* 3
+    ```
+
+```{julia, comment = "#jl>"}
+[2, 2] .* 3
+```
+
+<!-- parler des limites -->
+
+<!-- Comme les autres on peut setter un interpreteur -->
+
+
 ## Autres packages 
 
 TODO
 
-R Markdown permet de convertir un document en de nombreux formats. Aujourd'hui, il y a en fait tout un écosystème de packages qui utilisent rmarkdown pour permettre de réaliser autres types de support. Voici quelques examples, probablement les plus populaire    
+R Markdown permet de convertir un document en de nombreux formats. Aujourd'hui, il y a en fait tout un écosystème de packages qui utilisent rmarkdown pour permettre de réaliser autres types de support. Voici quelques exemples, probablement les plus populaire    
 
 - [`bookdown`](https://CRAN.R-project.org/package=bookdown) git book
 - [`blogdown`](https://CRAN.R-project.org/package=blogdown) Hugo, Jekyll 
@@ -2239,7 +2331,7 @@ TODO (p-e)
 [^wiki_gruber]: <https://en.wikipedia.org/wiki/John_Gruber>, consulté le 1^er^ juin 2020.
 [^wiki_rst]: <https://fr.wikipedia.org/wiki/ReStructuredText>, consulté le 1^er^ juin 2020.
 [^blog_badparent]: <https://blog.codinghorror.com/responsible-open-source-code-parenting/>, consulté le 1^er^ juin 2020.
-[^goldmark]: Par example Goldmark, <https://github.com/yuin/goldmard>, un parser Markdown écrit en Go et utilisé par Hugo (un générateur de site très populaire), est compatible avec Common Mark.
+[^goldmark]: Par exemple Goldmark, <https://github.com/yuin/goldmard>, un parser Markdown écrit en Go et utilisé par Hugo (un générateur de site très populaire), est compatible avec Common Mark.
 [^pmd]: <https://pandoc.org/MANUAL.html#pandocs-markdown>,  1^er^ juin 2020.
 [^1]: La version 1 n'utilise pas Pandoc.
 [^2]: Pandoc est d'ailleurs capable de gérer différentes variantes de Markdown.
