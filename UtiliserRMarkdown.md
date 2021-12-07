@@ -40,22 +40,26 @@ dans lequel le document a été compilé sont indiquées ci-dessous.
     ## LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0
     ## 
     ## locale:
-    ##  [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       
-    ##  [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   
-    ##  [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          
-    ## [10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   
+    ##  [1] LC_CTYPE=C.UTF-8          LC_NUMERIC=C             
+    ##  [3] LC_TIME=C.UTF-8           LC_COLLATE=C.UTF-8       
+    ##  [5] LC_MONETARY=C.UTF-8       LC_MESSAGES=C.UTF-8      
+    ##  [7] LC_PAPER=C.UTF-8          LC_NAME=C.UTF-8          
+    ##  [9] LC_ADDRESS=C.UTF-8        LC_TELEPHONE=C.UTF-8     
+    ## [11] LC_MEASUREMENT=C.UTF-8    LC_IDENTIFICATION=C.UTF-8
     ## 
     ## attached base packages:
     ## [1] stats     graphics  grDevices utils     datasets  methods   base     
     ## 
     ## other attached packages:
-    ## [1] knitr_1.36 yaml_2.2.1
+    ## [1] knitr_1.36       yaml_2.2.1       JuliaCall_0.17.4
     ## 
     ## loaded via a namespace (and not attached):
-    ##  [1] compiler_4.1.2  magrittr_2.0.1  fastmap_1.1.0   tools_4.1.2    
-    ##  [5] htmltools_0.5.2 jquerylib_0.1.4 stringi_1.7.6   rmarkdown_2.11 
-    ##  [9] highr_0.9       stringr_1.4.0   xfun_0.28       digest_0.6.29  
-    ## [13] rlang_0.4.12    evaluate_0.14
+    ##  [1] Rcpp_1.0.7      here_1.0.1      lattice_0.20-45 png_0.1-7      
+    ##  [5] rprojroot_2.0.2 digest_0.6.29   rappdirs_0.3.3  grid_4.1.2     
+    ##  [9] jsonlite_1.7.2  magrittr_2.0.1  evaluate_0.14   highr_0.9      
+    ## [13] rlang_0.4.12    stringi_1.7.6   jquerylib_0.1.4 Matrix_1.3-4   
+    ## [17] reticulate_1.22 rmarkdown_2.11  tools_4.1.2     stringr_1.4.0  
+    ## [21] xfun_0.28       fastmap_1.1.0   compiler_4.1.2  htmltools_0.5.2
 
     rmarkdown::pandoc_version()
 
@@ -107,7 +111,7 @@ n’est pas tant de remplacer le HTML mais plutôt d’en augmenter
 l’efficacité d’écriture et de fait, il est beaucoup plus rapide d’écrire
 en Markdown qui couvre les opérations de formatage les plus courantes
 (listes, hyperliens, etc.). Notons qu’il existe d’autres langages qui
-répondent aux mêmes objectifs, par example ReStructuredText[2].
+répondent aux mêmes objectifs, par exemple ReStructuredText[2].
 
 Après la publication de Markdown, John Gruber a cessé de travailler sur
 Markdown[3] et d’autres développeurs, sans doute séduits par le langage,
@@ -312,7 +316,7 @@ Créer un fichier R Markdown
 Créer un fichier R Markdown, c’est simplement créer un fichier dont
 l’extension est `.Rmd` ou `.rmd`, ce qui peut être fait avec n’importe
 quelle éditeur de texte, ou de code, ou même en ligne de commande. Par
-example, étant moi-même utilisateur du terminal et travaillant dans un
+exemple, étant moi-même utilisateur du terminal et travaillant dans un
 environment Linux, j’entre dans ce dernier la commande:
 
     $ echo "---\nauthor: Kevin Cazelles\n---" > mondoc.Rmd
@@ -329,7 +333,7 @@ fichiers.](images/open_rmd.png)
 ![Seconde étape, choisissez le format de sortie
 désiré](images/open_rmd2.png)
 
-![Un document contenant différentes instructions et examples est
+![Un document contenant différentes instructions et exemples est
 généré.](images/open_rmd3.png)
 
 Spécifier les documents à obtenir avec YAML
@@ -351,7 +355,7 @@ dans un langage de programmation donné, il faut que le code ad hoc soit
 disponible. Pour les utilisateurs de R, c’est le package `yaml`[12] qui
 permet de lire de tels fichiers et de les importer sous forme de listes.
 
-<!-- predre qq examples simples et ajouter um fichier de lecture pour montere comment ça marche https://en.wikipedia.org/wiki/YAML -->
+<!-- predre qq exemples simples et ajouter um fichier de lecture pour montere comment ça marche https://en.wikipedia.org/wiki/YAML -->
 
 Pour comprendre l’essentiel du fonctionnement du YAML, je vous
 recommande le tutoriel à l’URL suivante :
@@ -480,7 +484,7 @@ source de ce document) :
 
     ---
     title: "Utiliser R Markdown pour créer des documents dynamiques"
-    date: "06 December 2021"
+    date: "07 December 2021"
     author: par Kevin Cazelles
     lang: fr
     abstract: "Le package [...] pour aller plus loin."
@@ -1510,7 +1514,7 @@ Pour inclure une sortie texte directement dans un paragraphe, on utilise
  : `` `r expression` ``. Ainsi, par exemple, il est possible d’insérer
 l’heure et la date au moment de la compilation du document en utilisant
 la fonction *Sys.time()*, ainsi, `` `r Sys.time()` ``  nous donne
-2021-12-06 14:46:22.
+2021-12-07 22:00:54.
 
 Le reste de cette section se concentre sur les blocs de code R (*code
 chunks* en anglais) qui s’utilisent comme les [blocs de
@@ -2051,74 +2055,74 @@ sera convertie dans le format désiré par Pandoc. De plus, la fonction
 <tr class="odd">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">6.5985004</td>
-<td style="text-align: right;">6.425777</td>
+<td style="text-align: right;">2.257638</td>
+<td style="text-align: right;">2.2153184</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">5.1862613</td>
-<td style="text-align: right;">5.977564</td>
+<td style="text-align: right;">12.499227</td>
+<td style="text-align: right;">13.8378377</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">12.7055926</td>
-<td style="text-align: right;">11.445526</td>
+<td style="text-align: right;">6.981428</td>
+<td style="text-align: right;">5.0419841</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">15.9420345</td>
-<td style="text-align: right;">16.236449</td>
+<td style="text-align: right;">15.008347</td>
+<td style="text-align: right;">16.0394298</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">8.9424940</td>
-<td style="text-align: right;">7.815696</td>
+<td style="text-align: right;">2.399133</td>
+<td style="text-align: right;">0.9416387</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">14.7188342</td>
-<td style="text-align: right;">14.471027</td>
+<td style="text-align: right;">16.224581</td>
+<td style="text-align: right;">15.5619124</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">9.4877552</td>
-<td style="text-align: right;">8.960087</td>
+<td style="text-align: right;">8.639091</td>
+<td style="text-align: right;">8.5635651</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">15.7760445</td>
-<td style="text-align: right;">16.357607</td>
+<td style="text-align: right;">19.298416</td>
+<td style="text-align: right;">19.5795910</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">16.5909769</td>
-<td style="text-align: right;">17.102428</td>
+<td style="text-align: right;">4.050123</td>
+<td style="text-align: right;">5.8458612</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">0.0829685</td>
-<td style="text-align: right;">1.483637</td>
+<td style="text-align: right;">15.298242</td>
+<td style="text-align: right;">15.4703824</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">8.5803878</td>
-<td style="text-align: right;">11.833267</td>
+<td style="text-align: right;">7.419789</td>
+<td style="text-align: right;">6.7359732</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">3.5441629</td>
-<td style="text-align: right;">4.498327</td>
+<td style="text-align: right;">3.753556</td>
+<td style="text-align: right;">4.3015243</td>
 </tr>
 </tbody>
 </table>
@@ -2149,85 +2153,85 @@ virgule ou encore d’inclure les numéros de lignes.
 <td style="text-align: left;">1</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">6.599</td>
-<td style="text-align: right;">6.426</td>
+<td style="text-align: right;">2.258</td>
+<td style="text-align: right;">2.215</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">2</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">5.186</td>
-<td style="text-align: right;">5.978</td>
+<td style="text-align: right;">12.499</td>
+<td style="text-align: right;">13.838</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">3</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">12.706</td>
-<td style="text-align: right;">11.446</td>
+<td style="text-align: right;">6.981</td>
+<td style="text-align: right;">5.042</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">4</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">15.942</td>
-<td style="text-align: right;">16.236</td>
+<td style="text-align: right;">15.008</td>
+<td style="text-align: right;">16.039</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">5</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">8.942</td>
-<td style="text-align: right;">7.816</td>
+<td style="text-align: right;">2.399</td>
+<td style="text-align: right;">0.942</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">6</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">14.719</td>
-<td style="text-align: right;">14.471</td>
+<td style="text-align: right;">16.225</td>
+<td style="text-align: right;">15.562</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">7</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">9.488</td>
-<td style="text-align: right;">8.960</td>
+<td style="text-align: right;">8.639</td>
+<td style="text-align: right;">8.564</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">8</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">15.776</td>
-<td style="text-align: right;">16.358</td>
+<td style="text-align: right;">19.298</td>
+<td style="text-align: right;">19.580</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">9</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">16.591</td>
-<td style="text-align: right;">17.102</td>
+<td style="text-align: right;">4.050</td>
+<td style="text-align: right;">5.846</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">10</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">0.083</td>
-<td style="text-align: right;">1.484</td>
+<td style="text-align: right;">15.298</td>
+<td style="text-align: right;">15.470</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">11</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">8.580</td>
-<td style="text-align: right;">11.833</td>
+<td style="text-align: right;">7.420</td>
+<td style="text-align: right;">6.736</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">12</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">3.544</td>
-<td style="text-align: right;">4.498</td>
+<td style="text-align: right;">3.754</td>
+<td style="text-align: right;">4.302</td>
 </tr>
 </tbody>
 </table>
@@ -2417,17 +2421,17 @@ Le résultat est le suivant&nbsp;:
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">1.0439373</td>
-<td style="text-align: right;">0.7577712</td>
-<td style="text-align: right;">1.377642</td>
-<td style="text-align: right;">0.1983611</td>
+<td style="text-align: right;">-0.2919194</td>
+<td style="text-align: right;">0.6343753</td>
+<td style="text-align: right;">-0.4601682</td>
+<td style="text-align: right;">0.6552387</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">var1</td>
-<td style="text-align: right;">0.9316508</td>
-<td style="text-align: right;">0.0681649</td>
-<td style="text-align: right;">13.667608</td>
-<td style="text-align: right;">0.0000001</td>
+<td style="text-align: right;">1.0334577</td>
+<td style="text-align: right;">0.0572977</td>
+<td style="text-align: right;">18.0366423</td>
+<td style="text-align: right;">0.0000000</td>
 </tr>
 </tbody>
 </table>
@@ -2437,7 +2441,7 @@ Le résultat est le suivant&nbsp;:
 Mon modèle linéaire
 </p>
 
-La pente de la regression est de **0.932**.
+La pente de la regression est de **1.03**.
 
 Si je change les données de `tab1`, la table, les graphiques et mon
 commentaire seront adéquatement modifiés, ce qui peut s’avérer très
@@ -2451,6 +2455,8 @@ Utilisations avancées
 
 Extraire du code R
 ------------------
+
+TODO
 
 Utiliser un script externe
 --------------------------
@@ -2477,7 +2483,9 @@ il contient les lignes suivantes:
 
 que nous chargeons avec la fonction `source()`
 
-`{r source-script, include = FALSE} source("scripts/scr_externe1.R", local = knitr::knit_global())`
+    ```{r source-script, include = FALSE}
+    source("scripts/scr_externe1.R", local = knitr::knit_global())
+    ```
 
 Une fois chargé, nous pouvons accéder aux variables qui y sont
 déclarées, par exemple
@@ -2569,28 +2577,47 @@ ce qui nous donne
     var3 <- cos(var2)
     var4 <- sin(var2)
 
-Noter que les commandes ajoutées à la suite serons ignorées.
+Notons que les commandes ajoutées à la suite seront ignorées.
 
 <!-- https://stackoverflow.com/questions/52397430/include-code-from-an-external-r-script-run-in-display-both-code-and-output -->
 
-Changer les options par défaut et utiliser les *hooks*
-------------------------------------------------------
+Modifier les options par défaut
+-------------------------------
+
+Le package `knitr` nous offre aussi la possibilité de changer non
+seulement les options par défaut mais aussi le comportement des options
+existantes ainsi que la possibilité de créer nos propre options
+<a href="https://yihui.org/knitr/objects/" class="uri">https://yihui.org/knitr/objects/</a>
+
+-   `opts_chunk`: manages options for code chunks
+-   `opts_current`:
+-   `opts_knit`: manages options for the knitr package
+-   `knit_hooks`: manages hook functions
+-   `knit_patterns`: manages regular expressions to extract R code from
+    the input document
+-   `knit_engines`: functions to deal with other languages
+
+function ont une méthode `get()` pour accéder aux différente valeur, une
+function `set()` pour changer les
+
+Créer des points d’ancrage personnalisés
+----------------------------------------
 
 WIP
 
 Comme nous l’avons vu plus haut, il y a de nombreuses options
 disponibles pour ajuster l’affiche des blocs de code et des sorties
-associées. Le package `knitr` nous offre non seulement la possibilité de
-passer différentes valeurs pour ces options, mais il nous offre aussi la
-possibilité de changer les options par défaut, le comportement des
-options existantes et aussi de créer nos propre options, cela se fait
-grâce à des *hooks*
-(<a href="https://yihui.org/knitr/hooks/" class="uri">https://yihui.org/knitr/hooks/</a>).
+associées. Le package `knitr` nous offre aussi la possibilité de changer
+non seulement les options par défaut mais aussi le comportement des
+options existantes ainsi que la possibilité de créer nos propre options.
+Cela se fait grâce à des points d’ancrage, *hooks* en anglais[20],
+(<a href="https://yihui.org/knitr/hooks/" class="uri">https://yihui.org/knitr/hooks/</a>)
 Il en existe différents types:
 
-1.  *chunk hooks*: `knit_hooks`
-2.  *output hooks*: `knit_hooks`
-3.  *options hooks*: `opts_chunk`
+1.  les points d’ancrange pour les bloc de code (*chunk hooks*):
+    `knit_hooks`
+2.  les points d’ancrange des sorties (*output hooks)*: `knit_hooks`
+3.  les points d’ancrage des options (*options hooks*): `opts_chunk`
 
 Ci-dessous, nous détaillons comment les utiliser.
 
@@ -2761,6 +2788,185 @@ de cette liste.
     ## $purl
     ## [1] TRUE
 
+    knitr::opts_current$get()
+
+    #R> $eval
+    #R> [1] TRUE
+    #R> 
+    #R> $echo
+    #R> [1] TRUE
+    #R> 
+    #R> $results
+    #R> [1] "markup"
+    #R> 
+    #R> $tidy
+    #R> [1] FALSE
+    #R> 
+    #R> $tidy.opts
+    #R> NULL
+    #R> 
+    #R> $collapse
+    #R> [1] FALSE
+    #R> 
+    #R> $prompt
+    #R> [1] FALSE
+    #R> 
+    #R> $comment
+    #R> [1] "#R>"
+    #R> 
+    #R> $highlight
+    #R> [1] TRUE
+    #R> 
+    #R> $size
+    #R> [1] "normalsize"
+    #R> 
+    #R> $background
+    #R> [1] "#F7F7F7"
+    #R> 
+    #R> $strip.white
+    #R> [1] TRUE
+    #R> 
+    #R> $cache
+    #R> [1] 0
+    #R> 
+    #R> $cache.path
+    #R> [1] "UtiliserRMarkdown_cache/markdown_strict/"
+    #R> 
+    #R> $cache.vars
+    #R> NULL
+    #R> 
+    #R> $cache.lazy
+    #R> [1] TRUE
+    #R> 
+    #R> $dependson
+    #R> NULL
+    #R> 
+    #R> $autodep
+    #R> [1] FALSE
+    #R> 
+    #R> $cache.rebuild
+    #R> [1] FALSE
+    #R> 
+    #R> $fig.keep
+    #R> [1] "high"
+    #R> 
+    #R> $fig.show
+    #R> [1] "asis"
+    #R> 
+    #R> $fig.align
+    #R> [1] "default"
+    #R> 
+    #R> $fig.path
+    #R> [1] "/home/runner/work/Rmarkdowndocfr/Rmarkdowndocfr/public/UtiliserRMarkdown_files/figure-markdown_strict/"
+    #R> 
+    #R> $dev
+    #R> [1] "png"
+    #R> 
+    #R> $dev.args
+    #R> NULL
+    #R> 
+    #R> $dpi
+    #R> [1] 96
+    #R> 
+    #R> $fig.ext
+    #R> NULL
+    #R> 
+    #R> $fig.width
+    #R> [1] 7
+    #R> 
+    #R> $fig.height
+    #R> [1] 5
+    #R> 
+    #R> $fig.env
+    #R> [1] "figure"
+    #R> 
+    #R> $fig.cap
+    #R> NULL
+    #R> 
+    #R> $fig.scap
+    #R> NULL
+    #R> 
+    #R> $fig.lp
+    #R> [1] "fig:"
+    #R> 
+    #R> $fig.subcap
+    #R> NULL
+    #R> 
+    #R> $fig.pos
+    #R> [1] ""
+    #R> 
+    #R> $out.width
+    #R> NULL
+    #R> 
+    #R> $out.height
+    #R> NULL
+    #R> 
+    #R> $out.extra
+    #R> NULL
+    #R> 
+    #R> $fig.retina
+    #R> [1] 1
+    #R> 
+    #R> $external
+    #R> [1] TRUE
+    #R> 
+    #R> $sanitize
+    #R> [1] FALSE
+    #R> 
+    #R> $interval
+    #R> [1] 1
+    #R> 
+    #R> $aniopts
+    #R> [1] "controls,loop"
+    #R> 
+    #R> $warning
+    #R> [1] TRUE
+    #R> 
+    #R> $error
+    #R> [1] FALSE
+    #R> 
+    #R> $message
+    #R> [1] TRUE
+    #R> 
+    #R> $render
+    #R> NULL
+    #R> 
+    #R> $ref.label
+    #R> NULL
+    #R> 
+    #R> $child
+    #R> NULL
+    #R> 
+    #R> $engine
+    #R> [1] "R"
+    #R> 
+    #R> $split
+    #R> [1] FALSE
+    #R> 
+    #R> $include
+    #R> [1] TRUE
+    #R> 
+    #R> $purl
+    #R> [1] TRUE
+    #R> 
+    #R> $label
+    #R> [1] "unnamed-chunk-5"
+    #R> 
+    #R> $code
+    #R> [1] "knitr::opts_current$get()"
+    #R> 
+    #R> $out.width.px
+    #R> [1] 672
+    #R> 
+    #R> $out.height.px
+    #R> [1] 480
+    #R> 
+    #R> $params.src
+    #R> [1] " comment = \"#R>\""
+    #R> 
+    #R> attr(,"class")
+    #R> [1] "knitr_strict_list"
+
 Nous pouvons changer ces valeurs avec `set()` et donc nous pouvons a
 tout moment changer le comportement du reste des bloc de code. Par
 exemple, avec
@@ -2768,7 +2974,7 @@ exemple, avec
     knitr::opts_chunk$set(
         comment = "#R>",
         dev = "png",
-        dpi = 155,
+        dpi = 144,
         fig.align = 'center',
         fig.width = 4
     )
@@ -2780,25 +2986,25 @@ une résolution de 155&nbsp;dpi (*dot per inch*, point par pouce en
 français), elles seront alignées au centre avec une largeur de 4 pouces.
 Par exemple
 
-    # Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
     plot(1, 1)
 
 <img src="/home/runner/work/Rmarkdowndocfr/Rmarkdowndocfr/public/UtiliserRMarkdown_files/figure-markdown_strict/dummy-1.png" style="display: block; margin: auto;" />
 
 A tout moment, il est possible de restaurer les valeurs par défaut
-contenues dans le package `knitr` en utilisant la fonction `restore()`
-de la liste.
+contenues dans le package `knitr` en appelant la fonction `restore()` de
+la liste (`opts_chunk`).
 
     knitr::opts_chunk$restore()
 
 ### Ajouter une nouvelle option
 
-Un hook est une fonction qui sera appelée quand l’option à laquelle elle
-a été assignée sera non null. Elle permet de rouler du code avant ou
-après le code chunk en utilisant éventuellement les autres options du
-code chunk. Comme expliquée par l’auteur de `knitr`, (voir
+Dans le context d’utilisation de `knitr`, un point d’ancrage est une
+fonction qui sera appelée quand l’option à laquelle elle a été assignée
+sera non null. Elle permet de rouler du code avant ou après le code
+chunk en utilisant éventuellement les autres options du code chunk.
+Comme expliquée par l’auteur de `knitr`, (voir
 <a href="https://yihui.org/knitr/hooks/#chunk-hooks" class="uri">https://yihui.org/knitr/hooks/#chunk-hooks</a>),
-la déclaration se fait de la manière suivante
+la déclaration se fait en ajoutant une fonction de la manière suivante
 
     knit_hooks$set(mon_hook = function(before, options, envir) {
         if (before) {
@@ -2808,9 +3014,9 @@ la déclaration se fait de la manière suivante
         }
     })
 
-Quelques exemples sont donnés au lien suivant
-<a href="https://github.com/yihui/knitr-examples/blob/master/045-chunk-hook.md" class="uri">https://github.com/yihui/knitr-examples/blob/master/045-chunk-hook.md</a>
-que nous reprenons avec quelques modifications
+Quelques exemples sont donnés au lien suivant:
+<a href="https://github.com/yihui/knitr-examples/blob/master/045-chunk-hook.md" class="uri">https://github.com/yihui/knitr-examples/blob/master/045-chunk-hook.md</a>.
+Nous les reprenons avec quelques modifications.
 
     knit_hooks$set(hook1 = function(before, options, envir) {
         if (before) {
@@ -2876,6 +3082,107 @@ et donc on peut utiliser toute les valeurs dans le *hook!*
 <!-- TODO add ex -->
 <!-- https://kbroman.org/knitr_knutshell/pages/Rmarkdown.html -->
 
+Exécuter des blocs de code dans un autre language
+-------------------------------------------------
+
+Comme nous l’avons vu jusqu’ici, R Markdown est un outil privilégié pour
+R, les blocs de code sont exécutés et les sorties y sont ajoutées. Un
+des principes fondamentaux de R est de s’interfacer avec différents
+langages (Chambers, 2016). Il existe ainsi différents package pour
+venir, le plus populaire étant
+[`Rcpp`](https://CRAN.R-project.org/package=Rcpp) qui offre une
+intégration avec [C++](https://isocpp.org/). Il en existe d’autres comme
+[`reticulate`](https://CRAN.R-project.org/package=reticulate) (Ushey et
+al., 2021) qui connect R avec [Python](https://www.python.org/) et
+[`JuliaCall`](https://CRAN.R-project.org/package=JuliaCall) (Li, 2019)
+qui fait le lien entre R et [Julia](https://julialang.org/). Grâce à ces
+packages qui connectent R avec d’autres languages, il est possible de
+les intégrer directement dans markdown en sélectionnant le bon
+engin[21]. La liste des engins disponibles est contenu dans
+`knit_engines` qui se manipule comme `opts_chunk`.
+
+    names(knitr::knit_engines$get())
+
+    ##  [1] "awk"       "bash"      "coffee"    "gawk"      "groovy"    "haskell"  
+    ##  [7] "lein"      "mysql"     "node"      "octave"    "perl"      "psql"     
+    ## [13] "Rscript"   "ruby"      "sas"       "scala"     "sed"       "sh"       
+    ## [19] "stata"     "zsh"       "highlight" "Rcpp"      "tikz"      "dot"      
+    ## [25] "c"         "cc"        "fortran"   "fortran95" "asy"       "cat"      
+    ## [31] "asis"      "stan"      "block"     "block2"    "js"        "css"      
+    ## [37] "sql"       "go"        "python"    "julia"     "sass"      "scss"     
+    ## [43] "R"         "bslib"     "targets"
+
+Nous allons prendre pour exemple Python (voir aussi
+<a href="https://github.com/rstudio/reticulate#python-in-r-markdown" class="uri">https://github.com/rstudio/reticulate#python-in-r-markdown</a>)
+et Julia (voir
+<a href="https://cran.r-project.org/web/packages/JuliaCall/vignettes/Julia_in_RMarkdown.html" class="uri">https://cran.r-project.org/web/packages/JuliaCall/vignettes/Julia_in_RMarkdown.html</a>).
+Il est donc important que les deux packages soient installés.
+
+    install.packages(c("reticulate", "JuliaCall"))
+
+Pour Python, voici l’engin utilisé.
+
+    knitr::knit_engines$get()$python 
+
+    ## function (options) 
+    ## {
+    ##     if (isFALSE(options$python.reticulate)) {
+    ##         eng_interpreted(options)
+    ##     }
+    ##     else {
+    ##         if (!loadable("reticulate")) 
+    ##             warning2("The 'python' engine in knitr requires the reticulate package. ", 
+    ##                 "If you do not want to use the reticulate package, set the chunk option ", 
+    ##                 "python.reticulate = FALSE.")
+    ##         reticulate::eng_python(options)
+    ##     }
+    ## }
+    ## <environment: namespace:knitr>
+
+Et voici comment nous pouvons utiliser un bloc de code Python dans R
+Markdown.
+
+    ```{python py1, comment = "#py>"}
+    [2, 2] * 3
+    ```
+
+    [2, 2] * 3
+
+    #py> [2, 2, 2, 2, 2, 2]
+
+Si vous reprenez la ligne de l’engin utilisé, vous comprenez que toutes
+les options du bloc de code et les données sont passées à la fonction
+`eng_python()` du package `reticulate` qui s’occupe d’exécuter le code
+et de réunir les sorties.
+
+<!-- monter le mix R / Python -->
+
+Pour Julia, voici l’engin utilisé.
+
+    knitr::knit_engines$get()$julia
+
+    ## function (options) 
+    ## {
+    ##     JuliaCall::eng_juliacall(options)
+    ## }
+    ## <environment: namespace:knitr>
+
+Dans ce cas ci, le code et les options sont passées à a fonction
+`eng_juliacall()` du package `JuliaCall`.
+
+    ```{julia, comment = "#jl>"}
+    [2, 2] .* 3
+    ```
+
+    [2, 2] .* 3
+
+    #jl> 2-element Vector{Int64}:
+    #jl>  6
+    #jl>  6
+
+<!-- parler des limites -->
+<!-- Comme les autres on peut setter un interpreteur -->
+
 Autres packages
 ---------------
 
@@ -2884,7 +3191,7 @@ TODO
 R Markdown permet de convertir un document en de nombreux formats.
 Aujourd’hui, il y a en fait tout un écosystème de packages qui utilisent
 rmarkdown pour permettre de réaliser autres types de support. Voici
-quelques examples, probablement les plus populaire
+quelques exemples, probablement les plus populaire
 
 -   [`bookdown`](https://CRAN.R-project.org/package=bookdown) git book
 -   [`blogdown`](https://CRAN.R-project.org/package=blogdown) Hugo,
@@ -2904,6 +3211,9 @@ TODO (p-e)
 Références
 ==========
 
+Chambers, J.M., 2016. Extending R, The R series. CRC Press, Boca Raton
+London New York.
+
 Knauff, M., Nejasmic, J., 2014. An Efficiency Comparison of Document
 Preparation Systems Used in Academic Research and Development. PLoS One
 9, e115069.
@@ -2912,12 +3222,19 @@ Lande, R., 1979. Quantitative Genetic Analysis of Multivariate Evolution
 , Applied to Brain : Body Size Allometry Russell Lande. Evolution (N.
 Y). 33, 402–416.
 
+Li, C., 2019. JuliaCall: An R package for seamless integration between R
+and Julia. The Journal of Open Source Software 4, 1284.
+<https://doi.org/10.21105/joss.01284>
+
 Oreskes, N., Shrader-Frechette, K., Belitz, K., 1994. Verification,
 validation, and confirmation of numerical models in the earth sciences.
 Science (80-. ). 263, 641–646.
 
 Simpkin, S., 2020. Débuter avec Markdown. Programming Historian en
 français. <https://doi.org/10.46430/phfr0007>
+
+Ushey, K., Allaire, J., Tang, Y., 2021. Reticulate: Interface to
+’python’.
 
 Xie, Y., 2017. Dynamic documents with R and knitr. CRC Press, Boca
 Raton, Florida.
@@ -2940,7 +3257,7 @@ consulté le 1<sup>er</sup> juin 2020.
 [3] <a href="https://blog.codinghorror.com/responsible-open-source-code-parenting/" class="uri">https://blog.codinghorror.com/responsible-open-source-code-parenting/</a>,
 consulté le 1<sup>er</sup> juin 2020.
 
-[4] Par example Goldmark,
+[4] Par exemple Goldmark,
 <a href="https://github.com/yuin/goldmard" class="uri">https://github.com/yuin/goldmard</a>,
 un parser Markdown écrit en Go et utilisé par Hugo (un générateur de
 site très populaire), est compatible avec Common Mark.
@@ -2989,3 +3306,9 @@ paragraphes seront des éléments paragraphes (balise `<p>`).
 [18] la seconde
 
 [19] Les logiciels de gestion de bibliographie génèrent ces fichiers.
+
+[20] La traduction de *hook* est crochet mais point d’ancrage est
+peut-être plus approprié ici.
+
+[21] *engine* en anglais, ce n’est peut-être pas la meilleure
+traduction.
