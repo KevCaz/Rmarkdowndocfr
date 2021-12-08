@@ -16,3 +16,7 @@ html:
 readme:
 	Rscript -e 'rmarkdown::render("README.Rmd", "github_document")'	
 	rm README.html
+	
+getcode:
+	mkdir -p public
+	Rscript -e 'knitr::purl("UtiliserRMarkdown.Rmd", "public/code.R")'

@@ -76,7 +76,7 @@ render("UtiliserRMarkdown.Rmd", "all")
 
 # Contribuer
 
-Toutes les contributions sont les bienvenues et même souhaitées! Des fautes d'orthographe, de grammaire, des coquilles? Il manque de l'information? N'hésitez pas à ouvrir un "issue" et même mieux, une PR!
+Toutes les contributions sont les bienvenues et même souhaitées! Des fautes d'orthographe, de grammaire ou des coquilles? Il manque de l'information? N'hésitez pas à ouvrir un "issue" et même mieux, une PR!
 
 
 # Remerciements

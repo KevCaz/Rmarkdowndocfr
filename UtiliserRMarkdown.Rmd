@@ -1954,15 +1954,13 @@ utiliser `lm()` et afficher les coefficients ainsi que les figures associées.
 J'utilise alors le bloc de code suivant\&nbsp;:
 
 
-````md
-```{r application, echo = FALSE, fig.cap = "Mon modèle linéaire", fig.width= 8,
-fig.height = 8, fig.align = "center"}`r ''`
-mod1 <- lm(var2 ~ var1, data = tab1)
-kable(summary(mod1)$coefficients)
-par(bty = "l", mfrow = c(2, 2))
-plot(mod1)
-```
-````
+    ```{r application, echo = FALSE, fig.cap = "Mon modèle linéaire", fig.width= 8,
+    fig.height = 8, fig.align = "center"}`r ''`
+    mod1 <- lm(var2 ~ var1, data = tab1)
+    kable(summary(mod1)$coefficients)
+    par(bty = "l", mfrow = c(2, 2))
+    plot(mod1)
+    ```
 
 avec le commentaire suivant: "La pente de la regression est de `` `r "\u0060r format(summary(mod1)$coefficients[2, 1], digits = 3)\u0060"` `` (et je mettrai le résultat en gras).
 
@@ -1998,7 +1996,36 @@ Si je change les données de `tab1`, la table, les graphiques et mon commentaire
 
 ## Extraire du code R 
 
-TODO
+La function `purl()` du package `knitr` offre la possibilité d'extraire le code R d'un fichier RMD. Pour se faire il suffit d'utiliser la fonction de la manière suivante. 
+
+```{r purl, eval = FALSE, purl = FALSE}
+purl(input = "UtiliserRMarkdown.Rmd", output = "code.R")
+```
+
+L'ensemble du code R extrait de `UtiliserRMarkdown.Rmd` sera écrit dans le fichier `code.R` qui peut-être utilisé tel quel. Les blocs de code seront facilement identifiés avec des commentaires incluant le nom donné au bloc de code ainsi que les options choisies. Par exemple, ci-dessous est présenté le bloc de code de la section [Modifier l'affichage du code source avec le paramètre `echo`].
+
+```md
+## ----sanscode, echo = FALSE---------------------------------------------------
+# une addition de variables avec R
+a <- 2
+b <- 3
+a + b
+```
+
+L'entièreté du script est disponible à l'URL suivante\&nbsp;: `r url_this("code.R")`. Cette fonctionnalité peut se révéler vraiment efficace pour commenter un script un peu compliqué et le partager pour utilisation. Dans de tel cas d'usage il y a souvent des blocs de code qui peuvent être superflus, par exemple des morceaux ajouter pour améliorer les explications, mais qui ne sont pas utile pour la bonne exécution du script. Dans ce cas, il est possible d'utiliser l'option `purl` pour enlever les blocs de code. Par défaut, l'option est réglée sur `TRUE` et donc tous les blocs de code sont ajoutés. Le bloc de code suivant sera ajouté dans le document R Markdown et toutes les sorties qui en découle, mais pas dans le fichier `code.R`. 
+
+    ```{r nopurl, purl = FALSE}`r ''`
+    # ce bloc sera dans le document mais pas dans code.R 
+    cos(pi)
+    ```
+
+```{r nopurl, purl = FALSE}
+# ce bloc sera dans le document mais pas dans code.R 
+cos(pi)
+```
+
+
+ 
 
 ## Utiliser un script externe
 
