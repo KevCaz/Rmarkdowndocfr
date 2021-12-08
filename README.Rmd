@@ -26,7 +26,7 @@ Pour installer [`rmarkdown`](https://rmarkdown.rstudio.com/):
 install.packages("rmarkdown")
 ```
 
-Notez que ce package requiert [Pandoc](https://pandoc.org/), voir https://pandoc.org/installing.html si vous rencontrez des problèmes d'installation. Une fois le package installé, vous pouvez le charger et vérifier la version du package installée ainsi que celle de Pandoc comme suit: 
+Notez que ce package requiert [Pandoc](https://pandoc.org/), voir https://pandoc.org/installing.html si vous rencontrez des problèmes d'installation. Une fois le package installé, vous pouvez le charger et vérifier la version du package installé ainsi que celle de Pandoc comme suit: 
 
 ```{r version}
 library(rmarkdown)
@@ -40,14 +40,33 @@ pandoc_version()
 
 ## Dépendances
 
+Pour reproduire le document, en plus de `rmarkdown`, les packages suivants doivent être installés: 
 
-Pour générer le fichier document pdf donné&nbsp;:
+- [`reticulate`](https://CRAN.R-project.org/package=reticulate) 
+- [`JuliaCall`](https://CRAN.R-project.org/package=JuliaCall)
+
+```{r, eval = FALSE}
+install.packages(c("reticulate", "JuliaCall"))
+```
+
+Notez que pour utiliser `reticulate`, Python doit être installé et pour utiliser `JuliaCall`, une version de Julia est requise.
+
+
+## Générer le document 
+
+Pour générer le fichier document en PDF:
 
 ```r
 render("UtiliserRMarkdown.Rmd", "pdf_document")
 ```
 
-De même, pour obtenir le document en html, Markdown, pdf et Word&nbsp;:
+Pour générer le fichier document en HTML:
+
+```r
+render("UtiliserRMarkdown.Rmd", "html_document")
+```
+
+Pour obtenir le document en html, Markdown, pdf et Word&nbsp;:
 
 
 ```r
@@ -57,7 +76,7 @@ render("UtiliserRMarkdown.Rmd", "all")
 
 # Contribuer
 
-Toutes les contributions sont les bienvenues et même souhaitées. Des fautes d'orthographe, de grammaire, des coquilles? Il manque de l'information? N'hésitez pas à ouvrir un "issue" et même mieux, une PR! 
+Toutes les contributions sont les bienvenues et même souhaitées! Des fautes d'orthographe, de grammaire, des coquilles? Il manque de l'information? N'hésitez pas à ouvrir un "issue" et même mieux, une PR!
 
 
 # Remerciements
@@ -67,4 +86,4 @@ Merci à [Nicolas Casajus](https://github.com/ahasverus) pour avoir corrigé des
 
 # License
 
-Le document produit sous la license [*Creative Commons BY-NC-SA*](https://creativecommons.org/licenses/by-nc-sa/2.0/)
+Le document produit sous la license [*Creative Commons BY-NC-SA*](https://creativecommons.org/licenses/by-nc-sa/2.0/).
