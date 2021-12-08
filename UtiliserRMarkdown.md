@@ -1514,7 +1514,7 @@ Pour inclure une sortie texte directement dans un paragraphe, on utilise
  : `` `r expression` ``. Ainsi, par exemple, il est possible d’insérer
 l’heure et la date au moment de la compilation du document en utilisant
 la fonction *Sys.time()*, ainsi, `` `r Sys.time()` ``  nous donne
-2021-12-08 15:59:38.
+2021-12-08 16:48:09.
 
 Le reste de cette section se concentre sur les blocs de code R (*code
 chunks* en anglais) qui s’utilisent comme les [blocs de
@@ -2055,74 +2055,74 @@ sera convertie dans le format désiré par Pandoc. De plus, la fonction
 <tr class="odd">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">4.611605</td>
-<td style="text-align: right;">4.290986</td>
+<td style="text-align: right;">8.828772</td>
+<td style="text-align: right;">7.387126</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">6.584177</td>
-<td style="text-align: right;">7.854666</td>
+<td style="text-align: right;">4.295042</td>
+<td style="text-align: right;">4.765341</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">18.964964</td>
-<td style="text-align: right;">20.027719</td>
+<td style="text-align: right;">10.393050</td>
+<td style="text-align: right;">11.707065</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">10.652367</td>
-<td style="text-align: right;">10.603277</td>
+<td style="text-align: right;">12.060826</td>
+<td style="text-align: right;">12.727074</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">16.662486</td>
-<td style="text-align: right;">16.559191</td>
+<td style="text-align: right;">13.840305</td>
+<td style="text-align: right;">13.512278</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">11.751620</td>
-<td style="text-align: right;">12.299140</td>
+<td style="text-align: right;">1.327187</td>
+<td style="text-align: right;">1.956941</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">18.637942</td>
-<td style="text-align: right;">18.373285</td>
+<td style="text-align: right;">3.250738</td>
+<td style="text-align: right;">3.278217</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">19.575418</td>
-<td style="text-align: right;">19.674036</td>
+<td style="text-align: right;">5.304980</td>
+<td style="text-align: right;">5.526746</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">18.341726</td>
-<td style="text-align: right;">21.038121</td>
+<td style="text-align: right;">7.732858</td>
+<td style="text-align: right;">8.520070</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">9.128412</td>
-<td style="text-align: right;">7.526433</td>
+<td style="text-align: right;">14.261832</td>
+<td style="text-align: right;">15.916389</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">8.708590</td>
-<td style="text-align: right;">8.445405</td>
+<td style="text-align: right;">10.886004</td>
+<td style="text-align: right;">11.555972</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">14.953284</td>
-<td style="text-align: right;">15.828753</td>
+<td style="text-align: right;">10.238455</td>
+<td style="text-align: right;">8.295829</td>
 </tr>
 </tbody>
 </table>
@@ -2153,85 +2153,85 @@ virgule ou encore d’inclure les numéros de lignes.
 <td style="text-align: left;">1</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">4.612</td>
-<td style="text-align: right;">4.291</td>
+<td style="text-align: right;">8.829</td>
+<td style="text-align: right;">7.387</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">2</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">6.584</td>
-<td style="text-align: right;">7.855</td>
+<td style="text-align: right;">4.295</td>
+<td style="text-align: right;">4.765</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">3</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">18.965</td>
-<td style="text-align: right;">20.028</td>
+<td style="text-align: right;">10.393</td>
+<td style="text-align: right;">11.707</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">4</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">10.652</td>
-<td style="text-align: right;">10.603</td>
+<td style="text-align: right;">12.061</td>
+<td style="text-align: right;">12.727</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">5</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">16.662</td>
-<td style="text-align: right;">16.559</td>
+<td style="text-align: right;">13.840</td>
+<td style="text-align: right;">13.512</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">6</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">11.752</td>
-<td style="text-align: right;">12.299</td>
+<td style="text-align: right;">1.327</td>
+<td style="text-align: right;">1.957</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">7</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">18.638</td>
-<td style="text-align: right;">18.373</td>
+<td style="text-align: right;">3.251</td>
+<td style="text-align: right;">3.278</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">8</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">19.575</td>
-<td style="text-align: right;">19.674</td>
+<td style="text-align: right;">5.305</td>
+<td style="text-align: right;">5.527</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">9</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">18.342</td>
-<td style="text-align: right;">21.038</td>
+<td style="text-align: right;">7.733</td>
+<td style="text-align: right;">8.520</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">10</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">9.128</td>
-<td style="text-align: right;">7.526</td>
+<td style="text-align: right;">14.262</td>
+<td style="text-align: right;">15.916</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">11</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">8.709</td>
-<td style="text-align: right;">8.445</td>
+<td style="text-align: right;">10.886</td>
+<td style="text-align: right;">11.556</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">12</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">14.953</td>
-<td style="text-align: right;">15.829</td>
+<td style="text-align: right;">10.238</td>
+<td style="text-align: right;">8.296</td>
 </tr>
 </tbody>
 </table>
@@ -2421,17 +2421,17 @@ Le résultat est le suivant&nbsp;:
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-0.6019229</td>
-<td style="text-align: right;">0.8492265</td>
-<td style="text-align: right;">-0.7087896</td>
-<td style="text-align: right;">0.4946468</td>
+<td style="text-align: right;">0.1245295</td>
+<td style="text-align: right;">0.7402121</td>
+<td style="text-align: right;">0.1682349</td>
+<td style="text-align: right;">0.8697524</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">var1</td>
-<td style="text-align: right;">1.0704504</td>
-<td style="text-align: right;">0.0600087</td>
-<td style="text-align: right;">17.8382596</td>
-<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">1.0120547</td>
+<td style="text-align: right;">0.0784466</td>
+<td style="text-align: right;">12.9011869</td>
+<td style="text-align: right;">0.0000001</td>
 </tr>
 </tbody>
 </table>
@@ -2441,7 +2441,7 @@ Le résultat est le suivant&nbsp;:
 Mon modèle linéaire
 </p>
 
-La pente de la regression est de **1.07**.
+La pente de la regression est de **1.01**.
 
 Si je change les données de `tab1`, la table, les graphiques et mon
 commentaire seront adéquatement modifiés, ce qui peut s’avérer très
@@ -2456,7 +2456,48 @@ Utilisations avancées
 Extraire du code R
 ------------------
 
-TODO
+La function `purl()` du package `knitr` offre la possibilité d’extraire
+le code R d’un fichier RMD. Pour se faire il suffit d’utiliser la
+fonction de la manière suivante.
+
+    purl(input = "UtiliserRMarkdown.Rmd", output = "code.R")
+
+L’ensemble du code R extrait de `UtiliserRMarkdown.Rmd` sera écrit dans
+le fichier `code.R` qui peut-être utilisé tel quel. Les blocs de code
+seront facilement identifiés avec des commentaires incluant le nom donné
+au bloc de code ainsi que les options choisies. Par exemple, ci-dessous
+est présenté le bloc de code de la section [Modifier l’affichage du code
+source avec le paramètre
+`echo`](#modifier-laffichage-du-code-source-avec-le-paramètre-echo).
+
+    ## ----sanscode, echo = FALSE---------------------------------------------------
+    # une addition de variables avec R
+    a <- 2
+    b <- 3
+    a + b
+
+L’entièreté du script est disponible à l’URL suivante&nbsp;:
+<a href="https://kevcaz.github.io/Rmarkdowndocfr/code.R" class="uri">https://kevcaz.github.io/Rmarkdowndocfr/code.R</a>.
+Cette fonctionnalité peut se révéler vraiment efficace pour commenter un
+script un peu compliqué et le partager pour utilisation. Dans de tel cas
+d’usage il y a souvent des blocs de code qui peuvent être superflus, par
+exemple des morceaux ajouter pour améliorer les explications, mais qui
+ne sont pas utile pour la bonne exécution du script. Dans ce cas, il est
+possible d’utiliser l’option `purl` pour enlever les blocs de code. Par
+défaut, l’option est réglée sur `TRUE` et donc tous les blocs de code
+sont ajoutés. Le bloc de code suivant sera ajouté dans le document R
+Markdown et toutes les sorties qui en découle, mais pas dans le fichier
+`code.R`.
+
+    ```{r nopurl, purl = FALSE}
+    # ce bloc sera dans le document mais pas dans code.R 
+    cos(pi)
+    ```
+
+    # ce bloc sera dans le document mais pas dans code.R 
+    cos(pi)
+
+    ## [1] -1
 
 Utiliser un script externe
 --------------------------
