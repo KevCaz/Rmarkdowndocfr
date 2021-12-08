@@ -23,16 +23,15 @@ jobs:
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       _R_CHECK_DONTTEST_EXAMPLES_: false
-      AUTO_JULIA_INSTALL: true
       CRAN: ${{ matrix.config.cran }}
 
     steps:
       - uses: actions/checkout@v2
       
-      # - name: Set up Julia
-      #   uses: julia-actions/setup-julia@v1
-      #   with:
-      #     version: 1.7.0
+      - name: Set up Julia
+        uses: julia-actions/setup-julia@v1
+        with:
+          version: 1.5.0
 
       - uses: r-lib/actions/setup-pandoc@v1
           
@@ -43,11 +42,6 @@ jobs:
           use-public-rspm: true
 
       - uses: r-lib/actions/setup-r-dependencies@v1
-      
-      - name: Install Julia via JuliaCall
-        if: matrix.config.os == 'macOS-latest'
-        run: |-
-          Rscript -e "JuliaCall::julia_setup(installJulia = TRUE)"
       
       - name: Build html, word, md and pdf
         run: |-

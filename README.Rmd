@@ -10,6 +10,8 @@ output:
 [![Render and deploy HTML document](https://github.com/KevCaz/Rmarkdowndocfr/workflows/Render%20and%20deploy%20HTML%20document/badge.svg)](https://github.com/KevCaz/Rmarkdowndocfr/actions?query=workflow%3A"Render+and+deploy+HTML+document")
 
 
+# Objectif 
+
 [Ce document](https://kevcaz.github.io/Rmarkdowndocfr/) est une introduction à R Markdown conçue pour répondre aux objectifs suivants:
 
 1. comprendre ce qu'est R Markdown;
@@ -32,6 +34,11 @@ packageVersion("rmarkdown")
 pandoc_available()
 pandoc_version()
 ```
+
+
+# Reproduire le document localement 
+
+## Dépendances
 
 
 Pour générer le fichier document pdf donné&nbsp;:
