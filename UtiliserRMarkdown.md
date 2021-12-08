@@ -484,7 +484,7 @@ source de ce document) :
 
     ---
     title: "Utiliser R Markdown pour créer des documents dynamiques"
-    date: "07 December 2021"
+    date: "08 December 2021"
     author: par Kevin Cazelles
     lang: fr
     abstract: "Le package [...] pour aller plus loin."
@@ -1514,7 +1514,7 @@ Pour inclure une sortie texte directement dans un paragraphe, on utilise
  : `` `r expression` ``. Ainsi, par exemple, il est possible d’insérer
 l’heure et la date au moment de la compilation du document en utilisant
 la fonction *Sys.time()*, ainsi, `` `r Sys.time()` ``  nous donne
-2021-12-07 22:00:54.
+2021-12-08 14:56:26.
 
 Le reste de cette section se concentre sur les blocs de code R (*code
 chunks* en anglais) qui s’utilisent comme les [blocs de
@@ -2055,74 +2055,74 @@ sera convertie dans le format désiré par Pandoc. De plus, la fonction
 <tr class="odd">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">2.257638</td>
-<td style="text-align: right;">2.2153184</td>
+<td style="text-align: right;">14.616852</td>
+<td style="text-align: right;">15.679107</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">12.499227</td>
-<td style="text-align: right;">13.8378377</td>
+<td style="text-align: right;">4.856186</td>
+<td style="text-align: right;">5.488376</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">6.981428</td>
-<td style="text-align: right;">5.0419841</td>
+<td style="text-align: right;">11.671935</td>
+<td style="text-align: right;">12.275481</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">15.008347</td>
-<td style="text-align: right;">16.0394298</td>
+<td style="text-align: right;">10.995682</td>
+<td style="text-align: right;">11.846302</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">2.399133</td>
-<td style="text-align: right;">0.9416387</td>
+<td style="text-align: right;">3.742782</td>
+<td style="text-align: right;">5.053521</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">16.224581</td>
-<td style="text-align: right;">15.5619124</td>
+<td style="text-align: right;">4.587273</td>
+<td style="text-align: right;">3.513071</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">8.639091</td>
-<td style="text-align: right;">8.5635651</td>
+<td style="text-align: right;">19.685388</td>
+<td style="text-align: right;">18.891054</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">19.298416</td>
-<td style="text-align: right;">19.5795910</td>
+<td style="text-align: right;">6.059326</td>
+<td style="text-align: right;">7.122733</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">4.050123</td>
-<td style="text-align: right;">5.8458612</td>
+<td style="text-align: right;">4.242621</td>
+<td style="text-align: right;">5.974155</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">15.298242</td>
-<td style="text-align: right;">15.4703824</td>
+<td style="text-align: right;">6.012868</td>
+<td style="text-align: right;">4.787442</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">7.419789</td>
-<td style="text-align: right;">6.7359732</td>
+<td style="text-align: right;">5.788659</td>
+<td style="text-align: right;">4.372324</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">3.753556</td>
-<td style="text-align: right;">4.3015243</td>
+<td style="text-align: right;">16.498830</td>
+<td style="text-align: right;">15.236274</td>
 </tr>
 </tbody>
 </table>
@@ -2153,85 +2153,85 @@ virgule ou encore d’inclure les numéros de lignes.
 <td style="text-align: left;">1</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">2.258</td>
-<td style="text-align: right;">2.215</td>
+<td style="text-align: right;">14.617</td>
+<td style="text-align: right;">15.679</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">2</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">12.499</td>
-<td style="text-align: right;">13.838</td>
+<td style="text-align: right;">4.856</td>
+<td style="text-align: right;">5.488</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">3</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">6.981</td>
-<td style="text-align: right;">5.042</td>
+<td style="text-align: right;">11.672</td>
+<td style="text-align: right;">12.275</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">4</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">15.008</td>
-<td style="text-align: right;">16.039</td>
+<td style="text-align: right;">10.996</td>
+<td style="text-align: right;">11.846</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">5</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">2.399</td>
-<td style="text-align: right;">0.942</td>
+<td style="text-align: right;">3.743</td>
+<td style="text-align: right;">5.054</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">6</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">16.225</td>
-<td style="text-align: right;">15.562</td>
+<td style="text-align: right;">4.587</td>
+<td style="text-align: right;">3.513</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">7</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">8.639</td>
-<td style="text-align: right;">8.564</td>
+<td style="text-align: right;">19.685</td>
+<td style="text-align: right;">18.891</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">8</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">19.298</td>
-<td style="text-align: right;">19.580</td>
+<td style="text-align: right;">6.059</td>
+<td style="text-align: right;">7.123</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">9</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">4.050</td>
-<td style="text-align: right;">5.846</td>
+<td style="text-align: right;">4.243</td>
+<td style="text-align: right;">5.974</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">10</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">15.298</td>
-<td style="text-align: right;">15.470</td>
+<td style="text-align: right;">6.013</td>
+<td style="text-align: right;">4.787</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">11</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">7.420</td>
-<td style="text-align: right;">6.736</td>
+<td style="text-align: right;">5.789</td>
+<td style="text-align: right;">4.372</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">12</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">3.754</td>
-<td style="text-align: right;">4.302</td>
+<td style="text-align: right;">16.499</td>
+<td style="text-align: right;">15.236</td>
 </tr>
 </tbody>
 </table>
@@ -2421,17 +2421,17 @@ Le résultat est le suivant&nbsp;:
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-0.2919194</td>
-<td style="text-align: right;">0.6343753</td>
-<td style="text-align: right;">-0.4601682</td>
-<td style="text-align: right;">0.6552387</td>
+<td style="text-align: right;">0.5851018</td>
+<td style="text-align: right;">0.6913801</td>
+<td style="text-align: right;">0.8462809</td>
+<td style="text-align: right;">0.4171874</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">var1</td>
-<td style="text-align: right;">1.0334577</td>
-<td style="text-align: right;">0.0572977</td>
-<td style="text-align: right;">18.0366423</td>
-<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">0.9490634</td>
+<td style="text-align: right;">0.0660827</td>
+<td style="text-align: right;">14.3617606</td>
+<td style="text-align: right;">0.0000001</td>
 </tr>
 </tbody>
 </table>
@@ -2441,7 +2441,7 @@ Le résultat est le suivant&nbsp;:
 Mon modèle linéaire
 </p>
 
-La pente de la regression est de **1.03**.
+La pente de la regression est de **0.949**.
 
 Si je change les données de `tab1`, la table, les graphiques et mon
 commentaire seront adéquatement modifiés, ce qui peut s’avérer très
