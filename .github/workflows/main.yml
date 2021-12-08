@@ -48,7 +48,7 @@ jobs:
           Rscript -e "dir.create('public')"
           Rscript -e "rmarkdown::render('UtiliserRMarkdown.Rmd', output_format = c('html_document', 'word_document', 'md_document'), output_dir = 'public')"
           Rscript -e "file.rename('public/UtiliserRMarkdown.html', 'public/index.html')"
-          Rscript -e 'knitr::purl("UtiliserRMarkdown.Rmd", "public/code.R")'
+          Rscript -e "knitr::purl('UtiliserRMarkdown.Rmd', 'public/code.R')"
                 
       - name: Deploy HTML document to gh-pages
         if: matrix.config.os == 'ubuntu-20.04' && matrix.config.r == 'release'

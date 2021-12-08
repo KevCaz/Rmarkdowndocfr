@@ -2025,8 +2025,6 @@ cos(pi)
 ```
 
 
- 
-
 ## Utiliser un script externe
 
 Pour insérer dans un fichier de code, il peut parfois être plus pratique d'utiliser un script externe, autrement avoir une partie (ou l'entièreté) du code d'un fichier `.R` (ou `.r`). Plusieurs manières de procéder existent, plus ou moins pertinentes selon ce que nous voulons faire. Si le code est simplement un ensemble de lignes à exécuter de manière silencieuse, alors utiliser `source()` est probablement une bonne option. Il y a cependant une petite chose à savoir&nbsp;: il est préférable d'utiliser l'argument `local` pour s'assurer que le code sera exécuté dans le bon environment, voir le chapitre *Source external R scripts* de @xie_markdown_2020 (aussi disponible à l'URL suivante https://bookdown.org/yihui/rmarkdown-cookbook/source-script.html). Le script à charger est disponible à l'URL suivante `r url_this_gh("scripts/scr_externe1.R")`, il contient les lignes suivantes: 
