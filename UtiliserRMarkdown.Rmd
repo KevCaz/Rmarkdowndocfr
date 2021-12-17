@@ -1996,7 +1996,7 @@ Si je change les données de `tab1`, la table, les graphiques et mon commentaire
 
 ## Extraire du code R 
 
-La function `purl()` du package `knitr` offre la possibilité d'extraire le code R d'un fichier RMD. Pour se faire il suffit d'utiliser la fonction de la manière suivante. 
+La function `purl()` du package `knitr` offre la possibilité d'extraire le code R d'un fichier RMD. Pour ce faire, il suffit d'utiliser la fonction de la manière suivante\&nbsp;: 
 
 ```{r purl, eval = FALSE, purl = FALSE}
 purl(input = "UtiliserRMarkdown.Rmd", output = "code.R")
@@ -2012,7 +2012,7 @@ b <- 3
 a + b
 ```
 
-L'entièreté du script est disponible à l'URL suivante\&nbsp;: `r url_this("code.R")`. Cette fonctionnalité peut se révéler vraiment efficace pour commenter un script un peu compliqué et le partager pour utilisation. Dans de tel cas d'usage il y a souvent des blocs de code qui peuvent être superflus, par exemple des morceaux ajouter pour améliorer les explications, mais qui ne sont pas utile pour la bonne exécution du script. Dans ce cas, il est possible d'utiliser l'option `purl` pour enlever les blocs de code. Par défaut, l'option est réglée sur `TRUE` et donc tous les blocs de code sont ajoutés. Le bloc de code suivant sera ajouté dans le document R Markdown et toutes les sorties qui en découle, mais pas dans le fichier `code.R`. 
+L'entièreté du script est disponible à l'URL suivante\&nbsp;: `r url_this("code.R")`. Cette fonctionnalité peut se révéler vraiment efficace pour commenter un script un peu compliqué et le partager pour utilisation. Dans de tel cas d'usage il y a souvent des blocs de code qui peuvent être superflus, par exemple des bouts de code ajoutés pour améliorer les explications, mais qui ne sont pas utiles pour la bonne exécution du script. Dans ce cas, il est possible d'utiliser l'option `purl` pour enlever les blocs de code. Par défaut, l'option est réglée sur `TRUE` et donc tous les blocs de code sont ajoutés. Le bloc de code suivant sera ajouté dans le document R Markdown avec les sorties associées, mais pas dans le fichier `code.R`. 
 
     ```{r nopurl, purl = FALSE}`r ''`
     # ce bloc sera dans le document mais pas dans code.R 
@@ -2027,7 +2027,7 @@ cos(pi)
 
 ## Utiliser un script externe
 
-Pour insérer dans un fichier de code, il peut parfois être plus pratique d'utiliser un script externe, autrement avoir une partie (ou l'entièreté) du code d'un fichier `.R` (ou `.r`). Plusieurs manières de procéder existent, plus ou moins pertinentes selon ce que nous voulons faire. Si le code est simplement un ensemble de lignes à exécuter de manière silencieuse, alors utiliser `source()` est probablement une bonne option. Il y a cependant une petite chose à savoir&nbsp;: il est préférable d'utiliser l'argument `local` pour s'assurer que le code sera exécuté dans le bon environment, voir le chapitre *Source external R scripts* de @xie_markdown_2020 (aussi disponible à l'URL suivante https://bookdown.org/yihui/rmarkdown-cookbook/source-script.html). Le script à charger est disponible à l'URL suivante `r url_this_gh("scripts/scr_externe1.R")`, il contient les lignes suivantes: 
+Pour insérer du code dans le document R Markdown, il peut parfois être plus pratique d'utiliser un script externe, autrement avoir une partie (ou l'entièreté) du code d'un fichier `.R` (ou `.r`). Plusieurs manières de procéder existent, plus ou moins pertinentes selon ce que nous voulons faire. Si le code est simplement un ensemble de lignes à exécuter de manière silencieuse, alors faire appel à la fonction `source()` est probablement une bonne option. Il y a cependant une petite chose à savoir&nbsp;: il est préférable d'utiliser l'argument `local` pour s'assurer que le code sera exécuté dans le bon environment, voir le chapitre *Source external R scripts* de @xie_markdown_2020 (aussi disponible à l'URL suivante https://bookdown.org/yihui/rmarkdown-cookbook/source-script.html). Le script à charger est disponible à l'URL suivante `r url_this_gh("scripts/scr_externe1.R")`, il contient les lignes suivantes\&nbsp;: 
 
 ```{r showcode, code=readLines("scripts/scr_externe1.R"), eval = FALSE}
 ```
@@ -2043,7 +2043,7 @@ que nous chargeons avec la fonction `source()`
 source("scripts/scr_externe1.R", local = knitr::knit_global())
 ```
 
-Une fois chargé, nous pouvons accéder aux variables qui y sont déclarées, par exemple
+Une fois chargé, nous pouvons accéder aux variables qui y sont déclarées, par exemple\&nbsp;:
 
 ```{r resextcode}
 var4
@@ -2059,7 +2059,7 @@ Comme vous l'aurez peut-être compris, utiliser `source()` ne nous permet pas d'
 ```{r showextcode, code ="var1 <- 1"}
 ```
 
-Ce qui est pratique avec cette option c'est qu'il est possible d'utiliser une fonction qui va lire un fichier et donc il est aisé d'insérer le contenu d'un script R. C'est possible de le faire avec la fonction `readLines()`, ou encore avec la function `read_utf8()` du package [`xfun`](https://CRAN.R-project.org/package=xfun) qui retourne un avertissement si le fichier contient des caractères qui ne sont pas encodés en UTF-8. Ainsi, le bloc suivant
+Ce qui est pratique avec cette option, c'est qu'il est possible d'utiliser une fonction qui va lire un fichier. Il devient alors facile d'insérer le contenu d'un script R. C'est possible de le faire avec la fonction `readLines()`, ou encore avec la function `read_utf8()` du package [`xfun`](https://CRAN.R-project.org/package=xfun) qui retourne un avertissement si le fichier contient des caractères qui ne sont pas encodés en UTF-8. Ainsi, le bloc suivant
 
 
     ```{r showextcode, code = readLines("scripts/scr_externe1.R")}`r ''`
@@ -2070,12 +2070,12 @@ nous donne
 ```{r showextcode, code = readLines("scripts/scr_externe1.R")}
 ```
 
-Une limite de cette approche est qu'elle nous permet pas d'exécuter différente partie du script dans différent bloc de code, ce qui peut, à des fins pédagogiques, être utile. Il existe cependant un moyen simple d'utiliser différentes parties d'un script en l'annotant avec des balises `@knitr`. Prenons le script `r url_this_gh("scripts/scr_externe2.R", "scr_externe2.R")`
+Une limite de cette approche est qu'elle nous permet pas d'exécuter différente partie du script dans différent bloc de code, ce qui peut, à des fins pédagogiques, être utile. Il existe cependant un moyen simple d'utiliser différentes parties d'un script R en l'annotant avec des balises `@knitr`. Prenons le script `r url_this_gh("scripts/scr_externe2.R", "scr_externe2.R")`
 
 ```{r showcode, code=readLines("scripts/scr_externe2.R"), eval = FALSE}
 ```
 
-Le code est séparé en deux parties., chacune limitée par des balises `@knitr` qui suivent le format suivant &nbsp;
+Le code est séparé en deux parties, chacune limitée par des balises `@knitr` qui suivent le format suivant &nbsp;
 
 ```r
 # @knitr id
@@ -2269,22 +2269,41 @@ et donc on peut utiliser toute les valeurs dans le *hook!*
 <!-- https://kbroman.org/knitr_knutshell/pages/Rmarkdown.html -->
 
 
+
+
 ## Exécuter des blocs de code dans un autre language 
 
-Comme nous l'avons vu jusqu'ici, R Markdown est un outil privilégié pour R, les blocs de code sont exécutés et les sorties y sont ajoutées. Un des principes fondamentaux de R est de s'interfacer avec différents langages [@chambers_extending_2016]. Il existe ainsi différents package pour venir, le plus populaire étant [`Rcpp`](https://CRAN.R-project.org/package=Rcpp) qui offre une intégration avec [C++](https://isocpp.org/). Il en existe d'autres comme [`reticulate`](https://CRAN.R-project.org/package=reticulate) [@ushey_reticulate_2021] qui connect R avec [Python](https://www.python.org/) et [`JuliaCall`](https://CRAN.R-project.org/package=JuliaCall) [@li_JuliaCall_2019] qui fait le lien entre R et [Julia](https://julialang.org/). Grâce à ces packages qui connectent R avec d'autres languages, il est possible de les intégrer directement dans markdown en sélectionnant le bon engin[^nt2]. La liste des engins disponibles est contenu dans `knit_engines` qui se manipule comme `opts_chunk`. 
+### Les engins disponibles
+
+Comme nous l'avons vu jusqu'ici, R Markdown est un outil privilégié pour R, les blocs de code sont exécutés et les sorties y sont ajoutées. Un des principes fondamentaux de R est de s'interfacer avec différents langages [@chambers_extending_2016]. R est ainsi installé avec des outils pour rendre possible cette interface (par exemple la fonction `.Call()`, `.C()` et `.Fortran()`) et il existe packages qui facilitent l'utilisation d'autres languages dans R. Le plus populaire de ces packages est [`Rcpp`](https://CRAN.R-project.org/package=Rcpp) qui offre une intégration poussée avec [C++](https://isocpp.org/). Il en existe d'autres comme [`reticulate`](https://CRAN.R-project.org/package=reticulate) [@ushey_reticulate_2021] qui connecte R avec [Python](https://www.python.org/) et [`JuliaCall`](https://CRAN.R-project.org/package=JuliaCall) [@li_JuliaCall_2019] qui fait le lien entre R et [Julia](https://julialang.org/). Grâce à ces packages qui connectent R avec d'autres languages, il est possible de les intégrer directement dans R Markdown en sélectionnant le bon engin[^nt2]. La liste des engins disponibles est contenue dans `knit_engines` qui se manipule comme `opts_chunk`. 
 
 ```{r}
 names(knitr::knit_engines$get())
 ```
 
-[^nt2]: *engine* en anglais, ce n'est peut-être pas la meilleure traduction.
+[^nt2]: traduit de *engine* en anglais.
 
 
-Nous allons prendre pour exemple Python (voir aussi https://github.com/rstudio/reticulate#python-in-r-markdown) et Julia (voir https://cran.r-project.org/web/packages/JuliaCall/vignettes/Julia_in_RMarkdown.html). Il est donc important que les deux packages soient installés. 
+Nous allons prendre pour exemples Python (voir aussi https://github.com/rstudio/reticulate#python-in-r-markdown) et Julia (voir https://cran.r-project.org/web/packages/JuliaCall/vignettes/Julia_in_RMarkdown.html). Il est donc important que les deux packages soient installés, ainsi qu'une version de Python et de Julia.  
+
 
 ```{r eval = FALSE}
 install.packages(c("reticulate", "JuliaCall"))
 ```
+
+Voici les lignes qui vous permettent de vérifier si tout est correctement et de vérifier quelles versions de Python et Julia sont installées.
+
+```{r check_version_py, warning = FALSE}
+reticulate::py_config()
+```
+
+```{r check_version_jl, warning = FALSE}
+JuliaCall::julia_command("VERSION") 
+```
+
+
+### Utiliser Python
+
 
 Pour Python, voici l'engin utilisé.
 
@@ -2292,7 +2311,7 @@ Pour Python, voici l'engin utilisé.
 knitr::knit_engines$get()$python 
 ```
 
-Et voici comment nous pouvons utiliser un bloc de code Python dans R Markdown. 
+Et voici un exemple de comment utiliser un bloc de code Python dans R Markdown. 
 
     ```{python py1, comment = "#py>"}`r ''`
     [2, 2] * 3
@@ -2302,7 +2321,24 @@ Et voici comment nous pouvons utiliser un bloc de code Python dans R Markdown.
 [2, 2] * 3
 ```
 
+
 Si vous reprenez la ligne de l'engin utilisé, vous comprenez que toutes les options du bloc de code et les données sont passées à la fonction `eng_python()` du package `reticulate` qui s'occupe d’exécuter le code et de réunir les sorties.
+
+Voici un deuxième exemple avec cette fois si une fonction pour calculer la longueur du grand côté d'un triangle rectangle (hypoténuse) à partir de la connaissance de la longueur des deux autres côtés. 
+
+```{python py2, comment = "#py>"}
+def hypothenuse(a, b):
+    return (a ** 2 + b ** 2) ** 0.5
+```
+
+Une fois déclaré, nous pouvons l'appeler dans une autre balise qui utilise l'engin ``python`. 
+
+```{python py3, comment = "#py>"}
+hypothenuse(4, 3)
+```
+
+
+### Utiliser Julia
 
 <!-- monter le mix R / Python -->
 
@@ -2315,13 +2351,31 @@ knitr::knit_engines$get()$julia
 Dans ce cas ci, le code et les options sont passées à a fonction `eng_juliacall()` du package `JuliaCall`. 
 
 
-    ```{julia, comment = "#jl>"}`r ''`
+    ```{julia jl1, comment = "#jl>"}`r ''`
     [2, 2] .* 3
     ```
 
-```{julia, comment = "#jl>"}
+```{julia jl1, comment = "#jl>"}
 [2, 2] .* 3
 ```
+
+Voici la même function `hypothenus()` en julia 
+
+```{julia jl2, comment = "#jl>"}
+function hypothenuse(a, b)
+  return (a^2 + b^2)^0.5
+end
+```
+
+```{julia jl3, comment = "#jl>"}
+hypothenuse(4, 3)
+```
+
+Notons qu'il n'y a pas de conflit entre les deux fonctions `hypothenuse`, l'une est associé aux blocs de code `python` et l'autre aux blocs de code `julia`.
+
+Ici nous venons de montrer que nous pouvons utiliser d'autre langages dans des blocs de code utilisant des engins distincts. Cela nous a permis de constater que R Markdown peut être un outil très efficace pour comparer comment différentes opérations sont réalisées par différents languages. Pour Julia et Python, les engins utilisés sont issus de packages qui implémentent une interface avec R. Grâce à ces packages, nous pouvons utiliser du code Python et du code Julia directement dans R, ce qui est très bien expliqué dans la documentation de ces packages. Ici, nous nous sommes limités à utiliser des engins dont le but est de générer des blocs de code comme ci nous faisions un  appel direct (sans passer par R) à ces languages.
+
+
 
 <!-- parler des limites -->
 
