@@ -1989,40 +1989,28 @@ Si je change les données de `tab1`, la table, les graphiques et mon commentaire
 
 
 
-# Utilisations avancées
+# Organiser son document et son code 
 
-:construction: WIP :construction:
+Jusqu'ici nous avons vu comment utiliser Markdown et les bloc de code R pour rendre le document dynamique. Ici, nous allons passer en revue différentes fonctionnalités qui nous permettent de mieux structurer notre document, surtout quand il est long et que beacoup de code est utilisé. 
 
 
-## Extraire du code R 
+## Inclure un fichier R Markdown dans un fichier R Markdown
 
-La function `purl()` du package `knitr` offre la possibilité d'extraire le code R d'un fichier RMD. Pour ce faire, il suffit d'utiliser la fonction de la manière suivante\&nbsp;: 
+Pour des raisons d'organisation, il est parfois plus simple d'organiser un long document en différents fichiers. Par exemple, quand différentes personnes travaillent avec sur différentes parties d'un rapport. L'options `chlid` nous permet d'inclure un fichier R Markdown dans un autre document R Markdown. Par exemple pour inclure le fichier `r url_this_gh("scripts/part.Rmd", "part.Rmd")`, nous utilisons 
 
-```{r purl, eval = FALSE, purl = FALSE}
-purl(input = "UtiliserRMarkdown.Rmd", output = "code.R")
-```
 
-L'ensemble du code R extrait de `UtiliserRMarkdown.Rmd` sera écrit dans le fichier `code.R` qui peut-être utilisé tel quel. Les blocs de code seront facilement identifiés avec des commentaires incluant le nom donné au bloc de code ainsi que les options choisies. Par exemple, ci-dessous est présenté le bloc de code de la section [Modifier l'affichage du code source avec le paramètre `echo`].
-
-```md
-## ----sanscode, echo = FALSE---------------------------------------------------
-# une addition de variables avec R
-a <- 2
-b <- 3
-a + b
-```
-
-L'entièreté du script est disponible à l'URL suivante\&nbsp;: `r url_this("code.R")`. Cette fonctionnalité peut se révéler vraiment efficace pour commenter un script un peu compliqué et le partager pour utilisation. Dans de tel cas d'usage il y a souvent des blocs de code qui peuvent être superflus, par exemple des bouts de code ajoutés pour améliorer les explications, mais qui ne sont pas utiles pour la bonne exécution du script. Dans ce cas, il est possible d'utiliser l'option `purl` pour enlever les blocs de code. Par défaut, l'option est réglée sur `TRUE` et donc tous les blocs de code sont ajoutés. Le bloc de code suivant sera ajouté dans le document R Markdown avec les sorties associées, mais pas dans le fichier `code.R`. 
-
-    ```{r nopurl, purl = FALSE}`r ''`
-    # ce bloc sera dans le document mais pas dans code.R 
-    cos(pi)
+    ```{r include_part, child = "scripts/part.Rmd"}`r ''`
+    
     ```
 
-```{r nopurl, purl = FALSE}
-# ce bloc sera dans le document mais pas dans code.R 
-cos(pi)
+et voici ce que nous obtenons:
+
+    
+```{r include_part, child = "scripts/part.Rmd"}
 ```
+
+
+
 
 
 ## Utiliser un script externe
@@ -2117,6 +2105,48 @@ Notons que les commandes ajoutées à la suite seront ignorées.
 
  <!-- https://stackoverflow.com/questions/52397430/include-code-from-an-external-r-script-run-in-display-both-code-and-output -->
  
+ 
+ 
+## Extraire du code R 
+
+La function `purl()` du package `knitr` offre la possibilité d'extraire le code R d'un fichier RMD. Pour ce faire, il suffit d'utiliser la fonction de la manière suivante\&nbsp;: 
+
+```{r purl, eval = FALSE, purl = FALSE}
+purl(input = "UtiliserRMarkdown.Rmd", output = "code.R")
+```
+
+L'ensemble du code R extrait de `UtiliserRMarkdown.Rmd` sera écrit dans le fichier `code.R` qui peut-être utilisé tel quel. Les blocs de code seront facilement identifiés avec des commentaires incluant le nom donné au bloc de code ainsi que les options choisies. Par exemple, ci-dessous est présenté le bloc de code de la section [Modifier l'affichage du code source avec le paramètre `echo`].
+
+```md
+## ----sanscode, echo = FALSE--------------------------------------------------
+# une addition de variables avec R
+a <- 2
+b <- 3
+a + b
+```
+
+L'entièreté du script est disponible à l'URL suivante\&nbsp;: `r url_this("code.R")`. Cette fonctionnalité peut se révéler vraiment efficace pour commenter un script un peu compliqué et le partager pour utilisation. Dans de tels cas d'usage il y a souvent des blocs de code qui peuvent être superflus, par exemple des bouts de code ajoutés pour améliorer les explications, mais qui ne sont pas utiles pour la bonne exécution du script. Dans ce cas, il est possible d'utiliser l'option `purl` pour enlever les blocs de code. Par défaut, l'option est réglée sur `TRUE` et donc tous les blocs de code sont ajoutés. Le bloc de code suivant sera ajouté dans le document R Markdown avec les sorties associées, mais pas dans le fichier `code.R`. 
+
+   ```{r nopurl, purl = FALSE}`r ''`
+   # ce bloc sera dans le document mais pas dans code.R 
+   cos(pi)
+   ```
+   
+```{r nopurl, purl = FALSE}
+# ce bloc sera dans le document mais pas dans code.R 
+cos(pi)
+```
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+# Utilisations avancées  
+
+Dans cette section nous allons voir comment créer nos propres options pour bloc de code. 
 
 
 ## Modifier les options par défaut
@@ -2381,8 +2411,17 @@ Ici nous venons de montrer que nous pouvons utiliser d'autre langages dans des b
 
 <!-- Comme les autres on peut setter un interpreteur -->
 
+<!-- 
 
-## Autres packages 
+## Divers 
+
+TODO (p-e)
+
+- utiliser des émojis
+- faire un template pour un rapport avec whisker ou juste utiliser whisker -->
+
+
+# Conclusion 
 
 TODO
 
@@ -2393,13 +2432,6 @@ R Markdown permet de convertir un document en de nombreux formats. Aujourd'hui, 
 - [`pagedown`](https://CRAN.R-project.org/package=pagedown) pagejs 
 - [`xaringan`](https://CRAN.R-project.org/package=xaringan) remark
 
-
-## Divers 
-
-TODO (p-e)
-
-- utiliser des émojis
-- faire un template pour un rapport avec whisker ou juste utiliser whisker
 
 
 

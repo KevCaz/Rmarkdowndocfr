@@ -1,0 +1,10 @@
+
+*début du document `part.Rmd`*
+
+
+```{R}
+print("Ceci est le code R du fichier part.Rmd")
+```
+
+
+*fin du document `part.Rmd`*
