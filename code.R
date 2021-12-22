@@ -218,7 +218,10 @@ par(bty = "l", mfrow = c(2, 2))
 plot(mod1)
 
 
+## ----include_part, child = "scripts/part.Rmd"---------------------------------
 
+## -----------------------------------------------------------------------------
+print("Ceci est le code R du fichier part.Rmd")
 
 
 
@@ -256,6 +259,10 @@ var2 <- 10*var1
 ## ----part2--------------------------------------------------------------------
 var3 <- cos(var2)
 var4 <- sin(var2)
+
+
+
+
 
 
 ## -----------------------------------------------------------------------------
@@ -327,6 +334,14 @@ names(knitr::knit_engines$get())
 ## install.packages(c("reticulate", "JuliaCall"))
 
 
+## ----check_version_py, warning = FALSE----------------------------------------
+reticulate::py_config()
+
+
+## ----check_version_jl, warning = FALSE----------------------------------------
+JuliaCall::julia_command("VERSION") 
+
+
 ## -----------------------------------------------------------------------------
 knitr::knit_engines$get()$python 
 
@@ -334,9 +349,27 @@ knitr::knit_engines$get()$python
 ## [2, 2] * 3
 
 
+## def hypothenuse(a, b):
+
+##     return (a ** 2 + b ** 2) ** 0.5
+
+
+## hypothenuse(4, 3)
+
+
 ## -----------------------------------------------------------------------------
 knitr::knit_engines$get()$julia
 
 
 ## [2, 2] .* 3
+
+
+## function hypothenuse(a, b)
+
+##   return (a^2 + b^2)^0.5
+
+## end
+
+
+## hypothenuse(4, 3)
 

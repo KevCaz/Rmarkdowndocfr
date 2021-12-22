@@ -1,5 +1,4 @@
-Avant-propos
-============
+# Avant-propos
 
 Ce document est une introduction à R Markdown conçu pour répondre aux
 objectifs suivants:
@@ -14,18 +13,17 @@ Ce document a lui-même été édité avec R Markdown et peut-être converti
 en une page internet (format HTML, `.html`), au format Word (`.docx`) ou
 encore en document portable (`.pdf`). Bien que dans “R Markdown”, il y
 ait “R” et “Markdown”, ce document n’est pas une introduction à R
-(<a href="http://www.r-project.org" class="uri">http://www.r-project.org</a>).
-Bien que le contenu est accessible aux utilisateurs débutants, pour les
-lecteurs intéressés qui ne connaissent pas encore R, une courte
-introduction à R est nécessaire. Ils pourront consulter l’une des
-différentes introductions disponibles sur le site du CRAN:
-<a href="https://cran.r-project.org/other-docs.html" class="uri">https://cran.r-project.org/other-docs.html</a>.
+(<http://www.r-project.org>). Bien que le contenu est accessible aux
+utilisateurs débutants, pour les lecteurs intéressés qui ne connaissent
+pas encore R, une courte introduction à R est nécessaire. Ils pourront
+consulter l’une des différentes introductions disponibles sur le site du
+CRAN: <https://cran.r-project.org/other-docs.html>.
 
 Ce document est déployé automatiquement par GitHub Actions (voir
-<a href="https://github.com/KevCaz/Rmarkdowndocfr/actions" class="uri">https://github.com/KevCaz/Rmarkdowndocfr/actions</a>),
-lors de la dernière compilation, la version 2.11 du package `rmarkdown`
-a été utilisée. De plus amples informations relatives à l’environnement
-dans lequel le document a été compilé sont indiquées ci-dessous.
+<https://github.com/KevCaz/Rmarkdowndocfr/actions>), lors de la dernière
+compilation, la version 2.11 du package `rmarkdown` a été utilisée. De
+plus amples informations relatives à l’environnement dans lequel le
+document a été compilé sont indiquées ci-dessous.
 
 <details>
 
@@ -51,7 +49,7 @@ dans lequel le document a été compilé sont indiquées ci-dessous.
     ## [1] stats     graphics  grDevices utils     datasets  methods   base     
     ## 
     ## other attached packages:
-    ## [1] knitr_1.36       yaml_2.2.1       JuliaCall_0.17.4
+    ## [1] knitr_1.37       yaml_2.2.1       JuliaCall_0.17.4
     ## 
     ## loaded via a namespace (and not attached):
     ##  [1] Rcpp_1.0.7      here_1.0.1      lattice_0.20-45 png_0.1-7      
@@ -59,16 +57,15 @@ dans lequel le document a été compilé sont indiquées ci-dessous.
     ##  [9] jsonlite_1.7.2  magrittr_2.0.1  evaluate_0.14   highr_0.9      
     ## [13] rlang_0.4.12    stringi_1.7.6   jquerylib_0.1.4 Matrix_1.3-4   
     ## [17] reticulate_1.22 rmarkdown_2.11  tools_4.1.2     stringr_1.4.0  
-    ## [21] xfun_0.28       fastmap_1.1.0   compiler_4.1.2  htmltools_0.5.2
+    ## [21] xfun_0.29       fastmap_1.1.0   compiler_4.1.2  htmltools_0.5.2
 
     rmarkdown::pandoc_version()
 
-    ## [1] '2.7.3'
+    ## [1] '2.14.2'
 
 </details>
 
-Introduction
-============
+# Introduction
 
 Dans de nombreux milieux professionnels, à des fins de communication
 diverses, sont produits régulièrement des documents intégrant des
@@ -103,15 +100,14 @@ collaboration avec Aaron Swartz (lui même connu pour avoir participer a
 la création de Creative Commons et son tragique destin qui fut l’objet
 d’un film). Sur le site de John Gruber, “daringfireball”, Markdown est
 décrit depuis décembre 2004 et on peut même y télécharger la version
-1.0.1 (voir
-<a href="http://daringfireball.net/projects/markdown" class="uri">http://daringfireball.net/projects/markdown</a>).
-L’idée de départ est simple et élégante : produire un langage léger qui
-simplifie les balises HTML (utilisé par tout les sites Internet). L’idée
-n’est pas tant de remplacer le HTML mais plutôt d’en augmenter
-l’efficacité d’écriture et de fait, il est beaucoup plus rapide d’écrire
-en Markdown qui couvre les opérations de formatage les plus courantes
-(listes, hyperliens, etc.). Notons qu’il existe d’autres langages qui
-répondent aux mêmes objectifs, par exemple ReStructuredText[2].
+1.0.1 (voir <http://daringfireball.net/projects/markdown>). L’idée de
+départ est simple et élégante : produire un langage léger qui simplifie
+les balises HTML (utilisé par tout les sites Internet). L’idée n’est pas
+tant de remplacer le HTML mais plutôt d’en augmenter l’efficacité
+d’écriture et de fait, il est beaucoup plus rapide d’écrire en Markdown
+qui couvre les opérations de formatage les plus courantes (listes,
+hyperliens, etc.). Notons qu’il existe d’autres langages qui répondent
+aux mêmes objectifs, par exemple ReStructuredText[2].
 
 Après la publication de Markdown, John Gruber a cessé de travailler sur
 Markdown[3] et d’autres développeurs, sans doute séduits par le langage,
@@ -127,8 +123,7 @@ une liste non exhaustive de différentes variantes Markdown:
     Markdow](https://github.com/fletcher/MultiMarkdown/wiki/MultiMarkdown-Syntax-Guide#math-support)
 -   [Pandoc Markdown](http://pandoc.org/README.HTML#pandocs-markdown)
 
-Fort heureusement, depuis 2014, CommonMark
-(<a href="https://commonmark.org/" class="uri">https://commonmark.org/</a>)
+Fort heureusement, depuis 2014, CommonMark (<https://commonmark.org/>)
 propose une spécification (norme technique) pour Markdown de plus en
 plus utilisée[4], ce qui signifie qu’en allant d’un outil à l’autre qui
 utilise cette spécification, il n’y a pas de questions à se poser quant
@@ -137,20 +132,17 @@ frustrant quand on utilise plusieurs outils qui utilisent différentes
 syntaxes Markdown), il suffit de se reporter à la spécification!
 
 Il est important de souligner que R Markdown (voir
-<a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>)[5]
-utilise [la variante Markdown de
+<http://rmarkdown.rstudio.com>)[5] utilise [la variante Markdown de
 Pandoc](https://rmarkdown.rstudio.com/lesson-8.html)[6]. Une précision
-relative à Pandoc
-(<a href="http://www.pandoc.org" class="uri">http://www.pandoc.org</a>)
-s’impose: il s’agit, comme l’indique le site internet, d’un
-“convertisseur de document universel”, en une ligne de commande Pandoc
-convertit un document dans un format donné en un document d’un autre
-format. Par exemple, Pandoc permet de passer d’un fichier `.tex` (LaTeX)
-à un fichier `.docx` (Word)! La variante Markdown de Pandoc a été pensée
-pour rester fidèle à l’esprit originel de Markdown tout en incluant
-davantage d’éléments de document communs différent format de
-documents[7]. Pour rendre le document dynamique, R Markdown utilise les
-fonctionnalités de
+relative à Pandoc (<http://www.pandoc.org>) s’impose: il s’agit, comme
+l’indique le site internet, d’un “convertisseur de document universel”,
+en une ligne de commande Pandoc convertit un document dans un format
+donné en un document d’un autre format. Par exemple, Pandoc permet de
+passer d’un fichier `.tex` (LaTeX) à un fichier `.docx` (Word)! La
+variante Markdown de Pandoc a été pensée pour rester fidèle à l’esprit
+originel de Markdown tout en incluant davantage d’éléments de document
+communs différent format de documents[7]. Pour rendre le document
+dynamique, R Markdown utilise les fonctionnalités de
 [`knitr`](http://cran.r-project.org/web/packages/knitr/index.html) qui
 intègre du code R et ce qu’il produit. Le document dynamique en question
 pourra être converti dans un grand nombre de format grâce à
@@ -175,25 +167,22 @@ anglais. Pour les lecteurs capables de lire l’anglais, je recommande [le
 site officiel de R Markdown](https://rmarkdown.rstudio.com) sur lequel
 vous trouverez, entre autres, un condensé d’utilisation sous forme de
 *Cheat Sheet*, voir
-<a href="http://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf" class="uri">http://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf</a>.
-Aussi, sur le site
-<a href="https://bookdown.org" class="uri">https://bookdown.org</a> vous
-trouverez un livre en anglais très complet sur le sujet, par l’un des
-architectes de R Markdown, Yihui Xie,
-<a href="https://bookdown.org/yihui/rmarkdown/" class="uri">https://bookdown.org/yihui/rmarkdown/</a>
-ainsi qu’un [livre d’astuces (*cook
+<http://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf>.
+Aussi, sur le site <https://bookdown.org> vous trouverez un livre en
+anglais très complet sur le sujet, par l’un des architectes de R
+Markdown, Yihui Xie, <https://bookdown.org/yihui/rmarkdown/> ainsi qu’un
+[livre d’astuces (*cook
 book*)](https://bookdown.org/yihui/rmarkdown-cookbook/).
 
 Une section complète du site de l’auteur principal de `knitr`, Yihui
-Xie, lui encore,
-<a href="http://yihui.name/knitr/" class="uri">http://yihui.name/knitr/</a>,
-permet de bien comprendre l’intégration des morceaux de code et des
-résultats de ce code, contenu qui fait l’objet d’un livre de ce même
-auteur (Xie, 2017). Je tiens également à signaler la [présentation de
-Mansun Kuo sur Rpubs](http://rpubs.com/mansun_kuo/24330). Pour apprendre
-la syntaxe Pandoc Markdown, vous pouvez vous reportez à la très complète
-page internet écrite en français par Jean-Daniel Bonjour,
-<a href="http://enacit1.epfl.ch/markdown-pandoc" class="uri">http://enacit1.epfl.ch/markdown-pandoc</a>.
+Xie, lui encore, <http://yihui.name/knitr/>, permet de bien comprendre
+l’intégration des morceaux de code et des résultats de ce code, contenu
+qui fait l’objet d’un livre de ce même auteur (Xie, 2017). Je tiens
+également à signaler la [présentation de Mansun Kuo sur
+Rpubs](http://rpubs.com/mansun_kuo/24330). Pour apprendre la syntaxe
+Pandoc Markdown, vous pouvez vous reportez à la très complète page
+internet écrite en français par Jean-Daniel Bonjour,
+<http://enacit1.epfl.ch/markdown-pandoc>.
 
 La syntaxe [Pandoc
 Markdown](http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html)
@@ -223,9 +212,7 @@ Avant de rentrer dans le vif du sujet, je souhaiterais insister sur le
 fait que cette introduction est axée sur la création de document en
 format Word, PDF et HTML pour de nombreux usages (rapport, article,
 etc.), mais que les possibilités offertes par `rmarkdown` sont plus
-vastes (voir le site dédié
-<a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>),
-entre autres
+vastes (voir le site dédié <http://rmarkdown.rstudio.com>), entre autres
 
 -   pour les documents :
     -   [PDF](https://en.wikipedia.org/wiki/Portable_Document_Format)
@@ -243,13 +230,12 @@ entre autres
 De plus, il existe des packages qui se basent sur `rmarkdown` et en
 étendent les applications. Par exemple, `blogdown` vous permet d’écrire
 des postes de blogue avec R Markdown dans un site permet généré par Hugo
-(<a href="https://gohugo.io/" class="uri">https://gohugo.io/</a>). De
-même, avec bookdown
-(<a href="https://bookdown.org/yihui/bookdown/" class="uri">https://bookdown.org/yihui/bookdown/</a>),
-vous pouvez créer de long documents HTML structurés comme un
-[Gitbook](https://www.gitbook.com). Ainsi, les fonctionnalités décrites
-dans ce document permettent d’utiliser une très grande variété de médias
-pour partager les fruits de votre labeur.
+(<https://gohugo.io/>). De même, avec bookdown
+(<https://bookdown.org/yihui/bookdown/>), vous pouvez créer de long
+documents HTML structurés comme un [Gitbook](https://www.gitbook.com).
+Ainsi, les fonctionnalités décrites dans ce document permettent
+d’utiliser une très grande variété de médias pour partager les fruits de
+votre labeur.
 
 <!-- Cette
 possibilité offerte depuis très longtemps avec la fonction `Sweave()` (package
@@ -263,11 +249,9 @@ package R très populaire qui a rendu la création de documents dynamiques avec 
 très efficace. -->
 <!-- TODO add table references sites ouvrages -->
 
-Utiliser un fichier R Markdown
-==============================
+# Utiliser un fichier R Markdown
 
-Organisation générale
----------------------
+## Organisation générale
 
 Un fichier R Markdown (dont l’extension est `.rmd` ou `.Rmd`), c’est :
 
@@ -305,13 +289,11 @@ fichier car différents langages y sont utilisés, notamment
     documents, YAML.
 
 Ajoutons à cela qu’avec la variante syntaxique Pandoc de Markdown, les
-symboles mathématiques TeX[10]
-(<a href="https://pandoc.org/MANUAL.html#math" class="uri">https://pandoc.org/MANUAL.html#math</a>)
+symboles mathématiques TeX[10] (<https://pandoc.org/MANUAL.html#math>)
 sont utilisés pour rendre facile l’écriture, entre autres, des
 équations[11], en un sens c’est un quatrième langage à connaître!
 
-Créer un fichier R Markdown
----------------------------
+## Créer un fichier R Markdown
 
 Créer un fichier R Markdown, c’est simplement créer un fichier dont
 l’extension est `.Rmd` ou `.rmd`, ce qui peut être fait avec n’importe
@@ -336,11 +318,9 @@ désiré](images/open_rmd2.png)
 ![Un document contenant différentes instructions et exemples est
 généré.](images/open_rmd3.png)
 
-Spécifier les documents à obtenir avec YAML
--------------------------------------------
+## Spécifier les documents à obtenir avec YAML
 
-Le site officiel
-<a href="https://yaml.org/" class="uri">https://yaml.org/</a> indique:
+Le site officiel <https://yaml.org/> indique:
 
 > \[*Traduction*\]
 >
@@ -359,9 +339,9 @@ permet de lire de tels fichiers et de les importer sous forme de listes.
 
 Pour comprendre l’essentiel du fonctionnement du YAML, je vous
 recommande le tutoriel à l’URL suivante :
-<a href="https://sweetohm.net/article/introduction-yaml.html" class="uri">https://sweetohm.net/article/introduction-yaml.html</a>
-en vous concentrant sur la syntaxe et non sur comment utiliser Python
-pour le faire. De manière générale:
+<https://sweetohm.net/article/introduction-yaml.html> en vous
+concentrant sur la syntaxe et non sur comment utiliser Python pour le
+faire. De manière générale:
 
     nomduchamp: données
 
@@ -383,7 +363,7 @@ ou encore
 
 Noté que l’indentation est utilisée pour signifier la hiérarchie entre
 les différents éléments et que les commentaires sont introduits par un
-“\#”.
+“#”.
 
     nomduchamp:
         souchamp1: élément1
@@ -397,7 +377,7 @@ les différents éléments et que les commentaires sont introduits par un
 Aussi, voici un exemple qui, bien que non-exhaustif, montre comment un
 fichier est structuré et comment l’important dans R (le fichier utilisé
 est disponible dans le répertoire GitHub
-<a href="https://github.com/KevCaz/Rmarkdowndocfr/blob/master/assets/data_01.yaml" class="uri">https://github.com/KevCaz/Rmarkdowndocfr/blob/master/assets/data_01.yaml</a>):
+<https://github.com/KevCaz/Rmarkdowndocfr/blob/master/assets/data_01.yaml>):
 
     author: Kevin Cazelles
     date: 2020-06-06
@@ -484,7 +464,7 @@ source de ce document) :
 
     ---
     title: "Utiliser R Markdown pour créer des documents dynamiques"
-    date: "08 December 2021"
+    date: "22 December 2021"
     author: par Kevin Cazelles
     lang: fr
     abstract: "Le package [...] pour aller plus loin."
@@ -644,8 +624,7 @@ d’accéder à la liste des options passée dans l’en-tête YAML comme suit:
 
 <!-- https://hitchdev.com/strictyaml/ -->
 
-Éditer le contenu du fichier R Markdown
----------------------------------------
+## Éditer le contenu du fichier R Markdown
 
 Pour éditer le contenu du fichier R Markdown, on utilise simplement du
 texte plein avec la syntaxe Pandoc Markdown (détaillée dans la section
@@ -653,8 +632,7 @@ suivante), la différence avec un document Markdown est qu’il est
 possible d’exécuter du code R et d’utiliser les résultat du code, ce qui
 rend le document dynamique (voir la section dédiée plus bas).
 
-Obtenir le document final (ou les documents finaux)
----------------------------------------------------
+## Obtenir le document final (ou les documents finaux)
 
 Une fois que le fichier est prêt (ou lorsqu’on souhaite voir un aperçu
 de notre document) et que le package `rmarkdown` est installé\[^4\], on
@@ -688,8 +666,7 @@ pas utilisé ici) est une mise en page qui inclut des marges larges où
 sont insérées les illustrations (dont les figures) et que nous devons au
 chercheur Edward Tufte.
 
-Le variante Pandoc de Markdown
-==============================
+# Le variante Pandoc de Markdown
 
 Dans cette partie, je présente les éléments de formatage du texte
 proposés par la syntaxe Pandoc de Markdown. L’ensemble est très bien
@@ -699,11 +676,11 @@ et très bien résumé à la première page du [guide de
 référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf).
 Pour une source en français, j’ai trouvé un excellent tour d’horizon
 nommé : “Élaboration et conversion de documents avec Markdown et Pandoc”
-(<a href="http://enacit1.epfl.ch/markdown-pandoc/" class="uri">http://enacit1.epfl.ch/markdown-pandoc/</a>)
-écrit par Jean-Daniel Bonjour. Parmi les nombreux tutoriels plus courts
-sur le sujet, je recommande celui de Sarah Simpkin (Simpkin, 2020)
-disponible en ligne à l’adresse suivante
-<a href="https://programminghistorian.org/fr/lecons/debuter-avec-markdown" class="uri">https://programminghistorian.org/fr/lecons/debuter-avec-markdown</a>.
+(<http://enacit1.epfl.ch/markdown-pandoc/>) écrit par Jean-Daniel
+Bonjour. Parmi les nombreux tutoriels plus courts sur le sujet, je
+recommande celui de Sarah Simpkin (Simpkin, 2020) disponible en ligne à
+l’adresse suivante
+<https://programminghistorian.org/fr/lecons/debuter-avec-markdown>.
 
 Avant de commencer, je tiens à préciser que certains symboles sont
 réservés au formatage du texte. Cependant, quand leur affichage est
@@ -712,12 +689,11 @@ l’antislash pour Markdown : “\\”. Par exemple, j’entre :
 
     \\ \& \# \$ \[
 
-Pour obtenir : \\ & \# $ \[. J’ajoute que certains sauts de ligne sont
+Pour obtenir : \\ & # $ \[. J’ajoute que certains sauts de ligne sont
 obligatoires pour obtenir la mise en page désirée (pour les notes de bas
 de page par exemple).
 
-Décoration du texte
--------------------
+## Décoration du texte
 
 -   Pour écrire du *texte en italique*, vous avez deux possibilités :
 
@@ -772,8 +748,7 @@ document en un seul format, ce fonctionnement devient un atout puisque
 vous pouvez utiliser toute la gamme de mise en forme offerte par le
 langage en question.
 
-Les titres
-----------
+## Les titres
 
 Le plus simple est d’utiliser un nombre croissant de `#` (*ATX-Style
 headers* en anglais) pour descendre dans l’arborescence des titres:
@@ -793,8 +768,7 @@ facilement les titres dans le code source.
     ------------------
     ### Un titre d'ordre 3
 
-Les listes
-----------
+## Les listes
 
 Les listes sont très intuitives en Markdown, alors qu’elles requièrent
 des balises un peu lourdes aussi bien en Latex qu’en HTML. Notez que
@@ -1021,8 +995,7 @@ ces lignes sont rendues ainsi :
 1.  truc 3
 2.  truc 4
 
-Sauts de ligne
---------------
+## Sauts de ligne
 
 En ajoutant une ligne (ou plus) vide entre deux paragraphes, les
 paragraphes sont correctement formatés[14]. Ainsi, avec les lignes
@@ -1068,8 +1041,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 La seule différence avec l’exemple précédent est l’ajout d’une
 tabulation après “veniam.”.
 
-Blocs de citation
------------------
+## Blocs de citation
 
 Pour utiliser un bloc de citation (la balise “blockquote” en HTML), il
 suffit d’utiliser “&gt;” avant la citation. Ainsi les lignes suivantes :
@@ -1097,8 +1069,7 @@ ce qui donne :
 >
 > > une hiérarchie dans la citation
 
-Blocs de code
--------------
+## Blocs de code
 
 Pour l’ensemble des exemples qui suivent, que je présente sous forme de
 lignes de code, j’utilise un environnement simple qui utilise une police
@@ -1164,8 +1135,7 @@ apostrophes inversés ci-dessus!
 Un des grands intérêts de R Markdown est d’avoir des blocs de codes R
 qui peuvent être exécutés par R, ce que nous verrons dans la suite.
 
-Les barres horizontales
------------------------
+## Les barres horizontales
 
 Une ligne barre horizontale peut être ajoutée comme suit :
 
@@ -1179,8 +1149,7 @@ ou encore :
 
 ------------------------------------------------------------------------
 
-Mathématiques
--------------
+## Mathématiques
 
 ### Symboles mathématiques
 
@@ -1193,9 +1162,8 @@ symboles. Ce sont les mêmes que celles proposées par
 expressions mathématiques dans le fichier HTML. Pour quelques exemples,
 [regarder ce site](http://www.suluclac.com/Wiki+MathJax+Syntax), pour
 quelque choses de plus complet, jetez un œil à l’article de Wikipedia
-sur le sujet
-<a href="https://en.wikibooks.org/wiki/LaTeX/Mathematics" class="uri">https://en.wikibooks.org/wiki/LaTeX/Mathematics</a>.
-Voici tout de même quelques exemples :
+sur le sujet <https://en.wikibooks.org/wiki/LaTeX/Mathematics>. Voici
+tout de même quelques exemples :
 
 -   quelques lettres grecques :
 
@@ -1253,22 +1221,21 @@ références seront gérées correctement, mais le rendu visuel n’est pas
 nécessairement celui désiré. Ils existent différentes solutions pour
 palier ceci. Pour les documents HTML, il est possible d’utiliser le
 mécanisme de rendu HTML de bookdown (voir
-<a href="https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html" class="uri">https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html</a>),
+<https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html>),
 ce qui revient à utiliser un autre type de format de sortie, mais qui
 reste du HTML. Sinon, il est possible d’utiliser le filtre
 [pandoc-eqnos](https://github.com/tomduck/pandoc-eqnos) (noter qu’il y a
 des filtres équivalents pour les tables et les figures). Enfin, si vous
 voulez simplement un PDF, vous pouvez travailler comme dans un document
 LaTeX (voir
-<a href="https://www.overleaf.com/learn/latex/Cross%20referencing%20sections,%20equations%20and%20floats" class="uri">https://www.overleaf.com/learn/latex/Cross%20referencing%20sections,%20equations%20and%20floats</a>).
+<https://www.overleaf.com/learn/latex/Cross%20referencing%20sections,%20equations%20and%20floats>).
 
-Les images
-----------
+## Les images
 
 Pour insérer une image, deux solutions nous sont offertes :
 
 1.  la combinaison dite “inline” : !+\[nom de l’image (inclus dans la
-    légende)\]+(adresse)+{\#label}. Par exemple,
+    légende)\]+(adresse)+{#label}. Par exemple,
 
          ![Le logo de R](./images/Rlogo.png)
 
@@ -1291,8 +1258,7 @@ pouvez peut injecter une balise `\\label{lelabel}` et utiliser
 des graphiques produits avec R et même n’importe quelle image (voir plus
 bas).
 
-Les tables
-----------
+## Les tables
 
 La création facilitée de tableaux est l’une des extensions bien utile de
 Pandoc Markdown. Il existe plusieurs extensions pour faire des tableaux.
@@ -1341,6 +1307,8 @@ ci-dessous un exemple de tableau de style “pipe table”:
 </tbody>
 </table>
 
+La légende associé au tableau.
+
 Si vous préférez les obtenir grâce à une interface de type “WYSIWYG”
 (*What you see is what you get*), vous pouvez utiliser [ce générateur de
 table](http://www.tablesgenerator.com/markdown_tables). Pour les
@@ -1350,8 +1318,7 @@ références, vos avec les mêmes options que pour les figures et les
 qu’avec R Markdown, vous pouvez facilement faire des tables à partir de
 data frames. Je reviens sur là-dessus plus bas.
 
-Références
-----------
+## Références
 
 ### Liens hypertextes
 
@@ -1473,7 +1440,7 @@ crochets et séparées par des points-virgules :
     2. Dans la littérature [...] [@Oreskes1994] bien que  [...] [@Lande1979; @Knauff2014].
 
 1.  Dans la littérature \[…\] (Oreskes et al., 1994) bien que \[…\]
-    (Knauff and Nejasmic, 2014; Lande, 1979).
+    (Knauff et Nejasmic, 2014; Lande, 1979).
 
 Pour ajouter du texte dans la parenthèse, il suffit d’ajouter le texte
 dans le crochet.
@@ -1484,14 +1451,13 @@ dans le crochet.
     \[…\] (Lande, 1979 entre autres).
 
 Il est important de savoir que la liste des références est mise à la fin
-du document, nous ajoutons donc \#Références (ou \# bibliographie) à la
+du document, nous ajoutons donc #Références (ou # bibliographie) à la
 fin du document pour lui donner un titre. Une autre remarque pour vous
 dire qu’il existe de nombreux fichiers “csl” (acronyme pour [*Citation
 Style Langage*](https://en.wikipedia.org/wiki/Citation_Style_Language))
 sur le [site de Zotero](https://www.zotero.org/styles).
 
-Intégration de R dans le document
-=================================
+# Intégration de R dans le document
 
 Le package `rmarkdown` combine la syntaxe Pandoc Markdown avec les
 fonctionnalités du [package
@@ -1502,8 +1468,7 @@ en ce sens que si les données associées et/ou le code R changent, le
 document évolue aussi. Cela permet, entre autres, de créer des rapports
 automatisés.
 
-Les blocs de code R
--------------------
+## Les blocs de code R
 
 Il y a deux manières d’insérer des sorties R dans le document:
 
@@ -1514,7 +1479,7 @@ Pour inclure une sortie texte directement dans un paragraphe, on utilise
  : `` `r expression` ``. Ainsi, par exemple, il est possible d’insérer
 l’heure et la date au moment de la compilation du document en utilisant
 la fonction *Sys.time()*, ainsi, `` `r Sys.time()` ``  nous donne
-2021-12-08 17:07:43.
+2021-12-22 17:19:56.
 
 Le reste de cette section se concentre sur les blocs de code R (*code
 chunks* en anglais) qui s’utilisent comme les [blocs de
@@ -1522,9 +1487,8 @@ code](#blocs-de-code) détaillés précédemment, mais, à la différence de
 ces-derniers, il est possible d’identifier le bloc de code (`idbloc`
 ci-dessous) et varier différents paramètres d’affichage du code source
 et des sorties (l’ensemble des paramètres sont disponibles à l’URL
-suivante
-<a href="https://yihui.org/knitr/options/" class="uri">https://yihui.org/knitr/options/</a>).
-Typiquement, l’utilisation d’un tel bloc de code ressemble à ceci :
+suivante <https://yihui.org/knitr/options/>). Typiquement, l’utilisation
+d’un tel bloc de code ressemble à ceci :
 
     ```{r, idbloc, param1 = val1, param2 = val2}
     ligne de code 1
@@ -1574,11 +1538,10 @@ coloration du code) avec la sortie console associée, en l’occurrence, le
 résultat de l’addition. Je présente dans la suite un certain nombre
 d’options qui donnent une large flexibilité dans la création des
 morceaux de code. Pour avoir accès à plus de précisions, reportez-vous
-aux ouvrages de référence (Xie, 2014; Xie et al., 2019, 2020) ou aux
+aux ouvrages de référence (Xie et al., 2020, 2019; Xie, 2014) ou aux
 pages internet asssociées.
 
-Modifier l’affichage du code source et des sorties associées
-------------------------------------------------------------
+## Modifier l’affichage du code source et des sorties associées
 
 Grâce aux différents paramètres des blocs de code, il est possible de
 sélectionner finement ce qui est affiché, aussi bien pour le code que
@@ -1587,12 +1550,11 @@ avant certaines parties du code, mais aussi de choisir finement les
 sorties R (figures, tables, etc) à ajouter dans le document.
 
 Dans cette section, j’ai choisi de détailler quelques paramètres clés,
-mais il y en a d’autres (voir
-<a href="https://yihui.org/knitr/hooks/" class="uri">https://yihui.org/knitr/hooks/</a>)
-qui permettent d’aller plus loin. Il est cependant important de noter
-que tout n’est pas nécessairement faisable avec ces paramètres. Ainsi,
-il est possible de sélectionner différentes coloration syntaxiques avec
-le paramètre “highlight” dans [l’en-tête
+mais il y en a d’autres (voir <https://yihui.org/knitr/hooks/>) qui
+permettent d’aller plus loin. Il est cependant important de noter que
+tout n’est pas nécessairement faisable avec ces paramètres. Ainsi, il
+est possible de sélectionner différentes coloration syntaxiques avec le
+paramètre “highlight” dans [l’en-tête
 YAML](#spécifier-les-documents-à-obtenir-avec-yaml)). Aussi, pour
 changer la police de font des blocs de code dans un document HTML, il
 faudra modifier certaines propriétés CSS du document.
@@ -2005,8 +1967,7 @@ j’obtiens bien 5 et je peux également utiliser ma fonction
 
     ## [1] 42
 
-Tables et figures
------------------
+## Tables et figures
 
 <!-- mettre des cartes -->
 
@@ -2055,77 +2016,79 @@ sera convertie dans le format désiré par Pandoc. De plus, la fonction
 <tr class="odd">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">12.938023</td>
-<td style="text-align: right;">12.5648819</td>
+<td style="text-align: right;">2.7810078</td>
+<td style="text-align: right;">1.2346192</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">12.989699</td>
-<td style="text-align: right;">12.0708639</td>
+<td style="text-align: right;">14.3938693</td>
+<td style="text-align: right;">13.7745091</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">14.638513</td>
-<td style="text-align: right;">14.7502023</td>
+<td style="text-align: right;">12.3559196</td>
+<td style="text-align: right;">10.6650889</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">1.807929</td>
-<td style="text-align: right;">-0.3617558</td>
+<td style="text-align: right;">3.9443532</td>
+<td style="text-align: right;">4.7148781</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">4.986080</td>
-<td style="text-align: right;">5.8096950</td>
+<td style="text-align: right;">13.0246428</td>
+<td style="text-align: right;">11.5741881</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">14.109788</td>
-<td style="text-align: right;">13.2850992</td>
+<td style="text-align: right;">7.7014853</td>
+<td style="text-align: right;">7.0063560</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">16.613760</td>
-<td style="text-align: right;">17.2758247</td>
+<td style="text-align: right;">5.0255041</td>
+<td style="text-align: right;">4.1518011</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">16.999402</td>
-<td style="text-align: right;">18.0428511</td>
+<td style="text-align: right;">15.4722669</td>
+<td style="text-align: right;">15.6359885</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">12.250838</td>
-<td style="text-align: right;">12.7326849</td>
+<td style="text-align: right;">0.4156024</td>
+<td style="text-align: right;">-0.1144005</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">7.695113</td>
-<td style="text-align: right;">6.1630754</td>
+<td style="text-align: right;">2.0212753</td>
+<td style="text-align: right;">0.9648649</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">1.881367</td>
-<td style="text-align: right;">0.7977230</td>
+<td style="text-align: right;">2.8293598</td>
+<td style="text-align: right;">2.9424558</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">11.830437</td>
-<td style="text-align: right;">13.4112561</td>
+<td style="text-align: right;">16.7902994</td>
+<td style="text-align: right;">18.6230330</td>
 </tr>
 </tbody>
 </table>
+
+Table créée à partir de *df1*
 
 Il y a bien d’autres paramètres dans la fonction *kable()*, par exemple,
 il est possible de choisir le nombre de chiffres utilisés après la
@@ -2153,88 +2116,90 @@ virgule ou encore d’inclure les numéros de lignes.
 <td style="text-align: left;">1</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">12.938</td>
-<td style="text-align: right;">12.565</td>
+<td style="text-align: right;">2.781</td>
+<td style="text-align: right;">1.235</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">2</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">12.990</td>
-<td style="text-align: right;">12.071</td>
+<td style="text-align: right;">14.394</td>
+<td style="text-align: right;">13.775</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">3</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">14.639</td>
-<td style="text-align: right;">14.750</td>
+<td style="text-align: right;">12.356</td>
+<td style="text-align: right;">10.665</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">4</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">1.808</td>
-<td style="text-align: right;">-0.362</td>
+<td style="text-align: right;">3.944</td>
+<td style="text-align: right;">4.715</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">5</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">4.986</td>
-<td style="text-align: right;">5.810</td>
+<td style="text-align: right;">13.025</td>
+<td style="text-align: right;">11.574</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">6</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">14.110</td>
-<td style="text-align: right;">13.285</td>
+<td style="text-align: right;">7.701</td>
+<td style="text-align: right;">7.006</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">7</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">16.614</td>
-<td style="text-align: right;">17.276</td>
+<td style="text-align: right;">5.026</td>
+<td style="text-align: right;">4.152</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">8</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">16.999</td>
-<td style="text-align: right;">18.043</td>
+<td style="text-align: right;">15.472</td>
+<td style="text-align: right;">15.636</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">9</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">12.251</td>
-<td style="text-align: right;">12.733</td>
+<td style="text-align: right;">0.416</td>
+<td style="text-align: right;">-0.114</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">10</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">7.695</td>
-<td style="text-align: right;">6.163</td>
+<td style="text-align: right;">2.021</td>
+<td style="text-align: right;">0.965</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">11</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">1.881</td>
-<td style="text-align: right;">0.798</td>
+<td style="text-align: right;">2.829</td>
+<td style="text-align: right;">2.942</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">12</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">11.830</td>
-<td style="text-align: right;">13.411</td>
+<td style="text-align: right;">16.790</td>
+<td style="text-align: right;">18.623</td>
 </tr>
 </tbody>
 </table>
+
+Table créée à partir de *df1*
 
 Pour en apprendre davantage, reportez-vous à la documentation de cette
 fonction. Je tiens au passage à signaler le package
@@ -2307,7 +2272,7 @@ des pourcentage, pour cela on utilise `out.width`
 
 Il est aussi possible de changer le format de sortie des figures avec le
 paramètre `dev` (la liste complète des formats est disponible à
-<a href="https://yihui.org/knitr/options/" class="uri">https://yihui.org/knitr/options/</a>).
+<https://yihui.org/knitr/options/>).
 <!-- Dans le bloc qui suit j'utilise le [format -->
 <!-- SVG](https://www.synbioz.com/blog/tech/le-svg-pour-quoi-faire) -->
 
@@ -2385,8 +2350,7 @@ produit par R. Par exemple, pour ajouter le logo de R utilisé plus haut
 
 <img src="./images/Rlogo.png" width="40%" style="display: block; margin: auto;" />
 
-Application: modèle linéaire dynamique
---------------------------------------
+## Application: modèle linéaire dynamique
 
 Supposons que je souhaite faire un modèle linéaire avec la variable
 explicative *var1* et la variable à expliquer *var2* de notre *tab1*.
@@ -2402,7 +2366,7 @@ suivant&nbsp;:
     plot(mod1)
     ```
 
-avec le commentaire suivant: "La pente de la regression est de
+avec le commentaire suivant: “La pente de la regression est de
 `` `r format(summary(mod1)$coefficients[2, 1], digits = 3)` `` (et je
 mettrai le résultat en gras).
 
@@ -2421,16 +2385,16 @@ Le résultat est le suivant&nbsp;:
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-1.430089</td>
-<td style="text-align: right;">0.6770192</td>
-<td style="text-align: right;">-2.112331</td>
-<td style="text-align: right;">0.0608033</td>
+<td style="text-align: right;">-0.8071663</td>
+<td style="text-align: right;">0.5258334</td>
+<td style="text-align: right;">-1.535023</td>
+<td style="text-align: right;">0.1557886</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">var1</td>
-<td style="text-align: right;">1.116222</td>
-<td style="text-align: right;">0.0569578</td>
-<td style="text-align: right;">19.597358</td>
+<td style="text-align: right;">1.0424140</td>
+<td style="text-align: right;">0.0532322</td>
+<td style="text-align: right;">19.582384</td>
 <td style="text-align: right;">0.0000000</td>
 </tr>
 </tbody>
@@ -2441,81 +2405,62 @@ Le résultat est le suivant&nbsp;:
 Mon modèle linéaire
 </p>
 
-La pente de la regression est de **1.12**.
+La pente de la regression est de **1.04**.
 
 Si je change les données de `tab1`, la table, les graphiques et mon
 commentaire seront adéquatement modifiés, ce qui peut s’avérer très
 utile pour créer rapidement des rapports similaires, par exemple un
 rapport mensuel pour lequel seules les données changent.
 
-Utilisations avancées
-=====================
+# Organiser son document et son code
 
-:construction: WIP :construction:
+Jusqu’ici nous avons vu comment utiliser Markdown et les bloc de code R
+pour rendre le document dynamique. Ici, nous allons passer en revue
+différentes fonctionnalités qui nous permettent de mieux structurer
+notre document, surtout quand il est long et que beacoup de code est
+utilisé.
 
-Extraire du code R
-------------------
+## Inclure un fichier R Markdown dans un fichier R Markdown
 
-La function `purl()` du package `knitr` offre la possibilité d’extraire
-le code R d’un fichier RMD. Pour se faire il suffit d’utiliser la
-fonction de la manière suivante.
+Pour des raisons d’organisation, il est parfois plus simple d’organiser
+un long document en différents fichiers. Par exemple, quand différentes
+personnes travaillent avec sur différentes parties d’un rapport.
+L’options `chlid` nous permet d’inclure un fichier R Markdown dans un
+autre document R Markdown. Par exemple pour inclure le fichier
+[part.Rmd](https://github.com/KevCaz/Rmarkdowndocfr/scripts/part.Rmd),
+nous utilisons
 
-    purl(input = "UtiliserRMarkdown.Rmd", output = "code.R")
+    ```{r include_part, child = "scripts/part.Rmd"}
 
-L’ensemble du code R extrait de `UtiliserRMarkdown.Rmd` sera écrit dans
-le fichier `code.R` qui peut-être utilisé tel quel. Les blocs de code
-seront facilement identifiés avec des commentaires incluant le nom donné
-au bloc de code ainsi que les options choisies. Par exemple, ci-dessous
-est présenté le bloc de code de la section [Modifier l’affichage du code
-source avec le paramètre
-`echo`](#modifier-laffichage-du-code-source-avec-le-paramètre-echo).
-
-    ## ----sanscode, echo = FALSE---------------------------------------------------
-    # une addition de variables avec R
-    a <- 2
-    b <- 3
-    a + b
-
-L’entièreté du script est disponible à l’URL suivante&nbsp;:
-<a href="https://kevcaz.github.io/Rmarkdowndocfr/code.R" class="uri">https://kevcaz.github.io/Rmarkdowndocfr/code.R</a>.
-Cette fonctionnalité peut se révéler vraiment efficace pour commenter un
-script un peu compliqué et le partager pour utilisation. Dans de tel cas
-d’usage il y a souvent des blocs de code qui peuvent être superflus, par
-exemple des morceaux ajouter pour améliorer les explications, mais qui
-ne sont pas utile pour la bonne exécution du script. Dans ce cas, il est
-possible d’utiliser l’option `purl` pour enlever les blocs de code. Par
-défaut, l’option est réglée sur `TRUE` et donc tous les blocs de code
-sont ajoutés. Le bloc de code suivant sera ajouté dans le document R
-Markdown et toutes les sorties qui en découle, mais pas dans le fichier
-`code.R`.
-
-    ```{r nopurl, purl = FALSE}
-    # ce bloc sera dans le document mais pas dans code.R 
-    cos(pi)
     ```
 
-    # ce bloc sera dans le document mais pas dans code.R 
-    cos(pi)
+et voici ce que nous obtenons:
 
-    ## [1] -1
+*début du document `part.Rmd`*
 
-Utiliser un script externe
---------------------------
+    print("Ceci est le code R du fichier part.Rmd")
 
-Pour insérer dans un fichier de code, il peut parfois être plus pratique
-d’utiliser un script externe, autrement avoir une partie (ou
-l’entièreté) du code d’un fichier `.R` (ou `.r`). Plusieurs manières de
-procéder existent, plus ou moins pertinentes selon ce que nous voulons
-faire. Si le code est simplement un ensemble de lignes à exécuter de
-manière silencieuse, alors utiliser `source()` est probablement une
-bonne option. Il y a cependant une petite chose à savoir : il est
-préférable d’utiliser l’argument `local` pour s’assurer que le code sera
-exécuté dans le bon environment, voir le chapitre *Source external R
-scripts* de Xie et al. (2020) (aussi disponible à l’URL suivante
-<a href="https://bookdown.org/yihui/rmarkdown-cookbook/source-script.html" class="uri">https://bookdown.org/yihui/rmarkdown-cookbook/source-script.html</a>).
-Le script à charger est disponible à l’URL suivante
-<a href="https://github.com/KevCaz/Rmarkdowndocfrscripts/scr_externe1.R" class="uri">https://github.com/KevCaz/Rmarkdowndocfrscripts/scr_externe1.R</a>,
-il contient les lignes suivantes:
+    ## [1] "Ceci est le code R du fichier part.Rmd"
+
+*fin du document `part.Rmd`*
+
+## Utiliser un script externe
+
+Pour insérer du code dans le document R Markdown, il peut parfois être
+plus pratique d’utiliser un script externe, autrement avoir une partie
+(ou l’entièreté) du code d’un fichier `.R` (ou `.r`). Plusieurs manières
+de procéder existent, plus ou moins pertinentes selon ce que nous
+voulons faire. Si le code est simplement un ensemble de lignes à
+exécuter de manière silencieuse, alors faire appel à la fonction
+`source()` est probablement une bonne option. Il y a cependant une
+petite chose à savoir : il est préférable d’utiliser l’argument `local`
+pour s’assurer que le code sera exécuté dans le bon environment, voir le
+chapitre *Source external R scripts* de Xie et al. (2020) (aussi
+disponible à l’URL suivante
+<https://bookdown.org/yihui/rmarkdown-cookbook/source-script.html>). Le
+script à charger est disponible à l’URL suivante
+<https://github.com/KevCaz/Rmarkdowndocfr/scripts/scr_externe1.R>, il
+contient les lignes suivantes&nbsp;:
 
     var1 <- 2
     var2 <- 10*var1
@@ -2529,7 +2474,7 @@ que nous chargeons avec la fonction `source()`
     ```
 
 Une fois chargé, nous pouvons accéder aux variables qui y sont
-déclarées, par exemple
+déclarées, par exemple&nbsp;:
 
     var4
 
@@ -2545,8 +2490,8 @@ l’option `code` pour enter le code à ajouter.
 
     var1 <- 1
 
-Ce qui est pratique avec cette option c’est qu’il est possible
-d’utiliser une fonction qui va lire un fichier et donc il est aisé
+Ce qui est pratique avec cette option, c’est qu’il est possible
+d’utiliser une fonction qui va lire un fichier. Il devient alors facile
 d’insérer le contenu d’un script R. C’est possible de le faire avec la
 fonction `readLines()`, ou encore avec la function `read_utf8()` du
 package [`xfun`](https://CRAN.R-project.org/package=xfun) qui retourne
@@ -2566,9 +2511,9 @@ nous donne
 Une limite de cette approche est qu’elle nous permet pas d’exécuter
 différente partie du script dans différent bloc de code, ce qui peut, à
 des fins pédagogiques, être utile. Il existe cependant un moyen simple
-d’utiliser différentes parties d’un script en l’annotant avec des
+d’utiliser différentes parties d’un script R en l’annotant avec des
 balises `@knitr`. Prenons le script
-[scr\_externe2.R](https://github.com/KevCaz/Rmarkdowndocfrscripts/scr_externe2.R)
+[scr\_externe2.R](https://github.com/KevCaz/Rmarkdowndocfr/scripts/scr_externe2.R)
 
     # @knitr part1
     var1 <- 2
@@ -2580,7 +2525,7 @@ balises `@knitr`. Prenons le script
     var4 <- sin(var2)
     # @knitr end_part2
 
-Le code est séparé en deux parties., chacune limitée par des balises
+Le code est séparé en deux parties, chacune limitée par des balises
 `@knitr` qui suivent le format suivant  
 
     # @knitr id
@@ -2622,13 +2567,58 @@ Notons que les commandes ajoutées à la suite seront ignorées.
 
 <!-- https://stackoverflow.com/questions/52397430/include-code-from-an-external-r-script-run-in-display-both-code-and-output -->
 
-Modifier les options par défaut
--------------------------------
+## Extraire du code R
+
+La function `purl()` du package `knitr` offre la possibilité d’extraire
+le code R d’un fichier RMD. Pour ce faire, il suffit d’utiliser la
+fonction de la manière suivante&nbsp;:
+
+    purl(input = "UtiliserRMarkdown.Rmd", output = "code.R")
+
+L’ensemble du code R extrait de `UtiliserRMarkdown.Rmd` sera écrit dans
+le fichier `code.R` qui peut-être utilisé tel quel. Les blocs de code
+seront facilement identifiés avec des commentaires incluant le nom donné
+au bloc de code ainsi que les options choisies. Par exemple, ci-dessous
+est présenté le bloc de code de la section [Modifier l’affichage du code
+source avec le paramètre
+`echo`](#modifier-laffichage-du-code-source-avec-le-paramètre-echo).
+
+    ## ----sanscode, echo = FALSE--------------------------------------------------
+    # une addition de variables avec R
+    a <- 2
+    b <- 3
+    a + b
+
+L’entièreté du script est disponible à l’URL suivante&nbsp;:
+<https://kevcaz.github.io/Rmarkdowndocfr/code.R>. Cette fonctionnalité
+peut se révéler vraiment efficace pour commenter un script un peu
+compliqué et le partager pour utilisation. Dans de tels cas d’usage il y
+a souvent des blocs de code qui peuvent être superflus, par exemple des
+bouts de code ajoutés pour améliorer les explications, mais qui ne sont
+pas utiles pour la bonne exécution du script. Dans ce cas, il est
+possible d’utiliser l’option `purl` pour enlever les blocs de code. Par
+défaut, l’option est réglée sur `TRUE` et donc tous les blocs de code
+sont ajoutés. Le bloc de code suivant sera ajouté dans le document R
+Markdown avec les sorties associées, mais pas dans le fichier `code.R`.
+
+`{r nopurl, purl = FALSE}    # ce bloc sera dans le document mais pas dans code.R     cos(pi)`
+
+    # ce bloc sera dans le document mais pas dans code.R 
+    cos(pi)
+
+    ## [1] -1
+
+# Utilisations avancées
+
+Dans cette section nous allons voir comment créer nos propres options
+pour bloc de code.
+
+## Modifier les options par défaut
 
 Le package `knitr` nous offre aussi la possibilité de changer non
 seulement les options par défaut mais aussi le comportement des options
 existantes ainsi que la possibilité de créer nos propre options
-<a href="https://yihui.org/knitr/objects/" class="uri">https://yihui.org/knitr/objects/</a>
+<https://yihui.org/knitr/objects/>
 
 -   `opts_chunk`: manages options for code chunks
 -   `opts_current`:
@@ -2641,8 +2631,7 @@ existantes ainsi que la possibilité de créer nos propre options
 function ont une méthode `get()` pour accéder aux différente valeur, une
 function `set()` pour changer les
 
-Créer des points d’ancrage personnalisés
-----------------------------------------
+## Créer des points d’ancrage personnalisés
 
 WIP
 
@@ -2652,8 +2641,7 @@ associées. Le package `knitr` nous offre aussi la possibilité de changer
 non seulement les options par défaut mais aussi le comportement des
 options existantes ainsi que la possibilité de créer nos propre options.
 Cela se fait grâce à des points d’ancrage, *hooks* en anglais[20],
-(<a href="https://yihui.org/knitr/hooks/" class="uri">https://yihui.org/knitr/hooks/</a>)
-Il en existe différents types:
+(<https://yihui.org/knitr/hooks/>) Il en existe différents types:
 
 1.  les points d’ancrange pour les bloc de code (*chunk hooks*):
     `knit_hooks`
@@ -3044,8 +3032,8 @@ fonction qui sera appelée quand l’option à laquelle elle a été assignée
 sera non null. Elle permet de rouler du code avant ou après le code
 chunk en utilisant éventuellement les autres options du code chunk.
 Comme expliquée par l’auteur de `knitr`, (voir
-<a href="https://yihui.org/knitr/hooks/#chunk-hooks" class="uri">https://yihui.org/knitr/hooks/#chunk-hooks</a>),
-la déclaration se fait en ajoutant une fonction de la manière suivante
+<https://yihui.org/knitr/hooks/#chunk-hooks>), la déclaration se fait en
+ajoutant une fonction de la manière suivante
 
     knit_hooks$set(mon_hook = function(before, options, envir) {
         if (before) {
@@ -3056,7 +3044,7 @@ la déclaration se fait en ajoutant une fonction de la manière suivante
     })
 
 Quelques exemples sont donnés au lien suivant:
-<a href="https://github.com/yihui/knitr-examples/blob/master/045-chunk-hook.md" class="uri">https://github.com/yihui/knitr-examples/blob/master/045-chunk-hook.md</a>.
+<https://github.com/yihui/knitr-examples/blob/master/045-chunk-hook.md>.
 Nous les reprenons avec quelques modifications.
 
     knit_hooks$set(hook1 = function(before, options, envir) {
@@ -3123,23 +3111,27 @@ et donc on peut utiliser toute les valeurs dans le *hook!*
 <!-- TODO add ex -->
 <!-- https://kbroman.org/knitr_knutshell/pages/Rmarkdown.html -->
 
-Exécuter des blocs de code dans un autre language
--------------------------------------------------
+## Exécuter des blocs de code dans un autre language
+
+### Les engins disponibles
 
 Comme nous l’avons vu jusqu’ici, R Markdown est un outil privilégié pour
 R, les blocs de code sont exécutés et les sorties y sont ajoutées. Un
 des principes fondamentaux de R est de s’interfacer avec différents
-langages (Chambers, 2016). Il existe ainsi différents package pour
-venir, le plus populaire étant
-[`Rcpp`](https://CRAN.R-project.org/package=Rcpp) qui offre une
-intégration avec [C++](https://isocpp.org/). Il en existe d’autres comme
+langages (Chambers, 2016). R est ainsi installé avec des outils pour
+rendre possible cette interface (par exemple la fonction `.Call()`,
+`.C()` et `.Fortran()`) et il existe packages qui facilitent
+l’utilisation d’autres languages dans R. Le plus populaire de ces
+packages est [`Rcpp`](https://CRAN.R-project.org/package=Rcpp) qui offre
+une intégration poussée avec [C++](https://isocpp.org/). Il en existe
+d’autres comme
 [`reticulate`](https://CRAN.R-project.org/package=reticulate) (Ushey et
-al., 2021) qui connect R avec [Python](https://www.python.org/) et
+al., 2021) qui connecte R avec [Python](https://www.python.org/) et
 [`JuliaCall`](https://CRAN.R-project.org/package=JuliaCall) (Li, 2019)
 qui fait le lien entre R et [Julia](https://julialang.org/). Grâce à ces
 packages qui connectent R avec d’autres languages, il est possible de
-les intégrer directement dans markdown en sélectionnant le bon
-engin[21]. La liste des engins disponibles est contenu dans
+les intégrer directement dans R Markdown en sélectionnant le bon
+engin[21]. La liste des engins disponibles est contenue dans
 `knit_engines` qui se manipule comme `opts_chunk`.
 
     names(knitr::knit_engines$get())
@@ -3147,19 +3139,42 @@ engin[21]. La liste des engins disponibles est contenu dans
     ##  [1] "awk"       "bash"      "coffee"    "gawk"      "groovy"    "haskell"  
     ##  [7] "lein"      "mysql"     "node"      "octave"    "perl"      "psql"     
     ## [13] "Rscript"   "ruby"      "sas"       "scala"     "sed"       "sh"       
-    ## [19] "stata"     "zsh"       "highlight" "Rcpp"      "tikz"      "dot"      
-    ## [25] "c"         "cc"        "fortran"   "fortran95" "asy"       "cat"      
-    ## [31] "asis"      "stan"      "block"     "block2"    "js"        "css"      
-    ## [37] "sql"       "go"        "python"    "julia"     "sass"      "scss"     
-    ## [43] "R"         "bslib"     "targets"
+    ## [19] "stata"     "zsh"       "asis"      "asy"       "block"     "block2"   
+    ## [25] "bslib"     "c"         "cat"       "cc"        "comment"   "css"      
+    ## [31] "dot"       "embed"     "fortran"   "fortran95" "go"        "highlight"
+    ## [37] "js"        "julia"     "python"    "R"         "Rcpp"      "sass"     
+    ## [43] "scss"      "sql"       "stan"      "targets"   "tikz"      "verbatim"
 
-Nous allons prendre pour exemple Python (voir aussi
-<a href="https://github.com/rstudio/reticulate#python-in-r-markdown" class="uri">https://github.com/rstudio/reticulate#python-in-r-markdown</a>)
-et Julia (voir
-<a href="https://cran.r-project.org/web/packages/JuliaCall/vignettes/Julia_in_RMarkdown.html" class="uri">https://cran.r-project.org/web/packages/JuliaCall/vignettes/Julia_in_RMarkdown.html</a>).
-Il est donc important que les deux packages soient installés.
+Nous allons prendre pour exemples Python (voir aussi
+<https://github.com/rstudio/reticulate#python-in-r-markdown>) et Julia
+(voir
+<https://cran.r-project.org/web/packages/JuliaCall/vignettes/Julia_in_RMarkdown.html>).
+Il est donc important que les deux packages soient installés, ainsi
+qu’une version de Python et de Julia.
 
     install.packages(c("reticulate", "JuliaCall"))
+
+Voici les lignes qui vous permettent de vérifier si tout est
+correctement et de vérifier quelles versions de Python et Julia sont
+installées.
+
+    reticulate::py_config()
+
+    ## python:         /usr/bin/python3
+    ## libpython:      /usr/lib/python3.8/config-3.8-x86_64-linux-gnu/libpython3.8.so
+    ## pythonhome:     //usr://usr
+    ## version:        3.8.10 (default, Nov 26 2021, 20:14:08)  [GCC 9.3.0]
+    ## numpy:           [NOT FOUND]
+    ## 
+    ## python versions found: 
+    ##  /usr/bin/python3
+    ##  /usr/bin/python
+
+    JuliaCall::julia_command("VERSION") 
+
+    ## v"1.7.0"
+
+### Utiliser Python
 
 Pour Python, voici l’engin utilisé.
 
@@ -3180,7 +3195,7 @@ Pour Python, voici l’engin utilisé.
     ## }
     ## <environment: namespace:knitr>
 
-Et voici comment nous pouvons utiliser un bloc de code Python dans R
+Et voici un exemple de comment utiliser un bloc de code Python dans R
 Markdown.
 
     ```{python py1, comment = "#py>"}
@@ -3195,6 +3210,22 @@ Si vous reprenez la ligne de l’engin utilisé, vous comprenez que toutes
 les options du bloc de code et les données sont passées à la fonction
 `eng_python()` du package `reticulate` qui s’occupe d’exécuter le code
 et de réunir les sorties.
+
+Voici un deuxième exemple avec cette fois si une fonction pour calculer
+la longueur du grand côté d’un triangle rectangle (hypoténuse) à partir
+de la connaissance de la longueur des deux autres côtés.
+
+    def hypothenuse(a, b):
+        return (a ** 2 + b ** 2) ** 0.5
+
+Une fois déclaré, nous pouvons l’appeler dans une autre balise qui
+utilise l’engin \``python`.
+
+    hypothenuse(4, 3)
+
+    #py> 5.0
+
+### Utiliser Julia
 
 <!-- monter le mix R / Python -->
 
@@ -3211,7 +3242,7 @@ Pour Julia, voici l’engin utilisé.
 Dans ce cas ci, le code et les options sont passées à a fonction
 `eng_juliacall()` du package `JuliaCall`.
 
-    ```{julia, comment = "#jl>"}
+    ```{julia jl1, comment = "#jl>"}
     [2, 2] .* 3
     ```
 
@@ -3221,11 +3252,46 @@ Dans ce cas ci, le code et les options sont passées à a fonction
     #jl>  6
     #jl>  6
 
+Voici la même function `hypothenus()` en julia
+
+    function hypothenuse(a, b)
+      return (a^2 + b^2)^0.5
+    end
+
+    #jl> hypothenuse (generic function with 1 method)
+
+    hypothenuse(4, 3)
+
+    #jl> 5.0
+
+Notons qu’il n’y a pas de conflit entre les deux fonctions
+`hypothenuse`, l’une est associé aux blocs de code `python` et l’autre
+aux blocs de code `julia`.
+
+Ici nous venons de montrer que nous pouvons utiliser d’autre langages
+dans des blocs de code utilisant des engins distincts. Cela nous a
+permis de constater que R Markdown peut être un outil très efficace pour
+comparer comment différentes opérations sont réalisées par différents
+languages. Pour Julia et Python, les engins utilisés sont issus de
+packages qui implémentent une interface avec R. Grâce à ces packages,
+nous pouvons utiliser du code Python et du code Julia directement dans
+R, ce qui est très bien expliqué dans la documentation de ces packages.
+Ici, nous nous sommes limités à utiliser des engins dont le but est de
+générer des blocs de code comme ci nous faisions un appel direct (sans
+passer par R) à ces languages.
+
 <!-- parler des limites -->
 <!-- Comme les autres on peut setter un interpreteur -->
+<!-- 
 
-Autres packages
----------------
+## Divers 
+
+TODO (p-e)
+
+- utiliser des émojis
+- faire un template pour un rapport avec whisker ou juste utiliser whisker -->
+
+# Conclusion
 
 TODO
 
@@ -3240,19 +3306,9 @@ quelques exemples, probablement les plus populaire
 -   [`pagedown`](https://CRAN.R-project.org/package=pagedown) pagejs
 -   [`xaringan`](https://CRAN.R-project.org/package=xaringan) remark
 
-Divers
-------
+# Références
 
-TODO (p-e)
-
--   utiliser des émojis
--   faire un template pour un rapport avec whisker ou juste utiliser
-    whisker
-
-Références
-==========
-
-Chambers, J.M., 2016. Extending R, The R series. CRC Press, Boca Raton
+Chambers, J.M., 2016. Extending R, The R Series. CRC Press, Boca Raton
 London New York.
 
 Knauff, M., Nejasmic, J., 2014. An Efficiency Comparison of Document
@@ -3261,72 +3317,70 @@ Preparation Systems Used in Academic Research and Development. PLoS One
 
 Lande, R., 1979. Quantitative Genetic Analysis of Multivariate Evolution
 , Applied to Brain : Body Size Allometry Russell Lande. Evolution (N.
-Y). 33, 402–416.
+Y). 33, 402‑416.
 
-Li, C., 2019. JuliaCall: An R package for seamless integration between R
+Li, C., 2019. JuliaCall: an R package for seamless integration between R
 and Julia. The Journal of Open Source Software 4, 1284.
 <https://doi.org/10.21105/joss.01284>
 
 Oreskes, N., Shrader-Frechette, K., Belitz, K., 1994. Verification,
-validation, and confirmation of numerical models in the earth sciences.
-Science (80-. ). 263, 641–646.
+Validation, and Confirmation of Numerical Models in the Earth Sciences.
+Science (80-. ). 263, 641‑646.
 
 Simpkin, S., 2020. Débuter avec Markdown. Programming Historian en
 français. <https://doi.org/10.46430/phfr0007>
 
-Ushey, K., Allaire, J., Tang, Y., 2021. Reticulate: Interface to
-’python’.
+Ushey, K., Allaire, J., Tang, Y., 2021. [reticulate: Interface to
+’Python’](https://CRAN.R-project.org/package=reticulate).
 
-Xie, Y., 2017. Dynamic documents with R and knitr. CRC Press, Boca
+Xie, Y., 2017. Dynamic Documents with R and Knitr. CRC Press, Boca
 Raton, Florida.
 
-Xie, Y., 2014. Dynamic documents with R and Knitr, Chapman & Hall/CRC
-the R series. CRC Press, Taylor & Francis, Boca Raton.
+Xie, Y., 2014. Dynamic Documents with R and Knitr, Chapman & Hall/CRC
+the R Series. CRC Press, Taylor & Francis, Boca Raton.
 
-Xie, Y., Allaire, J.J., Grolemund, G., 2019. R Markdown: The definitive
-guide. CRC Press, Taylor and Francis Group, Boca Raton.
+Xie, Y., Allaire, J.J., Grolemund, G., 2019. R Markdown: The Definitive
+Guide. CRC Press, Taylor and Francis Group, Boca Raton.
 
-Xie, Y., Dervieux, C., Riederer, E., 2020. R markdown cookbook, 1st ed,
+Xie, Y., Dervieux, C., Riederer, E., 2020. R Markdown Cookbook, 1ʳᵉ ed,
 The R Series. Taylor and Francis, CRC Press, Boca Raton.
 
-[1] <a href="https://en.wikipedia.org/wiki/John_Gruber" class="uri">https://en.wikipedia.org/wiki/John_Gruber</a>,
+[1] <https://en.wikipedia.org/wiki/John_Gruber>, consulté le
+1<sup>er</sup> juin 2020.
+
+[2] <https://fr.wikipedia.org/wiki/ReStructuredText>, consulté le
+1<sup>er</sup> juin 2020.
+
+[3] <https://blog.codinghorror.com/responsible-open-source-code-parenting/>,
 consulté le 1<sup>er</sup> juin 2020.
 
-[2] <a href="https://fr.wikipedia.org/wiki/ReStructuredText" class="uri">https://fr.wikipedia.org/wiki/ReStructuredText</a>,
-consulté le 1<sup>er</sup> juin 2020.
-
-[3] <a href="https://blog.codinghorror.com/responsible-open-source-code-parenting/" class="uri">https://blog.codinghorror.com/responsible-open-source-code-parenting/</a>,
-consulté le 1<sup>er</sup> juin 2020.
-
-[4] Par exemple Goldmark,
-<a href="https://github.com/yuin/goldmard" class="uri">https://github.com/yuin/goldmard</a>,
-un parser Markdown écrit en Go et utilisé par Hugo (un générateur de
-site très populaire), est compatible avec Common Mark.
+[4] Par exemple Goldmark, <https://github.com/yuin/goldmard>, un parser
+Markdown écrit en Go et utilisé par Hugo (un générateur de site très
+populaire), est compatible avec Common Mark.
 
 [5] La version 1 n’utilise pas Pandoc.
 
 [6] Pandoc est d’ailleurs capable de gérer différentes variantes de
 Markdown.
 
-[7] <a href="https://pandoc.org/MANUAL.html#pandocs-markdown" class="uri">https://pandoc.org/MANUAL.html#pandocs-markdown</a>,
-1<sup>er</sup> juin 2020.
+[7] <https://pandoc.org/MANUAL.html#pandocs-markdown>, 1<sup>er</sup>
+juin 2020.
 
-[8] voir
-<a href="https://pandoc.org/MANUAL.html#templates" class="uri">https://pandoc.org/MANUAL.html#templates</a>,
-consulté le 1<sup>er</sup> juin 2020.
+[8] voir <https://pandoc.org/MANUAL.html#templates>, consulté le
+1<sup>er</sup> juin 2020.
 
 [9] du contenu préliminaire.
 
 [10] voir
-&gt;<a href="https://fr.wikibooks.org/wiki/LaTeX/%C3%89crire_des_math%C3%A9matiques" class="uri">https://fr.wikibooks.org/wiki/LaTeX/%C3%89crire_des_math%C3%A9matiques</a>&gt;,
+&gt;<https://fr.wikibooks.org/wiki/LaTeX/%C3%89crire_des_math%C3%A9matiques>&gt;,
 consulté le 2 juin 2020.
 
 [11] Voir la section “Math” à l’URL suivant
-&gt;<a href="https://pandoc.org/MANUAL.html#pandocs-markdown" class="uri">https://pandoc.org/MANUAL.html#pandocs-markdown</a>&gt;,
-consulté le 2 juin 2020.
+&gt;<https://pandoc.org/MANUAL.html#pandocs-markdown>&gt;, consulté le 2
+juin 2020.
 
-[12] <a href="https://cran.r-project.org/web/packages/yaml/index.html" class="uri">https://cran.r-project.org/web/packages/yaml/index.html</a>,
-consulté le 8 juin 2020.
+[12] <https://cran.r-project.org/web/packages/yaml/index.html>, consulté
+le 8 juin 2020.
 
 [13] Le site de documentation est totalement écrit en Markdown et
 reprend ce que nous pouvons lire sur le [site de
@@ -3337,10 +3391,10 @@ reprend mais en français!
 paragraphes seront des éléments paragraphes (balise `<p>`).
 
 [15] Voir la section *Fenced code blocks* du manuel de référence
-<a href="https://pandoc.org/MANUAL.html" class="uri">https://pandoc.org/MANUAL.html</a>.
+<https://pandoc.org/MANUAL.html>.
 
 [16] voir
-<a href="https://tex.stackexchange.com/questions/111868/pandoc-how-can-i-get-numbered-latex-equations-to-show-up-in-both-pdf-and-html-o" class="uri">https://tex.stackexchange.com/questions/111868/pandoc-how-can-i-get-numbered-latex-equations-to-show-up-in-both-pdf-and-html-o</a>)
+<https://tex.stackexchange.com/questions/111868/pandoc-how-can-i-get-numbered-latex-equations-to-show-up-in-both-pdf-and-html-o>)
 
 [17] la première
 
@@ -3351,5 +3405,4 @@ paragraphes seront des éléments paragraphes (balise `<p>`).
 [20] La traduction de *hook* est crochet mais point d’ancrage est
 peut-être plus approprié ici.
 
-[21] *engine* en anglais, ce n’est peut-être pas la meilleure
-traduction.
+[21] traduit de *engine* en anglais.
