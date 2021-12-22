@@ -1,8 +1,8 @@
 on:
   push:
-    branches: [main, master]
+    branches: main
   pull_request:
-    branches: [main, master]
+    branches: main
 
 name: Render and deploy HTML document
 
@@ -41,7 +41,12 @@ jobs:
           http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
 
-      - uses: r-lib/actions/setup-r-dependencies@v2
+      # - uses: r-lib/actions/setup-r-dependencies@v2
+      
+      - name: Install packages 
+        run: |-
+          Rscript -e "install.packages('remotes')"
+          Rscript -e "remotes::install_deps()"
       
       - name: Build html, word, md and pdf
         run: |-
