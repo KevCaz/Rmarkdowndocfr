@@ -1982,12 +1982,13 @@ Si je change les données de `tab1`, la table, les graphiques et mon commentaire
 
 # Organiser son document et son code 
 
-Jusqu'ici nous avons vu comment utiliser Markdown et les bloc de code R pour rendre le document dynamique. Ici, nous allons passer en revue différentes fonctionnalités qui nous permettent de mieux structurer notre document, surtout quand il est long et que beacoup de code est utilisé. 
+Jusqu'ici nous avons vu comment utiliser Markdown et les blocs de code R pour rendre le document dynamique. Ici, nous allons passer en revue différentes fonctionnalités qui nous permettent de mieux structurer notre document, surtout quand il est long et que beaucoup de code est utilisé. 
+
 
 
 ## Inclure un fichier R Markdown dans un fichier R Markdown
 
-Pour des raisons d'organisation, il est parfois plus simple d'organiser un long document en différents fichiers. Par exemple, quand différentes personnes travaillent avec sur différentes parties d'un rapport. L'options `chlid` nous permet d'inclure un fichier R Markdown dans un autre document R Markdown. Par exemple pour inclure le fichier `r url_this_gh("scripts/part.Rmd", "part.Rmd")`, nous utilisons 
+Pour des raisons d'organisation, il est parfois plus simple d'organiser un long document en différents fichiers. Par exemple, lorsque différentes personnes travaillent sur différentes parties d'un rapport. L'option `child` nous permet d'inclure un fichier R Markdown dans un autre document R Markdown. Par exemple pour inclure le fichier `r url_this_gh("scripts/part.Rmd", "part.Rmd")`, nous utilisons 
 
 
     ```{r include_part, child = "scripts/part.Rmd"}`r ''`
@@ -2002,11 +2003,9 @@ et voici ce que nous obtenons:
 
 
 
-
-
 ## Utiliser un script externe
 
-Pour insérer du code dans le document R Markdown, il peut parfois être plus pratique d'utiliser un script externe, autrement avoir une partie (ou l'entièreté) du code d'un fichier `.R` (ou `.r`). Plusieurs manières de procéder existent, plus ou moins pertinentes selon ce que nous voulons faire. Si le code est simplement un ensemble de lignes à exécuter de manière silencieuse, alors faire appel à la fonction `source()` est probablement une bonne option. Il y a cependant une petite chose à savoir&nbsp;: il est préférable d'utiliser l'argument `local` pour s'assurer que le code sera exécuté dans le bon environment, voir le chapitre *Source external R scripts* de @xie_markdown_2020 (aussi disponible à l'URL suivante https://bookdown.org/yihui/rmarkdown-cookbook/source-script.html). Le script à charger est disponible à l'URL suivante `r url_this_gh("scripts/scr_externe1.R")`, il contient les lignes suivantes\&nbsp;: 
+Pour insérer du code dans le document R Markdown, il peut parfois être plus pratique d'utiliser un script externe, autrement avoir une partie (ou l'entièreté) du code d'un fichier `.R` (ou `.r`). Plusieurs manières de procéder existent, plus ou moins pertinentes selon ce que nous voulons faire. Si le code est simplement un ensemble de lignes à exécuter de manière silencieuse, alors faire appel à la fonction `source()` est probablement une bonne option. Il y a cependant une chose à savoir&nbsp;: il est préférable d'utiliser l'argument `local` pour s'assurer que le code sera exécuté dans le bon environment, voir le chapitre *Source external R scripts* de @xie_markdown_2020 (aussi disponible à l'URL suivante https://bookdown.org/yihui/rmarkdown-cookbook/source-script.html). Le script à charger est disponible à l'URL suivante `r url_this_gh("scripts/scr_externe1.R")`, il contient les lignes suivantes\&nbsp;: 
 
 ```{r showcode, code=readLines("scripts/scr_externe1.R"), eval = FALSE}
 ```
@@ -2049,7 +2048,7 @@ nous donne
 ```{r showextcode, code = readLines("scripts/scr_externe1.R")}
 ```
 
-Une limite de cette approche est qu'elle nous permet pas d'exécuter différente partie du script dans différent bloc de code, ce qui peut, à des fins pédagogiques, être utile. Il existe cependant un moyen simple d'utiliser différentes parties d'un script R en l'annotant avec des balises `@knitr`. Prenons le script `r url_this_gh("scripts/scr_externe2.R", "scr_externe2.R")`
+Une limite de cette approche est qu'elle nous permet pas d'exécuter différente partie du script dans différent bloc de code. Cela peut cependant être utilie, surtout à des fins pédagogiques. Il existe cependant un moyen simple d'utiliser différentes parties d'un script R en l'annotant avec des balises `@knitr`. Prenons le script `r url_this_gh("scripts/scr_externe2.R", "scr_externe2.R")`
 
 ```{r showcode, code=readLines("scripts/scr_externe2.R"), eval = FALSE}
 ```
@@ -2068,7 +2067,7 @@ Une fois les balises ajoutées dans le script, pour l'utiliser, la première ét
 read_chunk("scripts/scr_externe2.R")
 ```
 
-La seconde étape est d'ajouter les blocs de code qui contiennent le ou les parties à utiliser. Pour cela on utilise un bloc de code R avec l'identifiant de la partie à utiliser entre chevrons doublés. Par exemple, pour ajouter la partie 1, nous utilisons
+La seconde étape est d'ajouter les blocs de code qui contiennent le ou les parties à utiliser. Pour cela nous utilisons un bloc de code R avec l'identifiant de la partie à utiliser (ici `part1`) entre chevrons doublés. Par exemple, pour ajouter la partie 1, nous utilisons
 
     ```{r part1}`r ''`
     <<part1>>
@@ -2116,9 +2115,9 @@ b <- 3
 a + b
 ```
 
-Il est possible d'ajuster le niveau de documentation ajoutée dans le script R produit par `purl()` grâce au paramètre `documentation`. Avec `documentation = 0`, les balises qui permettent d'identifier les blocs de code sont enlevées et avec `documentation = 2`, tout le texte du document est ajouté et commenté. 
+Il est possible d'ajuster le niveau de documentation ajoutée dans le script R produit par `purl()` grâce au paramètre `documentation`. Avec `documentation = 0`, les balises qui permettent d'identifier les blocs de code sont enlevées et avec `documentation = 2`, tout le texte du document est ajouté sous forme de commentaires. 
 
-L'entièreté du script est disponible à l'URL suivante\&nbsp;: `r url_this("code.R")`. Cette fonctionnalité peut se révéler vraiment efficace pour commenter un script un peu compliqué et le partager pour utilisation. Dans de tels cas d'usage, il y a souvent des blocs de code qui peuvent être superflus, par exemple des bouts de code ajoutés pour améliorer les explications, mais qui ne sont pas utiles pour la bonne exécution du script. Dans ce cas, il est possible d'utiliser l'option `purl` pour enlever les blocs de code. Par défaut, l'option est réglée sur `TRUE` et donc tous les blocs de code sont ajoutés. Le bloc de code suivant sera ajouté dans le document R Markdown avec les sorties associées, mais pas dans le fichier `code.R`. 
+L'entièreté du script est disponible à l'URL suivante\&nbsp;: `r url_this("code.R")`. Cette fonctionnalité peut se révéler vraiment efficace pour commenter un script un peu compliqué et le partager pour utilisation. Dans de tels cas d'usage, il y a souvent des blocs de code qui peuvent être superflus. Par exemple, des bouts de code ajoutés pour améliorer les explications, mais qui ne sont pas utiles pour la bonne exécution du script. Dans ce cas, il est possible d'utiliser l'option `purl` pour enlever les blocs de code. Par défaut, l'option est réglée sur `TRUE` et donc tous les blocs de code sont ajoutés. Le bloc de code suivant sera ajouté dans le document R Markdown avec les sorties associées, mais pas dans le fichier `code.R`. 
 
    ```{r nopurl, purl = FALSE}`r ''`
    # ce bloc sera dans le document mais pas dans code.R 
