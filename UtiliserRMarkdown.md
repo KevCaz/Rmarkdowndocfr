@@ -1479,7 +1479,7 @@ Pour inclure une sortie texte directement dans un paragraphe, on utilise
  : `` `r expression` ``. Ainsi, par exemple, il est possible d’insérer
 l’heure et la date au moment de la compilation du document en utilisant
 la fonction *Sys.time()*, ainsi, `` `r Sys.time()` ``  nous donne
-2021-12-23 14:30:12.
+2021-12-23 15:00:44.
 
 Le reste de cette section se concentre sur les blocs de code R (*code
 chunks* en anglais) qui s’utilisent comme les [blocs de
@@ -2016,74 +2016,74 @@ sera convertie dans le format désiré par Pandoc. De plus, la fonction
 <tr class="odd">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">3.411955</td>
-<td style="text-align: right;">3.921239</td>
+<td style="text-align: right;">19.400971</td>
+<td style="text-align: right;">19.310844</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">19.295405</td>
-<td style="text-align: right;">19.686931</td>
+<td style="text-align: right;">4.367311</td>
+<td style="text-align: right;">5.421181</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">2.065631</td>
-<td style="text-align: right;">2.396017</td>
+<td style="text-align: right;">16.969952</td>
+<td style="text-align: right;">16.076754</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">6.772894</td>
-<td style="text-align: right;">7.152440</td>
+<td style="text-align: right;">10.260987</td>
+<td style="text-align: right;">8.486015</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">16.890700</td>
-<td style="text-align: right;">16.971254</td>
+<td style="text-align: right;">3.874690</td>
+<td style="text-align: right;">4.019457</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">2.990934</td>
-<td style="text-align: right;">2.994993</td>
+<td style="text-align: right;">3.636305</td>
+<td style="text-align: right;">3.209893</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">8.544815</td>
-<td style="text-align: right;">8.930829</td>
+<td style="text-align: right;">7.103391</td>
+<td style="text-align: right;">7.981548</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">18.897486</td>
-<td style="text-align: right;">18.754848</td>
+<td style="text-align: right;">9.655858</td>
+<td style="text-align: right;">8.151312</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">1.988355</td>
-<td style="text-align: right;">3.431836</td>
+<td style="text-align: right;">2.489542</td>
+<td style="text-align: right;">1.647640</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">7.212189</td>
-<td style="text-align: right;">8.622789</td>
+<td style="text-align: right;">2.305419</td>
+<td style="text-align: right;">3.580804</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">15.442308</td>
-<td style="text-align: right;">15.721324</td>
+<td style="text-align: right;">7.180478</td>
+<td style="text-align: right;">6.726316</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">6.520734</td>
-<td style="text-align: right;">7.496326</td>
+<td style="text-align: right;">13.695721</td>
+<td style="text-align: right;">11.050181</td>
 </tr>
 </tbody>
 </table>
@@ -2116,85 +2116,85 @@ virgule ou encore d’inclure les numéros de lignes.
 <td style="text-align: left;">1</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">3.412</td>
-<td style="text-align: right;">3.921</td>
+<td style="text-align: right;">19.401</td>
+<td style="text-align: right;">19.311</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">2</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">19.295</td>
-<td style="text-align: right;">19.687</td>
+<td style="text-align: right;">4.367</td>
+<td style="text-align: right;">5.421</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">3</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">2.066</td>
-<td style="text-align: right;">2.396</td>
+<td style="text-align: right;">16.970</td>
+<td style="text-align: right;">16.077</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">4</td>
 <td style="text-align: left;">traitement_1</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">6.773</td>
-<td style="text-align: right;">7.152</td>
+<td style="text-align: right;">10.261</td>
+<td style="text-align: right;">8.486</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">5</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">16.891</td>
-<td style="text-align: right;">16.971</td>
+<td style="text-align: right;">3.875</td>
+<td style="text-align: right;">4.019</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">6</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">2.991</td>
-<td style="text-align: right;">2.995</td>
+<td style="text-align: right;">3.636</td>
+<td style="text-align: right;">3.210</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">7</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">8.545</td>
-<td style="text-align: right;">8.931</td>
+<td style="text-align: right;">7.103</td>
+<td style="text-align: right;">7.982</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">8</td>
 <td style="text-align: left;">traitement_2</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">18.897</td>
-<td style="text-align: right;">18.755</td>
+<td style="text-align: right;">9.656</td>
+<td style="text-align: right;">8.151</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">9</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">a</td>
-<td style="text-align: right;">1.988</td>
-<td style="text-align: right;">3.432</td>
+<td style="text-align: right;">2.490</td>
+<td style="text-align: right;">1.648</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">10</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">b</td>
-<td style="text-align: right;">7.212</td>
-<td style="text-align: right;">8.623</td>
+<td style="text-align: right;">2.305</td>
+<td style="text-align: right;">3.581</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">11</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">c</td>
-<td style="text-align: right;">15.442</td>
-<td style="text-align: right;">15.721</td>
+<td style="text-align: right;">7.180</td>
+<td style="text-align: right;">6.726</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">12</td>
 <td style="text-align: left;">traitement_3</td>
 <td style="text-align: left;">d</td>
-<td style="text-align: right;">6.521</td>
-<td style="text-align: right;">7.496</td>
+<td style="text-align: right;">13.696</td>
+<td style="text-align: right;">11.050</td>
 </tr>
 </tbody>
 </table>
@@ -2229,8 +2229,7 @@ référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown%20refer
 Dans le bloc de code ci-dessous, la taille de la figure et son
 alignement sont ajustés et une légende est ajoutée.
 
-    ```{r figdim1, fig.cap = "Ceci est la légende de la figure",
-        fig.height = 4, fig.width = 4, fig.align = "right"}
+    ```{r figdim1, fig.cap = "Ceci est la légende de la figure", fig.height = 4, fig.width = 4, fig.align = "right"}
     plot(tab1$var1,tab1$var2)
     ```
 
@@ -2260,7 +2259,7 @@ de forme de 1.5.
 9x6](/home/runner/work/Rmarkdowndocfr/Rmarkdowndocfr/public/UtiliserRMarkdown_files/figure-markdown_strict/figdim2-1.png)
 
 Il est aussi possible de contrôler la largeur de la sortie en utilisant
-des pourcentage, pour cela on utilise `out.width`
+des pourcentages, pour cela on utilise `out.width`
 
     ```{r figdim3, out.width = "100%"}
     plot(tab1$var1, tab1$var2)
@@ -2313,13 +2312,15 @@ Forte résolution
 
 Encore une fois, il y a [d’autres options listées sur le site de
 `knitr`](https://yihui.org/knitr/options/), il est possible, entre
-autres, d’ajouter un hyperlien sur la figure. L’ensemble de ces
-paramètres nous permettent de facilement bénéficier de la large gamme de
-fonctions graphiques de R. Ainsi, avec R Markdown, il est possible, par
-exemple, de personnaliser la figure précédente avec quelques lignes de
-code supplémentaires, d’en choisir la taille, le format, la position, la
-légende, d’ajouter un hyperlien et de masquer le code qui la génère.
-Voici le bloc qui nous permet de modifier toutes ces options:
+autres, de choisir l’emplacement où les figures seront sauvegardées avec
+`fig.path` et d’ajouter un hyperlien sur la figure avec l’option
+`fig.link`. L’ensemble de ces paramètres nous permettent de facilement
+bénéficier de la large gamme de fonctions graphiques de R. Ainsi, avec R
+Markdown, il est possible, par exemple, de personnaliser la figure
+précédente avec quelques lignes de code supplémentaires, d’en choisir la
+taille, le format, la position, la légende, d’ajouter un hyperlien et de
+masquer le code qui la génère. Voici le bloc qui nous permet de modifier
+toutes ces options&nbsp;:
 
     {r figfinale, dev = "png", dpi = 300, fig.height = 5, fig.width =8, echo = FALSE, fig.link = "https://github.com/KevCaz/Rmarkdowndocfr", fig.cap = "Figure associé à la table 1. Le gris pour l'expérience 1, bleu pour la seconde et violet pour la troisième."}
     par(bty="l", font = 2, las = 1)
@@ -2385,16 +2386,16 @@ Le résultat est le suivant&nbsp;:
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">0.8284648</td>
-<td style="text-align: right;">0.2420907</td>
-<td style="text-align: right;">3.422126</td>
-<td style="text-align: right;">0.0065241</td>
+<td style="text-align: right;">0.3506478</td>
+<td style="text-align: right;">0.5860300</td>
+<td style="text-align: right;">0.5983444</td>
+<td style="text-align: right;">0.5629164</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">var1</td>
-<td style="text-align: right;">0.9646093</td>
-<td style="text-align: right;">0.0216864</td>
-<td style="text-align: right;">44.479915</td>
+<td style="text-align: right;">0.9060194</td>
+<td style="text-align: right;">0.0583287</td>
+<td style="text-align: right;">15.5329946</td>
 <td style="text-align: right;">0.0000000</td>
 </tr>
 </tbody>
@@ -2405,7 +2406,7 @@ Le résultat est le suivant&nbsp;:
 Mon modèle linéaire
 </p>
 
-La pente de la regression est de **0.965**.
+La pente de la regression est de **0.906**.
 
 Si je change les données de `tab1`, la table, les graphiques et mon
 commentaire seront adéquatement modifiés, ce qui peut s’avérer très
