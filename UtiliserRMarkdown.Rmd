@@ -1817,12 +1817,11 @@ plot(tab1$var1, tab1$var2)
 J'obtiens la figure demandée, avec des dimensions par défaut qui prennent une
 bonne partie de la largeur du document, mais pas son entièreté. Pour formater une figure obtenue avec R, il existe des options pour contrôler, entre autres, sa taille, son alignement et sa légende (taille et alignement ne sont pas supportés pour la sortie Word). Pour visualiser l'ensemble des options disponibles, je vous invite à regarder la page 3 du [guide de référence](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown reference.pdf). Dans le bloc de code ci-dessous, la taille de la figure et son alignement sont ajustés et une légende est ajoutée.
 
-````md
-```{r figdim1, fig.cap = "Ceci est la légende de la figure",
-    fig.height = 4, fig.width = 4, fig.align = "right"}`r ''`
-plot(tab1$var1,tab1$var2)
-```
-````
+
+    ```{r figdim1, fig.cap = "Ceci est la légende de la figure", fig.height = 4, fig.width = 4, fig.align = "right"}`r ''`
+    plot(tab1$var1,tab1$var2)
+    ```
+
 
 ```{r figdim1, fig.cap = "une figure de avec une légende", fig.height = 4, fig.width = 4, fig.align = "right"}
 plot(tab1$var1, tab1$var2)
@@ -1831,11 +1830,9 @@ plot(tab1$var1, tab1$var2)
 Les dimensions d'une figure sont toujours exprimées en [pouces](https://fr.wikipedia.org/wiki/Pouce_(unit%C3%A9)), si vous n'êtes pas habitué à manipuler les pouces, il faudra faire des conversations à la main (ou avec R) en gardant en tête que 1&nbsp;pouce vaut 2.54&nbsp;cm. Il est également possible de choisir une des deux dimensions et changer le rapport de forme, `fig.aspect`. Ainsi, pour une figure de &nbsp;poucesx&nbsp;pouces, je peux utiliser une largeur de 9&nbsp;pouces et un rapport de forme de 1.5.
 
 
-````md
-```{r figdim2, fig.cap= "Figure 9x6", fig.width = 9, fig.aspect = 1.5}`r ''`
-plot(tab1$var1,tab1$var2)
-```
-````
+    ```{r figdim2, fig.cap= "Figure 9x6", fig.width = 9, fig.aspect = 1.5}`r ''`
+    plot(tab1$var1,tab1$var2)
+    ```
 
 ```{r figdim2, fig.cap= "Figure 9x6", fig.width = 9, fig.aspect = 1.5}
 plot(tab1$var1,tab1$var2)
@@ -1843,13 +1840,13 @@ plot(tab1$var1,tab1$var2)
 
 
 Il est aussi possible de contrôler la largeur de la sortie en utilisant des
-pourcentage, pour cela on utilise `out.width`
+pourcentages, pour cela on utilise `out.width`
 
-````md
-```{r figdim3, out.width = "100%"}`r ''`
-plot(tab1$var1, tab1$var2)
-```
-````
+
+    ```{r figdim3, out.width = "100%"}`r ''`
+    plot(tab1$var1, tab1$var2)
+    ```
+
 
 ```{r figdim3, out.width = "100%"}
 plot(tab1$var1, tab1$var2)
@@ -1861,11 +1858,11 @@ Il est aussi possible de changer le format de sortie des figures avec le paramè
 <!-- Dans le bloc qui suit j'utilise le [format -->
 <!-- SVG](https://www.synbioz.com/blog/tech/le-svg-pour-quoi-faire) -->
 
-````md
-```{r figdim4, out.width = "100%", dev = "jpeg"}`r ''`
-plot(tab1$var1, tab1$var2)
-```
-````
+
+    ```{r figdim4, out.width = "100%", dev = "jpeg"}`r ''`
+    plot(tab1$var1, tab1$var2)
+    ```
+
 
 ```{r figdim4, out.width = "100%", dev = "jpeg"}
 plot(tab1$var1, tab1$var2)
@@ -1900,13 +1897,7 @@ plot(tab1$var1, tab1$var2)
 
 Encore une fois, il y a [d'autres options listées sur le site de
 `knitr`](https://yihui.org/knitr/options/), il est possible, entre autres,
-d'ajouter un hyperlien sur la figure. L'ensemble de ces paramètres nous
-permettent de facilement bénéficier de la large gamme de fonctions graphiques de
-R. Ainsi, avec R Markdown, il est possible, par exemple, de personnaliser la
-figure précédente avec quelques lignes de code supplémentaires, d'en choisir la
-taille, le format, la position, la légende, d'ajouter un hyperlien et de masquer
-le code qui la génère. Voici le bloc qui nous permet de modifier toutes ces
-options:
+de choisir l'emplacement où les figures seront sauvegardées avec `fig.path` et d'ajouter un hyperlien sur la figure avec l'option `fig.link`. L'ensemble de ces paramètres nous permettent de facilement bénéficier de la large gamme de fonctions graphiques de R. Ainsi, avec R Markdown, il est possible, par exemple, de personnaliser la figure précédente avec quelques lignes de code supplémentaires, d'en choisir la taille, le format, la position, la légende, d'ajouter un hyperlien et de masquer le code qui la génère. Voici le bloc qui nous permet de modifier toutes ces options\&nbsp;:
 
 ````md
 {r figfinale, dev = "png", dpi = 300, fig.height = 5, fig.width =8, echo = FALSE, fig.link = "https://github.com/KevCaz/Rmarkdowndocfr", fig.cap = "Figure associé à la table 1. Le gris pour l'expérience 1, bleu pour la seconde et violet pour la troisième."}`r ''`
